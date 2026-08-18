@@ -2,9 +2,10 @@ name: Daily Dispatch
 
 on:
   schedule:
-    # 10:00 UTC = 6 AM EDT / 5 AM EST. DST shifts this by an hour twice a
-    # year — nudge this cron if you want a fixed local time year-round.
-    - cron: "0 10 * * *"
+    # 8:30 UTC = 4:30 AM EDT. In winter (EST, UTC-5) this becomes 5:30 AM —
+    # DST shifts it by an hour twice a year; nudge to "30 9 * * *" for the
+    # Nov-Mar EST stretch if you want a fixed local time year-round.
+    - cron: "30 8 * * *"
   workflow_dispatch: {}
 
 permissions:

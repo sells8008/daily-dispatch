@@ -9,8 +9,10 @@ email:
   # credentials come from GitHub secrets: MAIL_FROM, MAIL_APP_PASSWORD, MAIL_TO
 
 schedule:
-  # ~6 AM ET. Cron is UTC. 10:00 UTC = 6 AM EDT / 5 AM EST. Adjust to taste.
-  cron_utc: "0 10 * * *"
+  # ~4:30 AM ET. Cron is UTC. 8:30 UTC = 4:30 AM EDT / 5:30 AM EST.
+  # NOTE: this value is documentation only — GitHub Actions reads the
+  # actual schedule from .github/workflows/daily.yml, not this file.
+  cron_utc: "30 8 * * *"
 
 # ---- SPORTS TEAMS ----
 teams:
