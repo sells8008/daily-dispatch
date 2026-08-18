@@ -1,0 +1,118 @@
+location:
+  label: "Neptune Beach, FL"
+  lat: 30.3149
+  lon: -81.3984
+  timezone: "America/New_York"
+
+email:
+  subject_prefix: "The Morning Dispatch"   # final subject: "The Morning Dispatch — Mon, Aug 17"
+  # credentials come from GitHub secrets: MAIL_FROM, MAIL_APP_PASSWORD, MAIL_TO
+
+schedule:
+  # ~6 AM ET. Cron is UTC. 10:00 UTC = 6 AM EDT / 5 AM EST. Adjust to taste.
+  cron_utc: "0 10 * * *"
+
+# ---- SPORTS TEAMS ----
+teams:
+  - {league: "mlb",  name: "Philadelphia Phillies"}
+  - {league: "nfl",  name: "Philadelphia Eagles"}
+  - {league: "nhl",  name: "Philadelphia Flyers"}
+  - {league: "mens-college-lacrosse", name: "Jacksonville Dolphins"}   # niche — see caveats
+golf:
+  follow: ["PGA Tour", "majors", "Ryder Cup"]   # show whatever is in season
+
+# ---- ARTICLE TOPICS ----
+# priority 5 = highest (most articles), 1 = lowest. Counts scale with priority.
+# never_skip topics always appear even if thin.
+topics:
+  - {name: "Technology",              priority: 5, freshness: "standard"}
+  - {name: "Artificial Intelligence", priority: 5, freshness: "standard"}
+  - {name: "Cryptocurrency",          priority: 5, freshness: "fresh"}     # price/market = must be current
+  - {name: "American Business",       priority: 4, freshness: "fresh"}
+  - {name: "PGA Tour",                priority: 4, freshness: "fresh"}
+  - {name: "Food & Cooking",          priority: 4, freshness: "evergreen", never_skip: true}
+  - {name: "Geopolitics / Current Events", priority: 3, freshness: "fresh"}
+  - {name: "Space",                   priority: 3, freshness: "standard"}
+  - {name: "Scientific Breakthroughs",priority: 3, freshness: "standard"}
+  - {name: "Music",                   priority: 3, freshness: "standard", never_skip: true}
+  - {name: "Golf History & Courses",  priority: 3, freshness: "evergreen"}
+  - {name: "Jacksonville & the Beaches", priority: 3, freshness: "fresh", never_skip: true}
+  - {name: "Capital Markets & Lending (US)", priority: 1, freshness: "fresh"}
+  - {name: "US Residential Housing",  priority: 1, freshness: "fresh"}
+  - {name: "NHL",                     priority: 1, freshness: "fresh"}
+  # add/remove freely; this is the master list
+
+# Rough article counts per priority (tune later). "More is fine."
+counts_by_priority: {5: 5, 4: 4, 3: 3, 2: 2, 1: 2}
+misc_count: 4   # overflow / catch-all section at the bottom
+
+# ---- MUSIC ARTIST WATCHLIST ----
+# drives BOTH the Music news section and the Around Town concert matching.
+artists:
+  - "Morgan Wallen"
+  - "Riley Green"
+  - "Chris Stapleton"
+  - "Ella Langley"
+  - "Billy Currington"
+  - "Jon Pardi"
+  - "Luke Combs"
+  - "Darius Rucker"
+  - "Billy Strings"
+  - "Sturgill Simpson"
+  - "Dead & Company"
+  - "Subtronics"
+  - "Ray Volpe"
+  - {name: "Toby Keith", news_only: true}   # deceased — never match concerts, news/tributes OK
+
+# ---- LOCAL EVENTS ----
+events:
+  radius_miles: 75            # ~90 min drive from Neptune Beach
+  center_lat: 30.3149
+  center_lon: -81.3984
+  # watchlist-artist concerts are checked in these cities specifically (in
+  # addition to the radius above), with no date cutoff — so a show
+  # announced a year out still shows up as soon as it's on sale:
+  artist_search_cities:
+    - "Jacksonville"
+    - "Ocala"
+    - "Orlando"
+    - "Savannah"
+  # named marquee venues to always check even if just past the radius:
+  always_watch_venues:
+    - "World Equestrian Center"      # Ocala
+    - "TPC Sawgrass"                 # Ponte Vedra (THE PLAYERS)
+    - "EverBank Stadium"             # Jacksonville
+    - "Daily's Place"                # Jacksonville
+    - "St. Augustine Amphitheatre"   # St. Augustine
+    - "VyStar Veterans Memorial Arena"
+    - "SeaWalk Pavilion"             # Jacksonville Beach — community festivals/shows
+  # which always_watch_venues also get the starred/highlighted treatment in
+  # Around Town, on top of watchlist-artist concerts (which are always starred):
+  starred_venues:
+    - "SeaWalk Pavilion"
+
+# ---- FRESHNESS WINDOWS ----
+# fresh = time-sensitive, must be recent. evergreen = timeless, any age OK (gets "Evergreen" tag).
+freshness_windows:
+  fresh_hours: 72        # markets, macro, breaking, sports, local, crypto
+  standard_days: 14      # tech, AI, science, music, space
+  evergreen: null        # no age limit; source-curated
+
+# ---- DAILY RECIPE ----
+# meat + vegetable centric; grill or slow cooker; each has a side. Cycles by day-of-year.
+# Expand this list anytime — it just rotates.
+recipe_rotation:
+  - {dish: "Rosemary–Garlic Lamb Chops", method: "Grill", side: "blistered green beans & lemon", note: "High-heat sear, 3–4 min a side, rest 5"}
+  - {dish: "Coffee-Rubbed Ribeye", method: "Grill", side: "grilled asparagus & flaky salt", note: "Reverse-sear; pull at 125°F, rest, sear hot"}
+  - {dish: "Slow-Cooker Pulled Chicken", method: "Slow Cooker", side: "charred corn slaw", note: "6 hrs low; shred; broil 3 min to crisp"}
+  - {dish: "Grilled Bone-In Pork Chops", method: "Grill", side: "roasted brussels sprouts", note: "Brine 1 hr; grill to 140°F; rest"}
+  - {dish: "Slow-Cooker Beef Short Ribs", method: "Slow Cooker", side: "garlic-mashed cauliflower", note: "Sear first; 8 hrs low in stock"}
+  - {dish: "Cast-Iron Skirt Steak", method: "Grill", side: "chimichurri & grilled peppers", note: "Very hot, 2–3 min a side, slice against grain"}
+  - {dish: "Grilled Chicken Thighs (Peri-Peri)", method: "Grill", side: "grilled zucchini", note: "Marinate 2 hrs; skin-side down first"}
+  - {dish: "Slow-Cooker Lamb Shanks", method: "Slow Cooker", side: "roasted carrots & thyme", note: "Sear, then 8 hrs low in red wine + stock"}
+  - {dish: "Grilled Flank Steak", method: "Grill", side: "elote-style street corn", note: "Marinate; grill hot 4 min a side; slice thin"}
+  - {dish: "Slow-Cooker Pork Carnitas", method: "Slow Cooker", side: "avocado & cabbage", note: "8 hrs low; crisp under broiler"}
+  - {dish: "Grilled Tri-Tip", method: "Grill", side: "grilled broccolini", note: "Reverse-sear to 130°F; rest 10; slice thin"}
+  - {dish: "Beer-Can Chicken", method: "Grill", side: "grilled sweet potato wedges", note: "Indirect heat ~75 min to 165°F"}
+  - {dish: "Slow-Cooker Pot Roast", method: "Slow Cooker", side: "green beans almondine", note: "Sear chuck; 8 hrs low with root veg"}
+  - {dish: "Grilled Lamb Kofta Skewers", method: "Grill", side: "cucumber-tomato salad", note: "High heat, turn once, ~8 min total"}

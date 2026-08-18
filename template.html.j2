@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="dark">
+<title>The Morning Dispatch — {{ edition.date_str }}</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,900&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    color-scheme: dark;
+    --bg:#0F1618;--card:#16211E;--text:#ECEBE4;--text-dim:#C4C3BC;--muted:#9BA39D;
+    --line:#273432;--rule:#C9C8C1;--marine:#5CCFC2;--amber:#E89A5C;--up:#4FD08A;--down:#E8746A;--measure:660px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;background:var(--bg)}
+  body{background:var(--bg);color:var(--text);font-family:"Inter",system-ui,sans-serif;line-height:1.5;-webkit-font-smoothing:antialiased;padding:0 20px 64px}
+  .wrap{max-width:1040px;margin:0 auto}
+  a{color:var(--text);text-decoration:none}
+  a:visited{color:var(--text-dim)}
+
+  header.masthead{border-bottom:2px solid var(--rule);padding:24px 0 14px;text-align:center}
+  .chip{display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--amber);border:1px solid var(--amber);padding:3px 8px;border-radius:2px;margin-bottom:14px}
+  .wordmark{font-family:"Fraunces",Georgia,serif;font-weight:900;font-size:clamp(36px,7.5vw,68px);letter-spacing:-0.02em;line-height:.95;color:var(--text)}
+  .wordmark .amp{color:var(--marine)}
+  .edition{margin-top:12px;font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);display:flex;gap:10px;justify-content:center;flex-wrap:wrap;align-items:center}
+  .edition .dot{color:var(--line)}
+
+  nav.jump{position:sticky;top:0;z-index:20;background:rgba(15,22,24,.93);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);margin:0 -20px 30px;padding:10px 20px;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch}
+  nav.jump a{display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:5px 11px;margin-right:4px;border-radius:20px;transition:all .15s ease}
+  nav.jump a:visited{color:var(--muted)}
+  nav.jump a:hover{color:var(--marine);background:#5ccfc218}
+  nav.jump a:focus-visible{outline:2px solid var(--marine);outline-offset:2px}
+
+  .glance{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);border-radius:6px;overflow:hidden;margin-bottom:20px;background:var(--card)}
+  .glance .cell{padding:15px 18px;border-right:1px solid var(--line)}
+  .glance .cell:last-child{border-right:none}
+  .glance .lab{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--marine);margin-bottom:8px}
+  .glance .big{font-family:"IBM Plex Mono",monospace;font-size:20px;font-weight:500;letter-spacing:-0.01em;color:var(--text)}
+  .glance .sub{font-size:12.5px;color:var(--muted);margin-top:3px}
+  .tick{display:flex;justify-content:space-between;font-family:"IBM Plex Mono",monospace;font-size:13px;padding:2px 0;color:var(--text)}
+  .tick .up{color:var(--up)} .tick .down{color:var(--down)}
+  @media(max-width:640px){.glance{grid-template-columns:1fr}.glance .cell{border-right:none;border-bottom:1px solid var(--line)}.glance .cell:last-child{border-bottom:none}}
+
+  /* ---------- Today's Cook (top feature) ---------- */
+  .cook{display:flex;align-items:center;gap:20px;flex-wrap:wrap;background:var(--card);border:1px solid var(--line);border-left:3px solid var(--marine);border-radius:6px;padding:16px 20px;margin-bottom:40px}
+  .cook .lab{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--marine);margin-bottom:6px}
+  .cook .method{font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);border:1px solid var(--amber);border-radius:2px;padding:2px 7px;margin-left:8px;vertical-align:2px}
+  .cook .dish{font-family:"Fraunces",Georgia,serif;font-size:21px;font-weight:600;letter-spacing:-0.01em;color:var(--text);line-height:1.15}
+  .cook .side{font-size:13.5px;color:var(--text-dim);margin-top:4px}
+  .cook .go{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--marine);white-space:nowrap;margin-left:auto}
+  @media(max-width:560px){.cook .go{margin-left:0;margin-top:6px}}
+
+  .grid{display:grid;grid-template-columns:1fr;gap:44px}
+  @media(min-width:900px){.grid{grid-template-columns:1fr 300px;gap:56px}}
+  section.block{margin-bottom:42px;scroll-margin-top:70px}
+  section.block:last-child{margin-bottom:0}
+  .eyebrow{display:flex;align-items:center;gap:12px;font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--marine);margin:0 0 16px}
+  .eyebrow::after{content:"";flex:1;height:1px;background:var(--line)}
+  .count{color:var(--muted);letter-spacing:.05em}
+
+  .lead{margin-bottom:22px}
+  .lead h2{font-family:"Fraunces",Georgia,serif;font-weight:600;font-size:clamp(22px,3vw,30px);line-height:1.14;letter-spacing:-0.015em;margin-bottom:7px;color:var(--text)}
+  .lead p{color:var(--text-dim);font-size:14.5px;max-width:var(--measure)}
+  .tag{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#0F1618;background:var(--amber);padding:2px 7px;border-radius:2px;margin-right:8px;vertical-align:2px}
+  .tag.ever{background:none;color:var(--marine);border:1px solid var(--marine)}
+
+  .item{display:block;padding:13px 0;border-top:1px solid var(--line)}
+  .item:first-of-type{border-top:none}
+  .item h3{font-family:"Fraunces",Georgia,serif;font-weight:500;font-size:17px;line-height:1.25;letter-spacing:-0.01em;color:var(--text);transition:color .15s ease}
+  .item:hover h3{color:var(--marine)}
+  .item:visited h3{color:var(--text-dim)}
+  .meta{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--muted);letter-spacing:.03em;margin-top:5px;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+  .meta .src{color:var(--text)}
+  @media(min-width:620px){.cols{columns:2;column-gap:34px}.cols .item{break-inside:avoid}}
+
+  .game{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:11px 0;border-top:1px solid var(--line)}
+  .game:first-of-type{border-top:none}
+  .game .match{font-family:"Fraunces",Georgia,serif;font-size:16px;font-weight:500;color:var(--text)}
+  .game .lg{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.1em;color:var(--muted);text-transform:uppercase;display:block;margin-bottom:2px}
+  .game .when{font-family:"IBM Plex Mono",monospace;font-size:12px;text-align:right;white-space:nowrap;color:var(--text)}
+  .game .ch{color:var(--marine)}
+  .game .win{color:var(--text)} .game .lose{color:var(--muted)}
+  .res-final{font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--muted);letter-spacing:.08em}
+
+  .event{display:flex;justify-content:space-between;align-items:baseline;gap:14px;padding:13px 0;border-top:1px solid var(--line)}
+  .event:first-of-type{border-top:none}
+  .event .name{font-family:"Fraunces",Georgia,serif;font-size:16px;font-weight:500;color:var(--text)}
+  .event .venue{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--muted);margin-top:3px;display:block}
+  .event .kind{font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;padding:2px 6px;border-radius:2px;border:1px solid var(--line);color:var(--muted);margin-right:8px;vertical-align:2px}
+  .event .kind.concert{color:var(--marine);border-color:var(--marine)}
+  .event .kind.marquee{color:var(--amber);border-color:var(--amber)}
+  .event .when{font-family:"IBM Plex Mono",monospace;font-size:12px;text-align:right;white-space:nowrap;color:var(--text)}
+  .event .info{color:var(--marine);font-size:11px}
+  .event.starred{background:#e89a5c14;border-radius:6px;padding:13px 12px;margin:0 -12px}
+  .event.starred:first-of-type{margin-top:0}
+  .event .star{color:var(--amber);margin-right:5px}
+
+  .empty-note{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--muted);padding:13px 0}
+
+  .show-more{display:block;margin:16px auto 0;padding:7px 18px;font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--marine);background:transparent;border:1px solid var(--marine);border-radius:20px;cursor:pointer;transition:all .15s ease}
+  .show-more:hover{background:#5ccfc218}
+  .show-more:focus-visible{outline:2px solid var(--marine);outline-offset:2px}
+  .hidden-event{display:none}
+
+  aside .block{margin-bottom:30px;scroll-margin-top:70px}
+  @media(min-width:900px){aside{align-self:start;position:sticky;top:64px}}
+  .todo{border:1px dashed var(--line);border-radius:6px;padding:15px 17px;background:var(--card)}
+  .todo .note{font-size:11px;color:var(--muted);font-family:"IBM Plex Mono",monospace;letter-spacing:.03em}
+  .todo ul{list-style:none;margin-top:9px}
+  .todo li{font-size:14px;padding:6px 0 6px 24px;position:relative;color:var(--text-dim)}
+  .todo li::before{content:"";position:absolute;left:0;top:9px;width:13px;height:13px;border:1.5px solid var(--line);border-radius:3px}
+
+  footer{margin-top:52px;padding-top:18px;border-top:2px solid var(--rule);font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--muted);letter-spacing:.04em;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+  a:focus-visible{outline:2px solid var(--marine);outline-offset:3px;border-radius:2px}
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  {% macro item_link(a) -%}
+  <a class="item" href="{{ a.url }}" target="_blank" rel="noopener">
+    <h3>{% if a.evergreen %}<span class="tag ever">Evergreen</span>{% endif %}{{ a.title }}</h3>
+    <div class="meta"><span class="src">{{ a.source }}</span><span>&middot;</span><span>{{ a.date_label }}</span></div>
+  </a>
+  {%- endmacro %}
+
+  {% macro item_cols(items, empty_text="Nothing available right now.") -%}
+  {% if items %}
+  <div class="cols">
+    {% for a in items %}{{ item_link(a) }}{% endfor %}
+  </div>
+  {% else %}
+  <div class="empty-note">{{ empty_text }}</div>
+  {% endif %}
+  {%- endmacro %}
+
+  <header class="masthead">
+    <div class="wordmark">The Morning <span class="amp">Dispatch</span></div>
+    <div class="edition"><span>{{ edition.date_str }}</span><span class="dot">&#9670;</span><span>{{ edition.location }}</span><span class="dot">&#9670;</span><span>{{ edition.number }}</span></div>
+  </header>
+
+  <nav class="jump" aria-label="Jump to section">
+    <a href="#events">Around Town</a><a href="#scores">Scores</a><a href="#sports">Sports</a><a href="#local">Jacksonville</a>
+    <a href="#top">Top Stories</a><a href="#tech">Technology</a><a href="#ai">AI</a><a href="#biz">Business</a><a href="#crypto">Crypto</a>
+    <a href="#science">Science</a><a href="#golf">Golf</a><a href="#music">Music</a><a href="#food">Food</a><a href="#misc">Misc</a>
+  </nav>
+
+  <div class="glance">
+    <div class="cell">
+      <div class="lab">Weather</div>
+      {% if weather %}
+      <div class="big">{{ weather.today.hi }}&deg; / {{ weather.today.lo }}&deg;</div>
+      <div class="sub">{{ weather.current.desc }} {{ weather.current.glyph }}</div>
+      {% else %}
+      <div class="big">&mdash;</div>
+      <div class="sub">Weather unavailable</div>
+      {% endif %}
+    </div>
+    <div class="cell"><div class="lab">Markets</div>
+      {% if markets %}
+      {% if markets.sp500 %}<div class="tick"><span>S&amp;P 500</span><span class="{{ 'up' if markets.sp500.up else 'down' }}">{{ '▲' if markets.sp500.up else '▼' }} {{ markets.sp500.pct }}%</span></div>{% endif %}
+      {% if markets.btc %}<div class="tick"><span>BTC</span><span class="{{ 'up' if markets.btc.up else 'down' }}">{{ '▲' if markets.btc.up else '▼' }} {{ markets.btc.pct }}%</span></div>{% endif %}
+      {% if markets.y10 %}<div class="tick"><span>10Y</span><span class="{{ 'up' if markets.y10.up else 'down' }}">{{ '▲' if markets.y10.up else '▼' }} {{ markets.y10.change }}</span></div>{% endif %}
+      {% else %}
+      <div class="sub">Markets unavailable</div>
+      {% endif %}
+    </div>
+    <div class="cell"><div class="lab">On tonight</div>
+      {% if tonight_game %}
+      <div class="big" style="font-size:15px">{{ tonight_game.match }}</div>
+      <div class="sub">{{ tonight_game.time }} &middot; {{ tonight_game.channel }}</div>
+      {% else %}
+      <div class="big" style="font-size:15px">&mdash;</div>
+      <div class="sub">No game synced yet</div>
+      {% endif %}
+    </div>
+  </div>
+
+  <!-- TODAY'S COOK -->
+  <div class="cook" id="cook">
+    {% if cook %}
+    <div>
+      <div class="lab">Today's Cook <span class="method">{{ cook.method }}</span></div>
+      <div class="dish">{{ cook.dish }}</div>
+      <div class="side">{{ cook.note }} &middot; with {{ cook.side }}</div>
+    </div>
+    <span class="go">Get the recipe &#8599;</span>
+    {% else %}
+    <div>
+      <div class="lab">Today's Cook</div>
+      <div class="dish">Recipe coming online next</div>
+    </div>
+    {% endif %}
+  </div>
+
+  <div class="grid">
+    <main>
+      <!-- 1. AROUND TOWN -->
+      <section class="block" id="events">
+        <div class="eyebrow">Around Town <span class="count">&middot; within ~90 min &middot; concerts, festivals &amp; big events</span></div>
+        {% if events %}
+        {% for e in events %}
+        <a class="event{{ ' starred' if e.starred else '' }}{{ ' more-event hidden-event' if loop.index > 5 else '' }}" href="{{ e.url }}" target="_blank" rel="noopener"><div><span class="kind {{ e.kind_class }}">{{ e.kind }}</span><span class="name">{% if e.starred %}<span class="star">&#9733;</span>{% endif %}{{ e.name }}</span><span class="venue">{{ e.venue }}</span></div><div class="when">{{ e.when }}<br><span class="info">{{ e.link_label }} &#8599;</span></div></a>
+        {% endfor %}
+        {% if events|length > 5 %}
+        <button type="button" class="show-more" data-expanded="false" data-more-label="View more ({{ events|length - 5 }}) &#8595;" data-less-label="Show fewer &#8593;" onclick="
+          var expanded = this.getAttribute('data-expanded') === 'true';
+          document.querySelectorAll('#events .more-event').forEach(function(el){ el.classList.toggle('hidden-event'); });
+          this.setAttribute('data-expanded', expanded ? 'false' : 'true');
+          this.innerHTML = expanded ? this.getAttribute('data-more-label') : this.getAttribute('data-less-label');
+        ">View more ({{ events|length - 5 }}) &#8595;</button>
+        {% endif %}
+        {% else %}
+        <div class="empty-note">Events coming online next &mdash; Ticketmaster key pending.</div>
+        {% endif %}
+      </section>
+
+      <!-- 2. SCORES + SPORTS -->
+      <section class="block" id="scores">
+        <div class="eyebrow">Yesterday's Results <span class="count">&middot; final scores</span></div>
+        {% if yesterday_results %}
+        {% for g in yesterday_results %}
+        <a class="game" href="{{ g.url }}" target="_blank" rel="noopener"><div><span class="lg">{{ g.league }}</span><span class="match">{{ g.match }}</span></div><div class="when">
+          {% if g.kind == 'leader' %}<span class="res-final">LEADER</span><br><span class="ch">{{ g.leader_score }} &middot; {{ g.leader_name }}</span>
+          {% else %}<span class="res-final">FINAL</span><br><span class="{{ 'win' if g.won else 'lose' }}">{{ 'W' if g.won else 'L' }}</span>{% endif %}
+        </div></a>
+        {% endfor %}
+        {% else %}
+        <div class="empty-note">Scores coming online next.</div>
+        {% endif %}
+      </section>
+
+      <section class="block" id="sports">
+        <div class="eyebrow">Your Teams &mdash; Today <span class="count">&middot; times &amp; how to watch</span></div>
+        {% if teams_today %}
+        {% for g in teams_today %}
+        <a class="game" href="{{ g.url }}" target="_blank" rel="noopener"><div><span class="lg">{{ g.league }}</span><span class="match">{{ g.match }}</span></div><div class="when">{{ g.time }}<br><span class="ch">{{ g.channel }}</span></div></a>
+        {% endfor %}
+        {% else %}
+        <div class="empty-note">Sports coming online next.</div>
+        {% endif %}
+        {% for note in teams_notes %}
+        <div class="meta" style="margin-top:14px"><span class="src">{{ note.team }}</span><span>&middot;</span><span>{{ note.text }}</span></div>
+        {% endfor %}
+      </section>
+
+      <!-- 3. JACKSONVILLE -->
+      <section class="block" id="local">
+        <div class="eyebrow">Jacksonville &amp; the Beaches <span class="count">&middot; never skipped</span></div>
+        {{ item_cols(jacksonville, "No local stories cleared the filter today.") }}
+      </section>
+
+      <!-- 4. TOPIC ARTICLES -->
+      <section class="block" id="top">
+        <div class="eyebrow">Top Stories <span class="count">&middot; current events &amp; geopolitics</span></div>
+        {% if top_stories.lead %}
+        <div class="lead">
+          <h2>{{ top_stories.lead.title }}</h2>
+          <div class="meta"><span class="src">{{ top_stories.lead.source }}</span><span>&middot;</span><span>{{ top_stories.lead.date_label }}</span></div>
+        </div>
+        {% endif %}
+        {{ item_cols(top_stories.rest, "No top stories cleared the filter today.") }}
+      </section>
+
+      <section class="block" id="tech">
+        <div class="eyebrow">Technology <span class="count">&middot; priority 5 &mdash; more picks</span></div>
+        {{ item_cols(technology) }}
+      </section>
+
+      <section class="block" id="ai">
+        <div class="eyebrow">Artificial Intelligence <span class="count">&middot; priority 5</span></div>
+        {{ item_cols(ai) }}
+      </section>
+
+      <section class="block" id="biz">
+        <div class="eyebrow">Business &amp; Markets <span class="count">&middot; business &middot; capital markets &middot; housing</span></div>
+        {{ item_cols(business) }}
+      </section>
+
+      <section class="block" id="crypto">
+        <div class="eyebrow">Cryptocurrency <span class="count">&middot; priority 5</span></div>
+        {{ item_cols(crypto) }}
+      </section>
+
+      <section class="block" id="science">
+        <div class="eyebrow">Science &amp; Space <span class="count">&middot; breakthroughs &amp; discoveries</span></div>
+        {{ item_cols(science) }}
+      </section>
+
+      <section class="block" id="golf">
+        <div class="eyebrow">Golf <span class="count">&middot; PGA Tour &middot; equipment &middot; courses &amp; history</span></div>
+        {{ item_cols(golf) }}
+      </section>
+
+      <section class="block" id="music">
+        <div class="eyebrow">Music <span class="count">&middot; country watchlist + wider net</span></div>
+        {{ item_cols(music) }}
+      </section>
+
+      <section class="block" id="food">
+        <div class="eyebrow">Food &amp; Cooking <span class="count">&middot; recipes can be timeless</span></div>
+        {{ item_cols(food) }}
+      </section>
+
+      <!-- 5. MISCELLANEOUS -->
+      <section class="block" id="misc">
+        <div class="eyebrow">Miscellaneous <span class="count">&middot; odds &amp; ends worth a look</span></div>
+        {{ item_cols(misc) }}
+      </section>
+    </main>
+
+    <aside>
+      <section class="block">
+        <div class="eyebrow">Forecast</div>
+        {% if weather and weather.daily %}
+        {% for d in weather.daily[:3] %}
+        <div class="tick"><span>{{ d.label }}</span><span>{{ d.hi }}&deg; / {{ d.lo }}&deg; {{ d.glyph }}</span></div>
+        {% endfor %}
+        {% else %}
+        <div class="empty-note">Forecast unavailable</div>
+        {% endif %}
+      </section>
+      <section class="block">
+        <div class="eyebrow">Today's List</div>
+        <div class="todo"><div class="note">// connects to Reminders / Outlook later</div>
+          <ul><li>Sample personal to-do</li><li>Sample work follow-up</li><li>Placeholder task</li></ul>
+        </div>
+      </section>
+    </aside>
+  </div>
+
+  <footer><span>Generated {{ generated_time }} &middot; updates daily</span><span>The Morning Dispatch &middot; Live Edition</span></footer>
+</div>
+</body>
+</html>

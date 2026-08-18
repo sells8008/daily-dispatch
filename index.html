@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="dark">
+<title>The Morning Dispatch — Tuesday, August 18, 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,900&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    color-scheme: dark;
+    --bg:#0F1618;--card:#16211E;--text:#ECEBE4;--text-dim:#C4C3BC;--muted:#9BA39D;
+    --line:#273432;--rule:#C9C8C1;--marine:#5CCFC2;--amber:#E89A5C;--up:#4FD08A;--down:#E8746A;--measure:660px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;background:var(--bg)}
+  body{background:var(--bg);color:var(--text);font-family:"Inter",system-ui,sans-serif;line-height:1.5;-webkit-font-smoothing:antialiased;padding:0 20px 64px}
+  .wrap{max-width:1040px;margin:0 auto}
+  a{color:var(--text);text-decoration:none}
+  a:visited{color:var(--text-dim)}
+
+  header.masthead{border-bottom:2px solid var(--rule);padding:24px 0 14px;text-align:center}
+  .chip{display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--amber);border:1px solid var(--amber);padding:3px 8px;border-radius:2px;margin-bottom:14px}
+  .wordmark{font-family:"Fraunces",Georgia,serif;font-weight:900;font-size:clamp(36px,7.5vw,68px);letter-spacing:-0.02em;line-height:.95;color:var(--text)}
+  .wordmark .amp{color:var(--marine)}
+  .edition{margin-top:12px;font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);display:flex;gap:10px;justify-content:center;flex-wrap:wrap;align-items:center}
+  .edition .dot{color:var(--line)}
+
+  nav.jump{position:sticky;top:0;z-index:20;background:rgba(15,22,24,.93);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);margin:0 -20px 30px;padding:10px 20px;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch}
+  nav.jump a{display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:5px 11px;margin-right:4px;border-radius:20px;transition:all .15s ease}
+  nav.jump a:visited{color:var(--muted)}
+  nav.jump a:hover{color:var(--marine);background:#5ccfc218}
+  nav.jump a:focus-visible{outline:2px solid var(--marine);outline-offset:2px}
+
+  .glance{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);border-radius:6px;overflow:hidden;margin-bottom:20px;background:var(--card)}
+  .glance .cell{padding:15px 18px;border-right:1px solid var(--line)}
+  .glance .cell:last-child{border-right:none}
+  .glance .lab{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--marine);margin-bottom:8px}
+  .glance .big{font-family:"IBM Plex Mono",monospace;font-size:20px;font-weight:500;letter-spacing:-0.01em;color:var(--text)}
+  .glance .sub{font-size:12.5px;color:var(--muted);margin-top:3px}
+  .tick{display:flex;justify-content:space-between;font-family:"IBM Plex Mono",monospace;font-size:13px;padding:2px 0;color:var(--text)}
+  .tick .up{color:var(--up)} .tick .down{color:var(--down)}
+  @media(max-width:640px){.glance{grid-template-columns:1fr}.glance .cell{border-right:none;border-bottom:1px solid var(--line)}.glance .cell:last-child{border-bottom:none}}
+
+  /* ---------- Today's Cook (top feature) ---------- */
+  .cook{display:flex;align-items:center;gap:20px;flex-wrap:wrap;background:var(--card);border:1px solid var(--line);border-left:3px solid var(--marine);border-radius:6px;padding:16px 20px;margin-bottom:40px}
+  .cook .lab{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--marine);margin-bottom:6px}
+  .cook .method{font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);border:1px solid var(--amber);border-radius:2px;padding:2px 7px;margin-left:8px;vertical-align:2px}
+  .cook .dish{font-family:"Fraunces",Georgia,serif;font-size:21px;font-weight:600;letter-spacing:-0.01em;color:var(--text);line-height:1.15}
+  .cook .side{font-size:13.5px;color:var(--text-dim);margin-top:4px}
+  .cook .go{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--marine);white-space:nowrap;margin-left:auto}
+  @media(max-width:560px){.cook .go{margin-left:0;margin-top:6px}}
+
+  .grid{display:grid;grid-template-columns:1fr;gap:44px}
+  @media(min-width:900px){.grid{grid-template-columns:1fr 300px;gap:56px}}
+  section.block{margin-bottom:42px;scroll-margin-top:70px}
+  section.block:last-child{margin-bottom:0}
+  .eyebrow{display:flex;align-items:center;gap:12px;font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--marine);margin:0 0 16px}
+  .eyebrow::after{content:"";flex:1;height:1px;background:var(--line)}
+  .count{color:var(--muted);letter-spacing:.05em}
+
+  .lead{margin-bottom:22px}
+  .lead h2{font-family:"Fraunces",Georgia,serif;font-weight:600;font-size:clamp(22px,3vw,30px);line-height:1.14;letter-spacing:-0.015em;margin-bottom:7px;color:var(--text)}
+  .lead p{color:var(--text-dim);font-size:14.5px;max-width:var(--measure)}
+  .tag{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#0F1618;background:var(--amber);padding:2px 7px;border-radius:2px;margin-right:8px;vertical-align:2px}
+  .tag.ever{background:none;color:var(--marine);border:1px solid var(--marine)}
+
+  .item{display:block;padding:13px 0;border-top:1px solid var(--line)}
+  .item:first-of-type{border-top:none}
+  .item h3{font-family:"Fraunces",Georgia,serif;font-weight:500;font-size:17px;line-height:1.25;letter-spacing:-0.01em;color:var(--text);transition:color .15s ease}
+  .item:hover h3{color:var(--marine)}
+  .item:visited h3{color:var(--text-dim)}
+  .meta{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--muted);letter-spacing:.03em;margin-top:5px;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+  .meta .src{color:var(--text)}
+  @media(min-width:620px){.cols{columns:2;column-gap:34px}.cols .item{break-inside:avoid}}
+
+  .game{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:11px 0;border-top:1px solid var(--line)}
+  .game:first-of-type{border-top:none}
+  .game .match{font-family:"Fraunces",Georgia,serif;font-size:16px;font-weight:500;color:var(--text)}
+  .game .lg{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.1em;color:var(--muted);text-transform:uppercase;display:block;margin-bottom:2px}
+  .game .when{font-family:"IBM Plex Mono",monospace;font-size:12px;text-align:right;white-space:nowrap;color:var(--text)}
+  .game .ch{color:var(--marine)}
+  .game .win{color:var(--text)} .game .lose{color:var(--muted)}
+  .res-final{font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--muted);letter-spacing:.08em}
+
+  .event{display:flex;justify-content:space-between;align-items:baseline;gap:14px;padding:13px 0;border-top:1px solid var(--line)}
+  .event:first-of-type{border-top:none}
+  .event .name{font-family:"Fraunces",Georgia,serif;font-size:16px;font-weight:500;color:var(--text)}
+  .event .venue{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--muted);margin-top:3px;display:block}
+  .event .kind{font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;padding:2px 6px;border-radius:2px;border:1px solid var(--line);color:var(--muted);margin-right:8px;vertical-align:2px}
+  .event .kind.concert{color:var(--marine);border-color:var(--marine)}
+  .event .kind.marquee{color:var(--amber);border-color:var(--amber)}
+  .event .when{font-family:"IBM Plex Mono",monospace;font-size:12px;text-align:right;white-space:nowrap;color:var(--text)}
+  .event .info{color:var(--marine);font-size:11px}
+  .event.starred{background:#e89a5c14;border-radius:6px;padding:13px 12px;margin:0 -12px}
+  .event.starred:first-of-type{margin-top:0}
+  .event .star{color:var(--amber);margin-right:5px}
+
+  .empty-note{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--muted);padding:13px 0}
+
+  .show-more{display:block;margin:16px auto 0;padding:7px 18px;font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--marine);background:transparent;border:1px solid var(--marine);border-radius:20px;cursor:pointer;transition:all .15s ease}
+  .show-more:hover{background:#5ccfc218}
+  .show-more:focus-visible{outline:2px solid var(--marine);outline-offset:2px}
+  .hidden-event{display:none}
+
+  aside .block{margin-bottom:30px;scroll-margin-top:70px}
+  @media(min-width:900px){aside{align-self:start;position:sticky;top:64px}}
+  .todo{border:1px dashed var(--line);border-radius:6px;padding:15px 17px;background:var(--card)}
+  .todo .note{font-size:11px;color:var(--muted);font-family:"IBM Plex Mono",monospace;letter-spacing:.03em}
+  .todo ul{list-style:none;margin-top:9px}
+  .todo li{font-size:14px;padding:6px 0 6px 24px;position:relative;color:var(--text-dim)}
+  .todo li::before{content:"";position:absolute;left:0;top:9px;width:13px;height:13px;border:1.5px solid var(--line);border-radius:3px}
+
+  footer{margin-top:52px;padding-top:18px;border-top:2px solid var(--rule);font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--muted);letter-spacing:.04em;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+  a:focus-visible{outline:2px solid var(--marine);outline-offset:3px;border-radius:2px}
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  
+
+  
+
+  <header class="masthead">
+    <div class="wordmark">The Morning <span class="amp">Dispatch</span></div>
+    <div class="edition"><span>Tuesday, August 18, 2026</span><span class="dot">&#9670;</span><span>Neptune Beach, FL</span><span class="dot">&#9670;</span><span>No. 230</span></div>
+  </header>
+
+  <nav class="jump" aria-label="Jump to section">
+    <a href="#events">Around Town</a><a href="#scores">Scores</a><a href="#sports">Sports</a><a href="#local">Jacksonville</a>
+    <a href="#top">Top Stories</a><a href="#tech">Technology</a><a href="#ai">AI</a><a href="#biz">Business</a><a href="#crypto">Crypto</a>
+    <a href="#science">Science</a><a href="#golf">Golf</a><a href="#music">Music</a><a href="#food">Food</a><a href="#misc">Misc</a>
+  </nav>
+
+  <div class="glance">
+    <div class="cell">
+      <div class="lab">Weather</div>
+      
+      <div class="big">98&deg; / 79&deg;</div>
+      <div class="sub">Clear ☀︎</div>
+      
+    </div>
+    <div class="cell"><div class="lab">Markets</div>
+      
+      
+      <div class="tick"><span>BTC</span><span class="up">▲ 1.0%</span></div>
+      
+      
+    </div>
+    <div class="cell"><div class="lab">On tonight</div>
+      
+      <div class="big" style="font-size:15px">Phillies vs. Marlins</div>
+      <div class="sub">6:40 PM ET &middot; ESPN Unlmtd · MLB.TV · Marlins.TV · NBC Sports Phil</div>
+      
+    </div>
+  </div>
+
+  <!-- TODAY'S COOK -->
+  <div class="cook" id="cook">
+    
+    <div>
+      <div class="lab">Today's Cook <span class="method">Grill</span></div>
+      <div class="dish">Grilled Chicken Thighs (Peri-Peri)</div>
+      <div class="side">Marinate 2 hrs; skin-side down first &middot; with grilled zucchini</div>
+    </div>
+    <span class="go">Get the recipe &#8599;</span>
+    
+  </div>
+
+  <div class="grid">
+    <main>
+      <!-- 1. AROUND TOWN -->
+      <section class="block" id="events">
+        <div class="eyebrow">Around Town <span class="count">&middot; within ~90 min &middot; concerts, festivals &amp; big events</span></div>
+        
+        
+        <a class="event" href="https://www.ticketmaster.com/event/Z7r9jZ1A709f-" target="_blank" rel="noopener"><div><span class="kind concert">Concert</span><span class="name">Squeeze w/ Adam Ant</span><span class="venue">St Augustine Amphitheatre · Saint Augustine, FL</span></div><div class="when">Tue Aug 18<br><span class="info">Tickets &#8599;</span></div></a>
+        
+        <a class="event" href="https://www.ticketmaster.com/jacksonville-waves-v-savannah-steel-jacksonville-florida-08-19-2026/event/2200643DD3B04D3C" target="_blank" rel="noopener"><div><span class="kind marquee">Marquee</span><span class="name">Jacksonville Waves v Savannah Steel</span><span class="venue">VyStar Veterans Memorial Arena · Jacksonville, FL</span></div><div class="when">Wed Aug 19<br><span class="info">Tickets &#8599;</span></div></a>
+        
+        <a class="event" href="https://www.ticketmaster.com/preseason-game-1-jacksonville-jaguars-v-jacksonville-florida-08-21-2026/event/2200646A92034D90" target="_blank" rel="noopener"><div><span class="kind marquee">Marquee</span><span class="name">Preseason Game 1: Jacksonville Jaguars v Carolina Panthers</span><span class="venue">EverBank Stadium  · Jacksonville, FL</span></div><div class="when">Fri Aug 21<br><span class="info">Tickets &#8599;</span></div></a>
+        
+        <a class="event" href="https://www.ticketmaster.com/event/Z7r9jZ1AAZv8E" target="_blank" rel="noopener"><div><span class="kind concert">Concert</span><span class="name">Infekt - Ages 18+</span><span class="venue">Decca Live · Jacksonville, FL</span></div><div class="when">Fri Aug 21<br><span class="info">Tickets &#8599;</span></div></a>
+        
+        <a class="event" href="https://www.ticketmaster.com/event/Z7r9jZ1A7-b7b" target="_blank" rel="noopener"><div><span class="kind concert">Concert</span><span class="name">Buddy Guy</span><span class="venue">St Augustine Amphitheatre · Saint Augustine, FL</span></div><div class="when">Sat Aug 22<br><span class="info">Tickets &#8599;</span></div></a>
+        
+        <a class="event more-event hidden-event" href="https://www.ticketmaster.com/event/Z7r9jZ1A7P4ep" target="_blank" rel="noopener"><div><span class="kind concert">Concert</span><span class="name">Back to School Fest w/ Penelope Road, Winyah, Tobacco Road, Buboy, Dumpster, Toro (Under 18 must be accompanied by parent or guardian)</span><span class="venue">Heartwood Soundstage · Gainesville, FL</span></div><div class="when">Sat Aug 22<br><span class="info">Tickets &#8599;</span></div></a>
+        
+        <a class="event more-event hidden-event" href="https://www.ticketmaster.com/you-deserve-it-all-orchestra-jacksonville-florida-08-22-2026/event/220064C9E6049644" target="_blank" rel="noopener"><div><span class="kind concert">Concert</span><span class="name">You Deserve It All Orchestra</span><span class="venue">Jacksonville Center for the Performing Arts - Moran Theater · Jacksonville, FL</span></div><div class="when">Sat Aug 22<br><span class="info">Tickets &#8599;</span></div></a>
+        
+        <a class="event more-event hidden-event" href="https://www.ticketmaster.com/event/Z7r9jZ1A70dQk" target="_blank" rel="noopener"><div><span class="kind concert">Concert</span><span class="name">Will Clarke - Ages 18+</span><span class="venue">Decca Live · Jacksonville, FL</span></div><div class="when">Sat Aug 22<br><span class="info">Tickets &#8599;</span></div></a>
+        
+        <a class="event more-event hidden-event" href="https://www.ticketweb.com/event/devils-cut-eclipse-tickets/14834823" target="_blank" rel="noopener"><div><span class="kind concert">Concert</span><span class="name">Devils Cut</span><span class="venue">Eclipse · Jacksonville, FL</span></div><div class="when">Sun Aug 23<br><span class="info">Tickets &#8599;</span></div></a>
+        
+        <a class="event more-event hidden-event" href="https://www.ticketmaster.com/event/Z7r9jZ1A7-_a7" target="_blank" rel="noopener"><div><span class="kind concert">Concert</span><span class="name">Slightly Stoopid w/ The Elovaters</span><span class="venue">St Augustine Amphitheatre · Saint Augustine, FL</span></div><div class="when">Sun Aug 23<br><span class="info">Tickets &#8599;</span></div></a>
+        
+        <a class="event more-event hidden-event" href="https://www.ticketmaster.com/event/Z7r9jZ1A7Pd7t" target="_blank" rel="noopener"><div><span class="kind concert">Concert</span><span class="name">Starship w/ Mickey Thomas</span><span class="venue">Florida Theatre Jacksonville · Jacksonville, FL</span></div><div class="when">Sun Aug 23<br><span class="info">Tickets &#8599;</span></div></a>
+        
+        <a class="event more-event hidden-event" href="https://www.ticketmaster.com/event/Z7r9jZ1A7xZ38" target="_blank" rel="noopener"><div><span class="kind concert">Concert</span><span class="name">Benson Boone</span><span class="venue">VyStar Veterans Arena · Jacksonville, FL</span></div><div class="when">Tue Aug 25<br><span class="info">Tickets &#8599;</span></div></a>
+        
+        <a class="event more-event hidden-event" href="https://www.ticketmaster.com/event/Z7r9jZ1A7x68A" target="_blank" rel="noopener"><div><span class="kind concert">Concert</span><span class="name">Pepper w/ The Movement</span><span class="venue">The Venue at Destination Daytona · Ormond Bch, FL</span></div><div class="when">Thu Aug 27<br><span class="info">Tickets &#8599;</span></div></a>
+        
+        <a class="event more-event hidden-event" href="https://www.ticketmaster.com/preseason-game-2-jacksonville-jaguars-v-jacksonville-florida-08-28-2026/event/2200646A92084D9C" target="_blank" rel="noopener"><div><span class="kind marquee">Marquee</span><span class="name">Preseason Game 2: Jacksonville Jaguars v Tampa Bay Buccaneers</span><span class="venue">EverBank Stadium  · Jacksonville, FL</span></div><div class="when">Fri Aug 28<br><span class="info">Tickets &#8599;</span></div></a>
+        
+        <a class="event starred more-event hidden-event" href="https://on.fgtix.com/trk/Wegtb" target="_blank" rel="noopener"><div><span class="kind concert">Concert</span><span class="name"><span class="star">&#9733;</span>Rock The Country - Ocala, FL</span><span class="venue">Florida Horse Park · Ocala, FL</span></div><div class="when">Sat Aug 29<br><span class="info">Tickets &#8599;</span></div></a>
+        
+        <a class="event more-event hidden-event" href="https://www.ticketmaster.com/upshot-basketball-championship-game-jacksonville-florida-08-29-2026/event/220064E18AC71E10" target="_blank" rel="noopener"><div><span class="kind marquee">Marquee</span><span class="name">Upshot Basketball Championship Game</span><span class="venue">VyStar Veterans Memorial Arena · Jacksonville, FL</span></div><div class="when">Sat Aug 29<br><span class="info">Tickets &#8599;</span></div></a>
+        
+        <a class="event more-event hidden-event" href="https://www.ticketweb.com/event/rico-nasty-five-tickets/14239694" target="_blank" rel="noopener"><div><span class="kind concert">Concert</span><span class="name">Rico Nasty</span><span class="venue">FIVE · Jacksonville, FL</span></div><div class="when">Tue Sep 1<br><span class="info">Tickets &#8599;</span></div></a>
+        
+        <a class="event more-event hidden-event" href="https://www.ticketmaster.com/event/Z7r9jZ1A7OJ8A" target="_blank" rel="noopener"><div><span class="kind concert">Concert</span><span class="name">Blues Traveler x Gin Blossoms</span><span class="venue">St Augustine Amphitheatre · Saint Augustine, FL</span></div><div class="when">Fri Sep 4<br><span class="info">Tickets &#8599;</span></div></a>
+        
+        <a class="event more-event hidden-event" href="https://www.ticketweb.com/event/xavier-wulf-the-five-tickets/14272354" target="_blank" rel="noopener"><div><span class="kind concert">Concert</span><span class="name">Xavier Wulf - The Cool World Tour</span><span class="venue">FIVE · Jacksonville, FL</span></div><div class="when">Fri Sep 4<br><span class="info">Tickets &#8599;</span></div></a>
+        
+        <a class="event more-event hidden-event" href="https://www.ticketmaster.com/monster-jam-jacksonville-florida-09-05-2026/event/22006496A96D4E15" target="_blank" rel="noopener"><div><span class="kind marquee">Marquee</span><span class="name">Monster Jam</span><span class="venue">VyStar Veterans Memorial Arena · Jacksonville, FL</span></div><div class="when">Sat Sep 5<br><span class="info">Tickets &#8599;</span></div></a>
+        
+        <a class="event more-event hidden-event" href="https://www.ticketmaster.com/monster-jam-jacksonville-florida-09-05-2026/event/22006496A9724E2E" target="_blank" rel="noopener"><div><span class="kind marquee">Marquee</span><span class="name">Monster Jam</span><span class="venue">VyStar Veterans Memorial Arena · Jacksonville, FL</span></div><div class="when">Sat Sep 5<br><span class="info">Tickets &#8599;</span></div></a>
+        
+        <a class="event more-event hidden-event" href="https://www.ticketweb.com/event/hulvey-could-be-tonight-tour-five-tickets/14831683" target="_blank" rel="noopener"><div><span class="kind concert">Concert</span><span class="name">Hulvey: &#34;Could Be Tonight&#34; Tour</span><span class="venue">FIVE · Jacksonville, FL</span></div><div class="when">Sat Sep 5<br><span class="info">Tickets &#8599;</span></div></a>
+        
+        <a class="event more-event hidden-event" href="https://www.ticketmaster.com/event/Z7r9jZ1A7P4--" target="_blank" rel="noopener"><div><span class="kind concert">Concert</span><span class="name">Dennett - Ages 18+</span><span class="venue">Decca Live · Jacksonville, FL</span></div><div class="when">Sat Sep 5<br><span class="info">Tickets &#8599;</span></div></a>
+        
+        <a class="event more-event hidden-event" href="https://www.ticketmaster.com/monster-jam-jacksonville-florida-09-06-2026/event/22006496A9774E31" target="_blank" rel="noopener"><div><span class="kind marquee">Marquee</span><span class="name">Monster Jam</span><span class="venue">VyStar Veterans Memorial Arena · Jacksonville, FL</span></div><div class="when">Sun Sep 6<br><span class="info">Tickets &#8599;</span></div></a>
+        
+        <a class="event more-event hidden-event" href="https://www.ticketmaster.com/event/Z7r9jZ1A7-F_b" target="_blank" rel="noopener"><div><span class="kind concert">Concert</span><span class="name">Juanes North America Tour 2026</span><span class="venue">Florida Theatre Jacksonville · Jacksonville, FL</span></div><div class="when">Sun Sep 6<br><span class="info">Tickets &#8599;</span></div></a>
+        
+        <a class="event more-event hidden-event" href="http://floridatheatre.showare.com/eventperformances.asp?evt=1564" target="_blank" rel="noopener"><div><span class="kind concert">Concert</span><span class="name">Juanes North America Tour 2026</span><span class="venue">Florida Theatre Jacksonville · Jacksonville, FL</span></div><div class="when">Sun Sep 6<br><span class="info">Tickets &#8599;</span></div></a>
+        
+        <a class="event more-event hidden-event" href="https://www.universe.com/events/r-b-only-live-jacksonville-fl-tickets-H7VR12?ref=ticketmaster" target="_blank" rel="noopener"><div><span class="kind concert">Concert</span><span class="name">R&amp;B ONLY LIVE - Jacksonville, FL</span><span class="venue">FIVE · Jacksonville, FL</span></div><div class="when">Fri Sep 11<br><span class="info">Tickets &#8599;</span></div></a>
+        
+        <a class="event more-event hidden-event" href="https://www.ticketmaster.com/jacksonville-jaguars-vs-cleveland-browns-jacksonville-florida-09-13-2026/event/2200646A91E04D5B" target="_blank" rel="noopener"><div><span class="kind marquee">Marquee</span><span class="name">Jacksonville Jaguars vs. Cleveland Browns</span><span class="venue">EverBank Stadium  · Jacksonville, FL</span></div><div class="when">Sun Sep 13<br><span class="info">Tickets &#8599;</span></div></a>
+        
+        <a class="event more-event hidden-event" href="https://www.ticketmaster.com/event/Z7r9jZ1A70vQ6" target="_blank" rel="noopener"><div><span class="kind concert">Concert</span><span class="name">Modest Mouse</span><span class="venue">St Augustine Amphitheatre · Saint Augustine, FL</span></div><div class="when">Thu Sep 17<br><span class="info">Tickets &#8599;</span></div></a>
+        
+        <a class="event more-event hidden-event" href="https://www.ticketmaster.com/event/Z7r9jZ1A7-PAY" target="_blank" rel="noopener"><div><span class="kind concert">Concert</span><span class="name">John Fogerty w/ Steve Winwood</span><span class="venue">St Augustine Amphitheatre · Saint Augustine, FL</span></div><div class="when">Fri Sep 18<br><span class="info">Tickets &#8599;</span></div></a>
+        
+        <a class="event starred more-event hidden-event" href="https://www.ticketmaster.com/ella-langley-the-dandelion-tour-jacksonville-florida-09-19-2026/event/220064D38C2A16EF" target="_blank" rel="noopener"><div><span class="kind concert">Concert</span><span class="name"><span class="star">&#9733;</span>Ella Langley: The Dandelion Tour</span><span class="venue">VyStar Veterans Memorial Arena · Jacksonville, FL</span></div><div class="when">Sat Sep 19<br><span class="info">Tickets &#8599;</span></div></a>
+        
+        <a class="event more-event hidden-event" href="https://www.axs.com/events/1442817/brad-paisley-live-tickets" target="_blank" rel="noopener"><div><span class="kind concert">Concert</span><span class="name">BRAD PAISLEY LIVE</span><span class="venue">The St. Augustine Amphitheatre · St Augustine, FL</span></div><div class="when">Sat Sep 19<br><span class="info">Tickets &#8599;</span></div></a>
+        
+        <a class="event more-event hidden-event" href="https://www.ticketmaster.com/event/Z7r9jZ1A709_w" target="_blank" rel="noopener"><div><span class="kind concert">Concert</span><span class="name">BRAD PAISLEY LIVE</span><span class="venue">St Augustine Amphitheatre · Saint Augustine, FL</span></div><div class="when">Sat Sep 19<br><span class="info">Tickets &#8599;</span></div></a>
+        
+        <a class="event more-event hidden-event" href="https://www.ticketmaster.com/event/Z7r9jZ1A7OYPp" target="_blank" rel="noopener"><div><span class="kind concert">Concert</span><span class="name">James Taylor</span><span class="venue">St Augustine Amphitheatre · Saint Augustine, FL</span></div><div class="when">Tue Sep 22<br><span class="info">Tickets &#8599;</span></div></a>
+        
+        <a class="event more-event hidden-event" href="https://www.ticketmaster.com/event/Z7r9jZ1A7ONZK" target="_blank" rel="noopener"><div><span class="kind concert">Concert</span><span class="name">James Taylor</span><span class="venue">St Augustine Amphitheatre · Saint Augustine, FL</span></div><div class="when">Wed Sep 23<br><span class="info">Tickets &#8599;</span></div></a>
+        
+        <a class="event more-event hidden-event" href="https://www.ticketmaster.com/jacksonville-jaguars-vs-new-england-patriots-jacksonville-florida-09-27-2026/event/2200646A91F24D7E" target="_blank" rel="noopener"><div><span class="kind marquee">Marquee</span><span class="name">Jacksonville Jaguars vs. New England Patriots</span><span class="venue">EverBank Stadium  · Jacksonville, FL</span></div><div class="when">Sun Sep 27<br><span class="info">Tickets &#8599;</span></div></a>
+        
+        <a class="event more-event hidden-event" href="https://www.ticketmaster.com/phish-jacksonville-florida-10-09-2026/event/22006503D26934D7" target="_blank" rel="noopener"><div><span class="kind concert">Concert</span><span class="name">Phish</span><span class="venue">VyStar Veterans Memorial Arena · Jacksonville, FL</span></div><div class="when">Fri Oct 9<br><span class="info">Tickets &#8599;</span></div></a>
+        
+        <a class="event more-event hidden-event" href="https://www.ticketmaster.com/the-smashing-pumpkins-the-rats-in-jacksonville-florida-10-17-2026/event/220064AFD5F4F5ED" target="_blank" rel="noopener"><div><span class="kind concert">Concert</span><span class="name">The Smashing Pumpkins: The Rats In A Cage Tour</span><span class="venue">VyStar Veterans Memorial Arena · Jacksonville, FL</span></div><div class="when">Sat Oct 17<br><span class="info">Tickets &#8599;</span></div></a>
+        
+        <a class="event more-event hidden-event" href="https://www.ticketmaster.com/cece-winans-come-worship-tour-jacksonville-florida-10-30-2026/event/220064544C1FC0CD" target="_blank" rel="noopener"><div><span class="kind concert">Concert</span><span class="name">CeCe Winans - COME WORSHIP! Tour</span><span class="venue">VyStar Veterans Memorial Arena · Jacksonville, FL</span></div><div class="when">Fri Oct 30<br><span class="info">Tickets &#8599;</span></div></a>
+        
+        <a class="event more-event hidden-event" href="https://www.ticketmaster.com/jacksonville-jaguars-vs-indianapolis-colts-jacksonville-florida-11-01-2026/event/2200646A91ED4D72" target="_blank" rel="noopener"><div><span class="kind marquee">Marquee</span><span class="name">Jacksonville Jaguars vs. Indianapolis Colts</span><span class="venue">EverBank Stadium  · Jacksonville, FL</span></div><div class="when">Sun Nov 1<br><span class="info">Tickets &#8599;</span></div></a>
+        
+        
+        <button type="button" class="show-more" data-expanded="false" data-more-label="View more (35) &#8595;" data-less-label="Show fewer &#8593;" onclick="
+          var expanded = this.getAttribute('data-expanded') === 'true';
+          document.querySelectorAll('#events .more-event').forEach(function(el){ el.classList.toggle('hidden-event'); });
+          this.setAttribute('data-expanded', expanded ? 'false' : 'true');
+          this.innerHTML = expanded ? this.getAttribute('data-more-label') : this.getAttribute('data-less-label');
+        ">View more (35) &#8595;</button>
+        
+        
+      </section>
+
+      <!-- 2. SCORES + SPORTS -->
+      <section class="block" id="scores">
+        <div class="eyebrow">Yesterday's Results <span class="count">&middot; final scores</span></div>
+        
+        
+        <a class="game" href="https://www.espn.com/mlb/game/_/gameId/401816565" target="_blank" rel="noopener"><div><span class="lg">MLB · Phillies</span><span class="match">Phillies 6, Marlins 5</span></div><div class="when">
+          <span class="res-final">FINAL</span><br><span class="win">W</span>
+        </div></a>
+        
+        
+      </section>
+
+      <section class="block" id="sports">
+        <div class="eyebrow">Your Teams &mdash; Today <span class="count">&middot; times &amp; how to watch</span></div>
+        
+        
+        <a class="game" href="https://www.espn.com/mlb/game/_/gameId/401816573" target="_blank" rel="noopener"><div><span class="lg">MLB · Phillies</span><span class="match">Phillies vs. Marlins</span></div><div class="when">6:40 PM ET<br><span class="ch">ESPN Unlmtd · MLB.TV · Marlins.TV · NBC Sports Phil</span></div></a>
+        
+        
+        
+        <div class="meta" style="margin-top:14px"><span class="src">Eagles</span><span>&middot;</span><span>next: Sat Aug 22, 7:00 PM ET @ Patriots</span></div>
+        
+        <div class="meta" style="margin-top:14px"><span class="src">Flyers</span><span>&middot;</span><span>next: Wed Sep 30, 7:30 PM ET vs. Penguins</span></div>
+        
+        <div class="meta" style="margin-top:14px"><span class="src">Dolphins</span><span>&middot;</span><span>next: Sat Oct 10, 11:00 AM ET vs. Anderson University</span></div>
+        
+      </section>
+
+      <!-- 3. JACKSONVILLE -->
+      <section class="block" id="local">
+        <div class="eyebrow">Jacksonville &amp; the Beaches <span class="count">&middot; never skipped</span></div>
+        
+  <div class="cols">
+    <a class="item" href="https://news.google.com/rss/articles/CBMi6AFBVV95cUxPcDZvRmJDZ1FzTUlRM3VMVUZ3ZEh4TmJXaWhSMmtSVVJXVkViOHBqVm41WDdfTlVlUGswODJBUXNOeVBVbkVJUlN2YzQ4MjdzSXllN0tEX2QxV09mRVAwbW8zaDlYZ19YY1AtR3dweVVTN05WbHZfa1REcEJEOUZETkpzRlV1d1k1d1QxbzhiWV9GaDJSbDlPbHFwc3JQYXNWM1NiXzhkNUV0bmJ0MGNva2NZTlR0Z3BYSEc0YUEwdDgwWTJZU2J2alFqd3VaRUNlTEE1Yy1tMWExcC1QTU5UdVNqVjBpWWVJ?oc=5" target="_blank" rel="noopener">
+    <h3>Jags hold 15th training camp practice, prep for Bucs preseason game</h3>
+    <div class="meta"><span class="src">The Florida Times-Union</span><span>&middot;</span><span>Aug 18, 2026</span></div>
+  </a><a class="item" href="https://news.google.com/rss/articles/CBMilgFBVV95cUxQSjZoRkZqNHJEcS1hYlk0c2RkWHliQlh1OHpudllNdTFrbFhPY0F1TEZIYV9HUkhYLWtOdGFuel9jdjAwSXhkN2ZXT3lLSUlVeVVDR2FzcVc5VzhhUzVFZUtLRXZvaGNrVnJ4Uk9lcHhwSU9GcVY4aExOUndOYlF6SFZuVjYtMTlFWkN1elotUDRsU05wMkE?oc=5" target="_blank" rel="noopener">
+    <h3>Jacksonville Jaguars&#39; Travis Hunter has another busy day on defense</h3>
+    <div class="meta"><span class="src">Yahoo Sports</span><span>&middot;</span><span>Aug 18, 2026</span></div>
+  </a><a class="item" href="https://news.google.com/rss/articles/CBMinAFBVV95cUxPWWxDMjV6SlVwaXh5OWhmbWhKV1RwN3Q4dkpWRXdrTFlqY1dPX3o5OXE5QWJFdmYxLWxjcm0xVHN2WFFRT0ZqLW9JeDVoTGZuOVdFRGVkNnNjZ2hYRW9zVUpJVHZRQ0k5T2ZTcFNKbWRKaFZQNHdaY3ItdEhkcGVwQkI2Z09KaGt4SnJDcW9rZmVTdXpnaG1rck9CZjc?oc=5" target="_blank" rel="noopener">
+    <h3>UNF convenes U.S., German business roundtable as Jacksonville courts overseas investment</h3>
+    <div class="meta"><span class="src">The Business Journals</span><span>&middot;</span><span>Aug 18, 2026</span></div>
+  </a>
+  </div>
+  
+      </section>
+
+      <!-- 4. TOPIC ARTICLES -->
+      <section class="block" id="top">
+        <div class="eyebrow">Top Stories <span class="count">&middot; current events &amp; geopolitics</span></div>
+        
+        <div class="lead">
+          <h2>Oil’s geopolitical premium collides with weaker global economy</h2>
+          <div class="meta"><span class="src">AzerNews</span><span>&middot;</span><span>Aug 16, 2026</span></div>
+        </div>
+        
+        
+  <div class="empty-note">No top stories cleared the filter today.</div>
+  
+      </section>
+
+      <section class="block" id="tech">
+        <div class="eyebrow">Technology <span class="count">&middot; priority 5 &mdash; more picks</span></div>
+        
+  <div class="cols">
+    <a class="item" href="https://news.google.com/rss/articles/CBMingFBVV95cUxPYmxFRFU3bkR6ZzB2UHpsbWdzUjFDVGRtLUFHeTgzNmNSSlJPZk9VcFBQTFJmdGE4UzRzQ3BhRjVUeHFmNVhJVnNBdGdsS2d2Zk5OSFd2S1hBSmhTMHppOVQ4SVNiMnExLWoyT3dmTEpkNWVEZkFmWXlaQWlEckx2UWNMVDAzZXFjR2VIS3p0bVhnYWI5WnNxRmxFYjhPdw?oc=5" target="_blank" rel="noopener">
+    <h3>Symmatrics Appoints Jim Garrity as Senior Vice President of Growth</h3>
+    <div class="meta"><span class="src">The Quantum Insider</span><span>&middot;</span><span>Aug 18, 2026</span></div>
+  </a><a class="item" href="https://news.google.com/rss/articles/CBMirAFBVV95cUxQak5RVXpOaXJJRzNyMGhlUFdETTBVMzE3Y2JmMWY3MTEtMlUtU2JJRzEwZzZaeWdXVzdCYzltZWJnYkotSzdlZG1ZNFBGcExXdUlIMkYyNnZMYjc4N3hfbTV3ZWt3LWJTbDBPclRhU3hrUkJzN1I4Y2xBUVZVNms0WUJrSmh5aDZTUGtuMUxKeUJ4THBHSW51SGUyNzlhNUhrOVlYenAtbGxKYldN?oc=5" target="_blank" rel="noopener">
+    <h3>Tech Tuesday: Replacing Traditional Cloud Storage</h3>
+    <div class="meta"><span class="src">WWD</span><span>&middot;</span><span>Aug 18, 2026</span></div>
+  </a><a class="item" href="https://news.google.com/rss/articles/CBMijgFBVV95cUxNTkFMNFYxdnJfeFdZX0NwUEtWUFI5ZnNBZ0VXNmMzWG1EbHl3UDc5LV9XVkY5aW05TFZkMWZzLTJsY3FTaWoydDhyMGZfd2wycV9RaUIwVHNhWlF2blZCYXBwVlpKeGF4UklZUXhranE0UWFWREdQc0piOV9UaXUtQ1lCbTlHYlN6ME1wd1hB?oc=5" target="_blank" rel="noopener">
+    <h3>BTQ Technologies Appoints Dr. Michael Grace to Advance QCIM Product Security and Commercialization</h3>
+    <div class="meta"><span class="src">ca.finance.yahoo.com</span><span>&middot;</span><span>Aug 18, 2026</span></div>
+  </a><a class="item" href="https://news.google.com/rss/articles/CBMi3gFBVV95cUxQdzFJMERscExWRzdFbGRZeXN6SFJIUlRDTmZ5WVdfbG9nd0JzWXR1eTNxUkdwaVBkT0lpR0Vyc19MQWJYQmpkQ09MZGo1SjJpOG04RVZuZ0MyWjZZaHZQbDlQN1BzNWdmaFhTU2NxcEFVbHFZZFFRNkctblc2WWVsSy1JSzVuYWk4NzVuX3NHdFlKVldLc1RMMjhPSkw0Mm8zRklaTG1jNGIycDctd3lpN0U0TVZZTENSbXJLX1ZwazlnZzNveTRmRXhVZ1U2RHM2dnBwSzZ1bkJvZTVhWFE?oc=5" target="_blank" rel="noopener">
+    <h3>Assessing Apple&#39;s Performance Against Competitors In Technology Hardware, Storage &amp; Peripherals Indus</h3>
+    <div class="meta"><span class="src">Benzinga</span><span>&middot;</span><span>Aug 18, 2026</span></div>
+  </a><a class="item" href="https://news.google.com/rss/articles/CBMiqgFBVV95cUxOX1F4QzFxVlVGY2R6T3VDV0NpZFNfc3Z0MzFHblByRXp0dkRLcUhHcHowU0F5NHVUQVk1NzdlN1k2QUNCMW5aZHVYckV6WWp6ZW5uQ2NMX0dlWktkNnhiemp2X0xJR2JmdzRsUGlsd01QTW5EMDkwZzVZUnAteVlpQVpIRXd2Q0lPUERONzZ2Q3o0WGMxelppRnd5aXd1amI5WTBoM1Y1cFdSQQ?oc=5" target="_blank" rel="noopener">
+    <h3>Tech stocks momentum seen extending into 2027</h3>
+    <div class="meta"><span class="src">The Star</span><span>&middot;</span><span>Aug 17, 2026</span></div>
+  </a>
+  </div>
+  
+      </section>
+
+      <section class="block" id="ai">
+        <div class="eyebrow">Artificial Intelligence <span class="count">&middot; priority 5</span></div>
+        
+  <div class="cols">
+    <a class="item" href="https://news.google.com/rss/articles/CBMihAFBVV95cUxOX2dRQ184WXExM0s3ZWRBTHhka1FGUDM4QUpXZlFnSG83Qk9TQXdVZ1d0TzdSZ1JrZUxRQmtSZ3FfdW9ZU0lUbm1veHZlUmlrNGozbWZFNS12R1ZEaGpnQ2p3Y3lFZmV6UkRTWnZaSEs0aHFIMlpiMmFPV2VrNVJsU1RIdVE?oc=5" target="_blank" rel="noopener">
+    <h3>Executives put the spotlight on AI’s reliability issue</h3>
+    <div class="meta"><span class="src">ESG Dive</span><span>&middot;</span><span>Aug 18, 2026</span></div>
+  </a><a class="item" href="https://news.google.com/rss/articles/CBMiWEFVX3lxTFBWSmw1UGtxWWZPbURldmpqd2NPRXNxU0R5VHpIWjhXdFpJaFpDeGlhRGRVNDVYb2U0M21HZTJFMDRnNjVmSnRzWTltU3ZWOUY2anhLOFQxcDE?oc=5" target="_blank" rel="noopener">
+    <h3>How AI can make companies truly intelligent</h3>
+    <div class="meta"><span class="src">chinadailyasia.com</span><span>&middot;</span><span>Aug 18, 2026</span></div>
+  </a><a class="item" href="https://news.google.com/rss/articles/CBMisgFBVV95cUxQYnJTT3BLOEIwVklvbWczSmNPTUdxUkc3RVVqTkFQVmFUWXVvMlV2V3JYX09TMVZ1NTk3RHBmaUhqdmt6QkJBUDB2T0VPaVU1bmVCRk5xU3FDbUhTaDRYRFBaYjdHVmhWUTVGSU14LWg3MGJPYUozZW81VldVcGxUTWIyOTNsSEJ1ZFZrUi1BVG5QS1cwOV9iaEVUVDVvVERpNDVnTDJmSEJIVGVxeVpRdDF3?oc=5" target="_blank" rel="noopener">
+    <h3>New data shows people are getting personal with AI</h3>
+    <div class="meta"><span class="src">The Washington Post</span><span>&middot;</span><span>Aug 18, 2026</span></div>
+  </a><a class="item" href="https://news.google.com/rss/articles/CBMipAFBVV95cUxOQXhKTF81MkdjRTJGei1XTFpJVW42WVJNZHlpODFRNndoMDlqUzJmOHJpeXMtTThkX1VJdkUtZ1p3UTVMNDN4NmNYaFpjcXVETEY5R2pmXy1YS3BGTU5OWVdleVlyd2dsRXF0SlBoOGc0UDZ0T09XR3ZiZWtpZGU1eEw2LTBLVnVvcmtYeE5FTEsxZTBEMUFmUmgyV2NjSWxLMzliRw?oc=5" target="_blank" rel="noopener">
+    <h3>Why workflow accountability may define healthcare AI&#39;s next phase</h3>
+    <div class="meta"><span class="src">Healthcare IT News</span><span>&middot;</span><span>Aug 18, 2026</span></div>
+  </a><a class="item" href="https://news.google.com/rss/articles/CBMirAFBVV95cUxPZ3NNZlBGNU1FVmtQWnVzMlc1SjFEVmtwYWJLNVJTYUpJS0NEb29iT0NhR1R5bUdKMlhqUWsyMjRJekVtcWFWb3dCX1lHMWlFNHJVLTZCeEoycW1ZdE03VThfZDEzellONHd4ZnJ3RlNEYlA4cGJReEFvaG13bTR0MHItbHlWN3pMWDNMN3JMVkJQNFo2aHFTQUw1QTlrWUt0V0FKamtGSm5rWUVT?oc=5" target="_blank" rel="noopener">
+    <h3>AI chip startup Etched doubles valuation to $21 billion in under a month</h3>
+    <div class="meta"><span class="src">Reuters</span><span>&middot;</span><span>Aug 18, 2026</span></div>
+  </a>
+  </div>
+  
+      </section>
+
+      <section class="block" id="biz">
+        <div class="eyebrow">Business &amp; Markets <span class="count">&middot; business &middot; capital markets &middot; housing</span></div>
+        
+  <div class="cols">
+    <a class="item" href="https://news.google.com/rss/articles/CBMilAFBVV95cUxPVzZNT0w2VW15aW5hZ09iOGRKTVVGNVFuZzBTNzJ1MnR5dVdsTVpMak85Qzd2SGhnTVNKeWJIQnBRT0ZtM0xMOXBHVE9pdUZkd0RZcHUteXhRQkRqTlFmcV85akVlMmZFQ055eFNvOHU2Q1o5d0dvV0FZT3c1cDNGRUlOaU1KMExRV3llcWd2bmZqdHE0?oc=5" target="_blank" rel="noopener">
+    <h3>Goldman Sachs warns that a consumer slowdown could soon hit the economy as tax refunds dry up</h3>
+    <div class="meta"><span class="src">Business Insider</span><span>&middot;</span><span>Aug 17, 2026</span></div>
+  </a><a class="item" href="https://news.google.com/rss/articles/CBMiwgFBVV95cUxNSEQtTDNXY3ZOVWpsaGRiRE1tMEYwSTM1c040a0htbTlpN1k5Rm1mcnpPNjM3cmtNNVVsdENabXd5NmVralgzUGtPQW51elpIdU9QNTA4Zzl1Z2Y0OE9TUjJQeExuNGVJM0RMZWZuc1dMSXM3bURCODQ5Q09PN3VUb1l3OENwbjBwazdhZVN2YksxS2VSZVZHZ0djY3VVajJkTEFBTUlVckF0QmFiVjRNWFdRLUszZnE1MUh1LTRoTVI0QQ?oc=5" target="_blank" rel="noopener">
+    <h3>Why US home prices aren&#39;t falling despite a sluggish market</h3>
+    <div class="meta"><span class="src">mpamag.com</span><span>&middot;</span><span>Aug 18, 2026</span></div>
+  </a><a class="item" href="https://news.google.com/rss/articles/CBMiowFBVV95cUxPNTFCTW1KWEhaaTd2azljTjRvOVFTRUpQb0l3cHZQU1drU0t4cnM5T0ZWWFBqVENSV28xMG1sQkRubjBGQi0yN1B5NGhHSXhkMC1OVEV4SlYyU0I4Q21samUxcHJoWUNOaThrSEZrMVhvckpOaVRNNExoWWtyX1dJUm9yQ3EtTjllRTJaQXFvcXYzTll6TkRfRjd6bU1jUFhmZ044?oc=5" target="_blank" rel="noopener">
+    <h3>Home Depot rides steady repair demand as housing market remains subdued</h3>
+    <div class="meta"><span class="src">WNWN-FM</span><span>&middot;</span><span>Aug 18, 2026</span></div>
+  </a>
+  </div>
+  
+      </section>
+
+      <section class="block" id="crypto">
+        <div class="eyebrow">Cryptocurrency <span class="count">&middot; priority 5</span></div>
+        
+  <div class="cols">
+    <a class="item" href="https://news.google.com/rss/articles/CBMijAJBVV95cUxPOEhEVjI4dHBFbkx3Q1FGd0VKY1I1MlJ0cngzbFBDTTFHSUZwOTVaMzVIWFNlbHkzOE5qc2ZKQzBSSGY3aXJma2JFcXlqa2FVbTd6bU5aRGk5LWNuZ2JXQWNfbU5lelNDWEFtWUg4QmdhNEpFelR2Z0x0M2FKc0ROS211c0Y3OWRueGZTM0JDckZPdjdjd1hZM3A0dmdHbExWek1aMG5iWjQzVjA4SU5YMi1oRFpWWEZtM0ZiWE83TjV0SjdBQ1BFbFpDV21kRGJkYzUweGw2SWt5VkI5R0ZZOGpQSDJUSXJfTVMwdU5MODVZYk5lZTRrdWlIOThLYi1PRjY0dUxHMmUxNkVJ?oc=5" target="_blank" rel="noopener">
+    <h3>Bitcoin and ethereum prices today, Tuesday, August 18, 2026: Crypto prices mixed as Iran stalemate continues</h3>
+    <div class="meta"><span class="src">Yahoo Finance</span><span>&middot;</span><span>Aug 18, 2026</span></div>
+  </a><a class="item" href="https://news.google.com/rss/articles/CBMijgFBVV95cUxQWEhfckpaNDVxcGg0ME5FWXRqNS1qUVFxT3VFdzBHZS1YRlFEYjNDVnZidDZSQ3VvdmdwaHU3enhCazUyUVl1cXVYOS1xM1gtd21PbV9IWDJfUmVFOWZ0Y3dWS0lQd3c4djU0MDJJV085bFVQcTNJNmd1SV96M3ZjRWVvU01SZkE1MTB2NHl3?oc=5" target="_blank" rel="noopener">
+    <h3>Cryptocurrency prices show mixed movements with Bitcoin up 1.1% and several altcoins declining.</h3>
+    <div class="meta"><span class="src">Pluang</span><span>&middot;</span><span>Aug 18, 2026</span></div>
+  </a><a class="item" href="https://news.google.com/rss/articles/CBMiekFVX3lxTE80ZE9OaE8yeUV3bjRkRTFFT0g1ajVpZE5Ra2xucV8xbDZyVEVPQ0swejlzSUNERVVaaG5QY1cyLWF5S1Rra2hnblJ3ekJMY1lWNmhnRUo2dEw2YUY1U2RXLXBTQTBLVmlPVVdWR0RhUmhLOUEyQXprYVR3?oc=5" target="_blank" rel="noopener">
+    <h3>Hyperliquid (HYPE) Leads the Top 10 in August, Yet Smart Money is Short</h3>
+    <div class="meta"><span class="src">BeInCrypto</span><span>&middot;</span><span>Aug 18, 2026</span></div>
+  </a><a class="item" href="https://news.google.com/rss/articles/CBMiaEFVX3lxTE1xZ3NmSEhLTlFua01kZ25aN3B0X1RYM0I4eVZud0w5WmpiVTc4ejBUaVhzZ2dOMVdYQW9scHh1aDFIaTl0ckZIN2FhODV0dG9OZDB2YzhUOEkxNnhUODFwVFN0YWg2WGFG?oc=5" target="_blank" rel="noopener">
+    <h3>Current price of Ethereum for August 18, 2026</h3>
+    <div class="meta"><span class="src">Fortune</span><span>&middot;</span><span>Aug 18, 2026</span></div>
+  </a><a class="item" href="https://news.google.com/rss/articles/CBMiZ0FVX3lxTE5IVFNqQnNhWjMxQlYzaVBLQ1NrLVRubXFtVG8yU2hEazlCYkJIUmNIRUhYZkFMWmdhOWhuM0hyd2lqcV9faEJkYnk1WUZRRFpzbTIzaWdmN0J4MllFbWtoMWVrVmJnZVE?oc=5" target="_blank" rel="noopener">
+    <h3>Current price of Bitcoin for August 18, 2026</h3>
+    <div class="meta"><span class="src">Fortune</span><span>&middot;</span><span>Aug 18, 2026</span></div>
+  </a>
+  </div>
+  
+      </section>
+
+      <section class="block" id="science">
+        <div class="eyebrow">Science &amp; Space <span class="count">&middot; breakthroughs &amp; discoveries</span></div>
+        
+  <div class="cols">
+    <a class="item" href="https://news.google.com/rss/articles/CBMisAFBVV95cUxOeVhlbmVPZjFkc1VIem8tY00wNXRJdEpYb0hjcGVXOVlBWjV1SUxzMk9TZU9UdnVHTmpYOWZ4NWtZMmNWZGVNejhWT3VwMjBKZC1neXJGeXh4Sk9SU1FvZ2Nnb0Q0SS05LW9NU3hJOGxzUEM1UGIzWUQxc0I0ZHc1b3ZVM01XaU1TR1hsM3pFOFVnczdlc2c5dG9oVmNGV2Fzalo4bXdCT2lTSlRoazR0ag?oc=5" target="_blank" rel="noopener">
+    <h3>George Mason computer scientist receives DOE Genesis Award for breakthrough AI–HPC research</h3>
+    <div class="meta"><span class="src">George Mason University</span><span>&middot;</span><span>Aug 4, 2026</span></div>
+  </a><a class="item" href="https://news.google.com/rss/articles/CBMiOEFVX3lxTE5GSXEteTVnZ1dWc3h2bmxINTJDZ29TUVAtcjlTb2JrMzBOWENYRFdodHpienQ5NEd4?oc=5" target="_blank" rel="noopener">
+    <h3>NASA</h3>
+    <div class="meta"><span class="src">NASA (.gov)</span><span>&middot;</span><span>Aug 17, 2026</span></div>
+  </a><a class="item" href="https://news.google.com/rss/articles/CBMi6gFBVV95cUxQNDlDajFlVjRBb1dKZk13UlMzUHZMM0UtWHUwNUQ3WmFPTzZobnUyNm5WZjV3bHg4dTZvN3ZRdWNndzRWSFgwNXYxZDM5N1lJOXJwRjRoSmNiWXN1LXl3SEw1OTVHd1pXU1JHek9reGd1M1h2c2M1ODZORjd0aWZCSnNpZ1lOQXFhLTJfQTZiaE5ZTDQ2dFdnUlpvRjJ1czQzLWdwdDBvWUFHS1FCdUJKeXFvVHBmTUUzaFUxRkEwRElMaVB2ZDVoMnF1TjFZd2toTW52R3BkeENiaS1OMkxkd19KSmdDcHZqcHc?oc=5" target="_blank" rel="noopener">
+    <h3>How the Nancy Grace Roman Space Telescope, NASA’s latest eye in space, help us decode the universe</h3>
+    <div class="meta"><span class="src">The Federal</span><span>&middot;</span><span>Aug 17, 2026</span></div>
+  </a><a class="item" href="https://news.google.com/rss/articles/CBMi1wFBVV95cUxNLUNadzlfa3lnX0dOWVhsVGxyS0JfNGh6R3gwLUEtQnM5YV93Vjc1Zi1KaEFEV0N0U19vaVlzQ09vMVhrQTIyc3JwQmdFQUl3OUFlTy0yQk94eTVwRzl5WTIwQ1JrNk5EeS12SzZLc1FzZHZfd0dQYjBRS0E1ZzJxYWRscEJWWC1fb09ybmxpa0t6OW80bXlRTG90VC02TndpMGV4RTEwdHV1R1lJQnVSeWdwN2ZlWmJaQkhZOXpmbUp0WkF6d1ZZTG9RNlRxUzREQzlYNHVtTQ?oc=5" target="_blank" rel="noopener">
+    <h3>NASA shared a closer look at the total solar eclipse on August 12. (📸: NASA, Bill Ingalls/Instagram)</h3>
+    <div class="meta"><span class="src">facebook.com</span><span>&middot;</span><span>Aug 17, 2026</span></div>
+  </a>
+  </div>
+  
+      </section>
+
+      <section class="block" id="golf">
+        <div class="eyebrow">Golf <span class="count">&middot; PGA Tour &middot; equipment &middot; courses &amp; history</span></div>
+        
+  <div class="cols">
+    <a class="item" href="https://news.google.com/rss/articles/CBMiwAFBVV95cUxPZDJSMU1vblZxSE1iYzFabVNlVHlGVmsybnM2TDQ3NWdaOEVzVFFQRTBnXzE3d1lfUlFyTEtONnBxaFpzOU1zWXVMT3ZCZnU2cXhMUVptWmlld0hRMWM2VnNLTzAxS0pxQ0xsM3NidURyZzNwazQxbzFrUTBaTnFibUNtWkxOeEVPcm5IZlk2dHJ4b25yelI2ZGRmUUlicEhMNjhfRDAyZ2hmWFlhcXdDN1VQZFpnSURFMDJ6WUZ5V0c?oc=5" target="_blank" rel="noopener">
+    <h3>Jordan Spieth criticised for being &#39;delusional&#39; and &#39;in denial&#39; after his latest comments on the PGA Tour</h3>
+    <div class="meta"><span class="src">hitc.com</span><span>&middot;</span><span>Aug 18, 2026</span></div>
+  </a><a class="item" href="https://news.google.com/rss/articles/CBMihgFBVV95cUxQczQzT1c5OUNDbExuVDJYRXZWcTF0Y1hfRmlaMXNLR3VVRGJNSThBTWIxSkcxVktWbUtybE5hVnZ1N1V2UWdQdFg4LVFTSU1wc3RJdGdxckZDU2h4alNSTVhsTkdTQ2VkSnd0bTFXa05OakNmUDA3TXBiZmJHbVJoUjRseWNDdw?oc=5" target="_blank" rel="noopener">
+    <h3>Shane Lowry reveals key reason for his ‘disappointing’ PGA Tour season after FedExCup Playoff exit</h3>
+    <div class="meta"><span class="src">Yahoo Sports</span><span>&middot;</span><span>Aug 18, 2026</span></div>
+  </a><a class="item" href="https://news.google.com/rss/articles/CBMiwwFBVV95cUxObGdjUEo3ZXlUdnBoN3AydXJsRm1MRTFaZ19BTktnakUyb19SMXdPcDBkdTRWQ3F3T0lXOTZneWkwT1Qxb2FiSmtwdGQtRVZMNV80LVRfQ0JRMmhKdXZPaWJFOEIxTENNakdkTEt3RXZyVnlEbnRWbUN4aWlXeV9ITkgtb0lmTW5lQUFYS3lhMmgyUVR2eHFRa3FRanJpYVpSc3FnWjZGelR5Q19zOUZoYTdxNGN2bkkweDM0UGlGdFp6U0E?oc=5" target="_blank" rel="noopener">
+    <h3>Why the PGA Tour POY Award is Pointing Toward Scottie Scheffler Again</h3>
+    <div class="meta"><span class="src">BetMGM</span><span>&middot;</span><span>Aug 18, 2026</span></div>
+  </a><a class="item" href="https://news.google.com/rss/articles/CBMifkFVX3lxTE9sUWNldmRIT3V6Y2xWZ1kydjBENFppdkRWcXhSX2dLRUY3ZF91RXhjZ1JTbUlSTmdqVDVocFBCQkV2NHhsR2Q2bjVfcUZPc3BCbVpzY3IyTF84dndxM0o4OWZNb1VlWU9HdFpySndOclQ0M1pvd3lDWm5Vc1Vqdw?oc=5" target="_blank" rel="noopener">
+    <h3>Jon Rahm to Settle $25M Fine for PGA Tour Reinstatement Amid LIV Golf&#39;s Failure to Pay Pros - Report</h3>
+    <div class="meta"><span class="src">Yahoo Sports</span><span>&middot;</span><span>Aug 18, 2026</span></div>
+  </a><a class="item" href="https://news.google.com/rss/articles/CBMiekFVX3lxTFBRdUE4clJtRElZQklqdEVkZkFKSTdjSDh4ZjBra0gzNjlHNEQ5akJTeTRudHdUcUxtaDctOG9TeG9tWElsWDZOWmhBUHQ4OV9NS3NrMjZIOHZWN2M0aTJLVllqRzctV2R4MExWQlR2bU1EbE80dExDRzJn?oc=5" target="_blank" rel="noopener">
+    <h3><span class="tag ever">Evergreen</span>LIV Golf Indianapolis Power Rankings</h3>
+    <div class="meta"><span class="src">livgolf.com</span><span>&middot;</span><span>Aug 17, 2026</span></div>
+  </a><a class="item" href="https://news.google.com/rss/articles/CBMiiAFBVV95cUxQaVItQTYyVDFZNHA5MFhaNV85V2xVOE1ZUzBMUHp4WXFoMFZSS09VMmw4Vk5tWkxCNzVCZTI1dzhnanJrSjlLQzlYYjR1amJrRjZwS0htLWgxUk5tU3g4akpTcmc4MHN3bWVSaTI3WGttTEMxLWVDT2Uyc1c1Y2RtSzhsS0RKYzNk?oc=5" target="_blank" rel="noopener">
+    <h3><span class="tag ever">Evergreen</span>Scottish golf club &#39;devastated&#39; after having nearly a century of trophies stolen</h3>
+    <div class="meta"><span class="src">Golf Digest</span><span>&middot;</span><span>Aug 17, 2026</span></div>
+  </a><a class="item" href="https://news.google.com/rss/articles/CBMiqwFBVV95cUxNMkFvUnQ2LW9pVG9yQ3Njc2I2VW5yYkJkUkJ5T0F0M2l1SWNUeEFJWkJ3REpyR0d6QjJSZ1pLQWVCb1Y0WjNwNWlsRldhSEFXODUta0x1eGQ0T0hoREQwLWw1X3pwb1F6TEpESmJsZDdnY2tZbk9JRDg3bkh6a2VCdEFzYWtIQjktOVc2YzU3S0lhN3MzaE5NMFJpRXVKTFZmVVBsVkNhRVdtOEE?oc=5" target="_blank" rel="noopener">
+    <h3><span class="tag ever">Evergreen</span>How Jack Whaley earned himself a piece of Merion’s illustrious history</h3>
+    <div class="meta"><span class="src">Golf Channel</span><span>&middot;</span><span>Aug 17, 2026</span></div>
+  </a>
+  </div>
+  
+      </section>
+
+      <section class="block" id="music">
+        <div class="eyebrow">Music <span class="count">&middot; country watchlist + wider net</span></div>
+        
+  <div class="cols">
+    <a class="item" href="https://news.google.com/rss/articles/CBMilAFBVV95cUxNMC1NR1IyY05LZzExbjJxX1pCclVyOW5rU0kwUHNmcjdXQlJsck5IZDBqdkRVU0kyM0Nfc1pxcmRDTkRpdFBDMlM5NnVEdFBpMkIxN3NOSWN5amItWXVSOG9KVVJWNjdJOUVrSjc3VHpPY3NQaDJwb3V2Y2pxc0EwMXNlTTUzVk1wY0taVDByZFRZbkFf?oc=5" target="_blank" rel="noopener">
+    <h3>Watch Jeff Austin, Billy Strings, &amp; Leftover Salmon Play Grateful Dead In 2019</h3>
+    <div class="meta"><span class="src">Live For Live Music</span><span>&middot;</span><span>Jun 24, 2026</span></div>
+  </a><a class="item" href="https://news.google.com/rss/articles/CBMib0FVX3lxTE45V3FocHZIcFlQQjZRLUxZTWJRVURrekF0a0Z0dFplN1NINF9ZSENEVVJ1bXBsWFZDS1phN0xxenhQd3lMTHlEanJ5YUg4eVU4TWowVXN5cmIxWFBkYS1QSlVHQk1leHozUllFYWtMbw?oc=5" target="_blank" rel="noopener">
+    <h3>Sturgill Simpson: Well to Dew</h3>
+    <div class="meta"><span class="src">Relix</span><span>&middot;</span><span>May 21, 2026</span></div>
+  </a><a class="item" href="https://news.google.com/rss/articles/CBMiqgFBVV95cUxNT0FVMHY0TkZfekVjZU9UYm9NNnl2RzlRNmU3bmQzUC14c0oyUkE1VG11RWRtR0lmWnBqaEgwUXR6VDZEenJKRHJHeVRkd1RuNWRkdWo0THd3ejY5c2RLZzV1NW96S0ZUd3lxZXpYT0RybVUwejZuQVpmWjdnWWF6ZTI1c1VMUm96Rm5LTHlhLVpmN2dVc0pDSHg4OU5WTzdxV05DbDFjWW5odw?oc=5" target="_blank" rel="noopener">
+    <h3>Will Olivia Rodrigo Be Able to Beat Out Ella Langley for the Hot 100’s No. 1 Spot Next Week?</h3>
+    <div class="meta"><span class="src">Billboard</span><span>&middot;</span><span>Apr 23, 2026</span></div>
+  </a>
+  </div>
+  
+      </section>
+
+      <section class="block" id="food">
+        <div class="eyebrow">Food &amp; Cooking <span class="count">&middot; recipes can be timeless</span></div>
+        
+  <div class="cols">
+    <a class="item" href="https://news.google.com/rss/articles/CBMib0FVX3lxTFBzLXViUm8xTkdrSVpTM2ROQ1d5amZlVExSVXAzNHF3NVV6cXhteWFrN21PbkVtanF3ZUNiLVNHT3hMODFudGFneGQxSUhLQ1ducDFld0txZFFfdGFNNGsyWTZ1TTYxWGUwWjFQcGQtdw?oc=5" target="_blank" rel="noopener">
+    <h3><span class="tag ever">Evergreen</span>10 Dinner Recipes That Use Aluminum Foil for No-Mess Cooking</h3>
+    <div class="meta"><span class="src">Allrecipes</span><span>&middot;</span><span>Aug 17, 2026</span></div>
+  </a><a class="item" href="https://news.google.com/rss/articles/CBMidEFVX3lxTE9TMm9CT0dGcldGODdIR2V0eUg5MDZ2UTJCSmI5QVJISDZOaVM2bldFTVlYNDBVZHNmNGRWNGJIeTgtR1Y1QjdSSGdWUWxYQTRhWDltVERpVGFmU0pPRXN6Rjk1U0ZVSG10eS0xNXJLVHBqY1BV?oc=5" target="_blank" rel="noopener">
+    <h3><span class="tag ever">Evergreen</span>15 Ground Beef Skillet Recipes That Save My Weeknights</h3>
+    <div class="meta"><span class="src">Simply Recipes</span><span>&middot;</span><span>Aug 15, 2026</span></div>
+  </a><a class="item" href="https://news.google.com/rss/articles/CBMi4gFBVV95cUxNdEtVUnlxY2hQWTFGa21sRWFXdkgyXzhhMEI2RXNGUElMSFJpamVrWlZLT2lEMTdRU2ROV2UxbFJQRW9ibFdWekN0aV9KSXhWNm9NY1piakZWTzZlYklTUjhHYXFfTzJWTjRlNkJiQUEtZ1AyN0llODVZRktpcU9Vb2NyRld4cUZGMnRKNmUwYzFmRVJvM2VXNkxndmtLMmU5aVFWVlRZbngwTkxLX2xqMnI2SHBmXzNjTmVmNUhmMWh1bko2Mlh2ZTR0Yi1rbWZuT2l1aHN3dzl0N1NMLUNrV0pn?oc=5" target="_blank" rel="noopener">
+    <h3><span class="tag ever">Evergreen</span>Whole foods, simple recipes take center stage in Angleton cooking class.</h3>
+    <div class="meta"><span class="src">The Facts</span><span>&middot;</span><span>Aug 15, 2026</span></div>
+  </a><a class="item" href="https://news.google.com/rss/articles/CBMiakFVX3lxTE53STVkRmRMclpSaHV2bl9oWlBxdGlpaWVuWWRjYWlMRGdnU0t2NllVUWVlSHBFNFNJcDNWdFZKblJ5NC1waVdCaml1Q0VqbExLMGczZlF6R0E2QlZWUGxiZW1nenNEajQ0NUE?oc=5" target="_blank" rel="noopener">
+    <h3><span class="tag ever">Evergreen</span>20 Easy Shrimp Recipes That Are Ready in 30 Minutes or Less</h3>
+    <div class="meta"><span class="src">Simply Recipes</span><span>&middot;</span><span>Aug 14, 2026</span></div>
+  </a>
+  </div>
+  
+      </section>
+
+      <!-- 5. MISCELLANEOUS -->
+      <section class="block" id="misc">
+        <div class="eyebrow">Miscellaneous <span class="count">&middot; odds &amp; ends worth a look</span></div>
+        
+  <div class="cols">
+    <a class="item" href="https://news.google.com/rss/articles/CBMi6gFBVV95cUxPTHJGSk9EaVRMVUJRRE1QRjg3ejFwc2ZKZFduNVBBd3NXenkySkZnQTk0N2FjZC1NdHRCWHkxNk1HQ1JFQWVnNWVidTNYdkJ5ald2Tm1qZTBzVUFnTld3S2ZUaG5hSVVnRVl5YU9fWEUxLVNuZ3FIRHNUM2FkYkdxTEZMODF4RlY1Qzhfd0t6VDdvMTJmYV9zSjB4X3JvX21yem1qUUp2bFFRbjRfZ0Zjd0hWemdDdnJSX3FpZlJTTkZqQ3JGSnBMTHlrRlRiQTBBQUhQTGQyU2lERkU0Tl84Snp2SXNjV1p0RUE?oc=5" target="_blank" rel="noopener">
+    <h3>Caps Care Year in Review: Capitals and MSE Foundation Raise More Than $1.8 Million for Charity During 2025-26 Season</h3>
+    <div class="meta"><span class="src">NHL.com</span><span>&middot;</span><span>Aug 18, 2026</span></div>
+  </a><a class="item" href="https://news.google.com/rss/articles/CBMivgFBVV95cUxNcTJ1WGJ3N2dyMlBVWUNtd0pxMTgyUzNvb0Z5LW91LUhycEpxMzN1T3VHR01GU2ZEZ2lMTXdKQlBjOGgzLWJaOG5FLTBaUVp4cTNwOS1SMGxxbEU3VHdBTnZsdUZjZnBqTi1jSE9BcVk3QV93MGF6LVdtMFVLdm5RMXU4ZVFkQnhBN0Vjb2pfaHhlSzZGeHowZGdxXzhGUzRLZy04T28xWm1ib1lGRlFZbWRoenBhekpmUWtLMmxn?oc=5" target="_blank" rel="noopener">
+    <h3>St. Louis Blues NHL Prospect Rankings: No. 10, Aleksanteri Kaskimaki</h3>
+    <div class="meta"><span class="src">The Hockey News</span><span>&middot;</span><span>Aug 18, 2026</span></div>
+  </a><a class="item" href="https://www.smithsonianmag.com/science-nature/earths-organisms-developed-via-evolution-some-theorists-wonder-what-if-the-entire-cosmos-did-too-180989338/" target="_blank" rel="noopener">
+    <h3><span class="tag ever">Evergreen</span>Earth&#39;s Organisms Developed Via Evolution. Some Theorists Wonder: What if the Entire Cosmos Did, Too?</h3>
+    <div class="meta"><span class="src">Smithsonian</span><span>&middot;</span><span>Aug 18, 2026</span></div>
+  </a><a class="item" href="https://www.theatlantic.com/ideas/2026/08/alan-dershowitz-larry-david-vineyard/688293/?utm_source=feed" target="_blank" rel="noopener">
+    <h3><span class="tag ever">Evergreen</span>Alan Dershowitz Won’t Forget What Larry David Did to Him</h3>
+    <div class="meta"><span class="src">The Atlantic</span><span>&middot;</span><span>Aug 18, 2026</span></div>
+  </a><a class="item" href="https://aeon.co/essays/polite-debate-has-privilege-the-marginalised-need-zealotry" target="_blank" rel="noopener">
+    <h3><span class="tag ever">Evergreen</span>In praise of zealotry</h3>
+    <div class="meta"><span class="src">Aeon</span><span>&middot;</span><span>Aug 18, 2026</span></div>
+  </a>
+  </div>
+  
+      </section>
+    </main>
+
+    <aside>
+      <section class="block">
+        <div class="eyebrow">Forecast</div>
+        
+        
+        <div class="tick"><span>Today</span><span>98&deg; / 79&deg; 🌤</span></div>
+        
+        <div class="tick"><span>Wed</span><span>99&deg; / 79&deg; ☁️</span></div>
+        
+        <div class="tick"><span>Thu</span><span>101&deg; / 77&deg; 🌦</span></div>
+        
+        
+      </section>
+      <section class="block">
+        <div class="eyebrow">Today's List</div>
+        <div class="todo"><div class="note">// connects to Reminders / Outlook later</div>
+          <ul><li>Sample personal to-do</li><li>Sample work follow-up</li><li>Placeholder task</li></ul>
+        </div>
+      </section>
+    </aside>
+  </div>
+
+  <footer><span>Generated 12:42 PM &middot; updates daily</span><span>The Morning Dispatch &middot; Live Edition</span></footer>
+</div>
+</body>
+</html>
