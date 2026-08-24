@@ -61,8 +61,10 @@
   .eyebrow::after{content:"";flex:1;height:1px;background:var(--line)}
   .count{color:var(--muted);letter-spacing:.05em}
 
-  .lead{margin-bottom:22px}
-  .lead h2{font-family:"Fraunces",Georgia,serif;font-weight:600;font-size:clamp(22px,3vw,30px);line-height:1.14;letter-spacing:-0.015em;margin-bottom:7px;color:var(--text)}
+  .lead{display:block;margin-bottom:22px}
+  .lead h2{font-family:"Fraunces",Georgia,serif;font-weight:600;font-size:clamp(22px,3vw,30px);line-height:1.14;letter-spacing:-0.015em;margin-bottom:7px;color:var(--text);transition:color .15s ease}
+  .lead:hover h2{color:var(--marine)}
+  .lead:visited h2{color:var(--text-dim)}
   .lead p{color:var(--text-dim);font-size:14.5px;max-width:var(--measure)}
   .tag{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#0F1618;background:var(--amber);padding:2px 7px;border-radius:2px;margin-right:8px;vertical-align:2px}
   .tag.ever{background:none;color:var(--marine);border:1px solid var(--marine)}
@@ -188,7 +190,7 @@
       <div class="dish">{{ cook.dish }}</div>
       <div class="side">{{ cook.note }} &middot; with {{ cook.side }}</div>
     </div>
-    <span class="go">Get the recipe &#8599;</span>
+    <a class="go" href="https://www.google.com/search?q={{ (cook.dish ~ ' recipe') | urlencode }}" target="_blank" rel="noopener">Get the recipe &#8599;</a>
     {% else %}
     <div>
       <div class="lab">Today's Cook</div>
@@ -258,10 +260,10 @@
       <section class="block" id="top">
         <div class="eyebrow">Top Stories <span class="count">&middot; current events &amp; geopolitics</span></div>
         {% if top_stories.lead %}
-        <div class="lead">
+        <a class="lead" href="{{ top_stories.lead.url }}" target="_blank" rel="noopener">
           <h2>{{ top_stories.lead.title }}</h2>
           <div class="meta"><span class="src">{{ top_stories.lead.source }}</span><span>&middot;</span><span>{{ top_stories.lead.date_label }}</span></div>
-        </div>
+        </a>
         {% endif %}
         {{ item_cols(top_stories.rest, "No top stories cleared the filter today.") }}
       </section>

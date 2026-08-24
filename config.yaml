@@ -48,6 +48,20 @@ topics:
 counts_by_priority: {5: 5, 4: 4, 3: 3, 2: 2, 1: 2}
 misc_count: 4   # overflow / catch-all section at the bottom
 
+# ---- PAYWALL FILTER ----
+# skip articles from these source domains (hard paywalls, not metered/soft
+# ones). Add or remove freely — e.g. drop nytimes.com/washingtonpost.com
+# from this list if your Apple News+ access covers them well enough for you.
+paywalled_sources:
+  - "wsj.com"
+  - "ft.com"
+  - "bloomberg.com"
+  - "theinformation.com"
+  - "barrons.com"
+  - "theathletic.com"
+  - "hbr.org"
+  - "economist.com"
+
 # ---- MUSIC ARTIST WATCHLIST ----
 # drives BOTH the Music news section and the Around Town concert matching.
 artists:

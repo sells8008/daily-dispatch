@@ -2,7 +2,9 @@
 
 import datetime as dt
 import logging
-from urllib.parse import quote_plus
+import random
+import re
+from urllib.parse import quote_plus, urlparse
 
 import feedparser
 import requests
@@ -40,6 +42,49 @@ MISC_FEEDS = [
 ]
 
 HTTP_HEADERS = {"User-Agent": "Mozilla/5.0 (compatible; DailyDispatch/1.0)"}
+
+# Words too common to signal that two headlines are about the same story.
+_STOPWORDS = {
+    "the", "a", "an", "to", "of", "in", "on", "for", "and", "or", "is", "are",
+    "as", "at", "by", "with", "from", "its", "it's", "that", "this", "after",
+    "before", "new", "says", "say", "report", "reports", "amid", "over",
+    "into", "than", "how", "what", "why", "will", "has", "have", "had",
+}
+
+
+def _domain(url):
+    try:
+        netloc = urlparse(url).netloc.lower()
+        return netloc[4:] if netloc.startswith("www.") else netloc
+    except ValueError:
+        return ""
+
+
+def _is_paywalled(url, paywalled_sources):
+    if not paywalled_sources:
+        return False
+    domain = _domain(url)
+    return any(domain == d or domain.endswith("." + d) for d in paywalled_sources)
+
+
+def _title_tokens(title):
+    words = re.findall(r"[a-z0-9]+", title.lower())
+    return {w for w in words if w not in _STOPWORDS and len(w) > 2}
+
+
+def _is_near_duplicate(tokens, seen_token_sets, threshold=0.45):
+    """Catch different outlets covering the same story with different
+    wording (e.g. three separate "US debt hits $40T" headlines) — Jaccard
+    overlap on meaningful words, not exact title matching."""
+    if not tokens:
+        return False
+    for other in seen_token_sets:
+        if not other:
+            continue
+        union = tokens | other
+        if union and len(tokens & other) / len(union) >= threshold:
+            return True
+    return False
 
 
 def _build_query(topic):
@@ -129,7 +174,7 @@ def _parse_entries(feed_url, timeout=10):
         return []
 
 
-def fetch_topic(topic, freshness_windows, artists=None, count=None, seen_urls=None):
+def fetch_topic(topic, freshness_windows, artists=None, count=None, seen_urls=None, paywalled_sources=None):
     """Fetch, filter, dedupe, and sort articles for a single topic.
 
     `topic` is a dict like {name, priority, freshness, never_skip, query?}.
@@ -149,6 +194,7 @@ def fetch_topic(topic, freshness_windows, artists=None, count=None, seen_urls=No
     def _extract(require_fresh):
         found = []
         local_seen = set()
+        title_token_sets = []
         for entry in entries:
             url = getattr(entry, "link", None)
             title = _clean_title(entry)
@@ -157,12 +203,24 @@ def fetch_topic(topic, freshness_windows, artists=None, count=None, seen_urls=No
             dedupe_key = url.split("?")[0]
             if dedupe_key in seen_urls or dedupe_key in local_seen:
                 continue
+            # entry.link is often a news.google.com redirect wrapper, not
+            # the real publisher URL — entry.source.href has the actual
+            # domain, so check that first for paywall matching.
+            source_href = getattr(entry, "source", None)
+            source_href = source_href.get("href") if source_href else None
+            if _is_paywalled(source_href or url, paywalled_sources):
+                continue
+
+            tokens = _title_tokens(title)
+            if _is_near_duplicate(tokens, title_token_sets):
+                continue
 
             published = _entry_datetime(entry)
             if require_fresh and not _within_freshness(published, freshness, freshness_windows, now):
                 continue
 
             local_seen.add(dedupe_key)
+            title_token_sets.append(tokens)
             found.append(
                 {
                     "title": title,
@@ -183,13 +241,21 @@ def fetch_topic(topic, freshness_windows, artists=None, count=None, seen_urls=No
     if not articles and topic.get("never_skip"):
         articles = _extract(require_fresh=False)
 
+    # Evergreen topics have no natural turnover (nothing ages out), so the
+    # same top-ranked result would otherwise show up every single day.
+    # Rotate through the available pool with a day-seeded shuffle instead —
+    # deterministic (same pick all day), but different tomorrow.
+    if evergreen and count and len(articles) > count:
+        rng = random.Random(dt.date.today().toordinal())
+        rng.shuffle(articles)
+
     for a in articles:
         seen_urls.add(a["url"].split("?")[0])
 
     return articles[:count] if count else articles
 
 
-def fetch_all_topics(topics, freshness_windows, counts_by_priority, artists=None):
+def fetch_all_topics(topics, freshness_windows, counts_by_priority, artists=None, paywalled_sources=None):
     """Fetch every configured topic. Returns {topic_name: [articles]}."""
     seen_urls = set()
     results = {}
@@ -197,7 +263,12 @@ def fetch_all_topics(topics, freshness_windows, counts_by_priority, artists=None
         count = counts_by_priority.get(topic.get("priority"), 3)
         try:
             results[topic["name"]] = fetch_topic(
-                topic, freshness_windows, artists=artists, count=count, seen_urls=seen_urls
+                topic,
+                freshness_windows,
+                artists=artists,
+                count=count,
+                seen_urls=seen_urls,
+                paywalled_sources=paywalled_sources,
             )
         except Exception:
             logger.exception("topic fetch failed: %s", topic.get("name"))
@@ -205,7 +276,7 @@ def fetch_all_topics(topics, freshness_windows, counts_by_priority, artists=None
     return results
 
 
-def fetch_misc(seen_urls, count=4):
+def fetch_misc(seen_urls, count=4, paywalled_sources=None):
     """Curated general-interest feeds for the Miscellaneous overflow section."""
     items = []
     for source_name, feed_url in MISC_FEEDS:
@@ -217,6 +288,8 @@ def fetch_misc(seen_urls, count=4):
                 continue
             dedupe_key = url.split("?")[0]
             if dedupe_key in seen_urls:
+                continue
+            if _is_paywalled(url, paywalled_sources):
                 continue
             seen_urls.add(dedupe_key)
             published = _entry_datetime(entry)

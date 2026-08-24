@@ -101,6 +101,7 @@ def fetch_news_sections(config):
         config["freshness_windows"],
         config["counts_by_priority"],
         artists=config.get("artists", []),
+        paywalled_sources=config.get("paywalled_sources", []),
     )
 
     def get(name):
@@ -120,7 +121,9 @@ def fetch_news_sections(config):
     for bucket in all_articles.values():
         for a in bucket:
             seen_urls.add(a["url"].split("?")[0])
-    misc_extra = news.fetch_misc(seen_urls, count=config.get("misc_count", 4))
+    misc_extra = news.fetch_misc(
+        seen_urls, count=config.get("misc_count", 4), paywalled_sources=config.get("paywalled_sources", [])
+    )
     misc = get("NHL") + misc_extra
 
     return {
