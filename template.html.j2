@@ -27,6 +27,9 @@
   .wordmark .amp{color:var(--marine)}
   .edition{margin-top:12px;font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);display:flex;gap:10px;justify-content:center;flex-wrap:wrap;align-items:center}
   .edition .dot{color:var(--line)}
+  .view-online{margin-top:10px}
+  .view-online a{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--marine)}
+  .view-online a:hover{text-decoration:underline}
 
   nav.jump{position:sticky;top:0;z-index:20;background:rgba(15,22,24,.93);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);margin:0 -20px 30px;padding:10px 20px;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch}
   nav.jump a{display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:5px 11px;margin-right:4px;border-radius:20px;transition:all .15s ease}
@@ -143,6 +146,9 @@
   <header class="masthead">
     <div class="wordmark">The Morning <span class="amp">Dispatch</span></div>
     <div class="edition"><span>{{ edition.date_str }}</span><span class="dot">&#9670;</span><span>{{ edition.location }}</span><span class="dot">&#9670;</span><span>{{ edition.number }}</span></div>
+    {% if site_url %}
+    <div class="view-online"><a href="{{ site_url }}" target="_blank" rel="noopener">View today's edition online &#8599;</a></div>
+    {% endif %}
   </header>
 
   <nav class="jump" aria-label="Jump to section">

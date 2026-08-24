@@ -1,3 +1,6 @@
+# the published GitHub Pages URL — linked at the top of every emailed edition
+site_url: "https://sells8008.github.io/daily-dispatch/"
+
 location:
   label: "Neptune Beach, FL"
   lat: 30.3149

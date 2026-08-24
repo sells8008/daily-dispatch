@@ -146,6 +146,7 @@ def build_context(config):
     location = config["location"]
 
     ctx = {
+        "site_url": config.get("site_url"),
         "edition": {
             "date_str": now_local.strftime("%A, %B %-d, %Y"),
             "location": location["label"],
