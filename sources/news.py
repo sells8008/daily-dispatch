@@ -238,14 +238,21 @@ def fetch_topic(topic, freshness_windows, artists=None, count=None, seen_urls=No
 
     # never_skip topics still show *something* even if nothing clears the
     # freshness bar (thin coverage beats a missing section for these).
+    used_fallback = False
     if not articles and topic.get("never_skip"):
         articles = _extract(require_fresh=False)
+        used_fallback = True
 
-    # Evergreen topics have no natural turnover (nothing ages out), so the
-    # same top-ranked result would otherwise show up every single day.
-    # Rotate through the available pool with a day-seeded shuffle instead —
-    # deterministic (same pick all day), but different tomorrow.
-    if evergreen and count and len(articles) > count:
+    # Evergreen topics have no natural turnover (nothing ages out). Topics
+    # that fell back to require_fresh=False are in the same boat — the
+    # freshness filter that would normally rotate content as items age out
+    # isn't doing anything for them either (e.g. Music, when the artist
+    # watchlist has no genuinely recent hits, was pulling the same
+    # date-sorted top N going back months). Either way, the same top-ranked
+    # result would otherwise show up every single day — rotate through the
+    # available pool with a day-seeded shuffle instead: deterministic (same
+    # pick all day), but different tomorrow.
+    if (evergreen or used_fallback) and count and len(articles) > count:
         rng = random.Random(dt.date.today().toordinal())
         rng.shuffle(articles)
 
