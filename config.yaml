@@ -36,20 +36,30 @@ topics:
   - {name: "American Business",       priority: 4, freshness: "fresh"}
   - {name: "PGA Tour",                priority: 4, freshness: "fresh"}
   - {name: "Food & Cooking",          priority: 4, freshness: "evergreen", never_skip: true}
-  - {name: "Geopolitics / Current Events", priority: 3, freshness: "fresh"}
   - {name: "Space",                   priority: 3, freshness: "standard"}
   - {name: "Scientific Breakthroughs",priority: 3, freshness: "standard"}
   - {name: "Music",                   priority: 3, freshness: "standard", never_skip: true}
   - {name: "Golf History & Courses",  priority: 3, freshness: "evergreen"}
   - {name: "Jacksonville & the Beaches", priority: 3, freshness: "fresh", never_skip: true}
+  - {name: "NFL",                     priority: 3, freshness: "fresh"}
+  - {name: "MLB",                     priority: 3, freshness: "fresh"}
+  - {name: "NHL",                     priority: 3, freshness: "fresh"}     # bumped from priority 1 now that it's a full section, not misc overflow
+  - {name: "NCAA Lacrosse",           priority: 2, freshness: "fresh"}
+  - {name: "Travel & Destinations",   priority: 3, freshness: "evergreen"} # beautiful US spots + cultural destinations worldwide — age doesn't matter
+  - {name: "Travel Deals",            priority: 2, freshness: "fresh"}     # deals must be genuinely current
   - {name: "Capital Markets & Lending (US)", priority: 1, freshness: "fresh"}
   - {name: "US Residential Housing",  priority: 1, freshness: "fresh"}
-  - {name: "NHL",                     priority: 1, freshness: "fresh"}
   # add/remove freely; this is the master list
+  # NOTE: "Geopolitics / Current Events" was removed — Top Stories now pulls
+  # from Google's own front-page feed (see top_stories_count below), which
+  # already covers world events/geopolitics as part of "whatever's the top
+  # news of the day," not just one narrow query.
 
 # Rough article counts per priority (tune later). "More is fine."
 counts_by_priority: {5: 5, 4: 4, 3: 3, 2: 2, 1: 2}
 misc_count: 4   # overflow / catch-all section at the bottom
+top_stories_count: 6      # lead story + this many more, any topic
+team_news_per_team: 2     # favorite-team-specific articles, per team, in Sports News
 
 # ---- PAYWALL FILTER ----
 # skip articles from these source domains (hard paywalls, not metered/soft

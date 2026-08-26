@@ -95,36 +95,65 @@ def fetch_sports_section(config):
 def fetch_news_sections(config):
     """Fetch all configured topics, then map them onto the template's
     named sections (some sections combine multiple topics)."""
+    freshness_windows = config["freshness_windows"]
+    paywalled = config.get("paywalled_sources", [])
     topics_by_name = {t["name"]: t for t in config["topics"]}
+
+    # One shared seen_urls set across every fetch below, in claim order:
+    # favorite-team news and top/music picks get first claim on a URL (so
+    # they show starred/prominent) before the generic per-topic queries run
+    # and would otherwise show the same story unstarred.
+    seen_urls = set()
+
+    team_news = news.fetch_team_news(
+        config.get("teams", []),
+        freshness_windows,
+        count_per_team=config.get("team_news_per_team", 2),
+        seen_urls=seen_urls,
+        paywalled_sources=paywalled,
+    )
+
+    top_stories_articles = news.fetch_top_stories(
+        freshness_windows,
+        config.get("top_stories_count", 6),
+        seen_urls=seen_urls,
+        paywalled_sources=paywalled,
+    )
+    top_stories = {
+        "lead": top_stories_articles[0] if top_stories_articles else None,
+        "rest": top_stories_articles[1:] if top_stories_articles else [],
+    }
+
+    music_topic = topics_by_name.get("Music", {"priority": 3})
+    music = news.fetch_music_topic(
+        config.get("artists", []),
+        freshness_windows,
+        config["counts_by_priority"].get(music_topic.get("priority"), 3),
+        seen_urls=seen_urls,
+        paywalled_sources=paywalled,
+    )
+
+    # Generic per-topic queries — everything except Music (handled above via
+    # the per-artist round-robin, not a single search query).
+    generic_topics = [t for t in config["topics"] if t["name"] != "Music"]
     all_articles = news.fetch_all_topics(
-        config["topics"],
-        config["freshness_windows"],
+        generic_topics,
+        freshness_windows,
         config["counts_by_priority"],
-        artists=config.get("artists", []),
-        paywalled_sources=config.get("paywalled_sources", []),
+        paywalled_sources=paywalled,
+        seen_urls=seen_urls,
     )
 
     def get(name):
         return all_articles.get(name, [])
 
-    geopolitics = get("Geopolitics / Current Events")
-    top_stories = {
-        "lead": geopolitics[0] if geopolitics else None,
-        "rest": geopolitics[1:] if geopolitics else [],
-    }
-
     business = get("American Business") + get("Capital Markets & Lending (US)") + get("US Residential Housing")
     science = get("Scientific Breakthroughs") + get("Space")
     golf = get("PGA Tour") + get("Golf History & Courses")
+    travel = get("Travel & Destinations") + get("Travel Deals")
+    sports_news = team_news + get("NFL") + get("MLB") + get("NHL") + get("NCAA Lacrosse")
 
-    seen_urls = set()
-    for bucket in all_articles.values():
-        for a in bucket:
-            seen_urls.add(a["url"].split("?")[0])
-    misc_extra = news.fetch_misc(
-        seen_urls, count=config.get("misc_count", 4), paywalled_sources=config.get("paywalled_sources", [])
-    )
-    misc = get("NHL") + misc_extra
+    misc = news.fetch_misc(seen_urls, count=config.get("misc_count", 4), paywalled_sources=paywalled)
 
     return {
         "top_stories": top_stories,
@@ -134,9 +163,11 @@ def fetch_news_sections(config):
         "crypto": get("Cryptocurrency"),
         "science": science,
         "golf": golf,
-        "music": get("Music"),
+        "music": music,
         "food": get("Food & Cooking"),
         "jacksonville": get("Jacksonville & the Beaches"),
+        "travel": travel,
+        "sports_news": sports_news,
         "misc": misc,
     }
 
@@ -161,6 +192,10 @@ def build_context(config):
         "yesterday_results": [],
         "teams_today": [],
         "teams_notes": [],
+        "top_stories": {"lead": None, "rest": []},
+        "technology": [], "ai": [], "business": [], "crypto": [], "science": [],
+        "golf": [], "music": [], "food": [], "jacksonville": [], "travel": [],
+        "sports_news": [], "misc": [],
     }
 
     logger.info("fetching weather...")
@@ -169,7 +204,10 @@ def build_context(config):
         logger.warning("weather section unavailable")
 
     logger.info("fetching news topics...")
-    ctx.update(fetch_news_sections(config))
+    try:
+        ctx.update(fetch_news_sections(config))
+    except Exception:
+        logger.exception("news section failed")
 
     logger.info("fetching sports...")
     try:

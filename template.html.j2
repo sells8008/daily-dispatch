@@ -79,6 +79,9 @@
   .item:visited h3{color:var(--text-dim)}
   .meta{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--muted);letter-spacing:.03em;margin-top:5px;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
   .meta .src{color:var(--text)}
+  .item.starred{background:#e89a5c14;border-radius:6px;padding:13px 12px;margin:0 -12px}
+  .item.starred:first-of-type{margin-top:0}
+  .star{color:var(--amber);margin-right:5px}
   @media(min-width:620px){.cols{columns:2;column-gap:34px}.cols .item{break-inside:avoid}}
 
   .game{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:11px 0;border-top:1px solid var(--line)}
@@ -101,7 +104,6 @@
   .event .info{color:var(--marine);font-size:11px}
   .event.starred{background:#e89a5c14;border-radius:6px;padding:13px 12px;margin:0 -12px}
   .event.starred:first-of-type{margin-top:0}
-  .event .star{color:var(--amber);margin-right:5px}
 
   .empty-note{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--muted);padding:13px 0}
 
@@ -127,8 +129,8 @@
 <div class="wrap">
 
   {% macro item_link(a) -%}
-  <a class="item" href="{{ a.url }}" target="_blank" rel="noopener">
-    <h3>{% if a.evergreen %}<span class="tag ever">Evergreen</span>{% endif %}{{ a.title }}</h3>
+  <a class="item{{ ' starred' if a.starred else '' }}" href="{{ a.url }}" target="_blank" rel="noopener">
+    <h3>{% if a.starred %}<span class="star">&#9733;</span>{% endif %}{% if a.evergreen %}<span class="tag ever">Evergreen</span>{% endif %}{{ a.title }}</h3>
     <div class="meta"><span class="src">{{ a.source }}</span><span>&middot;</span><span>{{ a.date_label }}</span></div>
   </a>
   {%- endmacro %}
@@ -152,9 +154,9 @@
   </header>
 
   <nav class="jump" aria-label="Jump to section">
-    <a href="#events">Around Town</a><a href="#scores">Scores</a><a href="#sports">Sports</a><a href="#local">Jacksonville</a>
+    <a href="#events">Around Town</a><a href="#scores">Scores</a><a href="#sports">Sports</a><a href="#sportsnews">Sports News</a><a href="#local">Jacksonville</a>
     <a href="#top">Top Stories</a><a href="#tech">Technology</a><a href="#ai">AI</a><a href="#biz">Business</a><a href="#crypto">Crypto</a>
-    <a href="#science">Science</a><a href="#golf">Golf</a><a href="#music">Music</a><a href="#food">Food</a><a href="#misc">Misc</a>
+    <a href="#science">Science</a><a href="#golf">Golf</a><a href="#music">Music</a><a href="#food">Food</a><a href="#travel">Travel</a><a href="#misc">Misc</a>
   </nav>
 
   <div class="glance">
@@ -256,6 +258,12 @@
         {% endfor %}
       </section>
 
+      <!-- SPORTS NEWS -->
+      <section class="block" id="sportsnews">
+        <div class="eyebrow">Sports News <span class="count">&middot; your teams &amp; NFL &middot; MLB &middot; NHL &middot; NCAA lacrosse</span></div>
+        {{ item_cols(sports_news) }}
+      </section>
+
       <!-- 3. JACKSONVILLE -->
       <section class="block" id="local">
         <div class="eyebrow">Jacksonville &amp; the Beaches <span class="count">&middot; never skipped</span></div>
@@ -312,6 +320,11 @@
       <section class="block" id="food">
         <div class="eyebrow">Food &amp; Cooking <span class="count">&middot; recipes can be timeless</span></div>
         {{ item_cols(food) }}
+      </section>
+
+      <section class="block" id="travel">
+        <div class="eyebrow">Travel &amp; Geography <span class="count">&middot; beautiful America &middot; world culture &middot; deals</span></div>
+        {{ item_cols(travel) }}
       </section>
 
       <!-- 5. MISCELLANEOUS -->
