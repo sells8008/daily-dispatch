@@ -96,10 +96,20 @@ def _link_label(event):
     return "Info"
 
 
-def fetch(config, api_key):
+def fetch(config, api_key, extra_events=None):
+    """`extra_events` are already-shaped event dicts from non-Ticketmaster
+    sources (see sources/seawalk.py) — merged in before the sort and cap so
+    they interleave by date rather than being appended at the end."""
+    extra_events = list(extra_events or [])
+
     if not api_key:
         logger.warning("TICKETMASTER_API_KEY not set — events section unavailable")
-        return []
+        # Still surface whatever the keyless sources found.
+        extra_events.sort(key=lambda e: e["sort_key"])
+        extra_events = extra_events[:MAX_ITEMS]
+        for item in extra_events:
+            item.pop("sort_key", None)
+        return extra_events
 
     events_cfg = config.get("events", {})
     lat = events_cfg.get("center_lat", config["location"]["lat"])
@@ -182,8 +192,25 @@ def fetch(config, api_key):
             }
         )
 
+    # Merge non-Ticketmaster sources, skipping anything already listed
+    # (same event name on the same date).
+    existing = {(i["name"].strip().lower(), i["when"]) for i in items}
+    for extra in extra_events:
+        if (extra["name"].strip().lower(), extra["when"]) not in existing:
+            items.append(extra)
+
     items.sort(key=lambda e: e["sort_key"])
-    items = items[:MAX_ITEMS]
+
+    # Starred entries (watchlist-artist shows, SeaWalk Pavilion) survive the
+    # cap — the whole point of starring them is to see them well ahead of
+    # the date, and a purely date-ordered trim would drop the furthest-out
+    # ones first. Unstarred events fill whatever room is left.
+    if len(items) > MAX_ITEMS:
+        starred = [i for i in items if i.get("starred")][:MAX_ITEMS]
+        rest = [i for i in items if not i.get("starred")]
+        items = starred + rest[: max(0, MAX_ITEMS - len(starred))]
+        items.sort(key=lambda e: e["sort_key"])
+
     for item in items:
-        del item["sort_key"]
+        item.pop("sort_key", None)
     return items

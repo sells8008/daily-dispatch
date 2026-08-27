@@ -18,7 +18,7 @@ from email.mime.text import MIMEText
 import yaml
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
-from sources import events, markets, news, recipe, sports, weather
+from sources import events, markets, news, recipe, seawalk, sports, weather
 
 logging.basicConfig(level=logging.INFO, format="%(levelname)s %(name)s: %(message)s")
 logger = logging.getLogger("build")
@@ -40,11 +40,22 @@ def fetch_weather_section(config):
 
 def fetch_events_section(config):
     api_key = os.environ.get("TICKETMASTER_API_KEY")
+
+    # SeaWalk Pavilion is city-run and isn't on Ticketmaster at all, so it
+    # comes from the City of Jacksonville Beach calendar instead. Fetched
+    # separately (and fail-soft on its own) so a problem with either source
+    # can't take out the whole section.
     try:
-        return events.fetch(config, api_key)
+        seawalk_events = seawalk.fetch(config)
+    except Exception:
+        logger.exception("SeaWalk events failed")
+        seawalk_events = []
+
+    try:
+        return events.fetch(config, api_key, extra_events=seawalk_events)
     except Exception:
         logger.exception("events section failed")
-        return []
+        return seawalk_events
 
 
 def fetch_sports_section(config):
