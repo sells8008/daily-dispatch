@@ -2,10 +2,19 @@ name: Daily Dispatch
 
 on:
   schedule:
-    # 8:30 UTC = 4:30 AM EDT. In winter (EST, UTC-5) this becomes 5:30 AM —
-    # DST shifts it by an hour twice a year; nudge to "30 9 * * *" for the
-    # Nov-Mar EST stretch if you want a fixed local time year-round.
-    - cron: "30 8 * * *"
+    # GitHub's `schedule:` is best-effort — runs are routinely delayed and,
+    # under load, dropped entirely (that's what happened on 2026-08-27: no
+    # run fired at all). So there are three slots: the first is the target,
+    # the rest are safety nets. The guard step below makes the extra slots
+    # no-ops on any day the earlier one already published, so a normal day
+    # still produces exactly one edition and one email.
+    #
+    # Times are UTC. 8:30 UTC = 4:30 AM EDT / 5:30 AM EST — DST shifts this
+    # by an hour twice a year; nudge each entry +1h for the Nov-Mar stretch
+    # if you want a fixed local time year-round.
+    - cron: "30 8 * * *"    # target: ~4:30 AM ET
+    - cron: "30 10 * * *"   # safety net if the 8:30 slot was dropped
+    - cron: "30 12 * * *"   # last resort
   workflow_dispatch: {}
 
 permissions:
@@ -14,19 +23,40 @@ permissions:
 jobs:
   build-and-publish:
     runs-on: ubuntu-latest
+    env:
+      # Runners are UTC. Without this the edition's masthead date, "Generated"
+      # time, recipe day-of-year, and the day-seeded article rotation all key
+      # off UTC rather than the reader's actual timezone.
+      TZ: America/New_York
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Skip if today's edition already published
+        id: guard
+        run: |
+          TODAY=$(date +%F)
+          if [ "${{ github.event_name }}" != "workflow_dispatch" ] \
+             && [ -f .last-edition ] \
+             && [ "$(cat .last-edition)" = "$TODAY" ]; then
+            echo "Edition for $TODAY already published — skipping."
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Set up Python
+        if: steps.guard.outputs.skip == 'false'
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
       - name: Install dependencies
+        if: steps.guard.outputs.skip == 'false'
         run: pip install -r requirements.txt
 
       - name: Build and email today's edition
+        if: steps.guard.outputs.skip == 'false'
         env:
           MAIL_FROM: ${{ secrets.MAIL_FROM }}
           MAIL_APP_PASSWORD: ${{ secrets.MAIL_APP_PASSWORD }}
@@ -35,9 +65,13 @@ jobs:
         run: python build.py
 
       - name: Commit and push regenerated index.html
+        if: steps.guard.outputs.skip == 'false'
         run: |
+          date +%F > .last-edition
           git config user.name "daily-dispatch-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add index.html
-          git diff --cached --quiet && echo "no changes" || git commit -m "Daily edition: $(date -u +%Y-%m-%d)"
+          git add index.html .last-edition
+          git diff --cached --quiet && echo "no changes" || git commit -m "Daily edition: $(date +%F)"
+          # Another run (or a local push) may have landed since checkout.
+          git pull --rebase origin main
           git push
