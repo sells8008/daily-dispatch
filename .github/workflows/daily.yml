@@ -20,7 +20,17 @@ on:
     - cron: "7 8 * * *"     # target: ~4:07 AM ET
     - cron: "7 10 * * *"    # safety net if the first slot was dropped
     - cron: "7 12 * * *"    # last resort
-  workflow_dispatch: {}
+  # Also triggered each morning by an external scheduler calling the GitHub
+  # API (see README), because GitHub's own `schedule:` above has proven
+  # unreliable — it stopped firing entirely for this repo on 2026-08-27.
+  # An API trigger sends no inputs, so `force` is empty and the guard below
+  # still applies: if the day's edition already went out, the run no-ops.
+  workflow_dispatch:
+    inputs:
+      force:
+        description: "Rebuild and resend even if today's edition already went out"
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -41,7 +51,7 @@ jobs:
         id: guard
         run: |
           TODAY=$(date +%F)
-          if [ "${{ github.event_name }}" != "workflow_dispatch" ] \
+          if [ "${{ github.event.inputs.force }}" != "true" ] \
              && [ -f .last-edition ] \
              && [ "$(cat .last-edition)" = "$TODAY" ]; then
             echo "Edition for $TODAY already published — skipping."
