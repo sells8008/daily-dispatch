@@ -9,12 +9,17 @@ on:
     # no-ops on any day the earlier one already published, so a normal day
     # still produces exactly one edition and one email.
     #
-    # Times are UTC. 8:30 UTC = 4:30 AM EDT / 5:30 AM EST — DST shifts this
+    # Times are UTC. 8:07 UTC = 4:07 AM EDT / 5:07 AM EST — DST shifts this
     # by an hour twice a year; nudge each entry +1h for the Nov-Mar stretch
     # if you want a fixed local time year-round.
-    - cron: "30 8 * * *"    # target: ~4:30 AM ET
-    - cron: "30 10 * * *"   # safety net if the 8:30 slot was dropped
-    - cron: "30 12 * * *"   # last resort
+    #
+    # Deliberately odd minutes: GitHub queues every repo's crons together, so
+    # :00 and :30 are the most congested slots. On the old :30 schedule this
+    # workflow fired 76-112 min late every single day (an 8:30 target landing
+    # 09:46-10:22 UTC — i.e. mail arriving ~6 AM ET, not the intended 4:30).
+    - cron: "7 8 * * *"     # target: ~4:07 AM ET
+    - cron: "7 10 * * *"    # safety net if the first slot was dropped
+    - cron: "7 12 * * *"    # last resort
   workflow_dispatch: {}
 
 permissions:
