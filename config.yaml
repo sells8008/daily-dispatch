@@ -22,6 +22,7 @@ teams:
   - {league: "mlb",  name: "Philadelphia Phillies"}
   - {league: "nfl",  name: "Philadelphia Eagles"}
   - {league: "nhl",  name: "Philadelphia Flyers"}
+  - {league: "college-football", name: "TCU Horned Frogs"}
   - {league: "mens-college-lacrosse", name: "Jacksonville Dolphins"}   # niche — see caveats
 golf:
   follow: ["PGA Tour", "majors", "Ryder Cup"]   # show whatever is in season

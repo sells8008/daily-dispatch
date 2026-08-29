@@ -33,6 +33,7 @@ LEAGUE_PATHS = {
     "mlb": "baseball/mlb",
     "nfl": "football/nfl",
     "nhl": "hockey/nhl",
+    "college-football": "football/college-football",
     "mens-college-lacrosse": "lacrosse/mens-college-lacrosse",
 }
 
@@ -40,7 +41,24 @@ LEAGUE_LABELS = {
     "mlb": "MLB",
     "nfl": "NFL",
     "nhl": "NHL",
+    "college-football": "NCAA Football",
     "mens-college-lacrosse": "NCAA Lacrosse",
+}
+
+# Extra scoreboard query params per league. College football has ~760 teams
+# across divisions and a busy Saturday can blow past the default page size,
+# so scope it to FBS (groups=80) and raise the limit — otherwise a game can
+# silently drop off the board.
+LEAGUE_SCOREBOARD_PARAMS = {
+    "college-football": {"groups": "80", "limit": "200"},
+}
+
+# Leagues whose /teams index is long enough to be paginated. ESPN returns
+# only the first 50 without an explicit limit, which silently hides most
+# schools (TCU included).
+LEAGUE_TEAMS_PARAMS = {
+    "college-football": {"limit": "900"},
+    "mens-college-lacrosse": {"limit": "900"},
 }
 
 def _get(url, params=None, timeout=10):
@@ -59,7 +77,10 @@ def _scoreboard(league, date_str=None):
     path = LEAGUE_PATHS.get(league)
     if not path:
         return []
-    data = _get(f"{SITE_API}/{path}/scoreboard", params={"dates": date_str} if date_str else None)
+    params = dict(LEAGUE_SCOREBOARD_PARAMS.get(league, {}))
+    if date_str:
+        params["dates"] = date_str
+    data = _get(f"{SITE_API}/{path}/scoreboard", params=params or None)
     if not data:
         return []
     return data.get("events", [])
@@ -157,7 +178,7 @@ def _next_scheduled_game(league, team_name, tz_name):
     if not path:
         return None
     try:
-        teams_data = _get(f"{SITE_API}/{path}/teams")
+        teams_data = _get(f"{SITE_API}/{path}/teams", params=LEAGUE_TEAMS_PARAMS.get(league) or None)
         if not teams_data:
             return None
         team_id = None

@@ -75,6 +75,26 @@ def _is_paywalled(url, paywalled_sources):
     return any(domain == d or domain.endswith("." + d) for d in paywalled_sources)
 
 
+# Pirate-stream / SEO junk that clogs sports queries especially — e.g.
+# "~~North Carolina vs TCU 𝗟𝗜𝗩𝗘 𝐒tream". These lean on Unicode look-alike
+# letters (Mathematical Alphanumeric Symbols / fullwidth forms) to dodge
+# keyword filters, which ironically makes them trivial to spot: no real
+# newsroom styles a headline that way.
+_LOOKALIKE_UNICODE = re.compile(r"[\U0001D400-\U0001D7FFＡ-ｚ①-⓿]")
+
+# Deliberately narrow. Plain "livestream" is left alone — it shows up in
+# perfectly good music coverage ("Billy Strings to livestream trio run").
+_SPAM_PHRASES = re.compile(
+    r"(reddit\s*stream|free\s*(live\s*)?stream|stream\s*free|watch\s*free|"
+    r"full\s*match\s*online|crackstream)",
+    re.IGNORECASE,
+)
+
+
+def _is_junk(title):
+    return bool(_LOOKALIKE_UNICODE.search(title) or _SPAM_PHRASES.search(title))
+
+
 def _title_tokens(title):
     words = re.findall(r"[a-z0-9]+", title.lower())
     return {w for w in words if w not in _STOPWORDS and len(w) > 2}
@@ -177,6 +197,8 @@ def _extract_from_entries(entries, freshness, freshness_windows, seen_urls, payw
         url = getattr(entry, "link", None)
         title = _clean_title(entry)
         if not url or not title:
+            continue
+        if _is_junk(title):
             continue
         dedupe_key = url.split("?")[0]
         if dedupe_key in seen_urls or dedupe_key in local_seen:
@@ -346,6 +368,7 @@ TEAM_LEAGUE_HINTS = {
     "mlb": "MLB baseball",
     "nfl": "NFL football",
     "nhl": "NHL hockey",
+    "college-football": "college football",
     "mens-college-lacrosse": "lacrosse",
 }
 
