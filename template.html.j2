@@ -166,8 +166,8 @@
 
   <nav class="jump" aria-label="Jump to section">
     <a href="#events">Around Town</a><a href="#scores">Scores</a><a href="#sports">Sports</a><a href="#reads">Your Reads</a><a href="#local">Jacksonville</a>
-    <a href="#top">Top Stories</a><a href="#travel">Travel</a><a href="#tech">Technology</a><a href="#ai">AI</a><a href="#biz">Business</a><a href="#crypto">Crypto</a>
-    <a href="#science">Science</a><a href="#golf">Golf</a><a href="#music">Music</a><a href="#food">Food</a><a href="#sportsnews">Sports News</a><a href="#misc">Misc</a>
+    <a href="#top">Top Stories</a><a href="#food">Food</a><a href="#travel">Travel</a><a href="#tech">Technology</a><a href="#ai">AI</a><a href="#biz">Business</a><a href="#crypto">Crypto</a>
+    <a href="#science">Science</a><a href="#golf">Golf</a><a href="#music">Music</a><a href="#sportsnews">Sports News</a><a href="#misc">Misc</a>
   </nav>
 
   <div class="glance">
@@ -311,6 +311,11 @@
         {{ item_cols(top_stories.rest, "No top stories cleared the filter today.") }}
       </section>
 
+      <section class="block" id="food">
+        <div class="eyebrow">Food &amp; Cooking <span class="count">&middot; recipes can be timeless</span></div>
+        {{ item_cols(food) }}
+      </section>
+
       <section class="block" id="travel">
         <div class="eyebrow">Travel &amp; Geography <span class="count">&middot; beautiful America &middot; world culture &middot; deals</span></div>
         {{ item_cols(travel) }}
@@ -349,11 +354,6 @@
       <section class="block" id="music">
         <div class="eyebrow">Music <span class="count">&middot; country watchlist + wider net</span></div>
         {{ item_cols(music) }}
-      </section>
-
-      <section class="block" id="food">
-        <div class="eyebrow">Food &amp; Cooking <span class="count">&middot; recipes can be timeless</span></div>
-        {{ item_cols(food) }}
       </section>
 
       <!-- SPORTS NEWS -->
