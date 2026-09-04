@@ -166,8 +166,8 @@
 
   <nav class="jump" aria-label="Jump to section">
     <a href="#events">Around Town</a><a href="#scores">Scores</a><a href="#sports">Sports</a><a href="#reads">Your Reads</a><a href="#local">Jacksonville</a>
-    <a href="#top">Top Stories</a><a href="#tech">Technology</a><a href="#ai">AI</a><a href="#biz">Business</a><a href="#crypto">Crypto</a>
-    <a href="#science">Science</a><a href="#golf">Golf</a><a href="#music">Music</a><a href="#food">Food</a><a href="#sportsnews">Sports News</a><a href="#travel">Travel</a><a href="#misc">Misc</a>
+    <a href="#top">Top Stories</a><a href="#travel">Travel</a><a href="#tech">Technology</a><a href="#ai">AI</a><a href="#biz">Business</a><a href="#crypto">Crypto</a>
+    <a href="#science">Science</a><a href="#golf">Golf</a><a href="#music">Music</a><a href="#food">Food</a><a href="#sportsnews">Sports News</a><a href="#misc">Misc</a>
   </nav>
 
   <div class="glance">
@@ -311,6 +311,11 @@
         {{ item_cols(top_stories.rest, "No top stories cleared the filter today.") }}
       </section>
 
+      <section class="block" id="travel">
+        <div class="eyebrow">Travel &amp; Geography <span class="count">&middot; beautiful America &middot; world culture &middot; deals</span></div>
+        {{ item_cols(travel) }}
+      </section>
+
       <section class="block" id="tech">
         <div class="eyebrow">Technology <span class="count">&middot; priority 5 &mdash; more picks</span></div>
         {{ item_cols(technology) }}
@@ -355,11 +360,6 @@
       <section class="block" id="sportsnews">
         <div class="eyebrow">Sports News <span class="count">&middot; your teams &amp; NFL &middot; MLB &middot; NHL &middot; NCAA lacrosse</span></div>
         {{ item_cols(sports_news) }}
-      </section>
-
-      <section class="block" id="travel">
-        <div class="eyebrow">Travel &amp; Geography <span class="count">&middot; beautiful America &middot; world culture &middot; deals</span></div>
-        {{ item_cols(travel) }}
       </section>
 
       <!-- 5. MISCELLANEOUS -->
