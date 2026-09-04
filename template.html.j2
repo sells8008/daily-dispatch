@@ -107,6 +107,17 @@
 
   .empty-note{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--muted);padding:13px 0}
 
+  .read{display:block;padding:13px 0;border-top:1px solid var(--line)}
+  .read:first-of-type{border-top:none}
+  .read-src{display:block;font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--marine);margin-bottom:6px}
+  .read-src:hover{text-decoration:underline}
+  .read-post h3{font-family:"Fraunces",Georgia,serif;font-weight:500;font-size:16px;line-height:1.25;letter-spacing:-0.01em;color:var(--text);transition:color .15s ease}
+  .read-post:hover h3{color:var(--marine)}
+  .read-post:visited h3{color:var(--text-dim)}
+  .read-none{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--muted)}
+  .tag.new{background:var(--up);color:#0F1618}
+  @media(min-width:620px){.cols .read{break-inside:avoid}}
+
   .show-more{display:block;margin:16px auto 0;padding:7px 18px;font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--marine);background:transparent;border:1px solid var(--marine);border-radius:20px;cursor:pointer;transition:all .15s ease}
   .show-more:hover{background:#5ccfc218}
   .show-more:focus-visible{outline:2px solid var(--marine);outline-offset:2px}
@@ -154,7 +165,7 @@
   </header>
 
   <nav class="jump" aria-label="Jump to section">
-    <a href="#events">Around Town</a><a href="#scores">Scores</a><a href="#sports">Sports</a><a href="#local">Jacksonville</a>
+    <a href="#events">Around Town</a><a href="#scores">Scores</a><a href="#sports">Sports</a><a href="#reads">Your Reads</a><a href="#local">Jacksonville</a>
     <a href="#top">Top Stories</a><a href="#tech">Technology</a><a href="#ai">AI</a><a href="#biz">Business</a><a href="#crypto">Crypto</a>
     <a href="#science">Science</a><a href="#golf">Golf</a><a href="#music">Music</a><a href="#food">Food</a><a href="#sportsnews">Sports News</a><a href="#travel">Travel</a><a href="#misc">Misc</a>
   </nav>
@@ -256,6 +267,30 @@
         {% for note in teams_notes %}
         <div class="meta" style="margin-top:14px"><span class="src">{{ note.team }}</span><span>&middot;</span><span>{{ note.text }}</span></div>
         {% endfor %}
+      </section>
+
+      <!-- YOUR READS -->
+      <section class="block" id="reads">
+        <div class="eyebrow">Your Reads <span class="count">&middot; writers &amp; newsletters you follow</span></div>
+        {% if reads %}
+        <div class="cols">
+          {% for r in reads %}
+          <div class="read">
+            <a class="read-src" href="{{ r.page }}" target="_blank" rel="noopener">{{ r.name }} &#8599;</a>
+            {% if r.post %}
+            <a class="read-post" href="{{ r.post.url }}" target="_blank" rel="noopener">
+              <h3>{% if r.post.is_new %}<span class="tag new">New</span>{% endif %}{{ r.post.title }}</h3>
+            </a>
+            {% if r.post.date_label %}<div class="meta"><span>{{ r.post.date_label }}</span></div>{% endif %}
+            {% else %}
+            <div class="read-none">Latest post unavailable &mdash; open the site</div>
+            {% endif %}
+          </div>
+          {% endfor %}
+        </div>
+        {% else %}
+        <div class="empty-note">No reading sources configured.</div>
+        {% endif %}
       </section>
 
       <!-- 3. JACKSONVILLE -->

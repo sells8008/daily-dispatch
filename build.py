@@ -18,7 +18,7 @@ from email.mime.text import MIMEText
 import yaml
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
-from sources import events, markets, news, recipe, seawalk, sports, weather
+from sources import events, markets, news, reads, recipe, seawalk, sports, weather
 
 logging.basicConfig(level=logging.INFO, format="%(levelname)s %(name)s: %(message)s")
 logger = logging.getLogger("build")
@@ -206,7 +206,7 @@ def build_context(config):
         "top_stories": {"lead": None, "rest": []},
         "technology": [], "ai": [], "business": [], "crypto": [], "science": [],
         "golf": [], "music": [], "food": [], "jacksonville": [], "travel": [],
-        "sports_news": [], "misc": [],
+        "sports_news": [], "misc": [], "reads": [],
     }
 
     logger.info("fetching weather...")
@@ -228,6 +228,12 @@ def build_context(config):
 
     logger.info("fetching events...")
     ctx["events"] = fetch_events_section(config)
+
+    logger.info("fetching reads...")
+    try:
+        ctx["reads"] = reads.fetch(config)
+    except Exception:
+        logger.exception("reads section failed")
 
     logger.info("fetching markets...")
     try:

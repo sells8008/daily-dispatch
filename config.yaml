@@ -62,6 +62,27 @@ misc_count: 4   # overflow / catch-all section at the bottom
 top_stories_count: 6      # lead story + this many more, any topic
 team_news_per_team: 2     # favorite-team-specific articles, per team, in Sports News
 
+# ---- YOUR READS ----
+# Followed writers/newsletters. Every source here is always rendered as a
+# link to its page; the latest post is shown underneath when its feed can be
+# resolved. `feed` is a starting guess — if it fails, the page is checked for
+# a declared feed, then /feed, /feed/, /rss, /rss/. So a source with no `feed`
+# at all, or a stale one, still works.
+# Add or remove freely — no code changes needed.
+reads:
+  - {name: "The Free Press",         page: "https://www.thefp.com/",                 feed: "https://www.thefp.com/feed"}
+  - {name: "Of Dollars and Data",    page: "https://ofdollarsanddata.com/",          feed: "https://ofdollarsanddata.com/feed/"}
+  - {name: "Chamath Palihapitiya",   page: "https://chamath.substack.com/",          feed: "https://chamath.substack.com/feed"}
+  - {name: "One Useful Thing",       page: "https://www.oneusefulthing.org/",        feed: "https://www.oneusefulthing.org/feed"}
+  - {name: "Chartbook (Adam Tooze)", page: "https://adamtooze.substack.com/",        feed: "https://adamtooze.substack.com/feed"}
+  - {name: "Postanly Weekly",        page: "https://postanly.substack.com/",         feed: "https://postanly.substack.com/feed"}
+  - {name: "Curiosity Chronicle",    page: "https://www.sahilbloom.com/newsletter",  feed: "https://sahilbloom.substack.com/feed"}
+  - {name: "Farnam Street",          page: "https://fs.blog/blog/",                  feed: "https://fs.blog/feed/"}
+  - {name: "Doomberg",               page: "https://newsletter.doomberg.com/",       feed: "https://newsletter.doomberg.com/feed"}
+  - {name: "The Quadrilateral",      page: "https://quadrilateral.substack.com/",    feed: "https://quadrilateral.substack.com/feed"}
+  - {name: "Stratechery",            page: "https://stratechery.com/category/articles/", feed: "https://stratechery.com/feed/"}   # free items only
+  - {name: "Joe Posnanski",          page: "https://www.joeposnanski.com/",          feed: "https://www.joeposnanski.com/feed/"} # /rss/ 404s; /feed/ is the real one
+
 # ---- PAYWALL FILTER ----
 # skip articles from these source domains (hard paywalls, not metered/soft
 # ones). Add or remove freely — e.g. drop nytimes.com/washingtonpost.com
