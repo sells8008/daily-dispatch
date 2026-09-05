@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="color-scheme" content="dark">
-<title>The Morning Dispatch — Friday, September 4, 2026</title>
+<title>The Morning Dispatch — Saturday, September 5, 2026</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,900&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -107,6 +107,17 @@
 
   .empty-note{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--muted);padding:13px 0}
 
+  .read{display:block;padding:13px 0;border-top:1px solid var(--line)}
+  .read:first-of-type{border-top:none}
+  .read-src{display:block;font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--marine);margin-bottom:6px}
+  .read-src:hover{text-decoration:underline}
+  .read-post h3{font-family:"Fraunces",Georgia,serif;font-weight:500;font-size:16px;line-height:1.25;letter-spacing:-0.01em;color:var(--text);transition:color .15s ease}
+  .read-post:hover h3{color:var(--marine)}
+  .read-post:visited h3{color:var(--text-dim)}
+  .read-none{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--muted)}
+  .tag.new{background:var(--up);color:#0F1618}
+  @media(min-width:620px){.cols .read{break-inside:avoid}}
+
   .show-more{display:block;margin:16px auto 0;padding:7px 18px;font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--marine);background:transparent;border:1px solid var(--marine);border-radius:20px;cursor:pointer;transition:all .15s ease}
   .show-more:hover{background:#5ccfc218}
   .show-more:focus-visible{outline:2px solid var(--marine);outline-offset:2px}
@@ -134,37 +145,37 @@
 
   <header class="masthead">
     <div class="wordmark">The Morning <span class="amp">Dispatch</span></div>
-    <div class="edition"><span>Friday, September 4, 2026</span><span class="dot">&#9670;</span><span>Neptune Beach, FL</span><span class="dot">&#9670;</span><span>No. 247</span></div>
+    <div class="edition"><span>Saturday, September 5, 2026</span><span class="dot">&#9670;</span><span>Neptune Beach, FL</span><span class="dot">&#9670;</span><span>No. 248</span></div>
     
     <div class="view-online"><a href="https://sells8008.github.io/daily-dispatch/" target="_blank" rel="noopener">View today's edition online &#8599;</a></div>
     
   </header>
 
   <nav class="jump" aria-label="Jump to section">
-    <a href="#events">Around Town</a><a href="#scores">Scores</a><a href="#sports">Sports</a><a href="#local">Jacksonville</a>
-    <a href="#top">Top Stories</a><a href="#tech">Technology</a><a href="#ai">AI</a><a href="#biz">Business</a><a href="#crypto">Crypto</a>
-    <a href="#science">Science</a><a href="#golf">Golf</a><a href="#music">Music</a><a href="#food">Food</a><a href="#sportsnews">Sports News</a><a href="#travel">Travel</a><a href="#misc">Misc</a>
+    <a href="#events">Around Town</a><a href="#scores">Scores</a><a href="#sports">Sports</a><a href="#reads">Your Reads</a><a href="#local">Jacksonville</a>
+    <a href="#top">Top Stories</a><a href="#food">Food</a><a href="#travel">Travel</a><a href="#tech">Technology</a><a href="#ai">AI</a><a href="#biz">Business</a><a href="#crypto">Crypto</a>
+    <a href="#science">Science</a><a href="#golf">Golf</a><a href="#music">Music</a><a href="#sportsnews">Sports News</a><a href="#misc">Misc</a>
   </nav>
 
   <div class="glance">
     <div class="cell">
       <div class="lab">Weather</div>
       
-      <div class="big">86&deg; / 75&deg;</div>
-      <div class="sub">Overcast ☁️</div>
+      <div class="big">89&deg; / 74&deg;</div>
+      <div class="sub">Clear ☀︎</div>
       
     </div>
     <div class="cell"><div class="lab">Markets</div>
       
       
-      <div class="tick"><span>BTC</span><span class="up">▲ 3.4%</span></div>
+      <div class="tick"><span>BTC</span><span class="down">▼ 1.1%</span></div>
       
       
     </div>
     <div class="cell"><div class="lab">On tonight</div>
       
       <div class="big" style="font-size:15px">Phillies vs. Braves</div>
-      <div class="sub">6:40 PM ET &middot; ESPN Unlmtd · MLB.TV · BravesVision · NBC Sports Phil</div>
+      <div class="sub">6:05 PM ET &middot; MLB.TV · BravesVision · NBC Sports Phil</div>
       
     </div>
   </div>
@@ -173,11 +184,11 @@
   <div class="cook" id="cook">
     
     <div>
-      <div class="lab">Today's Cook <span class="method">Slow Cooker</span></div>
-      <div class="dish">Slow-Cooker Pork Carnitas</div>
-      <div class="side">8 hrs low; crisp under broiler &middot; with avocado &amp; cabbage</div>
+      <div class="lab">Today's Cook <span class="method">Grill</span></div>
+      <div class="dish">Grilled Tri-Tip</div>
+      <div class="side">Reverse-sear to 130°F; rest 10; slice thin &middot; with grilled broccolini</div>
     </div>
-    <a class="go" href="https://www.google.com/search?q=Slow-Cooker%20Pork%20Carnitas%20recipe" target="_blank" rel="noopener">Get the recipe &#8599;</a>
+    <a class="go" href="https://www.google.com/search?q=Grilled%20Tri-Tip%20recipe" target="_blank" rel="noopener">Get the recipe &#8599;</a>
     
   </div>
 
@@ -188,19 +199,15 @@
         <div class="eyebrow">Around Town <span class="count">&middot; within ~90 min &middot; concerts, festivals &amp; big events</span></div>
         
         
-        <a class="event" href="https://www.ticketmaster.com/event/Z7r9jZ1A7OJ8A" target="_blank" rel="noopener"><div><span class="kind concert">Concert</span><span class="name">Blues Traveler x Gin Blossoms</span><span class="venue">St Augustine Amphitheatre · Saint Augustine, FL</span></div><div class="when">Fri Sep 4<br><span class="info">Tickets &#8599;</span></div></a>
-        
-        <a class="event" href="https://www.ticketweb.com/event/xavier-wulf-the-five-tickets/14272354" target="_blank" rel="noopener"><div><span class="kind concert">Concert</span><span class="name">Xavier Wulf - The Cool World Tour</span><span class="venue">FIVE · Jacksonville, FL</span></div><div class="when">Fri Sep 4<br><span class="info">Tickets &#8599;</span></div></a>
-        
         <a class="event" href="https://www.ticketmaster.com/monster-jam-jacksonville-florida-09-05-2026/event/22006496A96D4E15" target="_blank" rel="noopener"><div><span class="kind marquee">Marquee</span><span class="name">Monster Jam</span><span class="venue">VyStar Veterans Memorial Arena · Jacksonville, FL</span></div><div class="when">Sat Sep 5<br><span class="info">Tickets &#8599;</span></div></a>
         
         <a class="event" href="https://www.ticketmaster.com/monster-jam-jacksonville-florida-09-05-2026/event/22006496A9724E2E" target="_blank" rel="noopener"><div><span class="kind marquee">Marquee</span><span class="name">Monster Jam</span><span class="venue">VyStar Veterans Memorial Arena · Jacksonville, FL</span></div><div class="when">Sat Sep 5<br><span class="info">Tickets &#8599;</span></div></a>
         
         <a class="event" href="https://www.ticketweb.com/event/hulvey-could-be-tonight-tour-five-tickets/14831683" target="_blank" rel="noopener"><div><span class="kind concert">Concert</span><span class="name">Hulvey: &#34;Could Be Tonight&#34; Tour</span><span class="venue">FIVE · Jacksonville, FL</span></div><div class="when">Sat Sep 5<br><span class="info">Tickets &#8599;</span></div></a>
         
-        <a class="event more-event hidden-event" href="https://www.ticketmaster.com/event/Z7r9jZ1A7P4--" target="_blank" rel="noopener"><div><span class="kind concert">Concert</span><span class="name">Dennett - Ages 18+</span><span class="venue">Decca Live · Jacksonville, FL</span></div><div class="when">Sat Sep 5<br><span class="info">Tickets &#8599;</span></div></a>
+        <a class="event" href="https://www.ticketmaster.com/event/Z7r9jZ1A7P4--" target="_blank" rel="noopener"><div><span class="kind concert">Concert</span><span class="name">Dennett - Ages 18+</span><span class="venue">Decca Live · Jacksonville, FL</span></div><div class="when">Sat Sep 5<br><span class="info">Tickets &#8599;</span></div></a>
         
-        <a class="event more-event hidden-event" href="https://www.ticketmaster.com/monster-jam-jacksonville-florida-09-06-2026/event/22006496A9774E31" target="_blank" rel="noopener"><div><span class="kind marquee">Marquee</span><span class="name">Monster Jam</span><span class="venue">VyStar Veterans Memorial Arena · Jacksonville, FL</span></div><div class="when">Sun Sep 6<br><span class="info">Tickets &#8599;</span></div></a>
+        <a class="event" href="https://www.ticketmaster.com/monster-jam-jacksonville-florida-09-06-2026/event/22006496A9774E31" target="_blank" rel="noopener"><div><span class="kind marquee">Marquee</span><span class="name">Monster Jam</span><span class="venue">VyStar Veterans Memorial Arena · Jacksonville, FL</span></div><div class="when">Sun Sep 6<br><span class="info">Tickets &#8599;</span></div></a>
         
         <a class="event more-event hidden-event" href="https://www.ticketmaster.com/event/Z7r9jZ1A7-F_b" target="_blank" rel="noopener"><div><span class="kind concert">Concert</span><span class="name">Juanes North America Tour 2026</span><span class="venue">Florida Theatre Jacksonville · Jacksonville, FL</span></div><div class="when">Sun Sep 6<br><span class="info">Tickets &#8599;</span></div></a>
         
@@ -238,6 +245,8 @@
         
         <a class="event more-event hidden-event" href="https://www.ticketmaster.com/event/Z7r9jZ1A709_w" target="_blank" rel="noopener"><div><span class="kind concert">Concert</span><span class="name">BRAD PAISLEY LIVE</span><span class="venue">St Augustine Amphitheatre · Saint Augustine, FL</span></div><div class="when">Sat Sep 19<br><span class="info">Tickets &#8599;</span></div></a>
         
+        <a class="event more-event hidden-event" href="https://www.ticketweb.com/event/plush-major-moment-eclipse-tickets/14823963" target="_blank" rel="noopener"><div><span class="kind concert">Concert</span><span class="name">Plush, Major Moment</span><span class="venue">Eclipse · Jacksonville, FL</span></div><div class="when">Sun Sep 20<br><span class="info">Tickets &#8599;</span></div></a>
+        
         <a class="event starred more-event hidden-event" href="https://www.jacksonvillebeach.org/calendar.aspx?EID=2326" target="_blank" rel="noopener"><div><span class="kind ">Local</span><span class="name"><span class="star">&#9733;</span>Jax Beach Classic Car Cruise</span><span class="venue">SeaWalk Pavilion · Jacksonville Beach, FL</span></div><div class="when">Tue Sep 22<br><span class="info">Info &#8599;</span></div></a>
         
         <a class="event more-event hidden-event" href="https://www.ticketmaster.com/event/Z7r9jZ1A7OYPp" target="_blank" rel="noopener"><div><span class="kind concert">Concert</span><span class="name">James Taylor</span><span class="venue">St Augustine Amphitheatre · Saint Augustine, FL</span></div><div class="when">Tue Sep 22<br><span class="info">Tickets &#8599;</span></div></a>
@@ -252,7 +261,11 @@
         
         <a class="event more-event hidden-event" href="https://www.ticketmaster.com/jacksonville-jaguars-vs-new-england-patriots-jacksonville-florida-09-27-2026/event/2200646A91F24D7E" target="_blank" rel="noopener"><div><span class="kind marquee">Marquee</span><span class="name">Jacksonville Jaguars vs. New England Patriots</span><span class="venue">EverBank Stadium  · Jacksonville, FL</span></div><div class="when">Sun Sep 27<br><span class="info">Tickets &#8599;</span></div></a>
         
+        <a class="event more-event hidden-event" href="https://www.axs.com/events/1511333/of-monsters-and-men-the-mouse-parade-tour-tickets?_gl=1*18lmp27*_gcl_au*MTIxODY4NDUwNC4xNzgyMTU1OTQ3*_ga*MTk1Nzg0NDE4Ni4xNzYwNjQ0NjYx*_ga_F0C6P47R34*czE3ODM1MTkzNDUkbzE4JGcxJHQxNzgzNTIxMjgxJGo1MyRsMCRoMA..&amp;__cf_chl_" target="_blank" rel="noopener"><div><span class="kind concert">Concert</span><span class="name">Of Monsters and Men - The Mouse Parade Tour</span><span class="venue">The St. Augustine Amphitheatre · St Augustine, FL</span></div><div class="when">Tue Sep 29<br><span class="info">Tickets &#8599;</span></div></a>
+        
         <a class="event more-event hidden-event" href="https://www.ticketmaster.com/phish-jacksonville-florida-10-09-2026/event/22006503D26934D7" target="_blank" rel="noopener"><div><span class="kind concert">Concert</span><span class="name">Phish</span><span class="venue">VyStar Veterans Memorial Arena · Jacksonville, FL</span></div><div class="when">Fri Oct 9<br><span class="info">Tickets &#8599;</span></div></a>
+        
+        <a class="event more-event hidden-event" href="https://www.ticketmaster.com/jacksonville-icemen-v-jacksonville-florida-10-16-2026/event/22006523E7A07EA8" target="_blank" rel="noopener"><div><span class="kind marquee">Marquee</span><span class="name">Jacksonville Icemen v</span><span class="venue">VyStar Veterans Memorial Arena · Jacksonville, FL</span></div><div class="when">Fri Oct 16<br><span class="info">Info &#8599;</span></div></a>
         
         <a class="event more-event hidden-event" href="https://www.ticketmaster.com/the-smashing-pumpkins-the-rats-in-jacksonville-florida-10-17-2026/event/220064AFD5F4F5ED" target="_blank" rel="noopener"><div><span class="kind concert">Concert</span><span class="name">The Smashing Pumpkins: The Rats In A Cage Tour</span><span class="venue">VyStar Veterans Memorial Arena · Jacksonville, FL</span></div><div class="when">Sat Oct 17<br><span class="info">Tickets &#8599;</span></div></a>
         
@@ -262,11 +275,9 @@
         
         <a class="event more-event hidden-event" href="https://www.ticketmaster.com/cece-winans-come-worship-tour-jacksonville-florida-10-30-2026/event/220064544C1FC0CD" target="_blank" rel="noopener"><div><span class="kind concert">Concert</span><span class="name">CeCe Winans - COME WORSHIP! Tour</span><span class="venue">VyStar Veterans Memorial Arena · Jacksonville, FL</span></div><div class="when">Fri Oct 30<br><span class="info">Tickets &#8599;</span></div></a>
         
-        <a class="event more-event hidden-event" href="https://www.ticketmaster.com/jacksonville-jaguars-vs-indianapolis-colts-jacksonville-florida-11-01-2026/event/2200646A91ED4D72" target="_blank" rel="noopener"><div><span class="kind marquee">Marquee</span><span class="name">Jacksonville Jaguars vs. Indianapolis Colts</span><span class="venue">EverBank Stadium  · Jacksonville, FL</span></div><div class="when">Sun Nov 1<br><span class="info">Tickets &#8599;</span></div></a>
+        <a class="event more-event hidden-event" href="https://www.ticketmaster.com/jacksonville-icemen-v-jacksonville-florida-10-31-2026/event/22006523E7727E7E" target="_blank" rel="noopener"><div><span class="kind marquee">Marquee</span><span class="name">Jacksonville Icemen v</span><span class="venue">VyStar Veterans Memorial Arena · Jacksonville, FL</span></div><div class="when">Sat Oct 31<br><span class="info">Info &#8599;</span></div></a>
         
         <a class="event starred more-event hidden-event" href="https://on.fgtix.com/trk/8uFM" target="_blank" rel="noopener"><div><span class="kind concert">Concert</span><span class="name"><span class="star">&#9733;</span>EDC Orlando</span><span class="venue">Tinker Field · Orlando, FL</span></div><div class="when">Fri Nov 6<br><span class="info">Tickets &#8599;</span></div></a>
-        
-        <a class="event more-event hidden-event" href="https://www.ticketmaster.com/jacksonville-jaguars-vs-tennessee-titans-jacksonville-florida-11-29-2026/event/2200646A920D4DA3" target="_blank" rel="noopener"><div><span class="kind marquee">Marquee</span><span class="name">Jacksonville Jaguars vs. Tennessee Titans</span><span class="venue">EverBank Stadium  · Jacksonville, FL</span></div><div class="when">Sun Nov 29<br><span class="info">Tickets &#8599;</span></div></a>
         
         
         <button type="button" class="show-more" data-expanded="false" data-more-label="View more (35) &#8595;" data-less-label="Show fewer &#8593;" onclick="
@@ -283,7 +294,11 @@
       <section class="block" id="scores">
         <div class="eyebrow">Yesterday's Results <span class="count">&middot; final scores</span></div>
         
-        <div class="empty-note">Scores coming online next.</div>
+        
+        <a class="game" href="https://www.espn.com/mlb/game/_/gameId/401816798" target="_blank" rel="noopener"><div><span class="lg">MLB · Phillies</span><span class="match">Phillies 2, Braves 5</span></div><div class="when">
+          <span class="res-final">FINAL</span><br><span class="lose">L</span>
+        </div></a>
+        
         
       </section>
 
@@ -291,7 +306,7 @@
         <div class="eyebrow">Your Teams &mdash; Today <span class="count">&middot; times &amp; how to watch</span></div>
         
         
-        <a class="game" href="https://www.espn.com/mlb/game/_/gameId/401816798" target="_blank" rel="noopener"><div><span class="lg">MLB · Phillies</span><span class="match">Phillies vs. Braves</span></div><div class="when">6:40 PM ET<br><span class="ch">ESPN Unlmtd · MLB.TV · BravesVision · NBC Sports Phil</span></div></a>
+        <a class="game" href="https://www.espn.com/mlb/game/_/gameId/401816813" target="_blank" rel="noopener"><div><span class="lg">MLB · Phillies</span><span class="match">Phillies vs. Braves</span></div><div class="when">6:05 PM ET<br><span class="ch">MLB.TV · BravesVision · NBC Sports Phil</span></div></a>
         
         
         
@@ -303,20 +318,135 @@
         
       </section>
 
+      <!-- YOUR READS -->
+      <section class="block" id="reads">
+        <div class="eyebrow">Your Reads <span class="count">&middot; writers &amp; newsletters you follow</span></div>
+        
+        <div class="cols">
+          
+          <div class="read">
+            <a class="read-src" href="https://www.thefp.com/" target="_blank" rel="noopener">The Free Press &#8599;</a>
+            
+            <a class="read-post" href="https://www.thefp.com/p/two-drinks-with-the-man-who-compensated" target="_blank" rel="noopener">
+              <h3><span class="tag new">New</span>Two Drinks with . . . the Man Who Compensated 9/11 Victims</h3>
+            </a>
+            <div class="meta"><span>Sep 4</span></div>
+            
+          </div>
+          
+          <div class="read">
+            <a class="read-src" href="https://ofdollarsanddata.com/" target="_blank" rel="noopener">Of Dollars and Data &#8599;</a>
+            
+            <a class="read-post" href="https://ofdollarsanddata.com/which-graduate-degrees-are-the-best-investment-why-i-skipped-my-mba/" target="_blank" rel="noopener">
+              <h3>Which Graduate Degrees Are the Best Investment? (Why I Skipped My MBA)</h3>
+            </a>
+            <div class="meta"><span>Sep 1</span></div>
+            
+          </div>
+          
+          <div class="read">
+            <a class="read-src" href="https://chamath.substack.com/" target="_blank" rel="noopener">Chamath Palihapitiya &#8599;</a>
+            
+            <div class="read-none">Latest post unavailable &mdash; open the site</div>
+            
+          </div>
+          
+          <div class="read">
+            <a class="read-src" href="https://www.oneusefulthing.org/" target="_blank" rel="noopener">One Useful Thing &#8599;</a>
+            
+            <a class="read-post" href="https://www.oneusefulthing.org/p/agency-and-agents" target="_blank" rel="noopener">
+              <h3>Agency and Agents</h3>
+            </a>
+            <div class="meta"><span>Aug 31</span></div>
+            
+          </div>
+          
+          <div class="read">
+            <a class="read-src" href="https://adamtooze.substack.com/" target="_blank" rel="noopener">Chartbook (Adam Tooze) &#8599;</a>
+            
+            <div class="read-none">Latest post unavailable &mdash; open the site</div>
+            
+          </div>
+          
+          <div class="read">
+            <a class="read-src" href="https://postanly.substack.com/" target="_blank" rel="noopener">Postanly Weekly &#8599;</a>
+            
+            <div class="read-none">Latest post unavailable &mdash; open the site</div>
+            
+          </div>
+          
+          <div class="read">
+            <a class="read-src" href="https://www.sahilbloom.com/newsletter" target="_blank" rel="noopener">Curiosity Chronicle &#8599;</a>
+            
+            <div class="read-none">Latest post unavailable &mdash; open the site</div>
+            
+          </div>
+          
+          <div class="read">
+            <a class="read-src" href="https://fs.blog/blog/" target="_blank" rel="noopener">Farnam Street &#8599;</a>
+            
+            <a class="read-post" href="https://fs.blog/knowledge-project-podcast/geoffrey-cain/" target="_blank" rel="noopener">
+              <h3>Steve Jobs in Exile</h3>
+            </a>
+            <div class="meta"><span>Aug 27</span></div>
+            
+          </div>
+          
+          <div class="read">
+            <a class="read-src" href="https://newsletter.doomberg.com/" target="_blank" rel="noopener">Doomberg &#8599;</a>
+            
+            <a class="read-post" href="https://newsletter.doomberg.com/p/with-american-characteristics" target="_blank" rel="noopener">
+              <h3>With American Characteristics</h3>
+            </a>
+            <div class="meta"><span>Sep 1</span></div>
+            
+          </div>
+          
+          <div class="read">
+            <a class="read-src" href="https://quadrilateral.substack.com/" target="_blank" rel="noopener">The Quadrilateral &#8599;</a>
+            
+            <div class="read-none">Latest post unavailable &mdash; open the site</div>
+            
+          </div>
+          
+          <div class="read">
+            <a class="read-src" href="https://stratechery.com/category/articles/" target="_blank" rel="noopener">Stratechery &#8599;</a>
+            
+            <a class="read-post" href="https://stratechery.com/2026/friction-and-feedback/" target="_blank" rel="noopener">
+              <h3><span class="tag new">New</span>2026.36: Friction and Feedback</h3>
+            </a>
+            <div class="meta"><span>Sep 4</span></div>
+            
+          </div>
+          
+          <div class="read">
+            <a class="read-src" href="https://www.joeposnanski.com/" target="_blank" rel="noopener">Joe Posnanski &#8599;</a>
+            
+            <a class="read-post" href="https://www.joeposnanski.com/p/we-can-all-do-magic" target="_blank" rel="noopener">
+              <h3><span class="tag new">New</span>We Can All Do Magic</h3>
+            </a>
+            <div class="meta"><span>Sep 4</span></div>
+            
+          </div>
+          
+        </div>
+        
+      </section>
+
       <!-- 3. JACKSONVILLE -->
       <section class="block" id="local">
         <div class="eyebrow">Jacksonville &amp; the Beaches <span class="count">&middot; never skipped</span></div>
         
   <div class="cols">
-    <a class="item" href="https://news.google.com/rss/articles/CBMipgFBVV95cUxPWTFCZEc5eUJ4U2VDUC0zc1B4SGU1aVBEZ3N4TXJSNWo3ejNqaWlEMGZtal91MUNSVDBDZnVDdUVWRFd4WUlMU0hnRVh0SUZtTG9naG5LSkxSSFYxc1U1ejhOYTJxQThKRFRpRVgxRHMyeUhQNE9pU1pnSVA3TnhOUXJ0cUJ2QjZpTXpuLTVFMV9kLWpHb2U4YzJsS0pYVTIxWVl2OVN3?oc=5" target="_blank" rel="noopener">
-    <h3>Rattlers Start Season in Jacksonville</h3>
-    <div class="meta"><span class="src">famuathletics.com</span><span>&middot;</span><span>Sep 4, 2026</span></div>
-  </a><a class="item" href="https://news.google.com/rss/articles/CBMikgFBVV95cUxNTkd0VTRUaWJZLTFNajV1RWRYLU1PcUR3cjJKYV81R1ZvNGJ5Z3hwM1ZZNVdJb0JTMmhqWEx4RHVPWktXcl85eHFTYUFBSDJCbklrSWNkT244a1hPUWEyMWVnNThhYVNyQjJFRjJNbHBlRG9HbV9xb09IMjluV3NzQS1ENlBFTnI0SVcwZGcyaU1zUQ?oc=5" target="_blank" rel="noopener">
-    <h3>Jacksonville&#39;s Eastside adds retail, restaurants as revitalization gains momentum</h3>
-    <div class="meta"><span class="src">bizjournals.com</span><span>&middot;</span><span>Sep 4, 2026</span></div>
-  </a><a class="item" href="https://news.google.com/rss/articles/CBMikwFBVV95cUxQMmhrUTQ4NFVqTmdDT2NQODdkaDNFWDB5bDlHTVU1OVNKVVVGMjlMM0F0YTN6OWs4NHZjVWJtb3dvNDZZdUx5bEM3TWJ4S1I1aFBudXF3Q0lvOVU1VFoyUXdpVzBFb0M2QVJ2SGI5bFRqZDVCckhEa1dJdW5SSDh0VFd5REN5dDlLMXZINkl0a21WVkE?oc=5" target="_blank" rel="noopener">
-    <h3>Dolphins Fall At Florida Atlantic - Jacksonville University</h3>
-    <div class="meta"><span class="src">judolphins.com</span><span>&middot;</span><span>Sep 4, 2026</span></div>
+    <a class="item" href="https://news.google.com/rss/articles/CBMi4wFBVV95cUxNRzhiVzB6eTBJTVAyd3BtQlBKLW45OXgtUmlaRDE5TDV4a3hOVGd5bzZrYTIwMHNTZXVBNFZwcWtBU0JDZFZhbENTcU9KeGZ6MFJfQ2l3SUU3RE40QkJ6eXVFclRKSXJ1dk1ocWpzYVlUYmVQeDdSQlVzR1lRNUdZcDBHTEs5OVhOMnNZaERraWVPdWR6eGdnSUo1Z2JsMjNEMElVYnpzRmVUclZpVVZSRkFndmYwczc1MklTWHE0aW8yT3Y0Mi1XenViMU5ucjdsZWFjN3ZiakJMSkhqRjFFV2hHWQ?oc=5" target="_blank" rel="noopener">
+    <h3>Jacksonville-area high school football FHSAA &amp; SSAA schedule, Week 4</h3>
+    <div class="meta"><span class="src">The Florida Times-Union</span><span>&middot;</span><span>Sep 5, 2026</span></div>
+  </a><a class="item" href="https://news.google.com/rss/articles/CBMiogFBVV95cUxNbV96TjV1dlVRWk4xYzdBRmlnT00wYmlrN3AzbjdEWjZPYl9RcGhPQ0hKUmtURFM0ckI5VGNHVzUyZ25CT05OWjdqMzVyQ3JqaFk2eGNGTExQSlhfdmpTZkxEcWc0b2JGSU9lbzhLTHZKNjVhSUFEWlFaWVhYR1dyUnd0WHBadG9hUzNXa0tCVFczVXpVNkdYNlBVY0hyRXpBb2c?oc=5" target="_blank" rel="noopener">
+    <h3>Men&#39;s Cross Country Wins Florida Intercollegiate XC Invitational</h3>
+    <div class="meta"><span class="src">University of North Florida Athletics</span><span>&middot;</span><span>Sep 5, 2026</span></div>
+  </a><a class="item" href="https://news.google.com/rss/articles/CBMikAFBVV95cUxNY2pQRXBMUVdmVFNFQ3pUSUhpQ3BvcGVXSVBlQ1JGdHl4STJfYXNsbS1IT3pfSzEyak1OUjhLNmZIVlpiOUlLWHZZWkUyNHhhUU5MT1N5d01mN0g2VW1XREpWdnBOczFOUnF6WGhXZGpMM1RkTU84NjhhNENiLUllREJKMWJnX3ZRaERuVUc1V2o?oc=5" target="_blank" rel="noopener">
+    <h3>Shooting threat ends Jacksonville high school football game early</h3>
+    <div class="meta"><span class="src">Yahoo Sports</span><span>&middot;</span><span>Sep 5, 2026</span></div>
   </a>
   </div>
   
@@ -326,199 +456,28 @@
       <section class="block" id="top">
         <div class="eyebrow">Top Stories <span class="count">&middot; current events &amp; geopolitics</span></div>
         
-        <a class="lead" href="https://news.google.com/rss/articles/CBMinwFBVV95cUxNTTVrY3laRmlFVDhQd0J3bmNGM0Y0bVEwTTNCUVVCcHJ4SVRSbG5RWDRoUjF1VkVCUXlWUlJYcFNqNjJnZ3JHQ1A4TFI2NzdwcFJCNWp5bDNNM2JGZUNMQmlVbXA4bFNjVnE1TE1HQW1waGpWazJiQnRPWDlnSVpJSDdTQ2EzaGozdlJVQUVfR0lsMWl0dUdPRm04Y29temM?oc=5" target="_blank" rel="noopener">
-          <h2>2 trapped workers rescued from a hydropower tunnel 9 days after Nepal floods</h2>
-          <div class="meta"><span class="src">AP News</span><span>&middot;</span><span>Sep 4, 2026</span></div>
+        <a class="lead" href="https://news.google.com/rss/articles/CBMilAFBVV95cUxNTEJnVWIxYndvMlpBS1FCdnJiWGt2ZnpqVU5oZDZNeXMtOVREZ1d1U0s2dDdzWERNcDRVQmoxSkRSSmNsQ0JaYjNCRExwdWxBakxmZndMeVVvQ0EyMkFSUUJuX182ekhCOWI5Rm9xVkpBRjNCWjJhRFVJakswQi1ycjNteGY5UDJWWjRWRjVhZExzLW1k?oc=5" target="_blank" rel="noopener">
+          <h2>Philippines’ Vice President Faces Arrest Over Assassination Threats</h2>
+          <div class="meta"><span class="src">The New York Times</span><span>&middot;</span><span>Sep 5, 2026</span></div>
         </a>
         
         
   <div class="cols">
-    <a class="item" href="https://news.google.com/rss/articles/CBMiwAFBVV95cUxOak1DVWxndkdWSUVuaHFSZ284ZUtBOFp1aUpFUU95ZDZ5Z2MxcFRjaWVSell2Y2pFYjVNanRObHRtUVJWOG9GSEtlMzEwbzJtQ3VrdDltOVF6Q0ZFOWFua29NWlMwdXdzcUN0SnhxOVVTWmdOS2FleWlwWGQwcEFSLUVERzVJYk0xODEyek5xZ25HSXJaMTVjalJBV0FKVl9ieFU4Z0xPeXl3NkoyU3UzTURUczdnV2VlanU3NkpROWk?oc=5" target="_blank" rel="noopener">
-    <h3>Court throws out Missouri congressional map, helping Democrats keep seat</h3>
-    <div class="meta"><span class="src">The Washington Post</span><span>&middot;</span><span>Sep 4, 2026</span></div>
-  </a><a class="item" href="https://news.google.com/rss/articles/CBMixgFBVV95cUxNODhSMDg3UmN4b2stLW8xV2RBR2RiM2FJVU5BRzdlcDAyLTRvdWVqdDc0ZHkxZHk4RGZvbnFCSGJqcEJrVUhyNFBuZ1JoTjhzVHpRV2pSVEJIaHU1cTJfRFNZa05Cd2pibW1HN0syLVlmYmVzZmtleVdjTlpZdmVZQkc3WEtDUGtyZGFTSzRUejJ1SVRDamhhRzNqTkducGVfYnJrNGJkNmZUWnVvcmtUQXZmY0RKSXM0MVU2ZnRBSlR3dzRkNmc?oc=5" target="_blank" rel="noopener">
-    <h3>Deadly downtown Minneapolis shooting started as a custody exchange — here&#39;s what else we know</h3>
-    <div class="meta"><span class="src">5 EYEWITNESS NEWS</span><span>&middot;</span><span>Sep 4, 2026</span></div>
-  </a><a class="item" href="https://news.google.com/rss/articles/CBMihAFBVV95cUxNaFQ5ZDlJdzMyWUlPQnhGQnBBclQtTTV4MS1BSzJTdVBHcks3SWp1cTNvR19YTEs2Z0dZNkIxbElVNmhFNndSRUUzUUU4ZmVGOUtpNDE0Qy0ycF9falVsNDJ3cE5MUVZaSmJIb1JYc2tjbFY0SGJpQThRbmlUWXFRaGNuajY?oc=5" target="_blank" rel="noopener">
-    <h3>U.S. military reviewing deadly strike on Iranian wedding</h3>
-    <div class="meta"><span class="src">axios.com</span><span>&middot;</span><span>Sep 4, 2026</span></div>
-  </a><a class="item" href="https://news.google.com/rss/articles/CBMickFVX3lxTFA1VnljRFBtaVhWUWVYNHhFQzJMLUJjN3h2cTd1Sm1SaUZtck9lNEdRMmIzRTFBNjZLZkZXam9GdU1taHhFNFEwR3hXUG00Z2ZmTE1Sdi1HVUZWZFhYTmFkZ0pNcEp4UjJ3cnEtem5uUnk1dw?oc=5" target="_blank" rel="noopener">
-    <h3>Tensions flare in Lindsay Clancy trial courtroom over holdout juror</h3>
-    <div class="meta"><span class="src">CNN</span><span>&middot;</span><span>Sep 4, 2026</span></div>
-  </a><a class="item" href="https://news.google.com/rss/articles/CBMiekFVX3lxTFBSUFpaVTZBTjF4OEMxRjZRS2ZvOWpxWFpDTEpiSU9jUkxERGhaRWtSSUQzaTBRTDZsNWhVYTFWQ05nMzZLZzItZmVnSkdEV2s5dHM0Q1FlVHhobEs2RnZtRXRMR2FXU2dhRkNOMzN2aVhWSWY3TFhJajVR?oc=5" target="_blank" rel="noopener">
-    <h3>Six Sleeps Until iPhone 18 Pro: Here&#39;s What We Know</h3>
-    <div class="meta"><span class="src">MacRumors</span><span>&middot;</span><span>Sep 4, 2026</span></div>
-  </a>
-  </div>
-  
-      </section>
-
-      <section class="block" id="tech">
-        <div class="eyebrow">Technology <span class="count">&middot; priority 5 &mdash; more picks</span></div>
-        
-  <div class="cols">
-    <a class="item" href="https://news.google.com/rss/articles/CBMi9AFBVV95cUxPNHRmb1FONGd5QWZtTmVyMzFzU01EQy1Bb3ZYQVBVMGY5WHdxR0RHWlBIWWF0ZDRNZ1VIWkQ4M3dxbi0yc0V4bjNlOFdaOE9NaEtmbEFxdnUwUEdPVHVqOTBYOE1icnhOZ3pZcllZN2FEcWZHMEl4UVFzbUxJZ2w1NFAyMjhMQzljZW85Nml4cE1HQWRZelZYN05laEtYejBDbFNuZi1zYU8wT2RLcmJzOTJzWW5wMXJrYl81TlRDNFFUX3hhUzNQaWNkTmVSRHhGemZBM2tQSk85Y2RYRG85ZmxFRmFqVGRUbGNxX3RiTjAydUtX?oc=5" target="_blank" rel="noopener">
-    <h3>TSU Small Farm Expo brings farmers together to explore new technology, tackle industry challenges</h3>
-    <div class="meta"><span class="src">News Channel 5 Nashville</span><span>&middot;</span><span>Sep 3, 2026</span></div>
-  </a><a class="item" href="https://news.google.com/rss/articles/CBMiqAFBVV95cUxOWFdlUlUwcFNWajBfc1ZIbXVpSW1tTHNxb2JEQmVkMDkwYmEzUWFfaWpTdFVmM3g4SEJicUl4OWtqSzJFQ2xhMjBGN3ZoNDFsWmlrNWwtTkpIQ2I5YjFwQkZBZTNRRFh2TWh0ODE4UHJpVWVzOEtGc1RBSDQ0RkdZYTJHWk1pNy05R2MyU0JmeElqUzR0Tmc1MHVKb3hiM3RMLVBfbEtsTHc?oc=5" target="_blank" rel="noopener">
-    <h3>Tech industry’s robotics talent crunch has UW’s new grad program nearly full before day one</h3>
-    <div class="meta"><span class="src">GeekWire</span><span>&middot;</span><span>Sep 3, 2026</span></div>
-  </a><a class="item" href="https://news.google.com/rss/articles/CBMikwFBVV95cUxQS2RkZlE4enRvRm8yd1RvaDNlZi16MlBBT2Z1dWJ5Q0J5TWVvR2hjcUVLQWwtdExENlJGVldRSzJqQ1RwNTVUeVFfR1RaMmpqV2U3TmFYMG1fZTFlUm5SYVJzTThmX3FyZU9qRzBodmZyOFRNcWtxVDY5dDBJZTFjVzJDemd1a3d3dHJlcWxqczBDSzQ?oc=5" target="_blank" rel="noopener">
-    <h3>Call for built environment industry to embrace technology</h3>
-    <div class="meta"><span class="src">South African Government News Agency</span><span>&middot;</span><span>Sep 3, 2026</span></div>
-  </a><a class="item" href="https://news.google.com/rss/articles/CBMikwFBVV95cUxOTUE2OEExUE5BbzgwWlp1VGF4T2VCeVYxaGRRZnZwa0RlQkgzRHEzZWJiUjRnUmdIUDNrM0J4WUpab0tRd2UxU1E5UFY5V2tPSXkycHpKU0RFckVPRFBUY1pFd1RoSVBqT2JJUDc0NzlSdlQ5X3Zwb2ctSlB2UW9McXFoR05EVGg3S0FWTkZtVUcyRVE?oc=5" target="_blank" rel="noopener">
-    <h3>SEEQC Signs MOU to Expand Quantum Technology Cooperation in Taiwan</h3>
-    <div class="meta"><span class="src">The Quantum Insider</span><span>&middot;</span><span>Sep 3, 2026</span></div>
-  </a><a class="item" href="https://news.google.com/rss/articles/CBMilgFBVV95cUxOMVBLZXIwcXNxY0NvLXJ2ay1TRTc2VUJTeG9tTGNXX1JlTV9UdmQ4dnBITWJEVjVHa0VMemlrcjQ0NTRjOXpfeXlnc1JXQk1JZVFpVzhadUtzOUtVQVNvNlg4WFpaajgyX0VfZ2RhcWJYVGo4OENiblJYZXZ5Q0FFaDJyNWZOc2E0dEIyalhSNEFfdU5qMnc?oc=5" target="_blank" rel="noopener">
-    <h3>Why the Courts Are Hesitant to Punish Tech Giants Like Meta and Google</h3>
-    <div class="meta"><span class="src">The New York Times</span><span>&middot;</span><span>Sep 3, 2026</span></div>
-  </a>
-  </div>
-  
-      </section>
-
-      <section class="block" id="ai">
-        <div class="eyebrow">Artificial Intelligence <span class="count">&middot; priority 5</span></div>
-        
-  <div class="cols">
-    <a class="item" href="https://news.google.com/rss/articles/CBMiqAFBVV95cUxQVzhRVjF1eHBqMzA4dzMtMHBJaDR1eHhFQXhhdGxGc01NVklhVTcxZFMwOWJHM1lFTV9ZSHA5X2w1VkdFQVZWZmlrejhKcjZ5UlU0ajY1NkdDR2FVSnpRVW5CZmg3MlA2WkFGSl9qRVNJbGNNQ2lZOXZGWE9fNVVxVm9nWmU5YXljWFczQ3RCSjlRdXJGRF93aFJyVXVIek1OOWpCQlZfSl8?oc=5" target="_blank" rel="noopener">
-    <h3>Broadcom&#39;s Artificial Intelligence (AI) Chip Sales Surged 221% to $16.7 Billion Last Quarter: Is the Stock a Screaming Buy Right Now?</h3>
-    <div class="meta"><span class="src">Yahoo Finance</span><span>&middot;</span><span>Sep 4, 2026</span></div>
-  </a><a class="item" href="https://news.google.com/rss/articles/CBMiqgFBVV95cUxQc3Ywb2VvQllEZllleDhyS2VMQUUxc2dxVncyR19Ec0lVTTNOMll0cDJ2YmVUbVBCeWc4d3dYVlR4dFF4dlQ2V25LYUpxSEVuak5CeVUwb0JCSkdtaDlxNXh2Ql9JUDhWd0NrR0U5dlFIWHJJcy1TVjBhbmNFR21UZGI4YVNpS3AydkhqYjRUNWZpWk9pOWI3OUlQT2NBRm83RkNKeGk5dEN1dw?oc=5" target="_blank" rel="noopener">
-    <h3>AI in asset management: Between strategic priority and a lack of evidence</h3>
-    <div class="meta"><span class="src">kpmg.com</span><span>&middot;</span><span>Sep 4, 2026</span></div>
-  </a><a class="item" href="https://news.google.com/rss/articles/CBMixwFBVV95cUxQTDBEX3pSUklRc0VjVTR3TzF6VldkaXRFZlJ5a0M1ZVRkY2ZxS0VhVFdCM0pOMVVsUmwzQkQ4NnlxVXNtWVFsd1JqQy1ySE1vRWJYOVBmVmR4czJZVklrLUdfX0ExM3ljWVJfdWZWQkRRMUFWZ2xyc1dlSS11a3FERGFMQndGdS1sSzctUWVINWpqS3k1aUpXcU90QmphakZZRHRfSE9fbGgtb2RTV3djUDE1dm9LdGdpSEV2Y3JPWkk3aFdpVVYw?oc=5" target="_blank" rel="noopener">
-    <h3>Princeton considers AI and data science-focused ‘evolution’ for ORFE department, specifics unclear</h3>
-    <div class="meta"><span class="src">The Daily Princetonian</span><span>&middot;</span><span>Sep 4, 2026</span></div>
-  </a><a class="item" href="https://news.google.com/rss/articles/CBMiogFBVV95cUxOWEwyeGs0eU5xWGJ6WkVEWE5IQUJrc0l0VkdDQ29EeldSdGxBUE5GVTZLdFdPVFd6alNUbDRZSzFXWTROQzlPN2s5VExtSWk3QjMwdW42SVc1YU1jM3ZKTzliTkZEZDExUU80LTlxWFdxY09qRDJhckxkakRPSTE3TXN2M3hSUm81djRUTl94OE84Q0N5alRrYURuMlNKN3UyRHc?oc=5" target="_blank" rel="noopener">
-    <h3>Beyond the “Super Virus”: How to Build Trust in AI-Designed Biology</h3>
-    <div class="meta"><span class="src">the-scientist.com</span><span>&middot;</span><span>Sep 4, 2026</span></div>
-  </a><a class="item" href="https://news.google.com/rss/articles/CBMi0AFBVV95cUxNNnBIVUtLNnhvR2dZenNXLVJIa1pPLVhrMnZvcktfRHRXUXRVUjRGSHR6ekdKNzNHVUl5WkFraTl1MV9teHJHTTRrUkw4VUpweEQtbUp1bzVWSmJ0SDJHZHRQR2VTd1hvbmRhaWJCaDk0TTIzUWNTVDlwclNFMDc0UnRfSWlpUi1hMUZ1YUs4OWxKbXdJUmpiMWJhU3VlNWxXSnM3Xy1BNUdwTUdPTnZJbGNuYjB6TjdpWWZEMk81SnB5QXZnV3pRU2NLUm1qcjQy?oc=5" target="_blank" rel="noopener">
-    <h3>Nvidia Raises Bet on Open-Source AI With $13B Hugging Face Deal</h3>
-    <div class="meta"><span class="src">The Daily Upside</span><span>&middot;</span><span>Sep 4, 2026</span></div>
-  </a>
-  </div>
-  
-      </section>
-
-      <section class="block" id="biz">
-        <div class="eyebrow">Business &amp; Markets <span class="count">&middot; business &middot; capital markets &middot; housing</span></div>
-        
-  <div class="cols">
-    <a class="item" href="https://news.google.com/rss/articles/CBMitgFBVV95cUxOOG5LelpOT3VPYy0zM2Iyb1dHcGNEV0lGNGdBOHQ2bklPY0w0cTJRZEo3NTdlcW9ZZWx5czhkY1phdTQ0WmRXMFE0WDdlZ1lyeFRyZXpONmFKTTQwclZjRktCdlZSSldlMG5vOTh6TEF5QWk0a19NV2hnT2ZNMEJTa3E4SlBzM3o0Wk5ISGh5S0lSNG1yQmQtcWFqY3dEZllRZXBoNnlzYjJ0QUp6T3h0YXJCc3QtUQ?oc=5" target="_blank" rel="noopener">
-    <h3>How bad would it be for Canada if the U.S. left CUSMA? What a report suggests</h3>
-    <div class="meta"><span class="src">CTV News</span><span>&middot;</span><span>Sep 3, 2026</span></div>
-  </a><a class="item" href="https://news.google.com/rss/articles/CBMi1wFBVV95cUxOVEp3azR5MDVFU0thbzgyczJLQWcxNlVabWJuQkdYd0ZvOFZHSXlzV2xzamh4WlpvdlNKSTAtUngwZEJnOWdmangyVzAyOVBaLW9GOEc2YURDWDNvc0VJY3dLNXhOLTRrQnpFNE5RYUd5TlB5U3Z3dTE2R21NY3BMdjZSTHF5TXJyb3B3clp4Y3lRSy1jZTU3UWJLNktfWlRySkZNdnZsdnlNY3hYSzV0NEp1eWFPWThEei0zYTAtUFlsN3dHS2QySEJibDdMZDdoZDhQM2NTZw?oc=5" target="_blank" rel="noopener">
-    <h3>The world’s second-largest economy just decided, with one of its top African partners, to do away with the use of the US dollar</h3>
-    <div class="meta"><span class="src">Business Insider Africa</span><span>&middot;</span><span>Sep 3, 2026</span></div>
-  </a><a class="item" href="https://news.google.com/rss/articles/CBMimwFBVV95cUxNMUV2QlNxeVRmaVY1cy00cFo1eExyVVhEUVp4a1BNZ1pRc0Fjcy12bTBtZS02bmxsZGZCRXFfb293d19aQ2RIV2ZHTVlNMjh5UFpXNUh6c0hSVFdZYzlFbGJJXy1ZSnBDTl9icGdEd08zOHVyNHBjanVQTEhzTFdKNGFiRUZxY1FPbGZiUmdVekE4QnRsdlh4ODZDUdIBoAFBVV95cUxQTTBZZ3V3VTdPVnota3J2emRsVjlMVXpKREJ2NnRmUk5YU05Tcmh0SjZiT3gzNXRNZ01YTGw0VFZTbXNueWNva1RIUDRlT3ROMGtRczhVci1XYktwNWc0c2x2eFF1enZQRUxMT1dHdThRdWM0Q0Zpb3NTNUVQbVBQeWZ4X0VpUzBxWHJ5WTM5SG9aclRjQldDaDZqZGp6ZU91?oc=5" target="_blank" rel="noopener">
-    <h3>US judge rejects bid to break up Google’s ad business</h3>
-    <div class="meta"><span class="src">Al Jazeera</span><span>&middot;</span><span>Sep 2, 2026</span></div>
-  </a><a class="item" href="https://news.google.com/rss/articles/CBMirwFBVV95cUxPa2xtamVETE1CV1pjeElXZnpCMkRNVmhwcHJQY0o0cXBaOV9yZ0dFMGwyejhsT0lIX1RVYVd0bE45YlcyYmZfVWxLRkhxWFhwQzY3UDAxZjZXaUdBcXBXS0Y1cm1mT2VEU3pGaTZOX2hHQVhuRHRNWjNqa3RWV3hsbE5rQ2JpX05meGJyT1F6ejNiZUdacmpFREYtRFB2MW9vT0VvdmtNMlI1LVpzX2FF?oc=5" target="_blank" rel="noopener">
-    <h3>Bryan Yu: B.C. economy braces for tariff hit as small-business optimism falters</h3>
-    <div class="meta"><span class="src">Business in Vancouver</span><span>&middot;</span><span>Sep 2, 2026</span></div>
-  </a><a class="item" href="https://news.google.com/rss/articles/CBMiZkFVX3lxTE1yLWZVcjd5Z01wS0FmMVExUmgxRV9lQXl2QzhmdzNJeHdqNDR6UEl3SG1FRWc2enFyaWFvZjYxQWdQWktLWDVYeVZ3aDBxSWlPZC1GdVFPdXhUcG9WMGVmOElFQms5Zw?oc=5" target="_blank" rel="noopener">
-    <h3>US Housing Finance Chief Orders Fannie Mae and Freddie Mac to Accept VantageScore</h3>
-    <div class="meta"><span class="src">Межа. Новини України.</span><span>&middot;</span><span>Sep 4, 2026</span></div>
-  </a><a class="item" href="https://news.google.com/rss/articles/CBMid0FVX3lxTE5KV0RMeTZ2SWxhcDBzOGZaYlhVeXVjRUdLOU5ZUzA0dVBrdUZHakJDQXFpX1hwc0VUWFZ1T1lfWUhPMWlfTVlfb1hTbmxqRXpmNEEwbHVFakhuYmY5SFJvNElNNTJQOHNxazRhSDE4N0NNVDFwZjRJ?oc=5" target="_blank" rel="noopener">
-    <h3>Mortgage rates hit 2026 high</h3>
-    <div class="meta"><span class="src">ABC Columbia</span><span>&middot;</span><span>Sep 3, 2026</span></div>
-  </a>
-  </div>
-  
-      </section>
-
-      <section class="block" id="crypto">
-        <div class="eyebrow">Cryptocurrency <span class="count">&middot; priority 5</span></div>
-        
-  <div class="cols">
-    <a class="item" href="https://news.google.com/rss/articles/CBMidEFVX3lxTE55dHV4TVY1M1Q0NVNxOXlqdmwzZ2I2SEVwMVllT0JSZ3NEQ0NnWXRTbGZ4aGlBMHctaXRUUUI0NzdpcUVmT0xJV1Y2S3lVZW1tMlp6YVFEQzM5QzNWcDFobzZBdThxTzdLQ05JX2pyam5nQWNU?oc=5" target="_blank" rel="noopener">
-    <h3>Bitcoin Nears $81K While Ethereum Reclaims $2,500, But Traders Stay Cautious</h3>
-    <div class="meta"><span class="src">Altcoin Buzz</span><span>&middot;</span><span>Sep 4, 2026</span></div>
-  </a><a class="item" href="https://news.google.com/rss/articles/CBMidkFVX3lxTFB2NmRCbkwtdWNYTXBvQTZhZ2sxczVNZ2k2VWsxSm41cFJnY3dpb0xpUHpMY0RVUGdYR1AxUThIY3V3ZGdfaUVrS2xxVHRMNTJjbkNvTGZLakZXc0dpd3dSTGFyY1ljdkxIV2FhLWJWaGYzNEphd3c?oc=5" target="_blank" rel="noopener">
-    <h3>Bitcoin and Ethereum Hit Multi-Month Highs but Traders Cap 2026 Upside Bets</h3>
-    <div class="meta"><span class="src">BeInCrypto</span><span>&middot;</span><span>Sep 4, 2026</span></div>
-  </a><a class="item" href="https://news.google.com/rss/articles/CBMigAFBVV95cUxObEtybVE1aFI5eXJZcW1iZmVxRGVBcnRfRTNKSnhWSVNBaXJ3VFhYYlN5TTYxaFg4R1VxOXkyTWhkUHc2dzRhcVJSWHNybWpCQ3EwOWh2ZEI1bnNySTl1N3VqeWxxM04xU3AxVHVlTkV5QWR3ejVxem1YdE5iX3M1OQ?oc=5" target="_blank" rel="noopener">
-    <h3>Bitcoin price surpasses $81,000 again</h3>
-    <div class="meta"><span class="src">Apa.az</span><span>&middot;</span><span>Sep 4, 2026</span></div>
-  </a><a class="item" href="https://news.google.com/rss/articles/CBMi8wFBVV95cUxQVUJ6ak5PZ2ItSFZfMzR5WjFhbnQzTVpxRmpSY3lNWFhZSk4xR0tncDlsSkR4SGtfSWVUWlZUbWdJV01WdS0tYUtwOGhXZUdtenNzTTVpN3JYOWNlOWFhbDEwVjlsbVVkV29OVEJOblNLZzVHdXRGeTZ6V3FONXotSkUzeWlManNCSTctTEYtd1Y4M2h6Mkt6RVZ5OEdBdnZ3Sll5LWlRNTZUWl90aEVQU09LUzBZSzBfUE5UazNsMzJfQ084ZV9YdE9oQmhiSmRjaF9BNzdKZFpGWjkyRnp2MWIzMXdENjlvUC1OME9FQ2FsM0k?oc=5" target="_blank" rel="noopener">
-    <h3>Top 3 Price Prediction: Bitcoin, Ethereum, Ripple – BTC, ETH and XRP await US NFP for next directional move</h3>
-    <div class="meta"><span class="src">FXStreet</span><span>&middot;</span><span>Sep 4, 2026</span></div>
-  </a><a class="item" href="https://news.google.com/rss/articles/CBMi4wFBVV95cUxNRk1pWTZ4di1XazYyR3VmYmdrOWhUZ1hQS2VEb0tjU3F5a1NwUzFxWEFrLXV2aUxJTnZscG93SWlTbFhvR1hQUWlkYTZoRFZOZ0ZrWVZxN040ZkxqZFNGWElZeEZGR1p2bktPTkxmS25zWURVeEt4cXBfamlBS24xWHhnaUZiU2ZhNkxWUU82OW1QXzBoMU5qNEJLbDdFaHNRazk2ZUpJN2ZYVWg0MWlxdnh1b2xIRldLYlpmdTFmWUpodGhVUFdLdDFMRHVnczlzMG01bnpmXzJ1VlFHaWJNZWMyZw?oc=5" target="_blank" rel="noopener">
-    <h3>Bitcoin Hits $82,000 Amid Fed&#39;s Dovish Signals; Ethereum, XRP, Dogecoin Also Spike: Analyst Theorizes BTC</h3>
-    <div class="meta"><span class="src">benzinga.com</span><span>&middot;</span><span>Sep 4, 2026</span></div>
-  </a>
-  </div>
-  
-      </section>
-
-      <section class="block" id="science">
-        <div class="eyebrow">Science &amp; Space <span class="count">&middot; breakthroughs &amp; discoveries</span></div>
-        
-  <div class="cols">
-    <a class="item" href="https://news.google.com/rss/articles/CBMiowFBVV95cUxORndMVjBxRC1YcGFYemZhWWZFUm5FNVhUVU12amVJWXFVTHNUS0s4emxoUGZFSlZ3NTV5RUxXREhZdFExSngybUppRE4tUVlkakw1OUdpWVYxaWhCNWU5VzB4WGxkNFcwbDRzaFNXTFZjSThVWklYRXo1M0R0MkVBOUgtbzFmMFZpUDNuU2VxN0JkcGF4WjVfa3hHVUJwQlZQUzFn?oc=5" target="_blank" rel="noopener">
-    <h3>Scientists make potential breakthrough in search for dark matter</h3>
-    <div class="meta"><span class="src">Reuters</span><span>&middot;</span><span>Sep 1, 2026</span></div>
-  </a><a class="item" href="https://news.google.com/rss/articles/CBMimgFBVV95cUxQOV9NUWE5THc5SUs3cEFnYUt0eUk4MnhMYWRqUS1FUFZZVEtpZWstWVNfa3c5bGpIWW9JSjlxXzRPOUNoNXNNbU9WNDk0Qjhjamp6OXA1OGUzclBTa25xWnlVc09rV2VvbGd0bGpYNU0yejBoLVNRM192WmxORUlBRGF2blYwd25TWE1tX18xXzVlZC1oa1ZHdzd3?oc=5" target="_blank" rel="noopener">
-    <h3>These are the top 10 cosmic discoveries we expect from NASA’s Roman Space Telescope</h3>
-    <div class="meta"><span class="src">Scientific American</span><span>&middot;</span><span>Aug 28, 2026</span></div>
-  </a><a class="item" href="https://news.google.com/rss/articles/CBMi0AFBVV95cUxPdWI0eVRWODgtQW1sbXFzNWRCVWdHVlcwV05zUTFTTk8wY2oyLTZJN21qSFNrcWtYMElOdXBTWVJkR01hVTBzUWxtXzRXVEhYeExJNG5yb2lBV2NldDdMNWRPeU01RkduUWtacDJkeUxMZnQxaTRSVTdldm5sTC1HZUdnak4wRjVxRGd2YUZfTkwwMWtvQmp4dDhwYzlHZjM1a3R4NzUxbFVpNFg3em1DQklkSno1V1piMnRBOWFzVkZqTGVRVWJWTkRWOVRjejZt?oc=5" target="_blank" rel="noopener">
-    <h3>NASA’s newest space telescope was built to show astronomers more of the universe</h3>
-    <div class="meta"><span class="src">Federal News Network</span><span>&middot;</span><span>Sep 3, 2026</span></div>
-  </a><a class="item" href="https://news.google.com/rss/articles/CBMib0FVX3lxTFB3bTZobnNwQU9kTmd2NkFFQXUtenpLOXlNcVhQUlpHR3BtZ2xPOGd2dWphdGQ1R2pTX0NpSnA4YUxheXJLVVZPWFBsNFlGQVhnejdqdUZLcENQVmhHbjlpVVo4TkNyUXd3YzF5bldFOA?oc=5" target="_blank" rel="noopener">
-    <h3>NASA scientists discover a giant 10-sided pattern on Saturn</h3>
-    <div class="meta"><span class="src">Science Daily</span><span>&middot;</span><span>Sep 3, 2026</span></div>
-  </a><a class="item" href="https://news.google.com/rss/articles/CBMi1AFBVV95cUxOQndZcjNBcFI3SFVkUl9rX24yVnhOakl3eVZqTTZxZ19BdjdTeTlzS0FsVXQwb25xallLcG16dUExcXFyZ0xjNkN0THFhUkVXUFN2dXQ0VUZWNlk3RHdUT2lJR1lnaWl3MXZ4Y1NQY0k1Q1JsdkVqdzlmTC1nZnNtTkNvUENEaGtTRUlLV0NEeTRIQ2VVR18wQ0F1cFRuaUQwZ1U1cExvTmxpODh0bVNfZEpBQWI0TzZjUEw1NUl5VlRXWnNoYU9UNXNmTzZnRWN6RG9LTg?oc=5" target="_blank" rel="noopener">
-    <h3>NASA&#39;s Roman telescope &#39;could not have happened without Ohio State&#39;</h3>
-    <div class="meta"><span class="src">The Columbus Dispatch</span><span>&middot;</span><span>Sep 3, 2026</span></div>
-  </a>
-  </div>
-  
-      </section>
-
-      <section class="block" id="golf">
-        <div class="eyebrow">Golf <span class="count">&middot; PGA Tour &middot; equipment &middot; courses &amp; history</span></div>
-        
-  <div class="cols">
-    <a class="item" href="https://news.google.com/rss/articles/CBMi7gFBVV95cUxOdVdidFlYWjhsQkU4cE5Zek1JdlZhbzNMSHhCQ2hlM1ZZX2RXb0NtRmxuRTRNakJ0X2xqN1MzdFFfckhlVzJhb0Z4Q0d4QjBycmF6OE1JdkVLVUFLN25aSE9FWjRrR0pFbmhmQjhGd254eFBoU0hqOVJZZVhtWGRBRG1DZnhVaEN4QjZXVDR5YnlYaXlhdHR2bnRGMUFFblJ3bFhUdXo4dlRuV2s5RWNwZ2lmMzBwN1BnV2U3NVphcTU0dm5ySXdDNnpMZkhVZ3dFSDExZ0VSZFBRTjQzTm94YUxUNDRVTGdMNmgxRTBR?oc=5" target="_blank" rel="noopener">
-    <h3>PGA Tour Champions event to tee off in Lehigh Valley on Sept. 28</h3>
-    <div class="meta"><span class="src">WFMZ.com</span><span>&middot;</span><span>Sep 3, 2026</span></div>
-  </a><a class="item" href="https://news.google.com/rss/articles/CBMiywFBVV95cUxQeDZvZTQ5V2RjOUFjWWlTbUtwMVlQYnphSDZGa0FEY1lOSXhyWHJnei1uTGoyRWpUUmFaUjA0RzFzbk1yTVE1aGwzMXBOc2xpWnNnQ0FFZDFGRWx6Y2ZLMkduZlJOaDBVMnY2NFprVWNVVXZpZzlzazlOcGh4OXlHOWItRGo2NHFCNVR4a0EwMUtCcG5qTXI4NUlQcTRqMm10YVZOTklnV05LQlBxOEVXbmtfSVJHLTItZnFWTXFVMmppZUNGbXJZbzhVWQ?oc=5" target="_blank" rel="noopener">
-    <h3>Jones Earns Sponsor Exemption to PGA TOUR&#39;s Biltmore Championship Asheville</h3>
-    <div class="meta"><span class="src">catamountsports.com</span><span>&middot;</span><span>Sep 3, 2026</span></div>
-  </a><a class="item" href="https://news.google.com/rss/articles/CBMiiAFBVV95cUxOalFhUlo2OG4zenNtaXVsYlJzMkxIWUVXVEZtZHQyd3Q5dW1pMGxOaE92bVVKUzJtR1M3N1I0TkZBeGZkaWFoZ2lWSFRFYWt6a0U2NzBkTDlLNThSQkdIeGVhdC10eXB3VlN2OE5aNmszUEEzWXRyTE9xU1hHcjVyR3lXYjZRa2hR?oc=5" target="_blank" rel="noopener">
-    <h3>Scottie Scheffler Revealed His Offseason Priorities Months Before Making PGA Tour History</h3>
-    <div class="meta"><span class="src">heavy.com</span><span>&middot;</span><span>Sep 3, 2026</span></div>
-  </a><a class="item" href="https://news.google.com/rss/articles/CBMixgFBVV95cUxPS0lHQVFVZVJqRUlFVUo2NmpaYVQ1R3drMmNHbFJnYUhXVkpsT1UzTkxYM014MEtfNTJaWnI1RElXUl9PMlBBX0lMQ1JsazM3Z0w2d3JITzliVnRuVmVETi1CcGRBZzlQNklIYWpZZ0ZWdmVYTHYzbGdXX18xSkZoZFNKYTBDTTZQbnkxdTN0LTJLUVlaTGhFUVJJbmJoN1YwLWpPaWE3THNOdEZZVnhfdGp0OFNPRHBBaWJKeUxyV09JM3RMQVE?oc=5" target="_blank" rel="noopener">
-    <h3>Is Tiger Woods returning to competitive golf?</h3>
-    <div class="meta"><span class="src">golfweek.usatoday.com</span><span>&middot;</span><span>Sep 3, 2026</span></div>
-  </a><a class="item" href="https://news.google.com/rss/articles/CBMipwFBVV95cUxPUnRDN2V5QWZTYTBYdi1xSkxsQ19WWVFuR1dVX1lrWF9JQm9ha3BhNFFOXzI3Z3BncjEzUk9tdWhBcHR2WFh0UnlMQzE2NVRQLUVHbFFQZXZ6R2t1VzhOWkhNTDVQelQyajVxWE4yTUl3eUxhRXFpbVh4eTQ1TmRpMGJEOHVyMngtOVdhVzBEdS1TVGZhakdhd1NPMXhVYk11U21OSnZvbw?oc=5" target="_blank" rel="noopener">
-    <h3><span class="tag ever">Evergreen</span>Golfer hits 411-yard ‘longest hole in one’ in British history thanks to drought</h3>
-    <div class="meta"><span class="src">The Telegraph</span><span>&middot;</span><span>Aug 11, 2026</span></div>
-  </a><a class="item" href="https://news.google.com/rss/articles/CBMie0FVX3lxTFB6cXZ2TlZLUXpyMEJiSW9MU0tvUzI4dUV0enMtMExnZFNWd0VlZ3BGZE5Lcl92TTBiNWdod2pGX1hBVWRQRWpTeE9ISU9FbjEtdXhGUWRqWUlGS1g2TTBmd2RKSkJYS25UM2lCMHRSTVV2MmhFWW1TQVcxYw?oc=5" target="_blank" rel="noopener">
-    <h3><span class="tag ever">Evergreen</span>History for Herbert</h3>
-    <div class="meta"><span class="src">The Open</span><span>&middot;</span><span>Jul 17, 2026</span></div>
-  </a><a class="item" href="https://news.google.com/rss/articles/CBMiyAFBVV95cUxPN0RHYW9rczkxLTFBaGkwdUVKLVF2elVhUzZ3S1hTWGQ0ZmlXbHB2bjd3NzNMdGhZbGNidWNpYnlTaFRCV2l0ZWpudVRfUHRxVXAtZnVqY2ZIVkE0blV5c2EtUG56dWd0TUhPeVh6YjRjMUtzR2FuYjRaQXE2NGFwNGVKLVZ6QlZMZUJUejRXbnZoY2lTMnJ2a2x2UlZza19sbi1uNENtbTZrYXc5U1JUbkNOZlpjeEc0b0Y3bGdFWWRfMVEwaEZKRw?oc=5" target="_blank" rel="noopener">
-    <h3><span class="tag ever">Evergreen</span>Emergency Stay Sought in Legal Battle Over Public Access to East Potomac Golf Course</h3>
-    <div class="meta"><span class="src">Democracy Defenders Fund</span><span>&middot;</span><span>Jul 19, 2026</span></div>
-  </a>
-  </div>
-  
-      </section>
-
-      <section class="block" id="music">
-        <div class="eyebrow">Music <span class="count">&middot; country watchlist + wider net</span></div>
-        
-  <div class="cols">
-    <a class="item" href="https://news.google.com/rss/articles/CBMiakFVX3lxTFBHMExBS3lHVmpVN0N2SUtMRlRtS3RNUFZadnhORjZ3by1LVHF3Nms2WFhPUEhCTmk4X0hvc09VdzZ5YS1LckM2b0lPVjV1WGVIc1Ixb2ViQlRUX3BJR3hlZzJBakIybTktOFE?oc=5" target="_blank" rel="noopener">
-    <h3>Morgan Wallen Curates His Own 24/7 SiriusXM Channel, Morgan Wallen Radio</h3>
-    <div class="meta"><span class="src">SiriusXM</span><span>&middot;</span><span>Sep 4, 2026</span></div>
-  </a><a class="item" href="https://news.google.com/rss/articles/CBMiowFBVV95cUxQeEU2V0V6dW5iOVpYNDJUUmxYRGtxaHd1SnJKV2x5UDkyNldrTnU0dXljeVhzLWxGamRMN1BIeUhCbEh6dk9iVlkyYS11U19LejlrOGk2TkRuamtsM3NmOUVKaFpPdmxIT24wanRaR21oN0ZzMVRSNGhPay1KYWFpYU0zRWI0UVVncklzOWQxaVVjMi1uUnV6RV9fZ092OG5yZjRZ?oc=5" target="_blank" rel="noopener">
-    <h3>John Mayer clarifies departure from Dead &amp; Company: ‘Part of the grieving process’</h3>
-    <div class="meta"><span class="src">San Francisco Chronicle</span><span>&middot;</span><span>Aug 28, 2026</span></div>
-  </a><a class="item" href="https://news.google.com/rss/articles/CBMijwFBVV95cUxPYXpyZTIxMU9DeXFNWFdBaXAzdWppdU1GOGM2TFpNOTRzUnVxWWh4ajRiTnRVQ010cW5LUWZoQ1VkbDZOUE1LdEo2Y1IwaE52OG1aeWhmUnpyUF82UEthVlRsLUNkQVY4bVFmcXRyMWxuOTJndVpPcnUxNVh1QU5RRVVjUDhvVXZEUWt2RVluQQ?oc=5" target="_blank" rel="noopener">
-    <h3>Darius Rucker Announces New Single &#39;I Believe&#39;</h3>
-    <div class="meta"><span class="src">antiMusic</span><span>&middot;</span><span>Aug 25, 2026</span></div>
+    <a class="item" href="https://news.google.com/rss/articles/CBMioAFBVV95cUxQSnhKcVdqT3dlRVQyUTdPMWFfSWVTMzMyVnJXbkV0cHVqUUhGRGZRU1lycW1OakR1SnhGbldmT3VPRGlzTnpiXy1DRW9jLTNWREpxLUhSbVpWVmhBallmM2F6Q2owYm42b3ZBVVh0V19yaWR6a2xrU1hHaFowYjBNMW56OThjT1ZwSGVqYTZIbGNqV2tQb3ItbkRTQ0I1dk5v?oc=5" target="_blank" rel="noopener">
+    <h3>Infant died of measles in Pennsylvania, coroner confirms</h3>
+    <div class="meta"><span class="src">The Washington Post</span><span>&middot;</span><span>Sep 5, 2026</span></div>
+  </a><a class="item" href="https://news.google.com/rss/articles/CBMiwAFBVV95cUxNN1JpUDZoUDA5TFJkOHprSTA5VTRKeXhrN256M0MxRzdRUjFhRldSZFlydjQ0X1JsRU9TUXdlUW5PeEYzd3ZXV3BtVEpSNzhRd1RhMnVHTnZvczUyOFVacmkyUHlxSVFmZUlpSzBDRWczUm04UHFOUTlLZW5GbnVlRkFRUFd1LWRrWXp3NVhtNHBmbWNZUVlYTXhxRm5RY3ZoMnRjeVNhclNDVGFQaDRZaG9jcWRTbXl2YnBEZ1VmQzg?oc=5" target="_blank" rel="noopener">
+    <h3>‘Elsinore’ Review: Andrew Scott Is Shattering as British Actor Ian Charleson, Throwing Himself Into Playing Hamlet While Succumbing to AIDS</h3>
+    <div class="meta"><span class="src">The Hollywood Reporter</span><span>&middot;</span><span>Sep 5, 2026</span></div>
+  </a><a class="item" href="https://news.google.com/rss/articles/CBMi0wFBVV95cUxQNnU0YWRHTlZOcE9hVE5fVzhjOUYxbXctTHAwakNBX1FtLWpsaXc2NHE3anI0U05jRzNLTTMwUm83SzlCcFN5X20yZFY0akM3WF9GbGRmSWVwaXBJRVNqV2VFd3ZzcWgxcWdtMWtRSERSUnZDbmh4cGVmc2lPcnZJUUNSY0lZUkdnN3VqNTRkZ0JuZ1htamd0TEZJSTg0YmpoM1QwQ3IyU01USHFqd3Exb2FLcXl5bXBHZmJPa3pmZzIxMVdhVzVaRkRUU0p0cnhJT2g0?oc=5" target="_blank" rel="noopener">
+    <h3>LSU blinks, for now, on the issue of putting former NFL players on the roster</h3>
+    <div class="meta"><span class="src">NBC Sports</span><span>&middot;</span><span>Sep 5, 2026</span></div>
+  </a><a class="item" href="https://news.google.com/rss/articles/CBMiWkFVX3lxTE9xTmN4T0dlOS1kMy15TnVsTXI5RFFJTll0TVRXQ3NkVlNtNHZUYnBfcVR5ZUE4aFhBVDNfeGRGNjVuWWJTVnBvQkxwODdhWGFXbm9SUkdEMER4UQ?oc=5" target="_blank" rel="noopener">
+    <h3>What happens next after Lindsay Clancy&#39;s murder case ends in a mistrial?</h3>
+    <div class="meta"><span class="src">BBC</span><span>&middot;</span><span>Sep 5, 2026</span></div>
+  </a><a class="item" href="https://news.google.com/rss/articles/CBMiqAFBVV95cUxOZXFNLUFEYXhxdUtuQU42V1B3YjBWbGtlLUJERXhUN3lLR0c5dDY0NHN1VTBYNnRwODc3UjNpQUJtZEhZV3g3Nkp5eTB4alJ5M1NOdmRpa3dSNU4yak9LQ2pBZF9EcjBpcW0ybzN0QlVIdDdyeEFTMkZLSmRleUZpa0YzeDV6REczbEU1U2s2NHoxbEVLVWtvQ1NFN0JpVlRoN1YwQ0h1R1c?oc=5" target="_blank" rel="noopener">
+    <h3>Newly released Fetterman texts show a reluctance to perform constituent duties</h3>
+    <div class="meta"><span class="src">cbsnews.com</span><span>&middot;</span><span>Sep 5, 2026</span></div>
   </a>
   </div>
   
@@ -528,82 +487,18 @@
         <div class="eyebrow">Food &amp; Cooking <span class="count">&middot; recipes can be timeless</span></div>
         
   <div class="cols">
-    <a class="item" href="https://news.google.com/rss/articles/CBMigAFBVV95cUxOR1k2UWw2YkFNcVVFcW9ZRlFYZWt0bVRxdnFhMnplQkl0LVhtSmtOWVRTc3JtZFpRR2tvTzg3UjdfczVVa09XSkJxb0JQUk9DaW9sRVR0MXp5c1hNUVhSWVQ0RHhhZmpTVGswTktxUTZ4b0NqR3ZZSFdDUm9KZmo1eQ?oc=5" target="_blank" rel="noopener">
-    <h3><span class="tag ever">Evergreen</span>Chop, chop! My favourite fridge-raid dinner, no-cook meals and super salads</h3>
-    <div class="meta"><span class="src">The Guardian</span><span>&middot;</span><span>Jul 16, 2026</span></div>
-  </a><a class="item" href="https://news.google.com/rss/articles/CBMidEFVX3lxTFBhUVBZYmNjekowNWdvaHJlVGVLTVROYmpoOXNfcE9xUUZ6cjE1OU1oNkI5Yk1hWXI5RUJGTElIZ2dscDdjRFlhYkhVRnhVUi1qc2huVE8xQ3dlSXhSSzVWNTdTY1YtdXMxU2IyN2xHMlAwYjZV?oc=5" target="_blank" rel="noopener">
-    <h3><span class="tag ever">Evergreen</span>20 Lazy One-Pot Dinners for When You’re Too Tired to Cook</h3>
-    <div class="meta"><span class="src">Simply Recipes</span><span>&middot;</span><span>Sep 1, 2026</span></div>
-  </a><a class="item" href="https://news.google.com/rss/articles/CBMiX0FVX3lxTE1zVFBaNTlPdlZRUnlzNDZadHl0cU1MRm03VEluV2FmTGxaMDBhaDMySUhOWDBJencxakh2T1lUS0xHOWRUcjZGV2pyQWxMM1hqbk1xQzYyVldZbkRhRkN3?oc=5" target="_blank" rel="noopener">
-    <h3><span class="tag ever">Evergreen</span>100 of the Easiest Meals We’ve Ever Made</h3>
-    <div class="meta"><span class="src">allrecipes.com</span><span>&middot;</span><span>May 8, 2026</span></div>
-  </a><a class="item" href="https://news.google.com/rss/articles/CBMiqAFBVV95cUxQY3d4ZFJhbm1OOU1mMlBodDYzNHBUQXh5amZ5aGJMNE5rR05wRU9NTWtDVEhkWVlQVUZTaVNDRkkxQ0FLdElrMlVVUkNSc3FudzVuMzU4N3J6Uk9EM3h2andzNWJqLUxHN3FVSHlsMk5vNDRoNHpkNjUzUVEzWXdldFFqbUZzZFozRTNsejVFTmg3eTdwUV9MZEdnRXFoYnJCS1dVd2czcUo?oc=5" target="_blank" rel="noopener">
-    <h3><span class="tag ever">Evergreen</span>RFK Jr. launches MAHA cooking show — with healthy recipes under $5</h3>
-    <div class="meta"><span class="src">New York Post</span><span>&middot;</span><span>Jul 30, 2026</span></div>
-  </a>
-  </div>
-  
-      </section>
-
-      <!-- SPORTS NEWS -->
-      <section class="block" id="sportsnews">
-        <div class="eyebrow">Sports News <span class="count">&middot; your teams &amp; NFL &middot; MLB &middot; NHL &middot; NCAA lacrosse</span></div>
-        
-  <div class="cols">
-    <a class="item starred" href="https://news.google.com/rss/articles/CBMijAFBVV95cUxNZjRJbXhiYnlkV1RJeU5tNG82X3RHdkVnMmpoNjZyelMyRDd3VWEyMHhzOWlDNllqOWRSempKdFRuaWtLNEw5MTF1TXNBYjU2bFk1X3YxNUFRQmJvcVFWRWdpT29jM1VZRVdDYnktcUI5YjVURGlYOUpTbFczbzFiZTh4MDhnMlhHWEFGdw?oc=5" target="_blank" rel="noopener">
-    <h3><span class="star">&#9733;</span>Flyers Announce 2026 Rookie Camp Roster and Schedule</h3>
-    <div class="meta"><span class="src">nhl.com</span><span>&middot;</span><span>Sep 4, 2026</span></div>
-  </a><a class="item starred" href="https://news.google.com/rss/articles/CBMixAFBVV95cUxNY1ZKdmEzNERQa3NJeFVXb0VYdWpnLXI2b2Ita29udGZ4blVKckh2NC1EaDFmeENON05ZTmhjWVlxcHVhc0ZkaVZWV1NSdWlMMXpzNVJRUVlCSFV0UnRiVENzRVV3MVNSTDItRGpaUGwtM3FpSC1mckNsU0Z5WG9PaExSTTR1YVA1SzBLNV9pMnBoTUlkUV9aeEFnOVBLMHhPVUdKaEx0b2FaZW9NbU53aFUtQnVWcE5BUVhuOHM1cDJGSEU3?oc=5" target="_blank" rel="noopener">
-    <h3><span class="star">&#9733;</span>Ex-Eagles rookie: ‘I look forward to putting on a college uniform again’</h3>
-    <div class="meta"><span class="src">PennLive.com</span><span>&middot;</span><span>Sep 4, 2026</span></div>
-  </a><a class="item starred" href="https://news.google.com/rss/articles/CBMimgFBVV95cUxNWk5FVnV4WjFtaUU5Q3NyR2c3Y0NGSDQyQm1CajEyM1ZCYlFWblFjV3BJQTE1NGtvSU1ydHZaV3Bqc0xNWE9GbjVQbElyamZ2bE1OVGVKTTJwSU50V2VpbDBBUzlFNGN4dWstajB2YVNNemtUT0doWVNCMzhWZnVzUjFNUFVNLURNU1NpeWVGZG1wbGM5OHUwY0JB?oc=5" target="_blank" rel="noopener">
-    <h3><span class="star">&#9733;</span>Flyers Prospects Interestingly Stack Up In New Rankings</h3>
-    <div class="meta"><span class="src">Yahoo Sports</span><span>&middot;</span><span>Sep 4, 2026</span></div>
-  </a><a class="item starred" href="https://news.google.com/rss/articles/CBMijwFBVV95cUxQZE5mQ3VGVVQtMjVLRlNFLUk3V2Fhc0ZkQzdHTHFPX1FMMW1UYjUwTjVjTjNEVERpUW1qd1F3dndrZmdjWVZBV0E4cTNNME9Tb1hadGNGakxsSFB1VGUwZk94bDZwVVJGcFp0cHd6Z3kza3pNTGdaMkMwazlXNG1nSW9iYWR3NlVUcExZSm0tUQ?oc=5" target="_blank" rel="noopener">
-    <h3><span class="star">&#9733;</span>From the Fort: TCU’s Ireland Loss Opens Pandora’s Box on 2026</h3>
-    <div class="meta"><span class="src">Sports Illustrated</span><span>&middot;</span><span>Sep 3, 2026</span></div>
-  </a><a class="item starred" href="https://news.google.com/rss/articles/CBMiuAFBVV95cUxNMUtObnZWYV9ERnlCcDYzUXM4dU0yVlZnWkYxUUJVMEpUTDBNU2V5QUZVeUxmbkY5VFhCeElHbHJSNERodjlObGpfcWd4S2VidUdNaGh5cVh5dUI3UXBnOHNpaDAwZGxkd2xKbi1NRUJ4RklHeHprRXM0QjJqQkFwQ2Q3ZlVoZkN0RkpRdW9qQXVuelZYSlFWaVhIVFdwelVHRU5leDFfbG1ST1QxRFR1Q0xIYjZPSkJ2?oc=5" target="_blank" rel="noopener">
-    <h3><span class="star">&#9733;</span>Polymarket Promo Code WTOP: Get $20 Bonus for North Carolina-TCU, College Football Week 0 – WTOP News</h3>
-    <div class="meta"><span class="src">WTOP News</span><span>&middot;</span><span>Sep 3, 2026</span></div>
-  </a><a class="item starred" href="https://news.google.com/rss/articles/CBMi2wFBVV95cUxNWkdhcE9XbjVrdzZvNGZsOGRKdU55Rm50ZmpZeVhHZmxuOTR2WWU5dWw3VElPWXF2SXp0MW45ZU1HbmZ5Tkhwa2VuU0VFNjRZY1QxQzRvMldXeFdSdGVhSEYxNmY3Tm9tWlBjbzZaVVRvTWVLSEtlX3llNWs1WF9vTXRXZTdoYzJpU1FwYjE0aDFCWHlpTUlPTzlmNmp1Y0czSl9HelRLbFhUbWhnNmZ2TTN3WVVxb3MwbXplNVNoY0tVcnZtZjdRVU9Ya1VMSGNLSEIya1FaVEFVVGc?oc=5" target="_blank" rel="noopener">
-    <h3><span class="star">&#9733;</span>The brilliant Howie Roseman trade that’s still paying off for the Eagles 10 years later</h3>
-    <div class="meta"><span class="src">PennLive.com</span><span>&middot;</span><span>Sep 3, 2026</span></div>
-  </a><a class="item starred" href="https://news.google.com/rss/articles/CBMimgFBVV95cUxNUU1XYWpCc29VQ21JUFVaOXdxS1ZSbVAzZ0FlRlVmcXpFc1NQaW1tWmNjaHlVbnZTRlJsSFM1ak5FZnZZVUdQbUYwQUppRUt3V1B3ZHM2Z2UzaDBtb3IxR1haVnViT1FCc0xGZ0o5T3pxaTZZazNZMnhJakpxTjNXWHIyY1NnWWFwbVRRZmpxWFoxOXRJZWMxQUJ3?oc=5" target="_blank" rel="noopener">
-    <h3><span class="star">&#9733;</span>Philadelphia Phillies Quietly Sign Intriguing 27-Year-Old Pitcher During Diamondbacks Series</h3>
-    <div class="meta"><span class="src">Yahoo Sports</span><span>&middot;</span><span>Sep 2, 2026</span></div>
-  </a><a class="item starred" href="https://news.google.com/rss/articles/CBMiqANBVV95cUxPRkY3RWJwcTFUWUYtLVZJTldMS1dwN211a3M1WEF2dzA3c0R2c1JhN1BNYl9JVVBGTHJ1UTNjajIwZHlVZ2dCTUhnbHhUY0NzdWFTaHVaNFBhX2RLeVY0Z0xyLVdFb2pNbFc1T2RxdS0xTjZKZlI3ajNTNU1xVFBPODFhdUVTZlVuMUhLVW1CMEJJY09qUkgzR3c5S2JFTVlTaU80akMyUVVNSFlVbGpUa0ZCUl9sLUdoNms3WWhDRlY5Q19TajB0LW45R2gyejR6aU90UU1TT09TbW9pZEFGbHlJcXYtdV83SFU5bVhXV3A0aTlJSlF2dV9vcWpfMjdmQUJMcm5sMXd3QkpVT3lWRzNqeEc4eE1sVEtsOGpBTHV4TWtJR2JVRW0xLTFrWmhnZ3MwSlhQN2RkVTBrTmZmdkVuejhWSXhxTTk5eUduTG5JMTEwYnFMWnkzN3RfM2c4MTlwNGtVajB5MkVFUzRhZmNmUzE4ZlAzWTZpLWxkM1F6Nk9XVmlzaU1McFhod2htUVg2TVZsTlVKbmRVcXBpV1RGODJBa1Jx?oc=5" target="_blank" rel="noopener">
-    <h3><span class="star">&#9733;</span>MLB HOME RUN LEADER KYLE SCHWARBER OF PHILADELPHIA PHILLIES AND 2023 NL MVP RONALD ACUÑA JR. OF ATLANTA BRAVES HEADLINE MATCHUP OF NL EAST’S TOP TWO TEAMS THIS SUNDAY, SEPT. 6, HIGHLIGHTING THREE MLB</h3>
-    <div class="meta"><span class="src">nbcsports.com</span><span>&middot;</span><span>Sep 1, 2026</span></div>
-  </a><a class="item" href="https://news.google.com/rss/articles/CBMihAFBVV95cUxOMzJEZTNhb2htbjFXTFVJbHlDZEVIUDQ1VG1wOEEyemh3eTkxZy1fa1RPaGVlaGVNeE1sUERYRUIzdFRLeWphNXdPM2FRaC12WTBLdDQ4QThFMW5CYnZnOWhsU241M2ZjQXQ5YWplWGpNN0ZQOEZ6OG4wN2l6M1JrTEV1eW4?oc=5" target="_blank" rel="noopener">
-    <h3>‘Worst QB Decision in the History of the NFL’ — Radio Host Calls for Vikings To ‘Move On From’ J.J. McCarthy</h3>
-    <div class="meta"><span class="src">Yahoo Sports</span><span>&middot;</span><span>Sep 4, 2026</span></div>
-  </a><a class="item" href="https://news.google.com/rss/articles/CBMihwFBVV95cUxPX2FadFNvclRoWGp5WGRmY2o0WjdOU2VtZnFoWGRDZmhxX0lyb3ktLVRyM3dKamxWRHN4bFVYZUdVaXdZNFBBQkNXZDJWQ3ljSDRPYmU4eC01LWlWZVVud0pFbURSdWZFVFNBakFhbXhOQ29OenFKc0V3NFVVSDRxT2hzS3NuU2c?oc=5" target="_blank" rel="noopener">
-    <h3>LSU Lands Massive Court Victory in Unprecedented Former NFL Player Fight</h3>
-    <div class="meta"><span class="src">Yahoo Sports</span><span>&middot;</span><span>Sep 4, 2026</span></div>
-  </a><a class="item" href="https://news.google.com/rss/articles/CBMiekFVX3lxTE5ERmF1b2lBUEJZRTBISWpTeTJfelAteVFhVUVkQXJ1SWxXYWEtQzRqY2dCWDUta3hBMDRzeE9nRHRCWjNtbks1MXBTdm5Pbm9naFRMMmZYaXRyNDRoTmR2Qjd3eDJvZW1wcVlCeHVnOTlacXJUMUROekJB?oc=5" target="_blank" rel="noopener">
-    <h3>‘Don’t Let (Lane) Kiffin See This’ — CFB Fans Roast Shedeur Sanders With Browns QB on the Sideline for Colorado-Georgia Tech</h3>
-    <div class="meta"><span class="src">Yahoo Sports</span><span>&middot;</span><span>Sep 4, 2026</span></div>
-  </a><a class="item" href="https://news.google.com/rss/articles/CBMickFVX3lxTE8xMEFZMEVvcjhPZmpoUHlJY3cwQUN1OUNDN25rNzFkbTN5V25ZU3Z1Q3VRcTdfUWhvMlkwN21qR2xqQWVzQWM1VW9fS1h6RnRUUjNvM1ZUNmpqWmxDUmRpT3FJUU5tQmhoQlFMYkFJTEJyQQ?oc=5" target="_blank" rel="noopener">
-    <h3>What will it profit baseball?</h3>
-    <div class="meta"><span class="src">wng.org</span><span>&middot;</span><span>Sep 4, 2026</span></div>
-  </a><a class="item" href="https://news.google.com/rss/articles/CBMikgFBVV95cUxOVnNlVmVVZFJjOVlrOVRTYnFobzFva2VfOHhiRzB1aHVZeGVhVE5yVERwVXZpNXUtZzI2T05IQXNxVWFCYzFDdjRfc1d5VUNWcnRvMFhybjJrQnRSUU9saUZNMHlqVWdjdTFmNHpEZkVDSnhzX2ptRGZnRUc4UVJ6Ym11WkhwRkVvWHFCV3AwbXRBUQ?oc=5" target="_blank" rel="noopener">
-    <h3>Hao-Yu Lee remains in the game after awkward slide</h3>
-    <div class="meta"><span class="src">Baseball Savant</span><span>&middot;</span><span>Sep 4, 2026</span></div>
-  </a><a class="item" href="https://news.google.com/rss/articles/CBMibkFVX3lxTE5SZ2JBSi1VOUxsQ2xLS3hZbEVmRnRuWUhLaTNvRENNQm5FZGhzOHpoX01odGxidzJ5c0g2OXFObW9SWUlCdXZLWG1YeWJMcnBuazdBbGRKeUlJTTA5MG15NklkTHlZUlRtVXYtMzl30gF6QVVfeXFMTVo4QWpUaTZzMXNwM2lhUEhWWVExemxSTnZHQklPVG1EUlJIY291RkNvaXFqTzVvZ2JKTzdyOHlUbDZWdGkxS1IyaE5RbnJFMU5nelFaU2lZNDM1Sms0UGd6X2NrdUx0Ylh6VnEyOFZIVjF2SDhMcW8zMWc?oc=5" target="_blank" rel="noopener">
-    <h3>Bracket, tiebreakers and more: Here is the current playoff picture</h3>
-    <div class="meta"><span class="src">mlb.com</span><span>&middot;</span><span>Sep 4, 2026</span></div>
-  </a><a class="item" href="https://news.google.com/rss/articles/CBMid0FVX3lxTE5nWGtWdGRubHNpeGxZS2hJejJaUWtYamg4ZHNiRl9xNzJocVFRRUtjbm9xWHp6cEFkZFZvc3Z6NGNnM2hRLW5Gd3lJLWJlTUVKb1R3U0tOdFQ4Z3dfRWtaQ3ZnLUlyVTd4d05lTjZDU2JsRFNTQzhn?oc=5" target="_blank" rel="noopener">
-    <h3>Before Kraken, Proposed NHL Relocations Fell Through</h3>
-    <div class="meta"><span class="src">pacificnorthhockey.com</span><span>&middot;</span><span>Sep 4, 2026</span></div>
-  </a><a class="item" href="https://news.google.com/rss/articles/CBMilwFBVV95cUxNWUItaUFMS1dINHFfZlM2YU1FcUxJVk9CSndwYjNia1BHWlgteWNCWFpEVlFZcFhTNFVKRUxBdk9fUE5ILTJGVnB4MFVPd2hnOHliSVJxQUpZUzV0X1puVC1udDF5OGV6d0tDNk42SVp2TF9sNU5PRzM4Q1ZSbUZ5cFRPeW5JZnRRQkpmSGp2NFhJRXdiTy13?oc=5" target="_blank" rel="noopener">
-    <h3>Manchester Storm ready for &#39;emotional&#39; homecoming</h3>
-    <div class="meta"><span class="src">Yahoo Sports</span><span>&middot;</span><span>Sep 4, 2026</span></div>
-  </a><a class="item" href="https://news.google.com/rss/articles/CBMigwFBVV95cUxQeWFQemNwby1mZ19TSXpLWnJ5R2h3dThpNDVBNE5CdnA0UEZrRTZUOHl6MTlaRVRGeWZGbGxjNlJEOExON3hUVUhsV3VuVUlXTmU3c0JoV0o5MlhzTm90dVFYdEJvNzhwajJENFRLTGtKcDZ6TUpJb2lfQXBxcGhxWlJwUQ?oc=5" target="_blank" rel="noopener">
-    <h3>Senators announce new Fan Deck on 300-level | Ottawa Senators</h3>
-    <div class="meta"><span class="src">nhl.com</span><span>&middot;</span><span>Sep 4, 2026</span></div>
-  </a><a class="item" href="https://news.google.com/rss/articles/CBMiW0FVX3lxTE5kR2dTSk5iZ1ozWDk1dUNnWXBOazM0dHpoXzR3WXpTQThtU01fQTVuU2twYzRydFlsd2xJbzNROVJhWk5ONUlaTGZkc3ZBU2ZySy1sc25KX0Nwcjg?oc=5" target="_blank" rel="noopener">
-    <h3>Notre Dame Vs North Carolina | NCAA College Lacrosse | Highlights - April 11, 2026 Celtic Vs Rangers (aHmANRSmiK)</h3>
-    <div class="meta"><span class="src">Mshale</span><span>&middot;</span><span>Sep 2, 2026</span></div>
+    <a class="item" href="https://news.google.com/rss/articles/CBMihgFBVV95cUxOd0I3UTNCQUpDRmNXNkhOYjRLRHJMYXpKc05kV09xd0JDV2tlZzF3YjNhWUh2bktHMTNfTTQ4TUE2Z0dXRkRCT2FDMHV6eU9IcmpaOUo3d3ZEYk1nRXg2UXlIR3FNTWNDUVhxS1JEcE14c1RNWV81MWJvU25KbjdrVTRfQzdhQQ?oc=5" target="_blank" rel="noopener">
+    <h3><span class="tag ever">Evergreen</span>I&#39;ve Yet To Find Something My Instant Pot Can&#39;t Cook — These Recipes Will Convince You Too</h3>
+    <div class="meta"><span class="src">Delish</span><span>&middot;</span><span>Feb 21, 2026</span></div>
+  </a><a class="item" href="https://news.google.com/rss/articles/CBMixwFBVV95cUxQY19kVWlMOGxjLVE5d3Z0S2lLM3lENlU1MllCVm9vaEQxN3FnUC1XeWlJMkUyLXQzamVibHZLUmprd2lBdmxfdnQyblNTZ0ZJeVN2YjhtOUI4YjREYUJ2LVlrNmNDRklvWWdXMEp1aS14VVF5aHNRdGU1d0EzQ3BCbk5yRTh3endzVVlvUG1ncmR1MVFJUDVqNkJOOG1faWRZdC1yb2xTS19WbzIxVUtjNGRVbDJtbVRDdU5XY2s2dWtwUlIyZGpJ?oc=5" target="_blank" rel="noopener">
+    <h3><span class="tag ever">Evergreen</span>Twenty Years of Food Blogs</h3>
+    <div class="meta"><span class="src">Columbia Journalism Review</span><span>&middot;</span><span>Aug 6, 2026</span></div>
+  </a><a class="item" href="https://news.google.com/rss/articles/CBMiY0FVX3lxTFBoU0hQdDlYRjU0WWlfX3V3UFowNTNtaDNGb1BVMVlBYmRhanJHMmp1RXo5Zm1zTlUwRTNTeS1UbHc0dE1qalV2OFJQdFpxRUFtSVZEeWlYRUE0SG5VRHJkdXJ6aw?oc=5" target="_blank" rel="noopener">
+    <h3><span class="tag ever">Evergreen</span>43 Recipes From &#39;Top Chef&#39; Stars Kristen Kish, Padma Lakshmi, Gail Simmons, and More</h3>
+    <div class="meta"><span class="src">Food &amp; Wine</span><span>&middot;</span><span>Mar 23, 2026</span></div>
+  </a><a class="item" href="https://news.google.com/rss/articles/CBMie0FVX3lxTFBrS2t6emgwUjdCVnpKbDNFQVhob19acWJkRkQ3dHJLQ3kwbzdlYTI2UDN2ci03WVJWeVFLaWtLWWFFYjFWUnMwNmZaU0FuZ0FIN2pueEhra29yOHFDUHp0Q2xRQU1SR1VoX2lfaWJsWG9FaU1YTlVoYUN6RQ?oc=5" target="_blank" rel="noopener">
+    <h3><span class="tag ever">Evergreen</span>I&#39;m a Food Editor Who&#39;s Tested Hundreds of Recipes—This Is the Cookbook I Keep Coming Back To</h3>
+    <div class="meta"><span class="src">Serious Eats</span><span>&middot;</span><span>Oct 18, 2025</span></div>
   </a>
   </div>
   
@@ -613,15 +508,15 @@
         <div class="eyebrow">Travel &amp; Geography <span class="count">&middot; beautiful America &middot; world culture &middot; deals</span></div>
         
   <div class="cols">
-    <a class="item" href="https://news.google.com/rss/articles/CBMiiwFBVV95cUxOMEVIREo3Mkd0SHlsSGhrTTFOZ2NnY3NLV3Q0ZlFZWkxQbTZYNXVfY1VsUXVHdnVvVDVVQS1ieVhDRXBxUXQ2MG1uMHpMOEUzelFnaEkyenpacWRUNzRwX0U0Z1g4Qm1scnRsOTRIWDFqRFoyR1pJNjMzUzdnMEFQOXBRVnZnWkQyT1dB?oc=5" target="_blank" rel="noopener">
-    <h3><span class="tag ever">Evergreen</span>“Everyone Comes Back Raving About This Place”: People Are Sharing The Low-Key Cool Vacation Spots That Completely Blew Them Away</h3>
-    <div class="meta"><span class="src">buzzfeed.com</span><span>&middot;</span><span>Jun 11, 2024</span></div>
-  </a><a class="item" href="https://news.google.com/rss/articles/CBMiqAFBVV95cUxPV0sxU1lkVnRCeDFGQ2VZeVdaeXY1WDhwWlU4b0ZuOHFkQjVKcmVPUjNCZ1h1RmJoblNESnBUSXZscngzbGFwakRjZEJrWUxiQkRQdmR6VUJUMmQ1WWh2M0NCeGtjMURBQXJDdndiOTZabVRNVERCTTVQTWFjbmJLR0JDSzFxR09KdG92R0JmaGRWeGd4aGZOaGktZDlFMVBfT1NWYlhSdC0?oc=5" target="_blank" rel="noopener">
-    <h3><span class="tag ever">Evergreen</span>15 Mediterranean holiday destinations to visit this summer</h3>
-    <div class="meta"><span class="src">Skyscanner</span><span>&middot;</span><span>May 26, 2025</span></div>
-  </a><a class="item" href="https://news.google.com/rss/articles/CBMicEFVX3lxTE4yYWFqLXEtQW8zYjIwOVVYWFY2TUVCdnRZUm9OamJNd25kcVpTc1ZGaHhxdXVOSV9Dck5paXo1d0RLNC1BVEY0X0VNVDc2cXdKQ2ZheDh0OC1GR0JKTHJwVVYtSjVOREpuc1dBQzZ6Rjk?oc=5" target="_blank" rel="noopener">
-    <h3><span class="tag ever">Evergreen</span>24 Best Places to Travel in September (USA and Abroad)</h3>
-    <div class="meta"><span class="src">Going</span><span>&middot;</span><span>Mar 6, 2026</span></div>
+    <a class="item" href="https://news.google.com/rss/articles/CBMilAFBVV95cUxQU19UT2djNFRLMDFmZ0NoazEwUnRlbFZMbURnR2VoLTNLY0JPSWt1dy1idl9ERlVYLVBZa1g1ckRYVUxLS1pDZmVkajBIeS1DeW5kUVdUWU03bkdRd01CLXdXbzBBUk45QkVLeXdWcnpDT0pNYzdfY08xSkx6cHY4MzRpUmFOb09SUE5UQmFnajlDMGR4?oc=5" target="_blank" rel="noopener">
+    <h3><span class="tag ever">Evergreen</span>16 best family holiday destinations for unforgettable memories</h3>
+    <div class="meta"><span class="src">Virgin Australia</span><span>&middot;</span><span>Mar 9, 2026</span></div>
+  </a><a class="item" href="https://news.google.com/rss/articles/CBMieEFVX3lxTE1MUmZ1SE13cDlVY29la3dIbDBKaER1NWVLQi1ONjlTeS1xUUJCUWRQZ0VlWDhYQ25ReEtvZEJFc3hvZmFtbmZGRkIyVVVRYU9WMWNyeExXM1Z5TGJacm9zZTY5cmdjOTlCV2lBeGFucl9Qbk1CSlh0OQ?oc=5" target="_blank" rel="noopener">
+    <h3><span class="tag ever">Evergreen</span>10 Best Places to Visit in Japan: Must-See Destinations 2025</h3>
+    <div class="meta"><span class="src">Airtel</span><span>&middot;</span><span>Apr 22, 2026</span></div>
+  </a><a class="item" href="https://news.google.com/rss/articles/CBMioAFBVV95cUxNQmtYbURSek9JZzVCbk9MWnJxRHR5ODdwS2JMQzB5c2tjd0w1RmZ3bThHaGNPb01SN3FyZWsxa0czVnZfLW5JZk9yekhTWkNhTHlJZzRub0pRakMtUzIwTWV4WVlsWXNyY2pBMWdTR0ZleWd6RWdVTmNBcjJxSHBkZ0o1S21uLWNPeXB2OWk1UnN4dm9uQ2hOUzZfOVRRb21C?oc=5" target="_blank" rel="noopener">
+    <h3><span class="tag ever">Evergreen</span>Best Places to Visit Where the Dollar Is Strong</h3>
+    <div class="meta"><span class="src">kiplinger.com</span><span>&middot;</span><span>Apr 23, 2026</span></div>
   </a><a class="item" href="https://news.google.com/rss/articles/CBMic0FVX3lxTE9MTmhuUzJ0cTVhS3NySGVCelFZcFlTWWRUYVNEcy1pT0d5RWdral9kTDNVbDllU3VTTmp6aHJSc2t4RVdEekxRS1FHaTV4RGlCNmczWGxNQW10THNmWHRrZVRTYzVxRnZ6cVNrdGlRQ2NUcGs?oc=5" target="_blank" rel="noopener">
     <h3>Labor Day Weekend Is a Gold Mine for Travel Deals—Here Are the Best Ones We&#39;ve Found</h3>
     <div class="meta"><span class="src">Condé Nast Traveler</span><span>&middot;</span><span>Sep 3, 2026</span></div>
@@ -633,20 +528,255 @@
   
       </section>
 
+      <section class="block" id="tech">
+        <div class="eyebrow">Technology <span class="count">&middot; priority 5 &mdash; more picks</span></div>
+        
+  <div class="cols">
+    <a class="item" href="https://news.google.com/rss/articles/CBMiqgFBVV95cUxONzVfUVN2OS11aDFaVnkwZVlZSVlubXlkTDFrMFZtb2dfRk5rcHhyRmkwaWVsblBDUGhaYU9yTkdBaU1nWDlRVXB4c041UWF2b25DUnh4ZWxjOTlpZUU2X3A0bGZJUTBPT2lVdjVXSHdVdnpMWkF0bzdoWkRXV2JVNmo4YXhEQkw0Mkg0WVBvUmFzU1dCR005Znd5MURvaE00NGxfTTRZSHB2QQ?oc=5" target="_blank" rel="noopener">
+    <h3>Chula Vista Charter School students chase IT careers</h3>
+    <div class="meta"><span class="src">10News.com</span><span>&middot;</span><span>Sep 5, 2026</span></div>
+  </a><a class="item" href="https://news.google.com/rss/articles/CBMizgFBVV95cUxOTnYyYUJSeWFpd29JVmpvU29fbGN0b1BuT0VEMElKUWR3d3FYNEMtVFlKdVlvNjAwZTBIbXZJU0tzdHhkaFBMZTBnbXc0RzgtY29iSUdlQzR1U0tHUDdIeE1MSjM3X0FlQmxZdmtJd05LQ2ZoWVNSWl8zMkxUMml5eHJfSThIb0NkanA4RW9QRUNnN0FkN0xvd1o4UU96cHVzU21iQkh3M1Q5VnVGMmFZRDBwQU4yZHowYVA0UzZQSWk5VEFJMkVkMkdwOUxsZw?oc=5" target="_blank" rel="noopener">
+    <h3>Trump says skilled foreign workers take jobs away from Americans. It&#39;s not that simple, experts say</h3>
+    <div class="meta"><span class="src">PBS</span><span>&middot;</span><span>Sep 4, 2026</span></div>
+  </a><a class="item" href="https://news.google.com/rss/articles/CBMi7AFBVV95cUxPS1k3ejFlZlNKeXZOMENkUDJQVmZ2SHNnT1Jheko3NkgybnJ3V1RHbUE1VHItb2hZSDJyVFRVeGxKY05mclZ4RHNQcm1FZWxFZGYzVnlUOFdyQzlYTENlSW9RYWtHLTZ4QWJKZ182S1hxWFdQN1pPcjNFNlJZemtrUlk4SnRVc2J5UWdKQklMT25nMmliUzR4Wl9QU2FXZE1TQnhwXzVnU0hVcHlSODEtM00taUlnTy1Jcm5TRFVYOVFKazNMSEt3N0p2M1NMbDJiMEg5Q01LenpsQnY5S29Cb2piWUVYVTRxQnBuNQ?oc=5" target="_blank" rel="noopener">
+    <h3>Tech layoffs tracker 2026: All the job losses across Uber, Apple, TikTok, Meta, Microsoft, Oracle and others</h3>
+    <div class="meta"><span class="src">tech.yahoo.com</span><span>&middot;</span><span>Sep 4, 2026</span></div>
+  </a><a class="item" href="https://news.google.com/rss/articles/CBMizwFBVV95cUxOOFFOY2FXWmxFV0g1WjF4ZzZvNVc0U3RGN3BnRFhQTWVqV1V4Y2ZZNjk0REhvX2pNSlI1OE9TZVZqRnhVQzBwb3BLazdQSHlVLUQ0dWhmUU9tdlJzaTVkajRhTzB3M2c4eEpJaFY2WmJDSXI1NjFxNEE2Zi1RbEllMDJtbFhSckQxcGtxR25waEdZS2s0TFRVRHNsN2lqLVU2Nldfa3JBZW9oODNRbE5yakwtN2JVMXF5YkN1VGVUX3FkQzhWaE90YXpOQmpnbDg?oc=5" target="_blank" rel="noopener">
+    <h3>Industry Perspectives Op-Ed: Mitigating infrastructure risks through AI</h3>
+    <div class="meta"><span class="src">constructconnect.com</span><span>&middot;</span><span>Sep 4, 2026</span></div>
+  </a><a class="item" href="https://news.google.com/rss/articles/CBMi0AFBVV95cUxOcDdyTktZOWNIdFlnRXA4TlFfYUV0ekhhbGhTQlR4akk2OWxxZXVjdU1pX1dtRzdzamR4RTJuN1BaMGRwVzNEREtKTWwwUWhxU3RiVjJqc002a1U1aEk2bkR1R29VU212ZnBSRWhyeGQxVjVNOERkWlgxNzFobHd1cEJoRW13MHduWWxJOExET2VjWGtqU3gyWHkwN1FJVUh3WmFLTFNrTl9hQ3JCTG81Rldjdkdwc1o0SEVJWU5RVTdLTEE0Ynd3QTB5c1ZHdFpC?oc=5" target="_blank" rel="noopener">
+    <h3>Market Analysis: Apple And Competitors In Technology Hardware, Storage &amp; Peripherals Industry - Apple</h3>
+    <div class="meta"><span class="src">Benzinga</span><span>&middot;</span><span>Sep 4, 2026</span></div>
+  </a>
+  </div>
+  
+      </section>
+
+      <section class="block" id="ai">
+        <div class="eyebrow">Artificial Intelligence <span class="count">&middot; priority 5</span></div>
+        
+  <div class="cols">
+    <a class="item" href="https://news.google.com/rss/articles/CBMihAFBVV95cUxQaFdyalYxVXhLNFJuVkVoMlo3N1p1dXZDWGFFMnNXNXg2cGpPQUFHVmRlam9MX1h0ejJtczQtZTVMel9QNkJKem91eVRha001dUgybTZoR1VNZmRnZFhpTnFaT3lORWhYaUNuS1JQVnBlS0J3WjJyeHdfbmRTLUUxNksyYkw?oc=5" target="_blank" rel="noopener">
+    <h3>This Week&#39;s Top Five Stories in AI</h3>
+    <div class="meta"><span class="src">AI Magazine</span><span>&middot;</span><span>Sep 5, 2026</span></div>
+  </a><a class="item" href="https://news.google.com/rss/articles/CBMiqgFBVV95cUxPVGhWMEtRbTVmTzNjQm9kbWRrMHloWDc1aW5qeWtqY295U1NUY2JFYkRjQzBfVEVHOTUwWWZkR3lsQkYyS2hIb01iN3gtN1l4VlAzU01vNi1RazRVeWkzUzEyNXFmYlk1dFd1VnlqUHViTWxURVBSNGpMNl9qZ2FyOFhjM09UdlVsb05jOHduMUNYVzk0YktGWUROc2VZOUM4RkF2SmozSjZ3d9IBqgFBVV95cUxQQ1J6emY1SFFQemktWW1QY2V3b0g4Y0VWeXQ3QnVydVFqNWd6dW00bjR1ZDliMTNkdE5Jclo2dWRMZFV3VnNiU20zV19kZmQzTGV3YW9lY0xjaXU5NmxRSmpUYmZkWnZPLXpqdXBRalBQbThBcUxUREducUlJNEZwUVR1alR6TTVqSzZkcFVtYlZCRlNqYmpaMUExWXJmYmZoNlh4R1hyZUJFZw?oc=5" target="_blank" rel="noopener">
+    <h3>From ‘slop’ to prime time: how AI dramas are shaking up China’s TV industry</h3>
+    <div class="meta"><span class="src">South China Morning Post</span><span>&middot;</span><span>Sep 5, 2026</span></div>
+  </a><a class="item" href="https://news.google.com/rss/articles/CBMirgFBVV95cUxOZDJIMjhFWGJNamZsTVpYUFpjT1l0Z2lIY0NJMWRtbVl4ZnFiZy1iVHN1U2piMnh4eXNZQXRRTnFvX0FIVGw4b2tnaHdWeXowVWNuU0JITDA5dHFqNXJmUk5zclVtTW9UY3B3VlF6T3A3N1dkMkFsMF9tMC14ZHdWRWVDOTlfMURWUU9OY1dHMW1jeXZJTno0eGZkZ0RlR05qM2oyYW1BQUMzaWY1LXc?oc=5" target="_blank" rel="noopener">
+    <h3>‘We’re plausibly close to crossing the line’: are warnings of uncontrollable AI coming true?</h3>
+    <div class="meta"><span class="src">The Guardian</span><span>&middot;</span><span>Sep 5, 2026</span></div>
+  </a><a class="item" href="https://news.google.com/rss/articles/CBMiTkFVX3lxTE11QUxBUVJLdC1jSmtJbmcxQzg4Qm9yUlNPS3JEMEVBanIyY1FRT2k2R0hBTlNnX2VqcWpTSDJUMDV0TjBJN1VGamlrZzVPZw?oc=5" target="_blank" rel="noopener">
+    <h3>GPT-6 Astra: A new generation of intelligence</h3>
+    <div class="meta"><span class="src">OpenAI</span><span>&middot;</span><span>Sep 5, 2026</span></div>
+  </a><a class="item" href="https://news.google.com/rss/articles/CBMi6AFBVV95cUxQcUpRUG1PZERTc21FT2V4a1V3SmhHLUhWRWUxWEtrNU5kalVZdUZZaVByeFZYNFJJY2VNQTlPdWJfQWRVcEZGSjJ0VWFZc0lxZUNNVHdMRFJNbkl4c2szVVZfSWpoV1l4Vlc4ekRyR0lRRFJFSmY2OFlYNFE3MWlKRjlHcXk5anpUX2IwZzJNTVVjdGllLW9GZmh6b0VVbHpQc2JxeTJSQzFYVHU4YVNrdTMtOUNVVXE0ZlRRSWFfX2ZCTzJVckdsSzNHOFFVWjFLVXZSNGYtd0lHeWtsdUlyOS1KRVk0QUhL?oc=5" target="_blank" rel="noopener">
+    <h3>Booz Allen: AI models approaching autonomous cyberattack capability as critical infrastructure response windows narrow</h3>
+    <div class="meta"><span class="src">industrialcyber.co</span><span>&middot;</span><span>Sep 5, 2026</span></div>
+  </a>
+  </div>
+  
+      </section>
+
+      <section class="block" id="biz">
+        <div class="eyebrow">Business &amp; Markets <span class="count">&middot; business &middot; capital markets &middot; housing</span></div>
+        
+  <div class="cols">
+    <a class="item" href="https://news.google.com/rss/articles/CBMif0FVX3lxTE5mWDRscnZfaGhVVkF1bVAxQktJdVFyNWl3VEM2eFVfVk5Bdl9DLWFUeUxFemNSN21BYW4ySC1QSmRKQ3FFem5DeEZIcmM5YUNsdHNjZGZpNFlYU1EtdEFtVzdEX0E3cWg2dXFRY0dVQ0VzUWMyZXNSbWVEYzhIU2s?oc=5" target="_blank" rel="noopener">
+    <h3>Robust Hiring Reinforces Strength of the U.S. Economy</h3>
+    <div class="meta"><span class="src">The New York Times</span><span>&middot;</span><span>Sep 4, 2026</span></div>
+  </a><a class="item" href="https://news.google.com/rss/articles/CBMimwFBVV95cUxPS0JDRDVpUUdFbG9zeEJSWkl3Uk1Ncnk4VU5fc2ZKSGYzdl9Za3h2UTJxMzQzSURJc2prRzN0bmpncG1rc21acERueGdKR0N4Y21ad2kyYmZzU1BMeWR4UFpfcXlqWUl2UGl5SlBBZzVLQkRYQ0I3QjNWS0dnUThMWl9ad3NXNnhTZVZGeVM5NVQtbEVzOXBVeVZQQdIBoAFBVV95cUxNdlBNbVg5cGtXX1JDUG83RU5iX3V0MHVjVjhEZERaSHhCVFVuUERJZC1Dc0N6YnNhd3FWWVRNTlNLbUZaVF9ROUFkbnhvaVJPb193ZHB5bEdlYjRjeklCN1FiUVFmMkdqSFV6M3dGZDM5aEZRZ1E5OEhtb1htZ0hkOFZWcWNQS3NOaXJlVlJkZ0NwT3JVdTBHajFpZVJjdzJS?oc=5" target="_blank" rel="noopener">
+    <h3>US economy adds 162,000 jobs in August</h3>
+    <div class="meta"><span class="src">The Hill</span><span>&middot;</span><span>Sep 4, 2026</span></div>
+  </a><a class="item" href="https://news.google.com/rss/articles/CBMigAFBVV95cUxNa2RmVDRpdHROaTRjaHNsNHZjZmFpN2NNenFENWZyUzgwQWRkanhUbXJ3UXRyZWJfQm54MUVuZWgweFJRWUNmZ2d5VFplQ3ZUNXhkVnA0WGNycmdFMlJQVk1HeUVKamhMYmZXUTNYSTFwTDZpU3dOcW5MQ2U0QmVPag?oc=5" target="_blank" rel="noopener">
+    <h3>US added 162,000 jobs in August, with unemployment rate holding steady</h3>
+    <div class="meta"><span class="src">The Guardian</span><span>&middot;</span><span>Sep 4, 2026</span></div>
+  </a><a class="item" href="https://news.google.com/rss/articles/CBMijwFBVV95cUxQczZIR0NhcENNN0xPcnM2SXB5RGJZMUNLVFZUTllUVHpocTZkUUh6QktlM1haSFZEdFpxb0loMjhoa3o4UjAtdXFSVlAxWnhhVUczdHJCdHhUMGp3Zl9IVFhNalU5OWk0dTRtQVhXZ0U3S0JvYXM2RXkyc2k5YWdOOGVCTlJGU20tSno3eG5tOA?oc=5" target="_blank" rel="noopener">
+    <h3>U.S. added 162,000 jobs in August, but wage growth continues to lag inflation</h3>
+    <div class="meta"><span class="src">NBC News</span><span>&middot;</span><span>Sep 4, 2026</span></div>
+  </a><a class="item" href="https://news.google.com/rss/articles/CBMimwFBVV95cUxQQnhmOUV6a1AxYlIxV0ZCVlN0c19Razl3VTlvOXZyNXUyYjdwUEtjeERhdUFtZVhkZWpLWkJhWE12emt4RzJ1X1FzYmxPSUN2RmJYS1RodjFxN1o2aWQwMjdzM0hScHdBZjZmRnNlWVFNanNvbVJmUmtoVndENHNpUGJtSG1xaWhTbVlzNDBlR0N4cnZsRWNScndhaw?oc=5" target="_blank" rel="noopener">
+    <h3>Weyerhaeuser shares hold as housing market weakness delays recovery, with slow rebound expected through 2027.</h3>
+    <div class="meta"><span class="src">Pluang</span><span>&middot;</span><span>Sep 5, 2026</span></div>
+  </a><a class="item" href="https://news.google.com/rss/articles/CBMinAFBVV95cUxQR2VkOWtUdlVzWmduejY3bTJ1cnpOOU81dnY2TzNJOXpJRGZQNjdXT0ExRDlfVVJUcEJNckFqUlMxUURBQ2dHS2l6a0NEMUVlbUlESTNmd2diUWxUVi1LLUt5aWpCOHBaa2h6ellxU3ppUDF2ZUtrVGI0bjh1NTlSa1czWjc0eFQ1S3pRS1dCVDhGNkpzNVRzLWtyWGI?oc=5" target="_blank" rel="noopener">
+    <h3>Zillow, Redfin have strong words on mortgage rates, housing market</h3>
+    <div class="meta"><span class="src">thestreet.com</span><span>&middot;</span><span>Sep 4, 2026</span></div>
+  </a>
+  </div>
+  
+      </section>
+
+      <section class="block" id="crypto">
+        <div class="eyebrow">Cryptocurrency <span class="count">&middot; priority 5</span></div>
+        
+  <div class="cols">
+    <a class="item" href="https://news.google.com/rss/articles/CBMic0FVX3lxTFBCTTIyb3hfZGE5c050Y1dreDZnWERaR3dRU1lmZUE3cE1yQ2szREFIT0hwQzY1T0dPTG9VLUlLMDZ3Q0VMLUdYLUl6a0FMTkkxbTZPQ0hUT09BaUpwa0d0TUVzRUoxWElJYTdNQWFvNS0wNWc?oc=5" target="_blank" rel="noopener">
+    <h3>Bitcoin falls below $80,000</h3>
+    <div class="meta"><span class="src">Apa.az</span><span>&middot;</span><span>Sep 5, 2026</span></div>
+  </a><a class="item" href="https://news.google.com/rss/articles/CBMiiAFBVV95cUxNbjl1NWpBZ2tqcjJCYkxnTjNIcFRlZU1DeTQ4d0RwNEdOWHZHSmpYeUpreGw5eEdxalJwNFlfZGxMSzd2VXl3aEZzS25zZ19paVpkWFhSVExqMG9EcU54RTF3WGFQUThySEx5ZGFQXzZuYXVYbUZJTzNYNXpYdEE2TlVqWngxcmE0?oc=5" target="_blank" rel="noopener">
+    <h3>US Bitcoin ETFs see $175M inflows, Ethereum ETFs add $27M amid strong crypto demand</h3>
+    <div class="meta"><span class="src">Pluang</span><span>&middot;</span><span>Sep 5, 2026</span></div>
+  </a><a class="item" href="https://news.google.com/rss/articles/CBMiWEFVX3lxTE1CUVNLV1RpTGVGN3VwVE1ZQURvLTVvWVQ0NGVzMGZpakZENERxSjd1bmh3M0pjWno4QnZhSXFsYndfeU5na0hYMVM4SE1JR2xKTjFibGhEdFE?oc=5" target="_blank" rel="noopener">
+    <h3>APX Lending Launches Five-Year Bitcoin and Ethereum-Backed Line of Credit</h3>
+    <div class="meta"><span class="src">Cryptonews.net</span><span>&middot;</span><span>Sep 5, 2026</span></div>
+  </a><a class="item" href="https://news.google.com/rss/articles/CBMi0gFBVV95cUxOSjZsNXQ1emZYelRMOUZCTlUyaUU2dEVXRmh4eldfWExXWlBkUEhoUGRmZ1dXamlsZWZZRUwtM0Q2OEZQNlNRdXM0TVo4NXc4Vkl5ZWZwUXRIV2VOZUhKSUhNbVhITWhQVXRXeXBRM0F0NTEtdXItcC1nNFJJaU5JNVc2NzZtNXZsRm1xWTNSNFp2a1NVNlBqb2VRcE9heGs0bUlGbG5JaGZhYXdZU1p4dDdIWlJuOFRHU2ZkZVY2SEJjT2pqVUZlYkg2bVZjb0pqNUE?oc=5" target="_blank" rel="noopener">
+    <h3>Cryptocurrency Roundup: Bitcoin Holds Steady As Currency Debasement Fears Drive Investors Toward Crypto And Gold – SMBtech</h3>
+    <div class="meta"><span class="src">smbtech.au</span><span>&middot;</span><span>Sep 5, 2026</span></div>
+  </a><a class="item" href="https://news.google.com/rss/articles/CBMiigJBVV95cUxPMEtPMVk4R2prNG1qSEpCSW1WU1FSdUZ3bDhVcFpwaVRfQmxaR2x3ZEFySFl1SzBBT1FmWEZZY003Mi1LaUc0aldPVmFXLUF0RnBqdEFrTVZlUDlXaHotRTVCb0VvbWpqOUoybDJfLWxXOHlKWUhFekNJTG1ldnpBcHZVSjc4dVNWUTUxS0JXSFByOFA5V1F1dlEwMldDbE9SdU1QSHllTnN3d05OZnRkamFqbFYwa2t5dVpFbHI2QldIcUVMcjUzbnZWblpWcXFwM3drN05yQWVXMWc5c1BZcEtXcjBFNXNDcDN3WGIyOV9nM2ZZWlJiZGNQNV9DaXJXcDBTUGNxS0pydw?oc=5" target="_blank" rel="noopener">
+    <h3>ETH Price Prediction 2027, 2030, 2040: Could it Reach $4,965? Analysing the Potential of Ethereum, Bitcoin, and Apeing&#39;s Upcoming Crypto Presale</h3>
+    <div class="meta"><span class="src">Brave New Coin</span><span>&middot;</span><span>Sep 4, 2026</span></div>
+  </a>
+  </div>
+  
+      </section>
+
+      <section class="block" id="science">
+        <div class="eyebrow">Science &amp; Space <span class="count">&middot; breakthroughs &amp; discoveries</span></div>
+        
+  <div class="cols">
+    <a class="item" href="https://news.google.com/rss/articles/CBMiowFBVV95cUxORndMVjBxRC1YcGFYemZhWWZFUm5FNVhUVU12amVJWXFVTHNUS0s4emxoUGZFSlZ3NTV5RUxXREhZdFExSngybUppRE4tUVlkakw1OUdpWVYxaWhCNWU5VzB4WGxkNFcwbDRzaFNXTFZjSThVWklYRXo1M0R0MkVBOUgtbzFmMFZpUDNuU2VxN0JkcGF4WjVfa3hHVUJwQlZQUzFn?oc=5" target="_blank" rel="noopener">
+    <h3>Scientists make potential breakthrough in search for dark matter</h3>
+    <div class="meta"><span class="src">reuters.com</span><span>&middot;</span><span>Sep 1, 2026</span></div>
+  </a><a class="item" href="https://news.google.com/rss/articles/CBMimgFBVV95cUxQOV9NUWE5THc5SUs3cEFnYUt0eUk4MnhMYWRqUS1FUFZZVEtpZWstWVNfa3c5bGpIWW9JSjlxXzRPOUNoNXNNbU9WNDk0Qjhjamp6OXA1OGUzclBTa25xWnlVc09rV2VvbGd0bGpYNU0yejBoLVNRM192WmxORUlBRGF2blYwd25TWE1tX18xXzVlZC1oa1ZHdzd3?oc=5" target="_blank" rel="noopener">
+    <h3>These are the top 10 cosmic discoveries we expect from NASA’s Roman Space Telescope</h3>
+    <div class="meta"><span class="src">scientificamerican.com</span><span>&middot;</span><span>Aug 28, 2026</span></div>
+  </a><a class="item" href="https://news.google.com/rss/articles/CBMiUkFVX3lxTE1CTElST1FtX0hVdlFmSzd4WGVHc0lVVDNBLXZheXRNVjlldlBsOXRVa042Rld0NFRRcXlEbTd2eHRPNVhsRUF4aGhZMzZTRTdRVGc?oc=5" target="_blank" rel="noopener">
+    <h3>2026 September 5 – Chasing the Moon s Shadow</h3>
+    <div class="meta"><span class="src">NASA (.gov)</span><span>&middot;</span><span>Sep 5, 2026</span></div>
+  </a><a class="item" href="https://news.google.com/rss/articles/CBMi_AFBVV95cUxNN19JeHc4LTF2RFozLW1uWUdGdEU1YjhPVWowQnRpRjBZWlZpWVhXSHowME1Bbjdhc1VaQjlLeHQ1NC1mcVZmdENqVS1EMjdoQkEwdDc2S2dpdi1mMmxkM1lKWTFWTTgyTk5VWnRGVEFKM1FtM0lrazAzNjZrdThaUjJMWmV0OWNpcGMyVWlMeWxXY2U2SXZhVlhuNjRzaElVdURsYkJoN09MWkI5eUsyYXpCNUNHeEUwblFaOUk1MFFvdzZrV09yWXNaZi1Jdi1Pak9fNENaYUJYZUJwSTVtcllHQ0xCVm55cFVFakJINzVuNlNwT1I0clYyVk8?oc=5" target="_blank" rel="noopener">
+    <h3>Rescue satellite gets close to NASA&#39;s doomed telescope, even if it can&#39;t save it</h3>
+    <div class="meta"><span class="src">The Tribune-Democrat</span><span>&middot;</span><span>Sep 4, 2026</span></div>
+  </a><a class="item" href="https://news.google.com/rss/articles/CBMi0AFBVV95cUxPdWI0eVRWODgtQW1sbXFzNWRCVWdHVlcwV05zUTFTTk8wY2oyLTZJN21qSFNrcWtYMElOdXBTWVJkR01hVTBzUWxtXzRXVEhYeExJNG5yb2lBV2NldDdMNWRPeU01RkduUWtacDJkeUxMZnQxaTRSVTdldm5sTC1HZUdnak4wRjVxRGd2YUZfTkwwMWtvQmp4dDhwYzlHZjM1a3R4NzUxbFVpNFg3em1DQklkSno1V1piMnRBOWFzVkZqTGVRVWJWTkRWOVRjejZt?oc=5" target="_blank" rel="noopener">
+    <h3>NASA’s newest space telescope was built to show astronomers more of the universe</h3>
+    <div class="meta"><span class="src">Federal News Network</span><span>&middot;</span><span>Sep 3, 2026</span></div>
+  </a>
+  </div>
+  
+      </section>
+
+      <section class="block" id="golf">
+        <div class="eyebrow">Golf <span class="count">&middot; PGA Tour &middot; equipment &middot; courses &amp; history</span></div>
+        
+  <div class="cols">
+    <a class="item" href="https://news.google.com/rss/articles/CBMikAFBVV95cUxOUXQwN2hTYVVzM3k2eFlVa29RLS12SFh1aFlhWGxvMm5tQ19neU1RVG5rN28teWlrQXFMcUJTa3V5SjRmSzYxX3lsdl82UjduM3ZQRTJyVTljcW5YdUowVmg2NDVJXzktazhIdHh1ZlpiR3BEYUdzOFZEZWRXSHNtX1dHMS1PUDU3ZGk2U1NtWjk?oc=5" target="_blank" rel="noopener">
+    <h3>PGA Tour Viewership Increases Continue After 2026 Season</h3>
+    <div class="meta"><span class="src">Yahoo Sports</span><span>&middot;</span><span>Sep 5, 2026</span></div>
+  </a><a class="item" href="https://news.google.com/rss/articles/CBMijgFBVV95cUxPQXJaX0JwcEN5OEdZU1h5RElWTHEtZFcxSXFWYldKbW1tXzR5Y2hIZktwcmxsRUdVTHJqRlVING43aXI5bms4UzlWTjJCeE52bzRFQWxTSmYwMmNYV2xtaEg0RXJoUThFYkJ0Vk0zdklQQjhUTldKdmpKMlBIR19lN1ZOajdZMVVjRUk5YjJR?oc=5" target="_blank" rel="noopener">
+    <h3>RBC Heritage Is In, but PGA Tour’s 2028 Schedule Has Gaps</h3>
+    <div class="meta"><span class="src">Athlon Sports</span><span>&middot;</span><span>Sep 4, 2026</span></div>
+  </a><a class="item" href="https://news.google.com/rss/articles/CBMiwAFBVV95cUxPdTlXWFlPVWxYOFdLSV9fREgyNk5odkNzUmdFOHdNeVdYcFZnZjdqdVZzM0txNm1OUEZCSm9fVTZXYUhGV0VkUktkcUVjbkRoYnpwaHFMdWlhcEhZM3g4RUd1Yi1sMjVnRTJmN3ZNenhzMHljbjh6dXlvZW5RRHV0WFJNazc2UUxIM0JSamtWV0t4c0FYNTRzUDhoVDZCZWU0SzRfZEQ5SmFndUpqZVFQb1ZfSXVlN3JPTjZCYUd6NFY?oc=5" target="_blank" rel="noopener">
+    <h3>Who finished 2026 on fire? The latest Power 18 golf rankings revealed</h3>
+    <div class="meta"><span class="src">dailyclubgolf.com</span><span>&middot;</span><span>Sep 4, 2026</span></div>
+  </a><a class="item" href="https://news.google.com/rss/articles/CBMigAFBVV95cUxNQ0Z3NE5OTWw1RGpMZDd0enl3djJhc3k2S0c2bndqTlJpelhyWTlrUFlOazU1R2locl9OWnB5bmtoNVpldGRzaGJzVXdmMFR2anJVNVlRVHIxTjQxT2pTUW1rYThOaDRkUXI1b0JJT2J3N0llM0VNMkV5cjFZNFFjNQ?oc=5" target="_blank" rel="noopener">
+    <h3>2026’s winning PGA Tour irons prove 1 thing: Blades still rule</h3>
+    <div class="meta"><span class="src">golf.com</span><span>&middot;</span><span>Sep 4, 2026</span></div>
+  </a><a class="item" href="https://news.google.com/rss/articles/CBMi0wFBVV95cUxOeFdkMDFtME9HRDhfa0J3SS1uSWpfQTlMZ3BZN1NzV3dFRjdpMmUyYng5b0Y0YnNvVzY0OUhfT1NVM3V6eUZsWEFwbDl0akhfYmhSbkxhVGpXZ0pvNDg2WnlwdE5RNWxWTlZtSEQ4S2VQTU9sZVlwcExXZ0dTdFJLaFN6ekU5TGdGZ0xLT0xjZHF5WG84bGNqVVVuTU5SamJ4WFFjSlJsN2gwbDlRMTNPTEhUdXI0RmtHTHNzdENxdVkzbUZIRW4wQmhWT042M3VUSFpV?oc=5" target="_blank" rel="noopener">
+    <h3><span class="tag ever">Evergreen</span>Tour Nashville Golf &amp; Athletic Club from Crockett Springs in photos</h3>
+    <div class="meta"><span class="src">The Tennessean</span><span>&middot;</span><span>May 1, 2026</span></div>
+  </a><a class="item" href="https://news.google.com/rss/articles/CBMikAFBVV95cUxOMk9NaGQ3bUtLa3g0elRTOTVYekR4cTBOU0cxR2hWWjd1c05hWUFsRVljcFBlekktaTFHSTVnSW5tMGlFcU1jS0ZjcXBPWWZFVWJrOFEwX09NWDAzV29MdVN5N1VKZzdWYWR0ZS1IeVpNdHM5MDZRMUI5OGV3NV9MSkpVY0NvZDlkUmlnTWtQUDA?oc=5" target="_blank" rel="noopener">
+    <h3><span class="tag ever">Evergreen</span>Memorial Tournament Preview: Field, Course, History, Tee Times, How to Watch</h3>
+    <div class="meta"><span class="src">Sports Illustrated</span><span>&middot;</span><span>Jun 3, 2026</span></div>
+  </a><a class="item" href="https://news.google.com/rss/articles/CBMiugFBVV95cUxPMDhwcmNVY3BKOVl0TEdUdXR3SU5KM1U3Y1E2aGdMREh4Q3NSS0luVHlxYXJTOHNLMGM4Q25aQXBxSlhTTjQ5RXJPdjB1WGx1elNoWnZKQWNHaWs1R3VnRXlQc0VlcnpMcDdJVXF6Q2dpRnZCemxfM094WG40VmQ0SGU5TlE5WlBVQUpfcmFOMjVFQk4tVWlqSFNsS3pmd0FFNWMxZlRLM3pUVlBZNm8wNjdwU3ZMdm1OelE?oc=5" target="_blank" rel="noopener">
+    <h3><span class="tag ever">Evergreen</span>2026 Charles Schwab Challenge Preview: Everything To Know About Colonial Country Club</h3>
+    <div class="meta"><span class="src">Lineups</span><span>&middot;</span><span>May 24, 2026</span></div>
+  </a>
+  </div>
+  
+      </section>
+
+      <section class="block" id="music">
+        <div class="eyebrow">Music <span class="count">&middot; country watchlist + wider net</span></div>
+        
+  <div class="cols">
+    <a class="item" href="https://news.google.com/rss/articles/CBMipAFBVV95cUxOTFg0LTM2UVVUOEgxN0gtU3pLZWhWWDVDRmVFTTRBWmdQbjZpaTNScHpKczlsN1VpOFRnWTJsNXl4bHFNX2dlYllOSVQzZTF3Wl9vZ29qRDVncS1VVFdkY1JmdnczT0FKOUdETjdLeW8xbElyLWktdzRsX3pUamRha2JwdXB3RnpmOHBqNTVmVWZOSk9Lang5b204Y1VGQlJnUTlxVg?oc=5" target="_blank" rel="noopener">
+    <h3>DISClaimer Single Reviews: Luke Bryan &amp; Luke Combs Team For Disc Of The Day</h3>
+    <div class="meta"><span class="src">MusicRow.com</span><span>&middot;</span><span>Sep 3, 2026</span></div>
+  </a><a class="item" href="https://news.google.com/rss/articles/CBMinwFBVV95cUxNR0g1N3FNSUYxcjVDcEp4NnI2Z0cxNGlmazlYN2RSNzZZamh4N1NORHhqNWFiNzRvMFUzTVJySm5JOXFBM2hzcFBOZFlGUS10RGc4M3BhV3JPQmZqaDV0ZzVBdzNaY29OT0JuT3VYNUFmOGVGYUhoOFFNQkZJNm4yc3dUOWxETFQtT1N3aEdBMWJCOU5HZjdOa2Yxd0tFcE0?oc=5" target="_blank" rel="noopener">
+    <h3>Béla Fleck Announces Live Ryman Album Featuring Billy Strings, Sierra Hull, Sam Bush, More</h3>
+    <div class="meta"><span class="src">Live For Live Music</span><span>&middot;</span><span>Sep 2, 2026</span></div>
+  </a><a class="item" href="https://news.google.com/rss/articles/CBMiggFBVV95cUxNMFFjSjJ1ZHVUblRsbVJGemV1QkdPbDJkYVVxTXRHalVQSVJGN0g4dzZUNmJ2OUxRYkhxWmRPazMxSC1LaUhxem5uVlVVeDBMVl9qaFNWNWxfdU1sQ2J5dzduNXNueTlncUZCTDQxUWtMQ0RaaFFhQlo4YmZpMWV4ekR3?oc=5" target="_blank" rel="noopener">
+    <h3>Chris Stapleton Concert Review: A Masterclass in Musicianship</h3>
+    <div class="meta"><span class="src">The Harvard Crimson</span><span>&middot;</span><span>Sep 2, 2026</span></div>
+  </a>
+  </div>
+  
+      </section>
+
+      <!-- SPORTS NEWS -->
+      <section class="block" id="sportsnews">
+        <div class="eyebrow">Sports News <span class="count">&middot; your teams &amp; NFL &middot; MLB &middot; NHL &middot; NCAA lacrosse</span></div>
+        
+  <div class="cols">
+    <a class="item starred" href="https://news.google.com/rss/articles/CBMiQ0FVX3lxTE1jRWlodmVIV0dSSmplZ2FQc1Q0VnJkRGh3ck5ZOV9PeWI1WHlYVTY1Vy1aaWpzWDFVc21OY3NKd3E2aVk?oc=5" target="_blank" rel="noopener">
+    <h3><span class="star">&#9733;</span>Official Philadelphia Phillies Website</h3>
+    <div class="meta"><span class="src">MLB.com</span><span>&middot;</span><span>Sep 5, 2026</span></div>
+  </a><a class="item starred" href="https://news.google.com/rss/articles/CBMivwFBVV95cUxNRTlkN1k0UW9sRlhubURPdW9qOUpfT2hMUzYwSldXNXFKdEFZNjJZZlE5ZEcwSVRhRjlXQk9vWE9UM2lzRGF4d040X21ITEpfOXJEUHZWVS1lYkRZZ00zZUsyYlR2MXpXblpGakxSZUhmTHEzZk0tanVKU2tnTkxtU1dBMDJUSlJ2M3pybDRqVldnSi1DN2VMdkZBbjVDWWpveTdCalB0dnNCbmJNV3lFUk55VlRlSmoxVjBxcXNQMA?oc=5" target="_blank" rel="noopener">
+    <h3><span class="star">&#9733;</span>Sale outduels Sánchez, Braves beat Phillies 5-2 and extend lead to 5 games in NL East</h3>
+    <div class="meta"><span class="src">FOX Sports</span><span>&middot;</span><span>Sep 5, 2026</span></div>
+  </a><a class="item starred" href="https://news.google.com/rss/articles/CBMiuwFBVV95cUxQdUE3TUFNMVpxLVdRdFNhM0ZlTDBFU25fT3pZblFGaElaQldoNHBxcWpDMEFhUzRYTWZzZE1BWDIwMkFKbml2Q1hsYVpYcUdmRTJCaVBvQ3dvSE9aM3JCNTByWDNfWXNCNjB4M1lZTVF3YUNMT2JYS0dkSmRJY3o1S2F0bGRBRHhqSmVtVG14eHhnV0xTdUl1a3N1QjB0YnRVSDlKTzZSclE4SUtaVXhMZnBxaDRIWF9SNjVJ?oc=5" target="_blank" rel="noopener">
+    <h3><span class="star">&#9733;</span>TCU does an about-face after stripping local newspaper&#39;s credentials days before football season</h3>
+    <div class="meta"><span class="src">Fox News</span><span>&middot;</span><span>Sep 5, 2026</span></div>
+  </a><a class="item starred" href="https://news.google.com/rss/articles/CBMiqAFBVV95cUxQNGhoSzN0emNwaldMWmNXbjRjYUc5dVpTckVTeU9JamExSUNiTVp4NTcxQmZJS1BVbUlxMW81SEc0RlJKOVNRSkVDVzZuOEJpNXdMYjNTVkxtUzFqeDUyQnJ4MGs1aWtoUE9xT1hTNG84cDlqT05wQkFUUFpXMXFFTWtkeXVERk13QWVReG9ic3ZINnlqWEJRMGVYd3pMcGs0Nmc5VFJkNlo?oc=5" target="_blank" rel="noopener">
+    <h3><span class="star">&#9733;</span>TCU Restores Fort Worth Star-Telegram Media Credentials After 12-Day Ban</h3>
+    <div class="meta"><span class="src">dallassportsjournal.com</span><span>&middot;</span><span>Sep 4, 2026</span></div>
+  </a><a class="item starred" href="https://news.google.com/rss/articles/CBMivAFBVV95cUxNLVdIcWhkZHVPaHB2TTBMcVVaWjdtWVBJc1lxamgyTk9mOFN0WFE1NEg4SDFiOW1ua2hPejlNX3c0THZldVoyMXA5T0pqNGZVcUV0X3NYcW4waUo0SlJ2MjNMNElYdjVMUkpYUVBjcGhOVFRtam5Ub3BtTDQya182MUp1QTR0QWs5SE1TNkpGZDR1cjExVUlhT3pWNWdWZ1M0OTlwOTgydERTWE9BOG1DTmhVbDMwRWwxdzdGVg?oc=5" target="_blank" rel="noopener">
+    <h3><span class="star">&#9733;</span>Flyers Had Quinn Hughes Trade Attempt Shut Down by Canucks</h3>
+    <div class="meta"><span class="src">The Hockey News</span><span>&middot;</span><span>Sep 4, 2026</span></div>
+  </a><a class="item starred" href="https://news.google.com/rss/articles/CBMiggFBVV95cUxPdU8tQS1GZ05xVkFhTW82NVhQUU4tMlRsV2RMUjhKaXFHb050VTh4Y3dDODJBOUwzRzNZMFNEOEI3NXZLY2t4dmdUTFhtdHg5X1V3dXM4LWpQclNCVzQ0U0NqN0pzdWhjQkZpaVpiWFlJS3duZ2g3Q1lfdmN5b3kzV1Bn?oc=5" target="_blank" rel="noopener">
+    <h3><span class="star">&#9733;</span>Eagles News: “Don’t be surprised if Philadelphia has the NFL’s best defense”</h3>
+    <div class="meta"><span class="src">Yahoo Sports</span><span>&middot;</span><span>Sep 4, 2026</span></div>
+  </a><a class="item starred" href="https://news.google.com/rss/articles/CBMiiAFBVV95cUxNMUpjTU5UV0R6S1Q2Y3U1Y1dkQjZhdFFUS0VrcHVHNURKZnRsLXVGUEpqOXlMV0Jzd0NhTWc2aklHY2o1ak14amJYWUV2enloYTB3dDlDWER3Wnl1UjZUODRxb2tCV0JweXpIZTFvMzBOcURYeFVONFlKdUVIZmVCRmpacEUzNk9p?oc=5" target="_blank" rel="noopener">
+    <h3><span class="star">&#9733;</span>Flyers Linked to Landing $47 Million Superstar Defenseman</h3>
+    <div class="meta"><span class="src">Yahoo Sports</span><span>&middot;</span><span>Sep 4, 2026</span></div>
+  </a><a class="item starred" href="https://news.google.com/rss/articles/CBMikwFBVV95cUxOb3k4U3NCLWRXZDBvX00tVjk4MDRaZjFTT3lwWjF4cGxJWGgtVEdVVmltR1VqbXhpTzNmS1k1YUtFc2szcWJ0XzI1Q3VZeXJSa3NpQVgyZTVVd3QxRElZUTFiMGQySDNGOGVlVE5VOUM1OGdUcnNISjZNVW8xZHZqVHpoZ0NhWGVRVTh5Mlc5SUFEZ2c?oc=5" target="_blank" rel="noopener">
+    <h3><span class="star">&#9733;</span>Struggling Eagles veteran stripped of captain role</h3>
+    <div class="meta"><span class="src">NJ.com</span><span>&middot;</span><span>Sep 4, 2026</span></div>
+  </a><a class="item" href="https://news.google.com/rss/articles/CBMifkFVX3lxTFBWZVh6RElkZlAxeEp3aVRidVdHQlZ2S2ZSYXRNalNrTGxLaHJZcGJMSWR2WDh1LWJKUlE3NGFfT3ZneGViTmJYZHB2SkxCWXM2czRnT2dVYlpEak9xV0ZRaFNHUEJyU1g4YXZwR3FBb1l1cGhQWXp1VGNxcVFqZw?oc=5" target="_blank" rel="noopener">
+    <h3>‘You Just Don’t Like Hearing The Truth’ — Hall of Famer Terrell Owens Bites Back at NFL Fan Who Told Cam Newton to ‘Get Wrecked’</h3>
+    <div class="meta"><span class="src">Yahoo Sports</span><span>&middot;</span><span>Sep 5, 2026</span></div>
+  </a><a class="item" href="https://news.google.com/rss/articles/CBMijAFBVV95cUxOT0dhaFNVYzlNVzh5S1dNaF9uemkzX3hMdXFQQmsycFc0MWE5T3otZGhKOU9VRWxEZlhmNGZZWDlNamJwcUFOOVB5aXhxVkpsaGpGUUNCaWlSaVp3ZU1iaFZObGk5SVc0QksyZEtKbzB2RUdRdTRHdWRjOWFUVm4xS0RfV3ZRMEl3bTE1Yg?oc=5" target="_blank" rel="noopener">
+    <h3>‘I Auditioned for Every Network’ — Cam Newton, Ex-NFL Stars Question Why Black Players Don’t Get Same Broadcasting Gigs As White Players</h3>
+    <div class="meta"><span class="src">Yahoo Sports</span><span>&middot;</span><span>Sep 5, 2026</span></div>
+  </a><a class="item" href="https://news.google.com/rss/articles/CBMifEFVX3lxTFBVemkyTEFkc0VmM1I5REZYamlqaVhfRDNzeW5tb1FlWGtBR25yM0tGMU5qQVZmakZlX29jMkxvT0FDOXhXenhpbjFuWlBnVE5aTnh3b29aQ0gxVXY1b0o1cHhYT1ZlNnFjVUpzOE9OeHVpbm1RNFpKcE1TWkE?oc=5" target="_blank" rel="noopener">
+    <h3>‘You Don’t See Me Suing Georgia’ — Former SEC Star Picks Sides in LSU HC Lane Kiffin’s ‘Absurd’ War Over NFL Transfer Controversy</h3>
+    <div class="meta"><span class="src">Yahoo Sports</span><span>&middot;</span><span>Sep 5, 2026</span></div>
+  </a><a class="item" href="https://news.google.com/rss/articles/CBMiiwFBVV95cUxQbWs3TUNHTkVTQjJJbk5NZnhrSGxnR28wWV9oMGN2d0J2cVBBVEdjQUVTVWRXVTlaMzUyRGFGV2tQQ05uejhQTTRtV0tQc0Y1SHFES0VCMnFwR3VCSkpnNktCX1VFV2cwalJpbTYzcThKMkRKMFN5X1F4V0s3YjFGUE51ZFpseVJqV09B?oc=5" target="_blank" rel="noopener">
+    <h3>&#39;I&#39;m a hoarder&#39;: For Hader, 250 saves means another baseball added to collection</h3>
+    <div class="meta"><span class="src">MLB.com</span><span>&middot;</span><span>Sep 5, 2026</span></div>
+  </a><a class="item" href="https://news.google.com/rss/articles/CBMiX0FVX3lxTE8xY1FrSnFZeWozNEhVTmVjaHV1XzRkYjU0NEJBdjZCRnFBc3RSTC1RZW9SY1V1X011Q3JlSzFGVUMxNVFHUkR1dWw1XzhaSm5HWVk0MFlLNlBFQ3RkT2tB?oc=5" target="_blank" rel="noopener">
+    <h3>Top Plays 9/4</h3>
+    <div class="meta"><span class="src">MLB.com</span><span>&middot;</span><span>Sep 5, 2026</span></div>
+  </a><a class="item" href="https://news.google.com/rss/articles/CBMicEFVX3lxTE9BWXdmbDdQbnhGQmJ1NVJPdjF4Nm9tZHc0V1NVWVZLWnlzQThucXQ2N3NtVjh6b1hMMGFxdlpCNGptYmNCR1NLT0Uzdlg1N21sWEo5LVBXZGVHbUxUTGg2V2wwV2NyM1JFUzdxN0E5YXE?oc=5" target="_blank" rel="noopener">
+    <h3>Player of the Game: September 4 2026</h3>
+    <div class="meta"><span class="src">MLB.com</span><span>&middot;</span><span>Sep 5, 2026</span></div>
+  </a><a class="item" href="https://news.google.com/rss/articles/CBMimAFBVV95cUxNaHdlUUM1MnMta2ZfMW5kaFlUM2hQaVNWZDFoWE5lcWFqUHdnRkRpZUxSRnRWdGhiR1ZRMkJMdl9XQS1KTFNaN0w0dHJ1N3ZRTHByYU5pWE52UWFHXzF1Q1k1QWJRZkxnemt6WWZDYllSZVRidHUyOWNoSDVLTGdFNzZ3OVk1bGlPNUtSVDFZd2ZjY3NiZXBNeA?oc=5" target="_blank" rel="noopener">
+    <h3>Most Successful PTO Signings In Recent NHL History</h3>
+    <div class="meta"><span class="src">The Hockey News</span><span>&middot;</span><span>Sep 5, 2026</span></div>
+  </a><a class="item" href="https://news.google.com/rss/articles/CBMivwFBVV95cUxNM3pkM3NqaXNHZU1Mbi1KQ0VRc2M2Vm1POWY5UlVUZmNNUVV2cVJmdHNUbjJBN09XN0JZSFBzZ1hkT0NLTUhnYXZ2YmxXWGlrN0xTcU9iXzNFR1QwRWZEbUF5NGdndmpHTGtRaXZLRFVMUmVoakUxZHdWamJMOHU5V3Z2WEphSWVkbUtUMV8xWnlxdmR0ZlBtVjQyOVVQRGF6azhmS1FMQ0xTTHJDbmt0MEUxQ0pRY291MGEwOEEwOA?oc=5" target="_blank" rel="noopener">
+    <h3>NHL 27 Predicts Another Brutal Playoff Exit for the Avalanche</h3>
+    <div class="meta"><span class="src">The Hockey News</span><span>&middot;</span><span>Sep 5, 2026</span></div>
+  </a><a class="item" href="https://news.google.com/rss/articles/CBMirgFBVV95cUxOeXYxZWlod0tTQng2ZXdQeXNnQzZBUldiZjRNRHhjeGoxQ2xMVkEwUmpnT0ZxZFF5SlNiNElhWXd3X3MtR0d4bFhTcm9qVzFEaHg1Ql9jeTFkNDk2ME9iVnAxZkhLUkRPRnVhc1dMdmEtaDloaTNnSlZBZ05LVlVMLTFMM1FxX0NFVTVtd0ZuUTFfa2FYdTc0MzE0cFZseVVEUWZWT0NQZm0wdWdUVWc?oc=5" target="_blank" rel="noopener">
+    <h3>Mavrik Bourque opens up on Stars moving him to Predators: &#39;I didn&#39;t want to get traded&#39;</h3>
+    <div class="meta"><span class="src">Dallas News</span><span>&middot;</span><span>Sep 5, 2026</span></div>
+  </a><a class="item" href="https://news.google.com/rss/articles/CBMiW0FVX3lxTE5kR2dTSk5iZ1ozWDk1dUNnWXBOazM0dHpoXzR3WXpTQThtU01fQTVuU2twYzRydFlsd2xJbzNROVJhWk5ONUlaTGZkc3ZBU2ZySy1sc25KX0Nwcjg?oc=5" target="_blank" rel="noopener">
+    <h3>Notre Dame Vs North Carolina | NCAA College Lacrosse | Highlights - April 11, 2026 Celtic Vs Rangers (aHmANRSmiK)</h3>
+    <div class="meta"><span class="src">Mshale</span><span>&middot;</span><span>Sep 2, 2026</span></div>
+  </a>
+  </div>
+  
+      </section>
+
       <!-- 5. MISCELLANEOUS -->
       <section class="block" id="misc">
         <div class="eyebrow">Miscellaneous <span class="count">&middot; odds &amp; ends worth a look</span></div>
         
   <div class="cols">
-    <a class="item" href="https://www.theatlantic.com/ideas/2026/09/live-nation-trump-antitrust-monopolies/688508/?utm_source=feed" target="_blank" rel="noopener">
-    <h3><span class="tag ever">Evergreen</span>Trump’s Antitrust Gambit May Backfire</h3>
+    <a class="item" href="https://www.smithsonianmag.com/smart-news/a-new-york-city-exhibition-celebrates-snoopys-enduring-influence-on-art-and-fashion-180989455/" target="_blank" rel="noopener">
+    <h3><span class="tag ever">Evergreen</span>A New York City Exhibition Celebrates Snoopy’s Enduring Influence on Art and Fashion</h3>
+    <div class="meta"><span class="src">Smithsonian</span><span>&middot;</span><span>Sep 4, 2026</span></div>
+  </a><a class="item" href="https://www.theatlantic.com/ideas/2026/09/clancy-mistrial-debate-conspiracy/688483/?utm_source=feed" target="_blank" rel="noopener">
+    <h3><span class="tag ever">Evergreen</span>The Meaning of the Lindsay Clancy Mistrial</h3>
     <div class="meta"><span class="src">The Atlantic</span><span>&middot;</span><span>Sep 4, 2026</span></div>
-  </a><a class="item" href="https://www.smithsonianmag.com/smart-news/scientists-recreated-the-long-lost-chirps-of-jurassic-insects-listen-to-the-simulated-soundscape-of-165-million-years-ago-180989445/" target="_blank" rel="noopener">
-    <h3><span class="tag ever">Evergreen</span>Scientists Recreated the Long-Lost Chirps of Jurassic Insects. Listen to the Simulated Soundscape of 165 Million Years Ago</h3>
-    <div class="meta"><span class="src">Smithsonian</span><span>&middot;</span><span>Sep 3, 2026</span></div>
-  </a><a class="item" href="https://aeon.co/essays/neuroqueer-expression-and-the-limits-of-social-tolerance" target="_blank" rel="noopener">
-    <h3><span class="tag ever">Evergreen</span>Neuroqueering on the lawn</h3>
-    <div class="meta"><span class="src">Aeon</span><span>&middot;</span><span>Sep 3, 2026</span></div>
+  </a><a class="item" href="https://aeon.co/essays/why-western-democracy-is-ailing-and-how-to-fix-it" target="_blank" rel="noopener">
+    <h3><span class="tag ever">Evergreen</span>Upend the trickle-down</h3>
+    <div class="meta"><span class="src">Aeon</span><span>&middot;</span><span>Sep 4, 2026</span></div>
   </a>
   </div>
   
@@ -658,11 +788,11 @@
         <div class="eyebrow">Forecast</div>
         
         
-        <div class="tick"><span>Today</span><span>86&deg; / 75&deg; 🌦</span></div>
+        <div class="tick"><span>Today</span><span>89&deg; / 74&deg; 🌫</span></div>
         
-        <div class="tick"><span>Sat</span><span>87&deg; / 74&deg; 🌦</span></div>
+        <div class="tick"><span>Sun</span><span>92&deg; / 77&deg; ☁️</span></div>
         
-        <div class="tick"><span>Sun</span><span>96&deg; / 79&deg; ⛈</span></div>
+        <div class="tick"><span>Mon</span><span>84&deg; / 77&deg; ⛈</span></div>
         
         
       </section>
