@@ -150,20 +150,105 @@ freshness_windows:
   evergreen: null        # no age limit; source-curated
 
 # ---- DAILY RECIPE ----
-# meat + vegetable centric; grill or slow cooker; each has a side. Cycles by day-of-year.
-# Expand this list anytime — it just rotates.
+# meat + vegetable centric; grill or slow cooker; each has a side.
+# The list is shuffled once per year (seeded by the year) and then indexed by
+# day-of-year, so the order changes annually instead of the same dish landing
+# on the same date forever. Longer list = longer gap before anything repeats.
+# Expand this list anytime — it just rotates. `method` must stay either
+# "Grill" or "Slow Cooker" (it renders as the tag on the card).
 recipe_rotation:
-  - {dish: "Rosemary–Garlic Lamb Chops", method: "Grill", side: "blistered green beans & lemon", note: "High-heat sear, 3–4 min a side, rest 5"}
+  # --- beef ---
   - {dish: "Coffee-Rubbed Ribeye", method: "Grill", side: "grilled asparagus & flaky salt", note: "Reverse-sear; pull at 125°F, rest, sear hot"}
-  - {dish: "Slow-Cooker Pulled Chicken", method: "Slow Cooker", side: "charred corn slaw", note: "6 hrs low; shred; broil 3 min to crisp"}
-  - {dish: "Grilled Bone-In Pork Chops", method: "Grill", side: "roasted brussels sprouts", note: "Brine 1 hr; grill to 140°F; rest"}
-  - {dish: "Slow-Cooker Beef Short Ribs", method: "Slow Cooker", side: "garlic-mashed cauliflower", note: "Sear first; 8 hrs low in stock"}
   - {dish: "Cast-Iron Skirt Steak", method: "Grill", side: "chimichurri & grilled peppers", note: "Very hot, 2–3 min a side, slice against grain"}
-  - {dish: "Grilled Chicken Thighs (Peri-Peri)", method: "Grill", side: "grilled zucchini", note: "Marinate 2 hrs; skin-side down first"}
-  - {dish: "Slow-Cooker Lamb Shanks", method: "Slow Cooker", side: "roasted carrots & thyme", note: "Sear, then 8 hrs low in red wine + stock"}
   - {dish: "Grilled Flank Steak", method: "Grill", side: "elote-style street corn", note: "Marinate; grill hot 4 min a side; slice thin"}
-  - {dish: "Slow-Cooker Pork Carnitas", method: "Slow Cooker", side: "avocado & cabbage", note: "8 hrs low; crisp under broiler"}
   - {dish: "Grilled Tri-Tip", method: "Grill", side: "grilled broccolini", note: "Reverse-sear to 130°F; rest 10; slice thin"}
-  - {dish: "Beer-Can Chicken", method: "Grill", side: "grilled sweet potato wedges", note: "Indirect heat ~75 min to 165°F"}
+  - {dish: "Korean Bulgogi Flank Steak", method: "Grill", side: "kimchi & sesame rice", note: "Marinate 4 hrs in soy, pear, garlic, sesame; sear fast"}
+  - {dish: "Carne Asada (Citrus-Adobo)", method: "Grill", side: "grilled scallions & lime", note: "Marinate 6 hrs in orange, lime, garlic, cumin"}
+  - {dish: "Argentine Asado Short Ribs", method: "Grill", side: "chimichurri & grilled squash", note: "Salt 1 hr ahead; low over coals ~2 hrs"}
+  - {dish: "Brazilian Picanha Skewers", method: "Grill", side: "farofa & grilled onion", note: "Coarse salt only; fat cap out; sear on high"}
+  - {dish: "Santa Maria Tri-Tip", method: "Grill", side: "pinquito beans & garlic bread", note: "Garlic-salt-pepper rub; red oak if you have it"}
+  - {dish: "Soy-Ginger Sirloin Kebabs", method: "Grill", side: "grilled pineapple & peppers", note: "Marinate 2 hrs; high heat, turn every 2 min"}
+  - {dish: "Balsamic-Rosemary Flat Iron", method: "Grill", side: "grilled radicchio", note: "Marinate 3 hrs; hot grill 4 min a side"}
+  - {dish: "Montreal-Spiced Strip Steak", method: "Grill", side: "grilled mushrooms & butter", note: "Heavy crust; pull at 130°F; rest 8"}
+  - {dish: "Harissa-Rubbed Hanger Steak", method: "Grill", side: "grilled eggplant & yogurt", note: "Rub 1 hr; very hot, 3 min a side"}
+  - {dish: "Thai Beef Larb Skewers", method: "Grill", side: "herb salad & sticky rice", note: "Fish sauce, lime, chile; grill hot, chop, toss"}
+  - {dish: "Grilled Hanger with Salsa Verde", method: "Grill", side: "grilled potatoes", note: "Sauce off-heat; slice against the grain"}
+  - {dish: "Grilled Ribeye with Herb Butter", method: "Grill", side: "grilled onion & watercress", note: "Compound butter melts over it during the rest"}
+  - {dish: "Slow-Cooker Beef Short Ribs", method: "Slow Cooker", side: "garlic-mashed cauliflower", note: "Sear first; 8 hrs low in stock"}
   - {dish: "Slow-Cooker Pot Roast", method: "Slow Cooker", side: "green beans almondine", note: "Sear chuck; 8 hrs low with root veg"}
+  - {dish: "Slow-Cooker Barbacoa", method: "Slow Cooker", side: "charred onion & cilantro", note: "Chipotle-adobo + lime; 8 hrs low; shred"}
+  - {dish: "Slow-Cooker Beef Ragu", method: "Slow Cooker", side: "parmesan polenta", note: "Chuck, tomato, red wine; 8 hrs low; shred"}
+  - {dish: "Slow-Cooker Texas Chili", method: "Slow Cooker", side: "cornbread & pickled jalapeño", note: "Toast the dried chiles first; 8 hrs low"}
+  - {dish: "Slow-Cooker Korean Galbi Jjim", method: "Slow Cooker", side: "steamed rice & bok choy", note: "Soy-pear braise; 7 hrs low; skim the fat"}
+  - {dish: "Slow-Cooker Beef Birria", method: "Slow Cooker", side: "consommé & warm tortillas", note: "Guajillo-ancho paste; 8 hrs low"}
+  - {dish: "Slow-Cooker French Dip Beef", method: "Slow Cooker", side: "au jus & horseradish cream", note: "Chuck, onion, beef stock; 8 hrs low"}
+  - {dish: "Slow-Cooker Beef Rendang", method: "Slow Cooker", side: "coconut rice & cucumber", note: "Lemongrass-coconut; 8 hrs low; reduce at the end"}
+  - {dish: "Slow-Cooker Beef Shank Osso Buco", method: "Slow Cooker", side: "gremolata & polenta", note: "8 hrs low; finish with lemon zest"}
+  - {dish: "Slow-Cooker Chipotle Short Rib Tacos", method: "Slow Cooker", side: "pickled onion & cotija", note: "8 hrs low; crisp the shreds in a hot pan"}
+
+  # --- pork ---
+  - {dish: "Grilled Bone-In Pork Chops", method: "Grill", side: "roasted brussels sprouts", note: "Brine 1 hr; grill to 140°F; rest"}
+  - {dish: "Char Siu Pork Tenderloin", method: "Grill", side: "garlic bok choy", note: "Hoisin-honey-five-spice 4 hrs; glaze last 5 min"}
+  - {dish: "Al Pastor Pork Skewers", method: "Grill", side: "grilled pineapple & onion", note: "Achiote-chile marinade overnight; char the edges"}
+  - {dish: "Cider-Brined Pork Chops", method: "Grill", side: "roasted apples & sage", note: "Brine 4 hrs; grill to 140°F; rest 5"}
+  - {dish: "Maple-Mustard Pork Loin", method: "Grill", side: "grilled green beans", note: "Glaze the last 10 min so it doesn't burn"}
+  - {dish: "Memphis Dry-Rub Ribs", method: "Grill", side: "vinegar slaw", note: "Indirect 3 hrs; dust with rub again at the end"}
+  - {dish: "Kansas City Sticky Ribs", method: "Grill", side: "baked beans & pickles", note: "Indirect 3 hrs; mop with sauce the final 30 min"}
+  - {dish: "Porchetta-Style Pork Loin", method: "Grill", side: "roasted fennel & lemon", note: "Fennel-garlic-herb paste; indirect to 145°F"}
+  - {dish: "Gochujang-Glazed Pork Belly", method: "Grill", side: "quick-pickled cucumber", note: "Par-cook first; glaze at the very end"}
+  - {dish: "Jerk Pork Tenderloin", method: "Grill", side: "rice & peas, grilled mango", note: "Scotch-bonnet jerk paste 6 hrs; medium heat"}
+  - {dish: "Bourbon-Peach Glazed Pork Chops", method: "Grill", side: "grilled peaches & arugula", note: "Glaze the last 5 min; rest 5"}
+  - {dish: "Vietnamese Lemongrass Pork Chops", method: "Grill", side: "nuoc cham & herb salad", note: "Marinate 4 hrs; let the edges caramelize"}
+  - {dish: "Grilled Pork Souvlaki", method: "Grill", side: "tzatziki & tomato-onion salad", note: "Lemon-oregano marinade 4 hrs"}
+  - {dish: "Slow-Cooker Pork Carnitas", method: "Slow Cooker", side: "avocado & cabbage", note: "8 hrs low; crisp under the broiler"}
+  - {dish: "Mojo Criollo Pork Shoulder", method: "Slow Cooker", side: "black beans & plantains", note: "Sour orange, garlic, oregano; 9 hrs low"}
+  - {dish: "Slow-Cooker Filipino Adobo", method: "Slow Cooker", side: "jasmine rice & greens", note: "Soy, vinegar, garlic, bay; 6 hrs low; reduce the sauce"}
+  - {dish: "Carolina Vinegar Pulled Pork", method: "Slow Cooker", side: "slaw & pickled onion", note: "9 hrs low; pull, then dress with cider vinegar sauce"}
+  - {dish: "Slow-Cooker Milk-Braised Pork Ragu", method: "Slow Cooker", side: "pappardelle & parmesan", note: "Milk + sage; 7 hrs low; shred"}
+  - {dish: "Slow-Cooker Pork Green Chile", method: "Slow Cooker", side: "warm tortillas & lime", note: "Hatch chiles; 7 hrs low"}
+
+  # --- chicken & turkey ---
+  - {dish: "Grilled Chicken Thighs (Peri-Peri)", method: "Grill", side: "grilled zucchini", note: "Marinate 2 hrs; skin-side down first"}
+  - {dish: "Beer-Can Chicken", method: "Grill", side: "grilled sweet potato wedges", note: "Indirect heat ~75 min to 165°F"}
+  - {dish: "Tandoori Chicken Thighs", method: "Grill", side: "cucumber raita & charred naan", note: "Yogurt-garam marinade 6 hrs; very hot grill"}
+  - {dish: "Huli Huli Chicken", method: "Grill", side: "grilled pineapple & rice", note: "Soy-ginger-pineapple glaze; turn often over indirect"}
+  - {dish: "Greek Souvlaki Skewers", method: "Grill", side: "tzatziki & grilled pita", note: "Lemon-oregano-garlic marinade 3 hrs"}
+  - {dish: "Yakitori Chicken Skewers", method: "Grill", side: "grilled scallion & sesame", note: "Tare glaze; small skewers, turn constantly"}
+  - {dish: "Chicken Shawarma Thighs", method: "Grill", side: "garlic sauce & tomato salad", note: "Cumin-coriander-turmeric marinade overnight"}
+  - {dish: "Lemon-Herb Spatchcock Chicken", method: "Grill", side: "grilled asparagus", note: "Flatten; indirect 45 min; finish skin-side hot"}
+  - {dish: "Nashville Hot Grilled Chicken", method: "Grill", side: "pickles & slaw", note: "Grill first, then brush with cayenne-hot oil"}
+  - {dish: "Chimichurri Chicken Thighs", method: "Grill", side: "grilled corn & red onion", note: "Marinate 2 hrs; sauce again off the heat"}
+  - {dish: "Miso-Honey Chicken", method: "Grill", side: "charred cabbage", note: "White miso + honey; watch it, the sugar burns fast"}
+  - {dish: "Piri-Piri Spatchcock Chicken", method: "Grill", side: "grilled lemon & potatoes", note: "Chile-vinegar marinade overnight; indirect"}
+  - {dish: "Za'atar-Yogurt Chicken", method: "Grill", side: "grilled tomatoes & herbs", note: "Marinate 4 hrs; medium heat, skin-side down first"}
+  - {dish: "Jerk Chicken Quarters", method: "Grill", side: "rice & peas, grilled plantain", note: "Jerk paste overnight; slow over indirect heat"}
+  - {dish: "Peruvian Pollo a la Brasa", method: "Grill", side: "aji verde & crispy potatoes", note: "Soy-cumin-paprika marinade; indirect 60 min"}
+  - {dish: "Grilled Chicken Fajita Platter", method: "Grill", side: "peppers, onions & lime", note: "Lime-cumin marinade 2 hrs; blistering-hot grill"}
+  - {dish: "Smoky Paprika Spatchcock Chicken", method: "Grill", side: "romesco & grilled leeks", note: "Pimentón rub; indirect 45 min"}
+  - {dish: "Tamarind-Glazed Chicken Thighs", method: "Grill", side: "grilled bok choy", note: "Tamarind + honey; glaze at the end only"}
+  - {dish: "Grilled Chicken Caesar Skewers", method: "Grill", side: "charred romaine", note: "Grill the romaine cut-side down 90 seconds"}
+  - {dish: "Herb-Brined Turkey Tenderloin", method: "Grill", side: "grilled squash & sage butter", note: "Brine 3 hrs; grill to 160°F; rest"}
+  - {dish: "Slow-Cooker Pulled Chicken", method: "Slow Cooker", side: "charred corn slaw", note: "6 hrs low; shred; broil 3 min to crisp"}
+  - {dish: "Slow-Cooker Butter Chicken", method: "Slow Cooker", side: "basmati & blistered peppers", note: "5 hrs low; stir the cream in at the end"}
+  - {dish: "Slow-Cooker Chicken Tinga", method: "Slow Cooker", side: "charred corn & avocado", note: "Chipotle-tomato; 5 hrs low; shred"}
+  - {dish: "Slow-Cooker Chicken Adobo Verde", method: "Slow Cooker", side: "cilantro rice", note: "Tomatillo-poblano; 5 hrs low"}
+  - {dish: "Slow-Cooker Chicken Cacciatore", method: "Slow Cooker", side: "soft polenta", note: "Peppers, olives, tomato; 5 hrs low"}
+  - {dish: "Slow-Cooker Turkey Chili Verde", method: "Slow Cooker", side: "cornbread & lime", note: "Tomatillo base; 6 hrs low"}
+
+  # --- lamb ---
+  - {dish: "Rosemary–Garlic Lamb Chops", method: "Grill", side: "blistered green beans & lemon", note: "High-heat sear, 3–4 min a side, rest 5"}
   - {dish: "Grilled Lamb Kofta Skewers", method: "Grill", side: "cucumber-tomato salad", note: "High heat, turn once, ~8 min total"}
+  - {dish: "Moroccan Chermoula Lamb Chops", method: "Grill", side: "herbed couscous & carrots", note: "Cilantro-cumin-paprika marinade 3 hrs"}
+  - {dish: "Greek Lemon-Oregano Leg of Lamb", method: "Grill", side: "roasted potatoes & feta", note: "Butterfly it; marinate overnight; indirect"}
+  - {dish: "Mint-Yogurt Lamb Skewers", method: "Grill", side: "grilled peppers & flatbread", note: "Marinate 4 hrs; high heat, turn once"}
+  - {dish: "Sumac-Rubbed Lamb Loin Chops", method: "Grill", side: "grilled eggplant & tahini", note: "Rub 1 hr; hot and fast"}
+  - {dish: "Slow-Cooker Lamb Shanks", method: "Slow Cooker", side: "roasted carrots & thyme", note: "Sear, then 8 hrs low in red wine + stock"}
+  - {dish: "Slow-Cooker Lamb Rogan Josh", method: "Slow Cooker", side: "basmati & cucumber", note: "Kashmiri chile-yogurt; 7 hrs low"}
+  - {dish: "Slow-Cooker Lamb Barbacoa", method: "Slow Cooker", side: "grilled onion & salsa verde", note: "Chile-cumin braise; 8 hrs low"}
+
+  # --- seafood (delete these lines if you'd rather keep it land-meat only) ---
+  - {dish: "Cedar-Plank Salmon", method: "Grill", side: "grilled asparagus & dill", note: "Soak the plank 1 hr; indirect ~20 min"}
+  - {dish: "Grilled Swordfish Salmoriglio", method: "Grill", side: "grilled lemon & oregano potatoes", note: "Oil-lemon-oregano; 4 min a side, don't overcook"}
+  - {dish: "Blackened Redfish", method: "Grill", side: "dirty rice & okra", note: "Cast iron screaming hot; butter, then the spice crust"}
+  - {dish: "Garlic-Chile Shrimp Skewers", method: "Grill", side: "charred corn & lime", note: "2 min a side; pull them the second they curl"}
+  - {dish: "Miso-Glazed Black Cod", method: "Grill", side: "bok choy & rice", note: "Marinate 24 hrs in miso-mirin; finish carefully, it scorches"}
