@@ -17,9 +17,16 @@ on:
     # :00 and :30 are the most congested slots. On the old :30 schedule this
     # workflow fired 76-112 min late every single day (an 8:30 target landing
     # 09:46-10:22 UTC — i.e. mail arriving ~6 AM ET, not the intended 4:30).
-    - cron: "7 8 * * *"     # target: ~4:07 AM ET
-    - cron: "7 10 * * *"    # safety net if the first slot was dropped
-    - cron: "7 12 * * *"    # last resort
+    #
+    # Down to ONE slot as of 2026-10-05. The external API trigger below is the
+    # real timekeeper and fires reliably at 8:06 UTC; GitHub's own crons had
+    # drifted to 5-12 hours late (an 8:07 slot landing 17:03, 19:12, 20:31),
+    # so as "morning paper" safety nets they were useless — they only ever
+    # no-op'd via the guard. Meanwhile each extra queued run is another chance
+    # for GitHub to fail to allocate a runner and email a scary red failure
+    # (which is exactly what happened on 2026-10-05). One slot keeps genuine
+    # redundancy if the external trigger ever dies, at a third of the noise.
+    - cron: "7 10 * * *"    # fallback only; the API trigger is the primary
   # Also triggered each morning by an external scheduler calling the GitHub
   # API (see README), because GitHub's own `schedule:` above has proven
   # unreliable — it stopped firing entirely for this repo on 2026-08-27.
@@ -38,6 +45,9 @@ permissions:
 jobs:
   build-and-publish:
     runs-on: ubuntu-latest
+    # A full build is ~3-5 min. The default cap is 6 hours, which means a
+    # wedged run could sit burning a slot (and delay the guard) all morning.
+    timeout-minutes: 20
     env:
       # Runners are UTC. Without this the edition's masthead date, "Generated"
       # time, recipe day-of-year, and the day-seeded article rotation all key
