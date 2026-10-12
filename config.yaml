@@ -72,13 +72,17 @@ team_news_per_team: 2     # favorite-team-specific articles, per team, in Sports
 reads:
   - {name: "The Free Press",         page: "https://www.thefp.com/",                 feed: "https://www.thefp.com/feed"}
   - {name: "Of Dollars and Data",    page: "https://ofdollarsanddata.com/",          feed: "https://ofdollarsanddata.com/feed/"}
-  - {name: "Chamath Palihapitiya",   page: "https://chamath.substack.com/",          feed: "https://chamath.substack.com/feed"}
+  # Moved off Substack in Sep 2026 (the old feed's last post is "We've moved").
+  # The new site publishes no RSS/Atom feed anywhere, so this renders as a
+  # page link with no latest-post line. `feed` is intentionally omitted rather
+  # than hard-disabled: autodiscovery re-runs each build, so if the site ever
+  # adds a feed it starts working on its own with no change here.
+  - {name: "Chamath Palihapitiya",   page: "https://research.socialcapital.com/"}
   - {name: "One Useful Thing",       page: "https://www.oneusefulthing.org/",        feed: "https://www.oneusefulthing.org/feed"}
   - {name: "Chartbook (Adam Tooze)", page: "https://adamtooze.substack.com/",        feed: "https://adamtooze.substack.com/feed"}
   - {name: "Postanly Weekly",        page: "https://postanly.substack.com/",         feed: "https://postanly.substack.com/feed"}
   - {name: "Curiosity Chronicle",    page: "https://www.sahilbloom.com/newsletter",  feed: "https://sahilbloom.substack.com/feed"}
   - {name: "Farnam Street",          page: "https://fs.blog/blog/",                  feed: "https://fs.blog/feed/"}
-  - {name: "Doomberg",               page: "https://newsletter.doomberg.com/",       feed: "https://newsletter.doomberg.com/feed"}
   - {name: "The Quadrilateral",      page: "https://quadrilateral.substack.com/",    feed: "https://quadrilateral.substack.com/feed"}
   - {name: "Stratechery",            page: "https://stratechery.com/category/articles/", feed: "https://stratechery.com/feed/"}   # free items only
   - {name: "Joe Posnanski",          page: "https://www.joeposnanski.com/",          feed: "https://www.joeposnanski.com/feed/"} # /rss/ 404s; /feed/ is the real one
