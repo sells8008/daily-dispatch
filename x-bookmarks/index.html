@@ -2,46 +2,189 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow"><title>X Bookmarks</title>
 <style>
-:root{--bg:#f6f7f9;--card:#fff;--ink:#16181c;--mut:#687079;--acc:#1d9bf0;--line:#e3e6ea}
+:root{--bg:#f6f7f9;--card:#fff;--ink:#16181c;--mut:#687079;--acc:#1d9bf0;--line:#e3e6ea;--star:#f5a623}
 @media(prefers-color-scheme:dark){:root{--bg:#0f1115;--card:#181b21;--ink:#e8eaed;--mut:#9aa1aa;--line:#2a2f37}}
 *{box-sizing:border-box}body{margin:0;font:15px/1.45 -apple-system,system-ui,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--ink)}
-header{position:sticky;top:0;background:var(--bg);padding:14px 16px 8px;border-bottom:1px solid var(--line);z-index:2}
-h1{font-size:20px;margin:0 0 10px}.wrap{max-width:860px;margin:0 auto}
+header{position:sticky;top:0;background:var(--bg);padding:14px 16px 8px;border-bottom:1px solid var(--line);z-index:3}
+h1{font-size:20px;margin:0 0 10px}.wrap{max-width:1100px;margin:0 auto}
 .row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:8px}
 input[type=search],input[type=date],select{padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink);font-size:15px}
-input[type=search]{flex:1;min-width:200px}
-.chip,.tab{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:5px 12px;font-size:13px;cursor:pointer}
-.chip.on,.tab.on{background:var(--acc);border-color:var(--acc);color:#fff}
+input[type=search]{flex:1;min-width:180px}
+.chip,.tab,.viewbtn{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:5px 12px;font-size:13px;cursor:pointer}
+.chip.on,.tab.on,.viewbtn.on{background:var(--acc);border-color:var(--acc);color:#fff}
 main{padding:12px 16px 60px}.count{color:var(--mut);font-size:13px;margin:4px 0 10px}
 .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-bottom:10px}
 .meta{display:flex;gap:10px;flex-wrap:wrap;font-size:13px;color:var(--mut);align-items:center}
 .cat{background:rgba(29,155,240,.12);color:var(--acc);border-radius:6px;padding:1px 7px;font-weight:600}
 .sum{margin:6px 0;font-size:15.5px}a{color:var(--acc);text-decoration:none}
 details{font-size:13px;color:var(--mut)}details p{white-space:pre-wrap;margin:6px 0}
-.foot{display:flex;justify-content:space-between;align-items:center;margin-top:6px}
+.foot{display:flex;justify-content:space-between;align-items:center;margin-top:6px;gap:10px;flex-wrap:wrap}
 label.done{font-size:13px;display:flex;gap:6px;align-items:center;cursor:pointer}
+.star{background:none;border:none;cursor:pointer;font-size:18px;line-height:1;padding:2px 4px;color:var(--mut)}
+.star.on{color:var(--star)}
+.view-toggle{margin-left:auto;display:flex;gap:4px}
+/* Table */
+.tscroll{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--line);border-radius:12px;background:var(--card)}
+table.bm{width:100%;border-collapse:collapse;font-size:13.5px;min-width:720px}
+table.bm thead th{position:sticky;top:0;background:var(--card);border-bottom:2px solid var(--line);padding:8px 10px;text-align:left;font-weight:600;white-space:nowrap;z-index:1}
+table.bm thead th.sortable{cursor:pointer;user-select:none}
+table.bm thead th.sortable:hover{color:var(--acc)}
+table.bm thead th .arrow{color:var(--mut);font-size:11px;margin-left:3px}
+table.bm tbody td{padding:7px 10px;border-bottom:1px solid var(--line);vertical-align:middle}
+table.bm tbody tr{cursor:pointer}
+table.bm tbody tr:hover{background:rgba(29,155,240,.06)}
+table.bm tbody tr.expanded{background:rgba(29,155,240,.08)}
+table.bm .col-done{width:44px;text-align:center}
+table.bm .col-star{width:36px;text-align:center}
+table.bm .col-date{width:100px;white-space:nowrap;color:var(--mut)}
+table.bm .col-cat{width:120px}
+table.bm .col-auth{width:130px;white-space:nowrap}
+table.bm .col-sum{min-width:200px}
+table.bm .col-link{width:70px;white-space:nowrap}
+table.bm .exp{display:none}
+table.bm tr.expanded + tr.exp{display:table-row}
+table.bm tr.exp td{padding:10px 14px 14px;background:rgba(0,0,0,.03);font-size:13px;color:var(--mut);white-space:pre-wrap;border-bottom:1px solid var(--line)}
+@media(prefers-color-scheme:dark){table.bm tr.exp td{background:rgba(255,255,255,.03)}}
+.hidden{display:none!important}
 </style></head><body>
 <header><div class="wrap"><h1>📚 X Bookmarks</h1>
-<div class="row"><button class="tab on" data-v="inbox">To review</button><button class="tab" data-v="arch">Archived</button></div>
+<div class="row">
+  <button class="tab on" data-v="inbox">To review</button>
+  <button class="tab" data-v="fav">Favorites</button>
+  <button class="tab" data-v="arch">Archived</button>
+  <div class="view-toggle">
+    <button class="viewbtn" data-mode="list" type="button">List</button>
+    <button class="viewbtn on" data-mode="table" type="button">Table</button>
+  </div>
+</div>
 <div class="row"><input type="search" id="q" placeholder="Search summary, text, author…">
 <select id="sort"><option value="new">Newest first</option><option value="old">Oldest first</option><option value="saved">Bookmark order</option></select></div>
 <div class="row"><input type="date" id="from" title="From"><input type="date" id="to" title="To"></div>
 <div class="row" id="chips"></div></div></header>
-<main class="wrap"><div class="count" id="count"></div><div id="list"></div></main>
+<main class="wrap"><div class="count" id="count"></div><div id="list"></div><div id="tablewrap" class="tscroll hidden"></div></main>
 <script>
-const K='xbm-done-v1';let done=JSON.parse(localStorage.getItem(K)||'{}');let D=[],view='inbox',cats=new Set();
-const $=s=>document.querySelector(s);const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-fetch('data.json?'+Date.now()).then(r=>r.json()).then(d=>{D=d;const all=[...new Set(d.map(x=>x.category))].sort();
-$('#chips').innerHTML=all.map(c=>`<button class="chip" data-c="${esc(c)}">${esc(c)} <span>${d.filter(x=>x.category==c).length}</span></button>`).join('');render()});
-document.addEventListener('click',e=>{const c=e.target.closest('.chip');if(c){const k=c.dataset.c;cats.has(k)?cats.delete(k):cats.add(k);c.classList.toggle('on');render()}
-const t=e.target.closest('.tab');if(t){view=t.dataset.v;document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('on',b==t));render()}});
-document.addEventListener('change',e=>{if(e.target.matches('.cb')){const id=e.target.dataset.id;e.target.checked?done[id]=new Date().toISOString():delete done[id];localStorage.setItem(K,JSON.stringify(done));setTimeout(render,250)}else render()});
+const K='xbm-done-v1', FK='xbm-fav-v1', VK='xbm-view-v1';
+let done=JSON.parse(localStorage.getItem(K)||'{}');
+let fav=JSON.parse(localStorage.getItem(FK)||'{}');
+let mode=localStorage.getItem(VK)||'table';
+let D=[],view='inbox',cats=new Set(), sortCol=null, sortDir='desc', expanded=null;
+const $=s=>document.querySelector(s);
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+function syncViewBtns(){
+  document.querySelectorAll('.viewbtn').forEach(b=>b.classList.toggle('on',b.dataset.mode===mode));
+  $('#list').classList.toggle('hidden', mode!=='list');
+  $('#tablewrap').classList.toggle('hidden', mode!=='table');
+  $('#sort').classList.toggle('hidden', mode==='table');
+}
+
+fetch('data.json?'+Date.now()).then(r=>r.json()).then(d=>{
+  D=d;
+  const all=[...new Set(d.map(x=>x.category))].sort();
+  $('#chips').innerHTML=all.map(c=>`<button class="chip" data-c="${esc(c)}">${esc(c)} <span>${d.filter(x=>x.category==c).length}</span></button>`).join('');
+  syncViewBtns();
+  render();
+});
+
+document.addEventListener('click',e=>{
+  const c=e.target.closest('.chip');
+  if(c){const k=c.dataset.c;cats.has(k)?cats.delete(k):cats.add(k);c.classList.toggle('on');render();return}
+  const t=e.target.closest('.tab');
+  if(t){view=t.dataset.v;document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('on',b===t));render();return}
+  const vb=e.target.closest('.viewbtn');
+  if(vb){mode=vb.dataset.mode;localStorage.setItem(VK,mode);syncViewBtns();render();return}
+  const st=e.target.closest('.star');
+  if(st){e.stopPropagation();const id=st.dataset.id;fav[id]?delete fav[id]:fav[id]=new Date().toISOString();localStorage.setItem(FK,JSON.stringify(fav));st.classList.toggle('on',!!fav[id]);st.textContent=fav[id]?'★':'☆';if(view==='fav')setTimeout(render,200);return}
+  const th=e.target.closest('th.sortable');
+  if(th){const col=th.dataset.col;if(sortCol===col)sortDir=sortDir==='asc'?'desc':'asc';else{sortCol=col;sortDir=col==='date'?'desc':'asc'}render();return}
+  if(e.target.closest('a')||e.target.closest('input')||e.target.closest('label'))return;
+  const tr=e.target.closest('tr[data-id]');
+  if(tr && mode==='table'){const id=tr.dataset.id;expanded=expanded===id?null:id;render();return}
+});
+
+document.addEventListener('change',e=>{
+  if(e.target.matches('.cb')){
+    const id=e.target.dataset.id;
+    e.target.checked?done[id]=new Date().toISOString():delete done[id];
+    localStorage.setItem(K,JSON.stringify(done));
+    setTimeout(render,250);
+  } else render();
+});
 $('#q').addEventListener('input',render);
-function render(){const q=$('#q').value.toLowerCase().trim(),f=$('#from').value,t=$('#to').value,s=$('#sort').value;
-let r=D.filter(x=>(view=='arch')==!!done[x.id]&&(!cats.size||cats.has(x.category))&&(!f||x.date>=f)&&(!t||x.date<=t)&&(!q||(x.summary+' '+x.text+' '+x.author+' '+x.category).toLowerCase().includes(q)));
-r.sort((a,b)=>s=='saved'?a.order-b.order:s=='old'?a.date.localeCompare(b.date):b.date.localeCompare(a.date));
-$('#count').textContent=`${r.length} ${view=='arch'?'archived':'to review'} · ${D.filter(x=>!done[x.id]).length} unreviewed total`;
-$('#list').innerHTML=r.map(x=>`<div class="card"><div class="meta"><span class="cat">${esc(x.category)}</span><span>${esc(x.date)}</span><a href="https://x.com/${esc(x.author)}" target="_blank">@${esc(x.author)}</a></div>
-<div class="sum">${esc(x.summary)}</div><details><summary>Post text</summary><p>${esc(x.text)}</p></details>
-<div class="foot"><a href="${esc(x.url)}" target="_blank" rel="noopener">Open on X ↗</a><label class="done"><input type="checkbox" class="cb" data-id="${x.id}" ${done[x.id]?'checked':''}> ${view=='arch'?'Done (uncheck to unarchive)':'Done'}</label></div></div>`).join('')||'<p class="count">Nothing here.</p>'}
+$('#from').addEventListener('change',render);
+$('#to').addEventListener('change',render);
+$('#sort').addEventListener('change',render);
+
+function filtered(){
+  const q=$('#q').value.toLowerCase().trim(),f=$('#from').value,t=$('#to').value;
+  let r=D.filter(x=>{
+    if(view==='fav'){if(!fav[x.id])return false}
+    else if((view==='arch')!==!!done[x.id])return false;
+    if(cats.size&&!cats.has(x.category))return false;
+    if(f&&x.date<f)return false;
+    if(t&&x.date>t)return false;
+    if(q&&!(x.summary+' '+x.text+' '+x.author+' '+x.category).toLowerCase().includes(q))return false;
+    return true;
+  });
+  if(mode==='table' && sortCol){
+    r.sort((a,b)=>{
+      let av=a[sortCol]||'',bv=b[sortCol]||'';
+      if(sortCol==='author'){av=av.toLowerCase();bv=bv.toLowerCase()}
+      const cmp=String(av).localeCompare(String(bv));
+      return sortDir==='asc'?cmp:-cmp;
+    });
+  } else {
+    const s=$('#sort').value;
+    r.sort((a,b)=>s==='saved'?a.order-b.order:s==='old'?a.date.localeCompare(b.date):b.date.localeCompare(a.date));
+  }
+  return r;
+}
+
+function arrow(col){
+  if(sortCol!==col)return '';
+  return `<span class="arrow">${sortDir==='asc'?'▲':'▼'}</span>`;
+}
+
+function renderList(r){
+  $('#list').innerHTML=r.map(x=>`<div class="card">
+<div class="meta"><button class="star ${fav[x.id]?'on':''}" data-id="${x.id}" type="button" title="Favorite">${fav[x.id]?'★':'☆'}</button>
+<span class="cat">${esc(x.category)}</span><span>${esc(x.date)}</span>
+<a href="https://x.com/${esc(x.author)}" target="_blank" rel="noopener">@${esc(x.author)}</a></div>
+<div class="sum">${esc(x.summary)}</div>
+<details><summary>Post text</summary><p>${esc(x.text)}</p></details>
+<div class="foot"><a href="${esc(x.url)}" target="_blank" rel="noopener">Open on X ↗</a>
+<label class="done"><input type="checkbox" class="cb" data-id="${x.id}" ${done[x.id]?'checked':''}> ${done[x.id]?'Done (uncheck to unarchive)':'Done'}</label></div></div>`).join('')||'<p class="count">Nothing here.</p>';
+}
+
+function renderTable(r){
+  const rows=r.map(x=>{
+    const isExp=expanded===x.id;
+    return `<tr data-id="${x.id}" class="${isExp?'expanded':''}">
+<td class="col-done" onclick="event.stopPropagation()"><input type="checkbox" class="cb" data-id="${x.id}" ${done[x.id]?'checked':''} title="Done"></td>
+<td class="col-star" onclick="event.stopPropagation()"><button class="star ${fav[x.id]?'on':''}" data-id="${x.id}" type="button" title="Favorite">${fav[x.id]?'★':'☆'}</button></td>
+<td class="col-date">${esc(x.date)}</td>
+<td class="col-cat"><span class="cat">${esc(x.category)}</span></td>
+<td class="col-auth"><a href="https://x.com/${esc(x.author)}" target="_blank" rel="noopener" onclick="event.stopPropagation()">@${esc(x.author)}</a></td>
+<td class="col-sum">${esc(x.summary)}</td>
+<td class="col-link"><a href="${esc(x.url)}" target="_blank" rel="noopener" onclick="event.stopPropagation()">Open</a></td>
+</tr>
+<tr class="exp"><td colspan="7">${esc(x.text)||'<em>No post text</em>'}</td></tr>`;
+  }).join('');
+  $('#tablewrap').innerHTML=`<table class="bm"><thead><tr>
+<th class="col-done">Done</th>
+<th class="col-star"></th>
+<th class="col-date sortable" data-col="date">Date${arrow('date')}</th>
+<th class="col-cat sortable" data-col="category">Category${arrow('category')}</th>
+<th class="col-auth sortable" data-col="author">Author${arrow('author')}</th>
+<th class="col-sum">Summary</th>
+<th class="col-link">Link</th>
+</tr></thead><tbody>${rows||`<tr><td colspan="7" class="count">Nothing here.</td></tr>`}</tbody></table>`;
+}
+
+function render(){
+  const r=filtered();
+  const labels={inbox:'to review',arch:'archived',fav:'favorites'};
+  $('#count').textContent=`${r.length} ${labels[view]||''} · ${D.filter(x=>!done[x.id]).length} unreviewed · ${Object.keys(fav).length} starred`;
+  if(mode==='list')renderList(r); else renderTable(r);
+}
 </script></body></html>
