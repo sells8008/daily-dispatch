@@ -1,7 +1,7 @@
 # My Reads / Watch — runbook
 
 Live: https://sells8008.github.io/daily-dispatch/reads/
-Backup: OneDrive `ORGANIZED/000_AI_Skills_Tasks_Routines/Reads-Watch/Hunter_Tracker_Reads-Watch.xlsx`
+Backup: OneDrive `ORGANIZED/000_AI_Projects_Skills/Reads-Watch/Hunter_Tracker_Reads-Watch.xlsx`
 
 Item fields (reads/data.json, array):
 `id` (e.g. rw-YYYYMMDD-NN, unique, never reused), `url`, `title`, `source` (site/publication/channel),
