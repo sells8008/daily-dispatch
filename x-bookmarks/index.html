@@ -161,7 +161,7 @@ function renderTable(r){
     const isExp=expanded===x.id;
     return `<tr data-id="${x.id}" class="${isExp?'expanded':''}">
 <td class="col-done" onclick="event.stopPropagation()"><input type="checkbox" class="cb" data-id="${x.id}" ${done[x.id]?'checked':''} title="Done"></td>
-<td class="col-star" onclick="event.stopPropagation()"><button class="star ${fav[x.id]?'on':''}" data-id="${x.id}" type="button" title="Favorite">${fav[x.id]?'★':'☆'}</button></td>
+<td class="col-star"><button class="star ${fav[x.id]?'on':''}" data-id="${x.id}" type="button" title="Favorite">${fav[x.id]?'★':'☆'}</button></td>
 <td class="col-date">${esc(x.date)}</td>
 <td class="col-cat"><span class="cat">${esc(x.category)}</span></td>
 <td class="col-auth"><a href="https://x.com/${esc(x.author)}" target="_blank" rel="noopener" onclick="event.stopPropagation()">@${esc(x.author)}</a></td>
