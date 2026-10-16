@@ -17,3 +17,5 @@ Item fields (reads/data.json, array):
    (id, url, title, source, type, note, added) via openpyxl, upload back with overwrite of THAT file only.
 
 Done/Favorites/view state is per-browser localStorage (rw-done-v1, rw-fav-v1, rw-view-v1); not in data.json.
+
+Deleted state: localStorage rw-del-v1 (Deleted tab restores). Items are only hidden per-browser; never remove rows from data.json/xlsx for a delete. Keep ids stable.

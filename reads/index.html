@@ -46,12 +46,14 @@ table.bm tr.expanded + tr.exp{display:table-row}
 table.bm tr.exp td{padding:10px 14px 14px;background:rgba(0,0,0,.03);font-size:13px;color:var(--mut);white-space:pre-wrap;border-bottom:1px solid var(--line)}
 @media(prefers-color-scheme:dark){table.bm tr.exp td{background:rgba(255,255,255,.03)}}
 .hidden{display:none!important}
+.delbtn{background:none;border:none;cursor:pointer;font-size:15px;padding:2px 4px;opacity:.55}.delbtn:hover{opacity:1}
 </style></head><body>
 <header><div class="wrap"><h1>📖 My Reads / Watch <span style="font-size:13px;font-weight:400"><a href="../x-bookmarks/">→ X Bookmarks</a> · <a href="../summaries/">→ Creator Summaries</a></span></h1>
 <div class="row">
   <button class="tab on" data-v="inbox">To review</button>
   <button class="tab" data-v="fav">Favorites</button>
   <button class="tab" data-v="arch">Archived</button>
+  <button class="tab" data-v="del">Deleted</button>
   <div class="view-toggle">
     <button class="viewbtn" data-mode="list" type="button">List</button>
     <button class="viewbtn on" data-mode="table" type="button">Table</button>
@@ -66,6 +68,7 @@ table.bm tr.exp td{padding:10px 14px 14px;background:rgba(0,0,0,.03);font-size:1
 const K='rw-done-v1', FK='rw-fav-v1', VK='rw-view-v1';
 let done=JSON.parse(localStorage.getItem(K)||'{}');
 let fav=JSON.parse(localStorage.getItem(FK)||'{}');
+const DELK='rw-del-v1';let del=JSON.parse(localStorage.getItem(DELK)||'{}');
 let mode=localStorage.getItem(VK)||'table';
 let D=[],view='inbox',cats=new Set(), sortCol=null, sortDir='desc', expanded=null;
 const $=s=>document.querySelector(s);
@@ -93,6 +96,7 @@ document.addEventListener('click',e=>{
   if(t){view=t.dataset.v;document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('on',b===t));render();return}
   const vb=e.target.closest('.viewbtn');
   if(vb){mode=vb.dataset.mode;localStorage.setItem(VK,mode);syncViewBtns();render();return}
+  const db=e.target.closest('.delbtn');if(db){e.stopPropagation();const id=db.dataset.id;if(del[id]){delete del[id]}else{if(!confirm('Delete this item? It will be hidden from every view. You can restore it from the Deleted tab.'))return;del[id]=new Date().toISOString()}localStorage.setItem(DELK,JSON.stringify(del));render();return}
   const st=e.target.closest('.star');
   if(st){e.stopPropagation();const id=st.dataset.id;fav[id]?delete fav[id]:fav[id]=new Date().toISOString();localStorage.setItem(FK,JSON.stringify(fav));st.classList.toggle('on',!!fav[id]);st.textContent=fav[id]?'★':'☆';if(view==='fav')setTimeout(render,200);return}
   const th=e.target.closest('th.sortable');
@@ -118,7 +122,7 @@ $('#sort').addEventListener('change',render);
 function filtered(){
   const q=$('#q').value.toLowerCase().trim(),f=$('#from').value,t=$('#to').value;
   let r=D.filter(x=>{
-    if(view==='fav'){if(!fav[x.id])return false}
+    if(view==='del'){if(!del[x.id])return false}else if(del[x.id])return false;else if(view==='fav'){if(!fav[x.id])return false}
     else if((view==='arch')!==!!done[x.id])return false;
     if(cats.size&&!cats.has(x.type))return false;
     if(f&&x.added<f)return false;
@@ -147,7 +151,7 @@ function arrow(col){
 
 function renderList(r){
   $('#list').innerHTML=r.map(x=>`<div class="card">
-<div class="meta"><button class="star ${fav[x.id]?'on':''}" data-id="${x.id}" type="button" title="Favorite">${fav[x.id]?'★':'☆'}</button>
+<div class="meta"><button class="star ${fav[x.id]?'on':''}" data-id="${x.id}" type="button" title="Favorite">${fav[x.id]?'★':'☆'}</button><button class="delbtn" data-id="${x.id}" type="button" title="${del[x.id]?'Restore':'Delete'}">${del[x.id]?'↩︎':'🗑'}</button>
 <span class="cat">${esc(x.type)}</span><span>${esc(x.added)}</span><span>${esc(x.source)}</span></div>
 <div class="sum"><a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.title)}</a></div>
 ${x.note?`<details open><summary>Note</summary><p>${esc(x.note)}</p></details>`:''}
@@ -160,7 +164,7 @@ function renderTable(r){
     const isExp=expanded===x.id;
     return `<tr data-id="${x.id}" class="${isExp?'expanded':''}">
 <td class="col-done" onclick="event.stopPropagation()"><input type="checkbox" class="cb" data-id="${x.id}" ${done[x.id]?'checked':''} title="Done"></td>
-<td class="col-star"><button class="star ${fav[x.id]?'on':''}" data-id="${x.id}" type="button" title="Favorite">${fav[x.id]?'★':'☆'}</button></td>
+<td class="col-star"><button class="star ${fav[x.id]?'on':''}" data-id="${x.id}" type="button" title="Favorite">${fav[x.id]?'★':'☆'}</button><button class="delbtn" data-id="${x.id}" type="button" title="${del[x.id]?'Restore':'Delete'}">${del[x.id]?'↩︎':'🗑'}</button></td>
 <td class="col-date">${esc(x.added)}</td>
 <td class="col-cat"><span class="cat">${esc(x.type)}</span></td>
 <td class="col-auth">${esc(x.source)}</td>
@@ -182,7 +186,7 @@ function renderTable(r){
 
 function render(){
   const r=filtered();
-  const labels={inbox:'to review',arch:'archived',fav:'favorites'};
+  const labels={inbox:'to review',arch:'archived',fav:'favorites',del:'deleted'};
   $('#count').textContent=`${r.length} ${labels[view]||''} · ${D.filter(x=>!done[x.id]).length} unreviewed · ${Object.keys(fav).length} starred`;
   if(mode==='list')renderList(r); else renderTable(r);
 }
