@@ -70,6 +70,8 @@ let done=JSON.parse(localStorage.getItem(K)||'{}');
 let fav=JSON.parse(localStorage.getItem(FK)||'{}');
 const DELK='rw-del-v1';let del=JSON.parse(localStorage.getItem(DELK)||'{}');
 let mode=localStorage.getItem(VK)||'table';
+window.DD_SYNC={page:'rw',keys:{done:K,fav:FK,del:DELK},apply(){done=JSON.parse(localStorage.getItem(K)||'{}');fav=JSON.parse(localStorage.getItem(FK)||'{}');del=JSON.parse(localStorage.getItem(DELK)||'{}');try{render()}catch(e){}}};
+(()=>{const t=document.createElement('script');t.src='../sync.js?v=1';document.head.appendChild(t)})();
 let D=[],view='inbox',cats=new Set(), sortCol=null, sortDir='desc', expanded=null;
 const $=s=>document.querySelector(s);
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));

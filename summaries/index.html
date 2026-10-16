@@ -42,6 +42,8 @@ tr.body td{background:var(--bg);padding:12px 18px}
 </div></main>
 <script>
 const DELK='cs-del-v1',DK='cs-done-v1',FK='cs-fav-v1';let done=JSON.parse(localStorage.getItem(DK)||'{}'),fav=JSON.parse(localStorage.getItem(FK)||'{}'),del=JSON.parse(localStorage.getItem(DELK)||'{}'),view='inbox';
+window.DD_SYNC={page:'cs',keys:{done:DK,fav:FK,del:DELK},apply(){done=JSON.parse(localStorage.getItem(DK)||'{}');fav=JSON.parse(localStorage.getItem(FK)||'{}');del=JSON.parse(localStorage.getItem(DELK)||'{}');try{draw()}catch(e){}}};
+(()=>{const t=document.createElement('script');t.src='../sync.js?v=1';document.head.appendChild(t)})();
 let D=[],C='',K='date',asc=false,open=location.hash.slice(1);
 const esc=s=>String(s||'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 function fmt(d){const[y,m,dd]=d.split('-');return new Date(y,m-1,dd).toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'})}
