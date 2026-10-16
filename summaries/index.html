@@ -1,0 +1,55 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow"><title>Creator Summaries</title>
+<style>
+:root{--bg:#f6f7f9;--card:#fff;--ink:#16181c;--mut:#687079;--acc:#1d9bf0;--line:#e3e6ea}
+@media(prefers-color-scheme:dark){:root{--bg:#0f1115;--card:#181b21;--ink:#e8eaed;--mut:#9aa1aa;--line:#2a2f37}}
+*{box-sizing:border-box}body{margin:0;font:15px/1.5 -apple-system,system-ui,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--ink)}
+header{position:sticky;top:0;background:var(--bg);padding:14px 16px 8px;border-bottom:1px solid var(--line);z-index:3}
+h1{font-size:20px;margin:0 0 10px}.wrap{max-width:1100px;margin:0 auto}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:8px}
+input[type=search],select{padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink);font-size:15px}
+input[type=search]{flex:1;min-width:180px}
+.chip{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:5px 12px;font-size:13px;cursor:pointer}
+.chip.on{background:var(--acc);border-color:var(--acc);color:#fff}
+main{padding:12px 16px 60px}.count{color:var(--mut);font-size:13px;margin:4px 0 10px}
+a{color:var(--acc);text-decoration:none}
+.tscroll{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--card)}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th{text-align:left;padding:8px 10px;border-bottom:2px solid var(--line);cursor:pointer;white-space:nowrap}
+td{padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+tr.r{cursor:pointer}tr.r:hover{background:rgba(29,155,240,.06)}
+.cat{background:rgba(29,155,240,.12);color:var(--acc);border-radius:6px;padding:1px 7px;font-weight:600;font-size:12px;white-space:nowrap}
+.full{background:rgba(245,166,35,.18);color:#b9770e}
+tr.body td{background:var(--bg);padding:12px 18px}
+.sumtxt h1,.sumtxt h2,.sumtxt h3{font-size:16px;margin:12px 0 4px}.sumtxt ul{padding-left:20px}
+.disc{color:var(--mut);font-size:13px;margin-top:16px}
+</style></head><body>
+<header><div class="wrap"><h1>🧭 Creator Summaries <span style="font-size:13px;font-weight:400"><a href="../">→ Morning Dispatch</a> · <a href="../reads/">→ My Bookmarks / Reads</a> · <a href="../x-bookmarks/">→ X Bookmarks</a></span></h1>
+<div class="row">
+ <button class="chip on" data-c="">All</button><button class="chip" data-c="SightBringer">SightBringer</button><button class="chip" data-c="AI Investor">AI Investor</button>
+ <select id="t"><option value="">All types</option><option>Full post</option><option>X posts</option><option>Quip</option></select>
+</div>
+<div class="row"><input type="search" id="q" placeholder="Search titles and summaries (e.g. MU, S&P, silver)…"></div>
+</div></header>
+<main><div class="wrap"><div class="count" id="n"></div>
+<div class="tscroll"><table><thead><tr><th data-k="date">Date ▾</th><th data-k="creator">Creator</th><th data-k="title">Title</th><th data-k="type">Type</th><th>Source</th></tr></thead><tbody id="tb"></tbody></table></div>
+<p class="disc">Tap a row to read the summary. Educational analysis, not professional financial advice.</p>
+</div></main>
+<script>
+let D=[],C='',K='date',asc=false,open=location.hash.slice(1);
+const esc=s=>String(s||'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function fmt(d){const[y,m,dd]=d.split('-');return new Date(y,m-1,dd).toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'})}
+function draw(){const q=document.getElementById('q').value.toLowerCase(),t=document.getElementById('t').value;
+ let L=D.filter(x=>(!C||x.creator==C)&&(!t||x.type==t)&&(!q||(x.title+' '+x.text).toLowerCase().includes(q)));
+ L.sort((a,b)=>{let r=a[K]<b[K]?-1:a[K]>b[K]?1:0;if(!r&&K=='date')r=(a.type=='Full post')-(b.type=='Full post');return asc?r:-r});
+ document.getElementById('n').textContent=L.length+' of '+D.length+' summaries';
+ document.getElementById('tb').innerHTML=L.map(x=>`<tr class="r" data-id="${x.id}"><td style="white-space:nowrap">${fmt(x.date)}</td><td>${esc(x.creator)}</td><td><b>${esc(x.title)}</b></td><td><span class="cat ${x.type=='Full post'?'full':''}">${esc(x.type)}</span></td><td>${x.url?`<a href="${esc(x.url)}" target="_blank" rel="noopener" onclick="event.stopPropagation()">Original ↗</a>`:''} · <a href="#${x.id}" onclick="event.stopPropagation()">Link</a></td></tr>`+(open==x.id?`<tr class="body"><td colspan="5"><div class="sumtxt">${x.html}</div></td></tr>`:'')).join('');
+ if(open){const e=document.querySelector(`tr[data-id="${open}"]`);if(e&&location.hash.slice(1)==open)e.scrollIntoView({block:'start'})}}
+document.getElementById('tb').onclick=e=>{const r=e.target.closest('tr.r');if(!r)return;open=open==r.dataset.id?'':r.dataset.id;history.replaceState(null,'',open?'#'+open:location.pathname);draw()};
+window.onhashchange=()=>{open=location.hash.slice(1);draw()};
+document.querySelectorAll('.chip').forEach(b=>b.onclick=()=>{document.querySelectorAll('.chip').forEach(x=>x.classList.remove('on'));b.classList.add('on');C=b.dataset.c;draw()});
+document.querySelectorAll('th[data-k]').forEach(h=>h.onclick=()=>{if(K==h.dataset.k)asc=!asc;else{K=h.dataset.k;asc=K!='date'}draw()});
+document.getElementById('q').oninput=draw;document.getElementById('t').onchange=draw;
+fetch('data.json?'+Date.now()).then(r=>r.json()).then(d=>{D=d;draw()});
+</script></body></html>
