@@ -23,9 +23,12 @@ tr.r{cursor:pointer}tr.r:hover{background:rgba(29,155,240,.06)}
 .full{background:rgba(245,166,35,.18);color:#b9770e}
 tr.body td{background:var(--bg);padding:12px 18px}
 .sumtxt h1,.sumtxt h2,.sumtxt h3{font-size:16px;margin:12px 0 4px}.sumtxt ul{padding-left:20px}
+.tab{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:5px 12px;font-size:13px;cursor:pointer}.tab.on{background:var(--acc);border-color:var(--acc);color:#fff}
+.star{background:none;border:none;cursor:pointer;font-size:18px;line-height:1;padding:2px 4px;color:var(--mut)}.star.on{color:#f5a623}
 .disc{color:var(--mut);font-size:13px;margin-top:16px}
 </style></head><body>
 <header><div class="wrap"><h1>🧭 Creator Summaries <span style="font-size:13px;font-weight:400"><a href="../">→ Morning Dispatch</a> · <a href="../reads/">→ My Bookmarks / Reads</a> · <a href="../x-bookmarks/">→ X Bookmarks</a></span></h1>
+<div class="row"><button class="tab on" data-v="inbox">To review</button><button class="tab" data-v="fav">Favorites</button><button class="tab" data-v="arch">Archived</button></div>
 <div class="row">
  <button class="chip on" data-c="">All</button><button class="chip" data-c="SightBringer">SightBringer</button><button class="chip" data-c="AI Investor">AI Investor</button>
  <select id="t"><option value="">All types</option><option>Full post</option><option>X posts</option><option>Quip</option></select>
@@ -33,21 +36,24 @@ tr.body td{background:var(--bg);padding:12px 18px}
 <div class="row"><input type="search" id="q" placeholder="Search titles and summaries (e.g. MU, S&P, silver)…"></div>
 </div></header>
 <main><div class="wrap"><div class="count" id="n"></div>
-<div class="tscroll"><table><thead><tr><th data-k="date">Date ▾</th><th data-k="creator">Creator</th><th data-k="title">Title</th><th data-k="type">Type</th><th>Source</th></tr></thead><tbody id="tb"></tbody></table></div>
+<div class="tscroll"><table><thead><tr><th>Done</th><th>★</th><th data-k="date">Date ▾</th><th data-k="creator">Creator</th><th data-k="title">Title</th><th data-k="type">Type</th><th>Source</th></tr></thead><tbody id="tb"></tbody></table></div>
 <p class="disc">Tap a row to read the summary. Educational analysis, not professional financial advice.</p>
 </div></main>
 <script>
+const DK='cs-done-v1',FK='cs-fav-v1';let done=JSON.parse(localStorage.getItem(DK)||'{}'),fav=JSON.parse(localStorage.getItem(FK)||'{}'),view='inbox';
 let D=[],C='',K='date',asc=false,open=location.hash.slice(1);
 const esc=s=>String(s||'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 function fmt(d){const[y,m,dd]=d.split('-');return new Date(y,m-1,dd).toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'})}
 function draw(){const q=document.getElementById('q').value.toLowerCase(),t=document.getElementById('t').value;
- let L=D.filter(x=>(!C||x.creator==C)&&(!t||x.type==t)&&(!q||(x.title+' '+x.text).toLowerCase().includes(q)));
+ let L=D.filter(x=>(x.id==location.hash.slice(1)||view=='fav'?!!fav[x.id]:(view=='arch')==!!done[x.id])&&(!C||x.creator==C)&&(!t||x.type==t)&&(!q||(x.title+' '+x.text).toLowerCase().includes(q)));
  L.sort((a,b)=>{let r=a[K]<b[K]?-1:a[K]>b[K]?1:0;if(!r&&K=='date')r=(a.type=='Full post')-(b.type=='Full post');return asc?r:-r});
- document.getElementById('n').textContent=L.length+' of '+D.length+' summaries';
- document.getElementById('tb').innerHTML=L.map(x=>`<tr class="r" data-id="${x.id}"><td style="white-space:nowrap">${fmt(x.date)}</td><td>${esc(x.creator)}</td><td><b>${esc(x.title)}</b></td><td><span class="cat ${x.type=='Full post'?'full':''}">${esc(x.type)}</span></td><td>${x.url?`<a href="${esc(x.url)}" target="_blank" rel="noopener" onclick="event.stopPropagation()">Original ↗</a>`:''} · <a href="#${x.id}" onclick="event.stopPropagation()">Link</a></td></tr>`+(open==x.id?`<tr class="body"><td colspan="5"><div class="sumtxt">${x.html}</div></td></tr>`:'')).join('');
+ document.getElementById('n').textContent=`${L.length} ${({inbox:'to review',arch:'archived',fav:'favorites'})[view]} · ${D.filter(x=>!done[x.id]).length} unreviewed · ${Object.keys(fav).length} starred`;
+ document.getElementById('tb').innerHTML=L.map(x=>`<tr class="r" data-id="${x.id}"><td onclick="event.stopPropagation()"><input type="checkbox" class="cb" data-id="${x.id}" ${done[x.id]?'checked':''} title="Done"></td><td><button class="star ${fav[x.id]?'on':''}" data-id="${x.id}" type="button" title="Favorite">${fav[x.id]?'★':'☆'}</button></td><td style="white-space:nowrap">${fmt(x.date)}</td><td>${esc(x.creator)}</td><td><b>${esc(x.title)}</b></td><td><span class="cat ${x.type=='Full post'?'full':''}">${esc(x.type)}</span></td><td>${x.url?`<a href="${esc(x.url)}" target="_blank" rel="noopener" onclick="event.stopPropagation()">Original ↗</a>`:''} · <a href="#${x.id}" onclick="event.stopPropagation()">Link</a></td></tr>`+(open==x.id?`<tr class="body"><td colspan="7"><div class="sumtxt">${x.html}</div></td></tr>`:'')).join('');
  if(open){const e=document.querySelector(`tr[data-id="${open}"]`);if(e&&location.hash.slice(1)==open)e.scrollIntoView({block:'start'})}}
-document.getElementById('tb').onclick=e=>{const r=e.target.closest('tr.r');if(!r)return;open=open==r.dataset.id?'':r.dataset.id;history.replaceState(null,'',open?'#'+open:location.pathname);draw()};
-window.onhashchange=()=>{open=location.hash.slice(1);draw()};
+document.getElementById('tb').onclick=e=>{const st=e.target.closest('.star');if(st){e.stopPropagation();const id=st.dataset.id;fav[id]?delete fav[id]:fav[id]=new Date().toISOString();localStorage.setItem(FK,JSON.stringify(fav));if(view=='fav')setTimeout(draw,200);else draw();return}const r=e.target.closest('tr.r');if(!r)return;open=open==r.dataset.id?'':r.dataset.id;history.replaceState(null,'',open?'#'+open:location.pathname);draw()};
+document.getElementById('tb').addEventListener('change',e=>{if(!e.target.classList.contains('cb'))return;const id=e.target.dataset.id;e.target.checked?done[id]=new Date().toISOString():delete done[id];localStorage.setItem(DK,JSON.stringify(done));setTimeout(draw,250)});
+document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{view=t.dataset.v;document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('on',b===t));draw()});
+window.onhashchange=()=>{open=location.hash.slice(1);draw()}
 document.querySelectorAll('.chip').forEach(b=>b.onclick=()=>{document.querySelectorAll('.chip').forEach(x=>x.classList.remove('on'));b.classList.add('on');C=b.dataset.c;draw()});
 document.querySelectorAll('th[data-k]').forEach(h=>h.onclick=()=>{if(K==h.dataset.k)asc=!asc;else{K=h.dataset.k;asc=K!='date'}draw()});
 document.getElementById('q').oninput=draw;document.getElementById('t').onchange=draw;

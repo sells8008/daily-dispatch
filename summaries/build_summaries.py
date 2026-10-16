@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Rebuild summaries/data.json from /workspace/creator-monitoring/posts/*.md.
+Done/Favorites state lives in browser localStorage (cs-done-v1, cs-fav-v1) keyed by id = file name; this script only rewrites data.json, never index.html. Never rename post files (ids must stay stable).
 Usage: python3 summaries/build_summaries.py  (from /workspace/dd-pub), then git add/commit/push."""
 import glob, json, os, re, sys
 sys.path.insert(0, os.path.expanduser('~/.local/lib/python3/site-packages'))
