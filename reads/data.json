@@ -124,5 +124,14 @@
     "type": "other",
     "note": "Topic: AI · Grok Bot setup for Mac Apple apps (Reminders, Calendar, Notes, Contacts, Messages, Shortcuts) · (Read)",
     "added": "2026-10-20"
+  },
+  {
+    "id": "rw-20261020-02",
+    "url": "https://app.therundown.ai/guides/claude-dashboards-tutorial",
+    "title": "How to Use Claude Dashboards to Build a Connected Sales Report",
+    "source": "The Rundown AI (Guides)",
+    "type": "article",
+    "note": "Topic: AI · Step-by-step guide to Claude's new Dashboards beta: connect a data source, build, verify, filter & refresh a live report · (Read)",
+    "added": "2026-10-20"
   }
 ]
