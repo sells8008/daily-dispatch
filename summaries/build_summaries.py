@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Rebuild summaries/data.json from /workspace/creator-monitoring/posts/*.md.
-Done/Favorites state lives in browser localStorage (cs-done-v1, cs-fav-v1) keyed by id = file name; this script only rewrites data.json, never index.html. Never rename post files (ids must stay stable). One file per creator per day ({date}-{creator}-daily.md when several items); merged files list old ids in an '<!-- aliases: ... -->' line so old #links and Done/Fav state carry over.
+Done/Favorites state lives in browser localStorage (cs-done-v1, cs-fav-v1) keyed by id = file name; this script only rewrites data.json, never index.html. Sunday SEP digests are separate entries ({date}-sep-digest.md, creator/type 'SEP digest'). Never rename post files (ids must stay stable). One file per creator per day ({date}-{creator}-daily.md when several items); merged files list old ids in an '<!-- aliases: ... -->' line so old #links and Done/Fav state carry over.
 Usage: python3 summaries/build_summaries.py  (from /workspace/dd-pub), then git add/commit/push."""
 import glob, json, os, re, sys
 sys.path.insert(0, os.path.expanduser('~/.local/lib/python3/site-packages'))
@@ -12,10 +12,10 @@ DROP = re.compile(r'^\s*[-*]?\s*\**(status|ops|filed|state)\b', re.I)
 items = []
 for f in sorted(glob.glob(POSTS + '/*.md')):
     name = os.path.basename(f)[:-3]
-    m = re.match(r'(\d{4}-\d{2}-\d{2})-(ai-investor|sightbringer)-(.*)', name)
+    m = re.match(r'(\d{4}-\d{2}-\d{2})-(ai-investor|sightbringer|sep-digest)-?(.*)', name)
     if not m: continue
     date, cr, slug = m.groups()
-    creator = 'AI Investor' if cr == 'ai-investor' else 'SightBringer'
+    creator = {'ai-investor':'AI Investor','sightbringer':'SightBringer','sep-digest':'SEP digest'}[cr]
     if slug.startswith('x-'): typ = 'X posts'
     elif slug.startswith('quip'): typ = 'Quip'
     else: typ = 'Full post'
