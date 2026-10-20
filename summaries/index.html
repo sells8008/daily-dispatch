@@ -41,9 +41,17 @@ html,body{max-width:100%;overflow-x:hidden}
  tr.r td:nth-child(3),tr.r td:nth-child(4),tr.r td:nth-child(7){font-size:13px;color:var(--mut)}
  tr.body{display:block}tr.body td{display:block;width:100%;padding:10px 12px}
  .cat{white-space:normal}
+ tr.r td.cr{min-width:0;white-space:nowrap!important}
 }
+
+td.cr,th.cr{white-space:nowrap;min-width:110px}
+.sitenav{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 12px;padding:4px;background:var(--card);border:1px solid var(--line);border-radius:999px;width:fit-content;max-width:100%}
+.sitenav a{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:999px;color:var(--mut);font-size:14px;font-weight:600;white-space:nowrap;text-decoration:none;transition:background .15s,color .15s}
+.sitenav a:hover{background:rgba(29,155,240,.12);color:var(--ink)}
+.sitenav a.on{background:var(--acc);color:#fff;box-shadow:0 1px 4px rgba(29,155,240,.35)}
+@media(max-width:640px){.sitenav{flex-wrap:nowrap;overflow-x:auto;width:100%;border-radius:14px;scrollbar-width:none}.sitenav::-webkit-scrollbar{display:none}.sitenav a{padding:6px 11px;font-size:13px}}
 </style></head><body>
-<header><div class="wrap"><h1>🧭 Creator Summaries <span style="font-size:13px;font-weight:400"><a href="../">→ Morning Dispatch</a> · <a href="../reads/">→ My Bookmarks / Reads</a> · <a href="../x-bookmarks/">→ X Bookmarks</a></span></h1>
+<header><div class="wrap"><nav class="sitenav"><a href="../reads/">📖 Read, Watch, Listen</a><a href="../x-bookmarks/">🔖 X Bookmarks</a><a href="../summaries/" class="on" aria-current="page">🎙️ Creator Summaries</a><a href="../">📰 Dispatch</a></nav><h1>🧭 Creator Summaries</h1>
 <div class="row"><button class="tab on" data-v="inbox">To review</button><button class="tab" data-v="fav">Favorites</button><button class="tab" data-v="arch">Archived</button><button class="tab" data-v="del">Deleted</button></div>
 <div class="row">
  <button class="chip on" data-c="">All</button><button class="chip" data-c="SightBringer">SightBringer</button><button class="chip" data-c="AI Investor">AI Investor</button><button class="chip" data-c="SEP digest">SEP digest</button>
@@ -52,7 +60,7 @@ html,body{max-width:100%;overflow-x:hidden}
 <div class="row"><input type="search" id="q" placeholder="Search titles and summaries (e.g. MU, S&P, silver)…"></div>
 </div></header>
 <main><div class="wrap"><div class="count" id="n"></div>
-<div class="tscroll"><table><thead><tr><th>Done</th><th>★</th><th data-k="date">Date ▾</th><th data-k="creator">Creator</th><th data-k="title">Title</th><th data-k="type">Type</th><th>Source</th></tr></thead><tbody id="tb"></tbody></table></div>
+<div class="tscroll"><table><thead><tr><th>Done</th><th>★</th><th data-k="date">Date ▾</th><th data-k="creator" class="cr">Creator</th><th data-k="title">Title</th><th data-k="type">Type</th><th>Source</th></tr></thead><tbody id="tb"></tbody></table></div>
 <p class="disc">Tap a row to read the summary. Educational analysis, not professional financial advice.</p>
 </div></main>
 <script>
@@ -66,7 +74,7 @@ function draw(){const q=document.getElementById('q').value.toLowerCase(),t=docum
  let L=D.filter(x=>(view=='del'?!!del[x.id]:!del[x.id]&&(x.id==location.hash.slice(1)||(view=='fav'?!!fav[x.id]:(view=='arch')==!!done[x.id])))&&(!C||x.creator==C)&&(!t||x.type==t)&&(!q||(x.title+' '+x.text).toLowerCase().includes(q)));
  L.sort((a,b)=>{let r=a[K]<b[K]?-1:a[K]>b[K]?1:0;if(!r&&K=='date')r=(a.type=='Full post')-(b.type=='Full post');return asc?r:-r});
  document.getElementById('n').textContent=`${L.length} ${({inbox:'to review',arch:'archived',fav:'favorites',del:'deleted'})[view]} · ${D.filter(x=>!done[x.id]).length} unreviewed · ${Object.keys(fav).length} starred`;
- document.getElementById('tb').innerHTML=L.map(x=>`<tr class="r" data-id="${x.id}"><td onclick="event.stopPropagation()"><input type="checkbox" class="cb" data-id="${x.id}" ${done[x.id]?'checked':''} title="Done"></td><td><button class="star ${fav[x.id]?'on':''}" data-id="${x.id}" type="button" title="Favorite">${fav[x.id]?'★':'☆'}</button><button class="delbtn" data-id="${x.id}" type="button" title="${del[x.id]?'Restore':'Delete'}">${del[x.id]?'↩︎':'🗑'}</button></td><td style="white-space:nowrap">${fmt(x.date)}</td><td>${esc(x.creator)}</td><td><b>${esc(x.title)}</b></td><td><span class="cat ${x.type=='Full post'?'full':''}">${esc(x.type)}</span></td><td>${x.url?`<a href="${esc(x.url)}" target="_blank" rel="noopener" onclick="event.stopPropagation()">Original ↗</a>`:''} · <a href="#${x.id}" onclick="event.stopPropagation()">Link</a></td></tr>`+(open==x.id?`<tr class="body"><td colspan="7"><div class="sumtxt">${x.html}</div></td></tr>`:'')).join('');
+ document.getElementById('tb').innerHTML=L.map(x=>`<tr class="r" data-id="${x.id}"><td onclick="event.stopPropagation()"><input type="checkbox" class="cb" data-id="${x.id}" ${done[x.id]?'checked':''} title="Done"></td><td><button class="star ${fav[x.id]?'on':''}" data-id="${x.id}" type="button" title="Favorite">${fav[x.id]?'★':'☆'}</button><button class="delbtn" data-id="${x.id}" type="button" title="${del[x.id]?'Restore':'Delete'}">${del[x.id]?'↩︎':'🗑'}</button></td><td style="white-space:nowrap">${fmt(x.date)}</td><td class="cr">${esc(x.creator)}</td><td><b>${esc(x.title)}</b></td><td><span class="cat ${x.type=='Full post'?'full':''}">${esc(x.type)}</span></td><td>${x.url?`<a href="${esc(x.url)}" target="_blank" rel="noopener" onclick="event.stopPropagation()">Original ↗</a>`:''} · <a href="#${x.id}" onclick="event.stopPropagation()">Link</a></td></tr>`+(open==x.id?`<tr class="body"><td colspan="7"><div class="sumtxt">${x.html}</div></td></tr>`:'')).join('');
  if(open){const e=document.querySelector(`tr[data-id="${open}"]`);if(e&&location.hash.slice(1)==open)e.scrollIntoView({block:'start'})}}
 document.getElementById('tb').onclick=e=>{const db=e.target.closest('.delbtn');if(db){e.stopPropagation();const id=db.dataset.id;if(del[id]){delete del[id]}else{if(!confirm('Delete this item? It will be hidden from every view. You can restore it from the Deleted tab.'))return;del[id]=new Date().toISOString()}localStorage.setItem(DELK,JSON.stringify(del));draw();return}
   const st=e.target.closest('.star');if(st){e.stopPropagation();const id=st.dataset.id;fav[id]?delete fav[id]:fav[id]=new Date().toISOString();localStorage.setItem(FK,JSON.stringify(fav));if(view=='fav')setTimeout(draw,200);else draw();return}const r=e.target.closest('tr.r');if(!r)return;open=open==r.dataset.id?'':r.dataset.id;history.replaceState(null,'',open?'#'+open:location.pathname);draw()};

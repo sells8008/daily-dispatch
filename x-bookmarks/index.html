@@ -47,8 +47,14 @@ table.bm tr.exp td{padding:10px 14px 14px;background:rgba(0,0,0,.03);font-size:1
 @media(prefers-color-scheme:dark){table.bm tr.exp td{background:rgba(255,255,255,.03)}}
 .hidden{display:none!important}
 .delbtn{background:none;border:none;cursor:pointer;font-size:15px;padding:2px 4px;opacity:.55}.delbtn:hover{opacity:1}
+
+.sitenav{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 12px;padding:4px;background:var(--card);border:1px solid var(--line);border-radius:999px;width:fit-content;max-width:100%}
+.sitenav a{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:999px;color:var(--mut);font-size:14px;font-weight:600;white-space:nowrap;text-decoration:none;transition:background .15s,color .15s}
+.sitenav a:hover{background:rgba(29,155,240,.12);color:var(--ink)}
+.sitenav a.on{background:var(--acc);color:#fff;box-shadow:0 1px 4px rgba(29,155,240,.35)}
+@media(max-width:640px){.sitenav{flex-wrap:nowrap;overflow-x:auto;width:100%;border-radius:14px;scrollbar-width:none}.sitenav::-webkit-scrollbar{display:none}.sitenav a{padding:6px 11px;font-size:13px}}
 </style></head><body>
-<header><div class="wrap"><h1>📚 X Bookmarks <span style="font-size:13px;font-weight:400"><a href="../reads/">→ My Reads / Watch</a> · <a href="../summaries/">→ Creator Summaries</a></span></h1>
+<header><div class="wrap"><nav class="sitenav"><a href="../reads/">📖 Read, Watch, Listen</a><a href="../x-bookmarks/" class="on" aria-current="page">🔖 X Bookmarks</a><a href="../summaries/">🎙️ Creator Summaries</a><a href="../">📰 Dispatch</a></nav><h1>📚 X Bookmarks</h1>
 <div class="row">
   <button class="tab on" data-v="inbox">To review</button>
   <button class="tab" data-v="fav">Favorites</button>
