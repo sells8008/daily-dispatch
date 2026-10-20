@@ -61,5 +61,10 @@ window.onhashchange=()=>{open=location.hash.slice(1);draw()}
 document.querySelectorAll('.chip').forEach(b=>b.onclick=()=>{document.querySelectorAll('.chip').forEach(x=>x.classList.remove('on'));b.classList.add('on');C=b.dataset.c;draw()});
 document.querySelectorAll('th[data-k]').forEach(h=>h.onclick=()=>{if(K==h.dataset.k)asc=!asc;else{K=h.dataset.k;asc=K!='date'}draw()});
 document.getElementById('q').oninput=draw;document.getElementById('t').onchange=draw;
-fetch('data.json?'+Date.now()).then(r=>r.json()).then(d=>{D=d;draw()});
+fetch('data.json?'+Date.now()).then(r=>r.json()).then(d=>{D=d;const A={};let ch=0;
+ D.forEach(x=>(x.aliases||[]).forEach(a=>A[a]=x.id));
+ D.forEach(x=>{const a=x.aliases||[];if(!a.length)return;const t=new Date().toISOString();
+  if(!done[x.id]&&a.every(i=>done[i])){done[x.id]=t;ch=1}if(!fav[x.id]&&a.some(i=>fav[i])){fav[x.id]=t;ch=1}if(!del[x.id]&&a.every(i=>del[i])){del[x.id]=t;ch=1}});
+ if(ch){localStorage.setItem(DK,JSON.stringify(done));localStorage.setItem(FK,JSON.stringify(fav));localStorage.setItem(DELK,JSON.stringify(del))}
+ const h=location.hash.slice(1);if(A[h]){open=A[h];history.replaceState(null,'','#'+open);draw();const s=document.getElementById(h);if(s)s.scrollIntoView({block:'start'})}else draw()});
 </script></body></html>

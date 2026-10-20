@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Rebuild summaries/data.json from /workspace/creator-monitoring/posts/*.md.
-Done/Favorites state lives in browser localStorage (cs-done-v1, cs-fav-v1) keyed by id = file name; this script only rewrites data.json, never index.html. Never rename post files (ids must stay stable).
+Done/Favorites state lives in browser localStorage (cs-done-v1, cs-fav-v1) keyed by id = file name; this script only rewrites data.json, never index.html. Never rename post files (ids must stay stable). One file per creator per day ({date}-{creator}-daily.md when several items); merged files list old ids in an '<!-- aliases: ... -->' line so old #links and Done/Fav state carry over.
 Usage: python3 summaries/build_summaries.py  (from /workspace/dd-pub), then git add/commit/push."""
 import glob, json, os, re, sys
 sys.path.insert(0, os.path.expanduser('~/.local/lib/python3/site-packages'))
@@ -20,6 +20,11 @@ for f in sorted(glob.glob(POSTS + '/*.md')):
     elif slug.startswith('quip'): typ = 'Quip'
     else: typ = 'Full post'
     text = open(f, encoding='utf-8').read()
+    tm = re.search(r'<!-- type: (.*?) -->', text)
+    if tm: typ = tm.group(1).strip()
+    am = re.search(r'<!-- aliases: (.*?) -->', text)
+    aliases = [a.strip() for a in am.group(1).split(',')] if am else []
+    text = re.sub(r'<!-- (type|aliases): .*? -->\n?', '', text)
     lines = text.splitlines()
     title = name
     if lines and lines[0].startswith('#'):
@@ -35,7 +40,7 @@ for f in sorted(glob.glob(POSTS + '/*.md')):
     html = re.sub(r'<a href=', '<a target="_blank" rel="noopener" href=', html)
     plain = re.sub(r'<[^>]+>', ' ', html)
     items.append(dict(id=name, date=date, creator=creator, type=typ, title=title,
-                      url=url, html=html, text=re.sub(r'\s+', ' ', plain)[:4000]))
+                      url=url, aliases=aliases, html=html, text=re.sub(r'\s+', ' ', plain)[:4000]))
 items.sort(key=lambda x: (x['date'], x['type'] == 'Full post'), reverse=True)
 json.dump(items, open(OUT, 'w'), ensure_ascii=False, indent=1)
 print(len(items), 'summaries ->', OUT)
