@@ -1,119 +1,128 @@
 [
- {
-  "id": "rw-20261013-01",
-  "url": "https://x.com/arkinvest/status/2060077558918492590?s=12",
-  "title": "ARK Bitcoin V Quantom",
-  "source": "@arkinvest (X)",
-  "type": "podcast",
-  "note": "Topic: Bitcoin \u00b7 Bitcoin V Quantom Computing \u00b7 (Listen)",
-  "added": "2026-10-13"
- },
- {
-  "id": "rw-20261013-02",
-  "url": "https://x.com/radha_ai/status/2059144145495904263?s=12",
-  "title": "Prediction of AI (1 hour Lecture)",
-  "source": "@radha_ai (X)",
-  "type": "podcast",
-  "note": "Topic: AI \u00b7 Cambridge Professor Prediction \u00b7 (Listen)",
-  "added": "2026-10-13"
- },
- {
-  "id": "rw-20261013-03",
-  "url": "https://x.com/hhorsley/status/2057633525638271442?s=12",
-  "title": "Why Hard Work Wont Make You Rich",
-  "source": "@hhorsley (X)",
-  "type": "podcast",
-  "note": "Topic: Bitcoin/Economy \u00b7 Michael Saylor Interview \u00b7 (Listen)",
-  "added": "2026-10-13"
- },
- {
-  "id": "rw-20261013-04",
-  "url": "https://open.spotify.com/show/2SppgaUjzmHkojXuuAu3tt?si=rEEVL6YhSxa6WoBFibwWUw",
-  "title": "Golf Is Not A Game Of Perfect",
-  "source": "Spotify",
-  "type": "podcast",
-  "note": "Topic: Golf \u00b7 Audio Book Kurtz Sent Me \u00b7 (Listen)",
-  "added": "2026-10-13"
- },
- {
-  "id": "rw-20261013-05",
-  "url": "https://www.youtube.com/shorts/S3AHRZyahT4",
-  "title": "Ben Hogan Video",
-  "source": "YouTube",
-  "type": "video",
-  "note": "Topic: Golf \u00b7 (Watch)",
-  "added": "2026-10-13"
- },
- {
-  "id": "rw-20261013-06",
-  "url": "https://www.youtube.com/watch?v=LTHQtOX1fac",
-  "title": "Video on Golf Grip",
-  "source": "YouTube",
-  "type": "video",
-  "note": "Topic: Golf \u00b7 (Watch)",
-  "added": "2026-10-13"
- },
- {
-  "id": "rw-20261013-07",
-  "url": "https://www.youtube.com/watch?v=AcQQcX_Mb6o",
-  "title": "Commercial Real Estate Cycles and 4th Turning",
-  "source": "YouTube",
-  "type": "podcast",
-  "note": "Topic: 4th Turning / CRE \u00b7 (Listen)",
-  "added": "2026-10-13"
- },
- {
-  "id": "rw-20261013-08",
-  "url": "https://x.com/intern/status/2022058797229908385?s=12",
-  "title": "What to do if you believe in AI",
-  "source": "@intern (X)",
-  "type": "article",
-  "note": "(Read)",
-  "added": "2026-10-13"
- },
- {
-  "id": "rw-20261013-09",
-  "url": "https://www.the-ai-corner.com/p/mark-cuban-has-been-right-every-time?utm_source=multiple-personal-recommendations-email&utm_medium=email&triedRedirect=true",
-  "title": "Mark Cuban Has Been Right When the Crowd is wrong. Again",
-  "source": "the-ai-corner.com",
-  "type": "article",
-  "note": "Which types of companies will exist in 2029 \u00b7 (Read)",
-  "added": "2026-10-13"
- },
- {
-  "id": "rw-20261013-10",
-  "url": "https://grahamstephan.substack.com/p/great-meltup?utm_source=multiple-personal-recommendations-email&utm_medium=email&triedRedirect=true",
-  "title": "Are we in the great melt up?",
-  "source": "grahamstephan (Substack)",
-  "type": "newsletter",
-  "note": "Graham Stephen \u00b7 (Read)",
-  "added": "2026-10-13"
- },
- {
-  "id": "rw-20261013-11",
-  "url": "https://x.com/tftc21/status/2062172456773906481?s=46",
-  "title": "Jordi visser interview",
-  "source": "@tftc21 (X)",
-  "type": "podcast",
-  "note": "Topic: AI / Bitcoin / future & current mkt \u00b7 (Listen)",
-  "added": "2026-10-13"
- },
- {
-  "id": "rw-20261013-12",
-  "url": "https://x.com/drfeifei/status/2062247238143996275?s=12",
-  "title": "A Functional Taxonomy of World Models",
-  "source": "@drfeifei (X)",
-  "type": "article",
-  "note": "Topic: \"world models\" \u00b7 LLMs understand language, world models understand the universe \u00b7 (Read)",
-  "added": "2026-10-13"
- },
- {
-  "id": "rw-20261013-13",
-  "url": "https://x.com/natbrunell/status/2064713036548435975?s=46",
-  "title": "What wall street see's in bitcoin",
-  "source": "@natbrunell (X)",
-  "type": "podcast",
-  "note": "Topic: What Wall Street see's in bitcoin \u00b7 (Listen)",
-  "added": "2026-10-13"
- }
+  {
+    "id": "rw-20261013-01",
+    "url": "https://x.com/arkinvest/status/2060077558918492590?s=12",
+    "title": "ARK Bitcoin V Quantom",
+    "source": "@arkinvest (X)",
+    "type": "podcast",
+    "note": "Topic: Bitcoin · Bitcoin V Quantom Computing · (Listen)",
+    "added": "2026-10-13"
+  },
+  {
+    "id": "rw-20261013-02",
+    "url": "https://x.com/radha_ai/status/2059144145495904263?s=12",
+    "title": "Prediction of AI (1 hour Lecture)",
+    "source": "@radha_ai (X)",
+    "type": "podcast",
+    "note": "Topic: AI · Cambridge Professor Prediction · (Listen)",
+    "added": "2026-10-13"
+  },
+  {
+    "id": "rw-20261013-03",
+    "url": "https://x.com/hhorsley/status/2057633525638271442?s=12",
+    "title": "Why Hard Work Wont Make You Rich",
+    "source": "@hhorsley (X)",
+    "type": "podcast",
+    "note": "Topic: Bitcoin/Economy · Michael Saylor Interview · (Listen)",
+    "added": "2026-10-13"
+  },
+  {
+    "id": "rw-20261013-04",
+    "url": "https://open.spotify.com/show/2SppgaUjzmHkojXuuAu3tt?si=rEEVL6YhSxa6WoBFibwWUw",
+    "title": "Golf Is Not A Game Of Perfect",
+    "source": "Spotify",
+    "type": "podcast",
+    "note": "Topic: Golf · Audio Book Kurtz Sent Me · (Listen)",
+    "added": "2026-10-13"
+  },
+  {
+    "id": "rw-20261013-05",
+    "url": "https://www.youtube.com/shorts/S3AHRZyahT4",
+    "title": "Ben Hogan Video",
+    "source": "YouTube",
+    "type": "video",
+    "note": "Topic: Golf · (Watch)",
+    "added": "2026-10-13"
+  },
+  {
+    "id": "rw-20261013-06",
+    "url": "https://www.youtube.com/watch?v=LTHQtOX1fac",
+    "title": "Video on Golf Grip",
+    "source": "YouTube",
+    "type": "video",
+    "note": "Topic: Golf · (Watch)",
+    "added": "2026-10-13"
+  },
+  {
+    "id": "rw-20261013-07",
+    "url": "https://www.youtube.com/watch?v=AcQQcX_Mb6o",
+    "title": "Commercial Real Estate Cycles and 4th Turning",
+    "source": "YouTube",
+    "type": "podcast",
+    "note": "Topic: 4th Turning / CRE · (Listen)",
+    "added": "2026-10-13"
+  },
+  {
+    "id": "rw-20261013-08",
+    "url": "https://x.com/intern/status/2022058797229908385?s=12",
+    "title": "What to do if you believe in AI",
+    "source": "@intern (X)",
+    "type": "article",
+    "note": "(Read)",
+    "added": "2026-10-13"
+  },
+  {
+    "id": "rw-20261013-09",
+    "url": "https://www.the-ai-corner.com/p/mark-cuban-has-been-right-every-time?utm_source=multiple-personal-recommendations-email&utm_medium=email&triedRedirect=true",
+    "title": "Mark Cuban Has Been Right When the Crowd is wrong. Again",
+    "source": "the-ai-corner.com",
+    "type": "article",
+    "note": "Which types of companies will exist in 2029 · (Read)",
+    "added": "2026-10-13"
+  },
+  {
+    "id": "rw-20261013-10",
+    "url": "https://grahamstephan.substack.com/p/great-meltup?utm_source=multiple-personal-recommendations-email&utm_medium=email&triedRedirect=true",
+    "title": "Are we in the great melt up?",
+    "source": "grahamstephan (Substack)",
+    "type": "newsletter",
+    "note": "Graham Stephen · (Read)",
+    "added": "2026-10-13"
+  },
+  {
+    "id": "rw-20261013-11",
+    "url": "https://x.com/tftc21/status/2062172456773906481?s=46",
+    "title": "Jordi visser interview",
+    "source": "@tftc21 (X)",
+    "type": "podcast",
+    "note": "Topic: AI / Bitcoin / future & current mkt · (Listen)",
+    "added": "2026-10-13"
+  },
+  {
+    "id": "rw-20261013-12",
+    "url": "https://x.com/drfeifei/status/2062247238143996275?s=12",
+    "title": "A Functional Taxonomy of World Models",
+    "source": "@drfeifei (X)",
+    "type": "article",
+    "note": "Topic: \"world models\" · LLMs understand language, world models understand the universe · (Read)",
+    "added": "2026-10-13"
+  },
+  {
+    "id": "rw-20261013-13",
+    "url": "https://x.com/natbrunell/status/2064713036548435975?s=46",
+    "title": "What wall street see's in bitcoin",
+    "source": "@natbrunell (X)",
+    "type": "podcast",
+    "note": "Topic: What Wall Street see's in bitcoin · (Listen)",
+    "added": "2026-10-13"
+  },
+  {
+    "id": "rw-20261020-01",
+    "url": "https://x.com/phil_holland/status/2106508153869254916?s=12",
+    "title": "Apple Desk by Phillip (Grok Bot skill)",
+    "source": "@Phil_Holland (X)",
+    "type": "other",
+    "note": "Topic: AI · Grok Bot setup for Mac Apple apps (Reminders, Calendar, Notes, Contacts, Messages, Shortcuts) · (Read)",
+    "added": "2026-10-20"
+  }
 ]
