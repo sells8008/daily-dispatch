@@ -27,6 +27,21 @@ tr.body td{background:var(--bg);padding:12px 18px}
 .star{background:none;border:none;cursor:pointer;font-size:18px;line-height:1;padding:2px 4px;color:var(--mut)}.star.on{color:#f5a623}
 .disc{color:var(--mut);font-size:13px;margin-top:16px}
 .delbtn{background:none;border:none;cursor:pointer;font-size:15px;padding:2px 4px;opacity:.55}.delbtn:hover{opacity:1}
+html,body{max-width:100%;overflow-x:hidden}
+.sumtxt,td{overflow-wrap:anywhere;word-break:break-word}
+.sumtxt img,.sumtxt video,.sumtxt table{max-width:100%;height:auto}
+.sumtxt pre,.sumtxt code{white-space:pre-wrap;word-break:break-word;max-width:100%}
+@media(max-width:640px){
+ header{padding:10px 12px 6px}main{padding:10px 8px 60px}
+ input[type=search]{min-width:0;width:100%}select{max-width:100%}
+ .tscroll{overflow-x:hidden}table,tbody{display:block;width:100%}thead{display:none}
+ tr.r{display:flex;flex-wrap:wrap;align-items:center;gap:2px 8px;padding:8px 10px;border-bottom:1px solid var(--line)}
+ tr.r td{display:block;padding:0;border:0;white-space:normal!important}
+ tr.r td:nth-child(5){flex:1 1 100%;order:-1}
+ tr.r td:nth-child(3),tr.r td:nth-child(4),tr.r td:nth-child(7){font-size:13px;color:var(--mut)}
+ tr.body{display:block}tr.body td{display:block;width:100%;padding:10px 12px}
+ .cat{white-space:normal}
+}
 </style></head><body>
 <header><div class="wrap"><h1>🧭 Creator Summaries <span style="font-size:13px;font-weight:400"><a href="../">→ Morning Dispatch</a> · <a href="../reads/">→ My Bookmarks / Reads</a> · <a href="../x-bookmarks/">→ X Bookmarks</a></span></h1>
 <div class="row"><button class="tab on" data-v="inbox">To review</button><button class="tab" data-v="fav">Favorites</button><button class="tab" data-v="arch">Archived</button><button class="tab" data-v="del">Deleted</button></div>
@@ -57,11 +72,11 @@ document.getElementById('tb').onclick=e=>{const db=e.target.closest('.delbtn');i
   const st=e.target.closest('.star');if(st){e.stopPropagation();const id=st.dataset.id;fav[id]?delete fav[id]:fav[id]=new Date().toISOString();localStorage.setItem(FK,JSON.stringify(fav));if(view=='fav')setTimeout(draw,200);else draw();return}const r=e.target.closest('tr.r');if(!r)return;open=open==r.dataset.id?'':r.dataset.id;history.replaceState(null,'',open?'#'+open:location.pathname);draw()};
 document.getElementById('tb').addEventListener('change',e=>{if(!e.target.classList.contains('cb'))return;const id=e.target.dataset.id;e.target.checked?done[id]=new Date().toISOString():delete done[id];localStorage.setItem(DK,JSON.stringify(done));setTimeout(draw,250)});
 document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{view=t.dataset.v;document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('on',b===t));draw()});
-window.onhashchange=()=>{open=location.hash.slice(1);draw()}
+let A={};window.onhashchange=()=>{const h=location.hash.slice(1);if(A[h]){open=A[h];history.replaceState(null,'','#'+open);draw();const s=document.getElementById(h);if(s)s.scrollIntoView({block:'start'});return}open=h;draw()}
 document.querySelectorAll('.chip').forEach(b=>b.onclick=()=>{document.querySelectorAll('.chip').forEach(x=>x.classList.remove('on'));b.classList.add('on');C=b.dataset.c;draw()});
 document.querySelectorAll('th[data-k]').forEach(h=>h.onclick=()=>{if(K==h.dataset.k)asc=!asc;else{K=h.dataset.k;asc=K!='date'}draw()});
 document.getElementById('q').oninput=draw;document.getElementById('t').onchange=draw;
-fetch('data.json?'+Date.now()).then(r=>r.json()).then(d=>{D=d;const A={};let ch=0;
+fetch('data.json?'+Date.now()).then(r=>r.json()).then(d=>{D=d;A={};let ch=0;
  D.forEach(x=>(x.aliases||[]).forEach(a=>A[a]=x.id));
  D.forEach(x=>{const a=x.aliases||[];if(!a.length)return;const t=new Date().toISOString();
   if(!done[x.id]&&a.every(i=>done[i])){done[x.id]=t;ch=1}if(!fav[x.id]&&a.some(i=>fav[i])){fav[x.id]=t;ch=1}if(!del[x.id]&&a.every(i=>del[i])){del[x.id]=t;ch=1}});
