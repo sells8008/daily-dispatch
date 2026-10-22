@@ -53,6 +53,50 @@ table.bm tr.exp td{padding:10px 14px 14px;background:rgba(0,0,0,.03);font-size:1
 .sitenav a:hover{background:rgba(29,155,240,.12);color:var(--ink)}
 .sitenav a.on{background:var(--acc);color:#fff;box-shadow:0 1px 4px rgba(29,155,240,.35)}
 @media(max-width:640px){.sitenav{flex-wrap:nowrap;overflow-x:auto;width:100%;border-radius:14px;scrollbar-width:none}.sitenav::-webkit-scrollbar{display:none}.sitenav a{padding:6px 11px;font-size:13px}}
+/* Mobile cleanup (≤640px only) */
+@media(max-width:640px){
+header{position:static;padding:10px 12px 6px}
+h1{font-size:18px;margin:0 0 8px}
+main{padding:10px 12px 48px}
+.row{gap:6px;margin-bottom:6px}
+.tab,.viewbtn,.chip{min-height:36px;padding:6px 12px;white-space:nowrap;flex:0 0 auto}
+.view-toggle{flex:0 0 auto}
+#chips{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin:0 -12px 6px;padding:0 12px}#chips::-webkit-scrollbar{display:none}
+input[type=search]{min-width:0;font-size:16px;min-height:42px}
+input[type=date],select{font-size:16px;min-height:42px;flex:1 1 0;min-width:0}
+.card{padding:12px;border-radius:12px}
+.meta{gap:6px 8px}
+.sum{overflow-wrap:anywhere;font-size:15.5px}
+details summary{min-height:32px;display:flex;align-items:center}
+details p{overflow-wrap:anywhere}
+.star,.delbtn{min-width:40px;min-height:40px;display:inline-flex;align-items:center;justify-content:center}
+.foot a{min-height:40px;display:inline-flex;align-items:center}
+label.done{min-height:40px}
+.cb{width:22px;height:22px}
+/* Table view → stacked cards */
+.tscroll{overflow:visible;border:none;background:none;border-radius:0}
+table.bm{min-width:0;display:block;font-size:14px}
+table.bm thead{display:block;margin-bottom:8px}
+table.bm thead tr{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none}
+table.bm thead th{position:static;display:none;border:1px solid var(--line);border-radius:999px;background:var(--card);padding:6px 12px;font-size:13px;min-height:36px;align-items:center}
+table.bm thead th.sortable{display:inline-flex;flex:0 0 auto;width:auto!important;min-width:0!important;white-space:nowrap}
+table.bm tbody{display:block}
+table.bm tbody tr[data-id]{display:grid;grid-template-columns:auto auto 1fr auto;grid-template-areas:"done star cat date" "auth auth auth link" "sum sum sum sum";align-items:center;gap:2px 8px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:8px 12px 12px;margin-top:10px}
+table.bm tbody tr.expanded{border-bottom-left-radius:0;border-bottom-right-radius:0;background:var(--card)}
+table.bm tbody td{border:none;padding:0;width:auto!important;min-width:0!important}
+table.bm .col-done{grid-area:done}
+table.bm .col-star{grid-area:star;white-space:nowrap}
+table.bm .col-cat{grid-area:cat;min-width:0}
+table.bm .col-date{grid-area:date;font-size:13px;text-align:right}
+table.bm .col-auth{grid-area:auth;white-space:normal;overflow-wrap:anywhere;font-size:13.5px}
+table.bm .col-link{grid-area:link;text-align:right}
+table.bm .col-link a{display:inline-flex;align-items:center;min-height:40px;padding:0 4px;font-weight:600}
+table.bm .col-sum{grid-area:sum;font-size:15px;line-height:1.45;overflow-wrap:anywhere;padding-top:4px}
+table.bm .col-done input{width:22px;height:22px;margin:9px}
+table.bm tr.expanded + tr.exp{display:block}
+table.bm tr.exp td{display:block;border:1px solid var(--line);border-top:none;border-radius:0 0 12px 12px;overflow-wrap:anywhere;padding:10px 12px 12px}
+table.bm tbody tr:not([data-id]) td{display:block;padding:12px 0}
+}
 </style></head><body>
 <header><div class="wrap"><nav class="sitenav"><a href="../reads/">📖 Read, Watch, Listen</a><a href="../x-bookmarks/" class="on" aria-current="page">🔖 X Bookmarks</a><a href="../summaries/">🎙️ Creator Summaries</a><a href="../">📰 Dispatch</a></nav><h1>📚 X Bookmarks</h1>
 <div class="row">
