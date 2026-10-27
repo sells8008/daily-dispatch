@@ -1,5 +1,16 @@
 [
  {
+  "id": "2026-10-26-ai-investor-daily",
+  "date": "2026-10-26",
+  "creator": "AI Investor",
+  "type": "Full post",
+  "title": "AI Investor, 10/26: Anthropic IPO and the Jevons paradox, cheaper AI tokens but pricier GPUs",
+  "url": "https://www.patreon.com/The_AI_Investor/posts/anthropic-ipo-173482303",
+  "aliases": [],
+  "html": "<p><a id=\"2026-10-26-ai-investor-anthropic-ipo-jevons\"></a></p>\n<h2>Full post: Anthropic IPO: Jevons paradox</h2>\n<p>Date: Oct 26, 2026. <a target=\"_blank\" rel=\"noopener\" href=\"https://www.patreon.com/The_AI_Investor/posts/anthropic-ipo-173482303\">Patreon post</a> (summary via Muse, Patreon teaser only; full text not yet pasted)</p>\n<p>He looks at Anthropic's newly disclosed financials and early October spending data and points out a puzzle: the price of AI output (tokens) keeps falling, yet the price of renting the GPUs that produce it keeps rising. His question is what that says about real AI demand. Do cheaper, better models mostly push customers toward cheaper options, or do they make people spend more on the most capable models because those can do far more useful work? He leans toward the second answer, and says it matters for NVIDIA, Micron, the GPU-rental clouds, and the wider AI-infrastructure economy over the next few years. The teaser gives no new trade, position size, allocation, or price target. The full version lives on his SI Buildout research site, which Muse couldn't load this run.\nSEP touch: fits the compute thesis. Rising GPU rental prices alongside falling token prices suggest cheaper models aren't killing demand, which supports the concentrated NVIDIA and memory positioning; no stance change visible from the teaser.</p>\n<p>Educational analysis, not professional financial advice.</p>",
+  "text": " Full post: Anthropic IPO: Jevons paradox Date: Oct 26, 2026. Patreon post (summary via Muse, Patreon teaser only; full text not yet pasted) He looks at Anthropic's newly disclosed financials and early October spending data and points out a puzzle: the price of AI output (tokens) keeps falling, yet the price of renting the GPUs that produce it keeps rising. His question is what that says about real AI demand. Do cheaper, better models mostly push customers toward cheaper options, or do they make people spend more on the most capable models because those can do far more useful work? He leans toward the second answer, and says it matters for NVIDIA, Micron, the GPU-rental clouds, and the wider AI-infrastructure economy over the next few years. The teaser gives no new trade, position size, allocation, or price target. The full version lives on his SI Buildout research site, which Muse couldn't load this run. SEP touch: fits the compute thesis. Rising GPU rental prices alongside falling token prices suggest cheaper models aren't killing demand, which supports the concentrated NVIDIA and memory positioning; no stance change visible from the teaser. Educational analysis, not professional financial advice. "
+ },
+ {
   "id": "2026-10-25-ai-investor-daily",
   "date": "2026-10-25",
   "creator": "AI Investor",
