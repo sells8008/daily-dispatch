@@ -19,8 +19,8 @@ table{width:100%;border-collapse:collapse;font-size:14px}
 th{text-align:left;padding:8px 10px;border-bottom:2px solid var(--line);cursor:pointer;white-space:nowrap}
 td{padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
 tr.r{cursor:pointer}tr.r:hover{background:rgba(29,155,240,.06)}
-.cat{background:rgba(29,155,240,.12);color:var(--acc);border-radius:6px;padding:1px 7px;font-weight:600;font-size:12px;white-space:nowrap}
-.full{background:rgba(245,166,35,.18);color:#b9770e}
+.cat{background:hsl(var(--cat-h,203) var(--cat-s,80%) 91%);color:hsl(var(--cat-h,203) var(--cat-s,80%) 36%);border-radius:6px;padding:1px 7px;font-weight:600;font-size:12px;white-space:nowrap}
+@media(prefers-color-scheme:dark){.cat{background:hsl(var(--cat-h,203) var(--cat-s,80%) 20%);color:hsl(var(--cat-h,203) var(--cat-s,80%) 74%)}}
 tr.body td{background:var(--bg);padding:12px 18px}
 .sumtxt h1,.sumtxt h2,.sumtxt h3{font-size:16px;margin:12px 0 4px}.sumtxt ul{padding-left:20px}
 .tab{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:5px 12px;font-size:13px;cursor:pointer}.tab.on{background:var(--acc);border-color:var(--acc);color:#fff}
@@ -69,12 +69,20 @@ window.DD_SYNC={page:'cs',keys:{done:DK,fav:FK,del:DELK},apply(){done=JSON.parse
 (()=>{const t=document.createElement('script');t.src='../sync.js?v=1';document.head.appendChild(t)})();
 let D=[],C='',K='date',asc=false,open=location.hash.slice(1);
 const esc=s=>String(s||'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const CAT_MAP={"full post":[38,78],"x posts":[203,80],"quip":[280,58],"sep digest":[145,60]};
+function catVars(name){
+  const k=String(name||'').trim().toLowerCase();
+  let h,s;
+  if(CAT_MAP[k]){h=CAT_MAP[k][0];s=CAT_MAP[k][1]}
+  else{let hash=2166136261;for(let i=0;i<k.length;i++)hash=Math.imul(hash^k.charCodeAt(i),16777619);h=(hash>>>0)%360;s=62}
+  return `--cat-h:${h};--cat-s:${s}%`;
+}
 function fmt(d){const[y,m,dd]=d.split('-');return new Date(y,m-1,dd).toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'})}
 function draw(){const q=document.getElementById('q').value.toLowerCase(),t=document.getElementById('t').value;
  let L=D.filter(x=>(view=='del'?!!del[x.id]:!del[x.id]&&(x.id==location.hash.slice(1)||(view=='fav'?!!fav[x.id]:view=='arch'?!!done[x.id]&&!fav[x.id]:!done[x.id]&&!fav[x.id])))&&(!C||x.creator==C)&&(!t||x.type==t)&&(!q||(x.title+' '+x.text).toLowerCase().includes(q)));
  L.sort((a,b)=>{let r=a[K]<b[K]?-1:a[K]>b[K]?1:0;if(!r&&K=='date')r=(a.type=='Full post')-(b.type=='Full post');return asc?r:-r});
  document.getElementById('n').textContent=`${L.length} ${({inbox:'to review',arch:'archived',fav:'favorites',del:'deleted'})[view]} · ${D.filter(x=>!done[x.id]).length} unreviewed · ${Object.keys(fav).length} starred`;
- document.getElementById('tb').innerHTML=L.map(x=>`<tr class="r" data-id="${x.id}"><td onclick="event.stopPropagation()"><input type="checkbox" class="cb" data-id="${x.id}" ${done[x.id]?'checked':''} title="Done"></td><td><button class="star ${fav[x.id]?'on':''}" data-id="${x.id}" type="button" title="Favorite">${fav[x.id]?'★':'☆'}</button><button class="delbtn" data-id="${x.id}" type="button" title="${del[x.id]?'Restore':'Delete'}">${del[x.id]?'↩︎':'🗑'}</button></td><td style="white-space:nowrap">${fmt(x.date)}</td><td class="cr">${esc(x.creator)}</td><td><b>${esc(x.title)}</b></td><td><span class="cat ${x.type=='Full post'?'full':''}">${esc(x.type)}</span></td><td>${x.url?`<a href="${esc(x.url)}" target="_blank" rel="noopener" onclick="event.stopPropagation()">Original ↗</a>`:''} · <a href="#${x.id}" onclick="event.stopPropagation()">Link</a></td></tr>`+(open==x.id?`<tr class="body"><td colspan="7"><div class="sumtxt">${x.html}</div></td></tr>`:'')).join('');
+ document.getElementById('tb').innerHTML=L.map(x=>`<tr class="r" data-id="${x.id}"><td onclick="event.stopPropagation()"><input type="checkbox" class="cb" data-id="${x.id}" ${done[x.id]?'checked':''} title="Done"></td><td><button class="star ${fav[x.id]?'on':''}" data-id="${x.id}" type="button" title="Favorite">${fav[x.id]?'★':'☆'}</button><button class="delbtn" data-id="${x.id}" type="button" title="${del[x.id]?'Restore':'Delete'}">${del[x.id]?'↩︎':'🗑'}</button></td><td style="white-space:nowrap">${fmt(x.date)}</td><td class="cr">${esc(x.creator)}</td><td><b>${esc(x.title)}</b></td><td><span class="cat" style="${catVars(x.type)}">${esc(x.type)}</span></td><td>${x.url?`<a href="${esc(x.url)}" target="_blank" rel="noopener" onclick="event.stopPropagation()">Original ↗</a>`:''} · <a href="#${x.id}" onclick="event.stopPropagation()">Link</a></td></tr>`+(open==x.id?`<tr class="body"><td colspan="7"><div class="sumtxt">${x.html}</div></td></tr>`:'')).join('');
  if(open){const e=document.querySelector(`tr[data-id="${open}"]`);if(e&&location.hash.slice(1)==open)e.scrollIntoView({block:'start'})}}
 document.getElementById('tb').onclick=e=>{const db=e.target.closest('.delbtn');if(db){e.stopPropagation();const id=db.dataset.id;if(del[id]){delete del[id]}else{if(!confirm('Delete this item? It will be hidden from every view. You can restore it from the Deleted tab.'))return;del[id]=new Date().toISOString()}localStorage.setItem(DELK,JSON.stringify(del));draw();return}
   const st=e.target.closest('.star');if(st){e.stopPropagation();const id=st.dataset.id;fav[id]?delete fav[id]:fav[id]=new Date().toISOString();localStorage.setItem(FK,JSON.stringify(fav));if(view=='fav')setTimeout(draw,200);else draw();return}const r=e.target.closest('tr.r');if(!r)return;open=open==r.dataset.id?'':r.dataset.id;history.replaceState(null,'',open?'#'+open:location.pathname);draw()};

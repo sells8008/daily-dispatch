@@ -15,7 +15,8 @@ input[type=search]{flex:1;min-width:180px}
 main{padding:12px 16px 60px}.count{color:var(--mut);font-size:13px;margin:4px 0 10px}
 .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-bottom:10px}
 .meta{display:flex;gap:10px;flex-wrap:wrap;font-size:13px;color:var(--mut);align-items:center}
-.cat{background:rgba(29,155,240,.12);color:var(--acc);border-radius:6px;padding:1px 7px;font-weight:600}
+.cat{background:hsl(var(--cat-h,203) var(--cat-s,80%) 91%);color:hsl(var(--cat-h,203) var(--cat-s,80%) 36%);border-radius:6px;padding:1px 7px;font-weight:600}
+@media(prefers-color-scheme:dark){.cat{background:hsl(var(--cat-h,203) var(--cat-s,80%) 20%);color:hsl(var(--cat-h,203) var(--cat-s,80%) 74%)}}
 .sum{margin:6px 0;font-size:15.5px}a{color:var(--acc);text-decoration:none}
 details{font-size:13px;color:var(--mut)}details p{white-space:pre-wrap;margin:6px 0}
 .foot{display:flex;justify-content:space-between;align-items:center;margin-top:6px;gap:10px;flex-wrap:wrap}
@@ -125,6 +126,14 @@ window.DD_SYNC={page:'xbm',keys:{done:K,fav:FK,del:DELK},apply(){done=JSON.parse
 let D=[],view='inbox',cats=new Set(), sortCol=null, sortDir='desc', expanded=null;
 const $=s=>document.querySelector(s);
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const CAT_MAP={"ai & grok bot":[203,80],"golf":[145,60],"ai business ideas":[280,58],"other":[220,10],"investing & markets":[38,78],"health & self-improvement":[175,62],"economy & macro":[222,55],"crypto":[22,80],"sports & fantasy":[350,68]};
+function catVars(name){
+  const k=String(name||'').trim().toLowerCase();
+  let h,s;
+  if(CAT_MAP[k]){h=CAT_MAP[k][0];s=CAT_MAP[k][1]}
+  else{let hash=2166136261;for(let i=0;i<k.length;i++)hash=Math.imul(hash^k.charCodeAt(i),16777619);h=(hash>>>0)%360;s=62}
+  return `--cat-h:${h};--cat-s:${s}%`;
+}
 
 function syncViewBtns(){
   document.querySelectorAll('.viewbtn').forEach(b=>b.classList.toggle('on',b.dataset.mode===mode));
@@ -204,7 +213,7 @@ function arrow(col){
 function renderList(r){
   $('#list').innerHTML=r.map(x=>`<div class="card">
 <div class="meta"><button class="star ${fav[x.id]?'on':''}" data-id="${x.id}" type="button" title="Favorite">${fav[x.id]?'★':'☆'}</button><button class="delbtn" data-id="${x.id}" type="button" title="${del[x.id]?'Restore':'Delete'}">${del[x.id]?'↩︎':'🗑'}</button>
-<span class="cat">${esc(x.category)}</span><span>${esc(x.date)}</span>
+<span class="cat" style="${catVars(x.category)}">${esc(x.category)}</span><span>${esc(x.date)}</span>
 <a href="https://x.com/${esc(x.author)}" target="_blank" rel="noopener">@${esc(x.author)}</a></div>
 <div class="sum">${esc(x.summary)}</div>
 <details><summary>Post text</summary><p>${esc(x.text)}</p></details>
@@ -219,7 +228,7 @@ function renderTable(r){
 <td class="col-done" onclick="event.stopPropagation()"><input type="checkbox" class="cb" data-id="${x.id}" ${done[x.id]?'checked':''} title="Done"></td>
 <td class="col-star"><button class="star ${fav[x.id]?'on':''}" data-id="${x.id}" type="button" title="Favorite">${fav[x.id]?'★':'☆'}</button><button class="delbtn" data-id="${x.id}" type="button" title="${del[x.id]?'Restore':'Delete'}">${del[x.id]?'↩︎':'🗑'}</button></td>
 <td class="col-date">${esc(x.date)}</td>
-<td class="col-cat"><span class="cat">${esc(x.category)}</span></td>
+<td class="col-cat"><span class="cat" style="${catVars(x.category)}">${esc(x.category)}</span></td>
 <td class="col-auth"><a href="https://x.com/${esc(x.author)}" target="_blank" rel="noopener" onclick="event.stopPropagation()">@${esc(x.author)}</a></td>
 <td class="col-sum">${esc(x.summary)}</td>
 <td class="col-link"><a href="${esc(x.url)}" target="_blank" rel="noopener" onclick="event.stopPropagation()">Open</a></td>
