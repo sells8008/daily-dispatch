@@ -142,5 +142,23 @@
     "type": "video",
     "note": "Eleven22 church documentary · Watch later",
     "added": "2026-11-08"
+  },
+  {
+    "id": "rw-20261116-01",
+    "url": "https://www.a16z.news/p/big-pharma-can-rival-big-software",
+    "title": "Big Pharma Can Rival Big Software",
+    "source": "a16z (Substack)",
+    "type": "newsletter",
+    "note": "Caroline Goggins, Justin Kahl, et al. · AI could help pharma rival big software by raising drug-success odds and cutting development time · (Read)",
+    "added": "2026-11-16"
+  },
+  {
+    "id": "rw-20261116-02",
+    "url": "https://sightbringer.substack.com/p/iren-20262027-forecast-update-the",
+    "title": "IREN 2026–2027 Forecast Update: The Financing Test",
+    "source": "SightBringer (Substack)",
+    "type": "newsletter",
+    "note": "SightBringer · IREN's AI-cloud business is growing fast while the stock has been sharply repriced; updated forecast through 2027 turns on financing · (Read)",
+    "added": "2026-11-16"
   }
 ]
