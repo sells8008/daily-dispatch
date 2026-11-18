@@ -6,7 +6,8 @@
     "source": "@arkinvest (X)",
     "type": "podcast",
     "note": "Topic: Bitcoin · Bitcoin V Quantom Computing · (Listen)",
-    "added": "2026-10-13"
+    "added": "2026-10-13",
+    "list": "Personal"
   },
   {
     "id": "rw-20261013-02",
@@ -15,7 +16,8 @@
     "source": "@radha_ai (X)",
     "type": "podcast",
     "note": "Topic: AI · Cambridge Professor Prediction · (Listen)",
-    "added": "2026-10-13"
+    "added": "2026-10-13",
+    "list": "Personal"
   },
   {
     "id": "rw-20261013-03",
@@ -24,7 +26,8 @@
     "source": "@hhorsley (X)",
     "type": "podcast",
     "note": "Topic: Bitcoin/Economy · Michael Saylor Interview · (Listen)",
-    "added": "2026-10-13"
+    "added": "2026-10-13",
+    "list": "Personal"
   },
   {
     "id": "rw-20261013-04",
@@ -33,7 +36,8 @@
     "source": "Spotify",
     "type": "podcast",
     "note": "Topic: Golf · Audio Book Kurtz Sent Me · (Listen)",
-    "added": "2026-10-13"
+    "added": "2026-10-13",
+    "list": "Personal"
   },
   {
     "id": "rw-20261013-05",
@@ -42,7 +46,8 @@
     "source": "YouTube",
     "type": "video",
     "note": "Topic: Golf · (Watch)",
-    "added": "2026-10-13"
+    "added": "2026-10-13",
+    "list": "Personal"
   },
   {
     "id": "rw-20261013-06",
@@ -51,7 +56,8 @@
     "source": "YouTube",
     "type": "video",
     "note": "Topic: Golf · (Watch)",
-    "added": "2026-10-13"
+    "added": "2026-10-13",
+    "list": "Personal"
   },
   {
     "id": "rw-20261013-07",
@@ -60,7 +66,8 @@
     "source": "YouTube",
     "type": "podcast",
     "note": "Topic: 4th Turning / CRE · (Listen)",
-    "added": "2026-10-13"
+    "added": "2026-10-13",
+    "list": "Personal"
   },
   {
     "id": "rw-20261013-08",
@@ -69,7 +76,8 @@
     "source": "@intern (X)",
     "type": "article",
     "note": "(Read)",
-    "added": "2026-10-13"
+    "added": "2026-10-13",
+    "list": "Personal"
   },
   {
     "id": "rw-20261013-09",
@@ -78,7 +86,8 @@
     "source": "the-ai-corner.com",
     "type": "article",
     "note": "Which types of companies will exist in 2029 · (Read)",
-    "added": "2026-10-13"
+    "added": "2026-10-13",
+    "list": "Personal"
   },
   {
     "id": "rw-20261013-10",
@@ -87,7 +96,8 @@
     "source": "grahamstephan (Substack)",
     "type": "newsletter",
     "note": "Graham Stephen · (Read)",
-    "added": "2026-10-13"
+    "added": "2026-10-13",
+    "list": "Personal"
   },
   {
     "id": "rw-20261013-11",
@@ -96,7 +106,8 @@
     "source": "@tftc21 (X)",
     "type": "podcast",
     "note": "Topic: AI / Bitcoin / future & current mkt · (Listen)",
-    "added": "2026-10-13"
+    "added": "2026-10-13",
+    "list": "Personal"
   },
   {
     "id": "rw-20261013-12",
@@ -105,7 +116,8 @@
     "source": "@drfeifei (X)",
     "type": "article",
     "note": "Topic: \"world models\" · LLMs understand language, world models understand the universe · (Read)",
-    "added": "2026-10-13"
+    "added": "2026-10-13",
+    "list": "Personal"
   },
   {
     "id": "rw-20261013-13",
@@ -114,7 +126,8 @@
     "source": "@natbrunell (X)",
     "type": "podcast",
     "note": "Topic: What Wall Street see's in bitcoin · (Listen)",
-    "added": "2026-10-13"
+    "added": "2026-10-13",
+    "list": "Personal"
   },
   {
     "id": "rw-20261020-01",
@@ -123,7 +136,8 @@
     "source": "@Phil_Holland (X)",
     "type": "other",
     "note": "Topic: AI · Grok Bot setup for Mac Apple apps (Reminders, Calendar, Notes, Contacts, Messages, Shortcuts) · (Read)",
-    "added": "2026-10-20"
+    "added": "2026-10-20",
+    "list": "Personal"
   },
   {
     "id": "rw-20261020-02",
@@ -132,7 +146,8 @@
     "source": "The Rundown AI (Guides)",
     "type": "article",
     "note": "Topic: AI · Step-by-step guide to Claude's new Dashboards beta: connect a data source, build, verify, filter & refresh a live report · (Read)",
-    "added": "2026-10-20"
+    "added": "2026-10-20",
+    "list": "Personal"
   },
   {
     "id": "rw-20261108-01",
@@ -141,7 +156,8 @@
     "source": "YouTube",
     "type": "video",
     "note": "Eleven22 church documentary · Watch later",
-    "added": "2026-11-08"
+    "added": "2026-11-08",
+    "list": "Personal"
   },
   {
     "id": "rw-20261116-01",
@@ -150,7 +166,8 @@
     "source": "a16z (Substack)",
     "type": "newsletter",
     "note": "Caroline Goggins, Justin Kahl, et al. · AI could help pharma rival big software by raising drug-success odds and cutting development time · (Read)",
-    "added": "2026-11-16"
+    "added": "2026-11-16",
+    "list": "Personal"
   },
   {
     "id": "rw-20261116-02",
@@ -159,6 +176,27 @@
     "source": "SightBringer (Substack)",
     "type": "newsletter",
     "note": "SightBringer · IREN's AI-cloud business is growing fast while the stock has been sharply repriced; updated forecast through 2027 turns on financing · (Read)",
-    "added": "2026-11-16"
+    "added": "2026-11-16",
+    "list": "Personal"
+  },
+  {
+    "id": "rw-20261118-01",
+    "url": "https://tractiq.com/wp-content/uploads/2026/11/TractIQ_Q3_2026_Self-Storage_REIT_Report.pdf",
+    "title": "Q3 2026 Self-Storage REIT Report",
+    "source": "TractIQ",
+    "type": "article",
+    "note": "Topic: Self-storage · TractIQ's Q3 2026 look at the four public storage REITs: all four grew same-store revenue and NOI, 2025 looks like the occupancy trough, and Public Storage closed its NSA acquisition · (Read, PDF)",
+    "added": "2026-11-18",
+    "list": "Work"
+  },
+  {
+    "id": "rw-20261118-02",
+    "url": "https://media.base44.com/files/public/6a516ac36fc537c05507aa70/5bcc9759c_Self-Storage_Q3-2026_Supply-Led-Recovery_Investor.pdf",
+    "title": "Self-Storage Q3 2026: The Supply-Led Recovery",
+    "source": "Store Here Self Storage (Armand Aghadjanians)",
+    "type": "article",
+    "note": "Topic: Self-storage · Investor market review of the Big-3 REITs (PSA, EXR, CUBE): same-store NOI growth turning back up in 2026 as new supply fades and customers stay longer · (Read, PDF)",
+    "added": "2026-11-18",
+    "list": "Work"
   }
 ]
